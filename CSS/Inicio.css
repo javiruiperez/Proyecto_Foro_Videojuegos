@@ -1,27 +1,62 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
 body{
     margin: 0px;
     padding: 0px;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
 }
+
+
+a {
+    text-decoration: none;
+}
+
+header form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .Logo{
-    float: left;
-    margin-top: 0px;
-    width:100px;
-    height: 60px;
-    padding: 12px;
+    float: center;
+    width: 205px;
+    height: 100px;
+    padding: 0px;
 }
 
+header .barra_busqueda {
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    background: rgb(202, 202, 202);
+    padding: 20px;
+    border-radius: 100px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+}
 
+header .categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+header .categorias a {
+    color: #9B9B9B;
+    margin: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    
+}
 
-
-
-
-
-
-
-
+header .categorias a.activo {
+    color: #2FA9F3;
+}
 
 
 
