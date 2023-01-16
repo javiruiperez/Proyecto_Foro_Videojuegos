@@ -24,6 +24,6 @@
             <input type="submit" class="buttonForm" name="submitLogin" value="Log In"/>
         </form>
     </div>
-    <div class="signinLogin">Don't have an account? <a href="registro.php">Sign up</a></div>
+    <div class="signinLogin">Don't have an account? <a href="../register/registro.php">Sign up</a></div>
 </body>
 </html>

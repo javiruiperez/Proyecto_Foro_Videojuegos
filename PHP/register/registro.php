@@ -39,7 +39,7 @@ foreach($datesform as $campo=>$valor ) {
 
 </form>
 <div>
-<p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
+<p>Si ya tienes cuenta <a href="../login/checkLogin.php"> iniciaSesion</a></p>
 </div>
 </body>
 </html>
@@ -148,7 +148,7 @@ catch (PDOException $e) {
      // guardamos en ·errores el error que queremos mostrar a los usuarios
      $errores['datos'] = "Ha habido un error <br>";
 }
-header("location:../../HTML/Inicio.html");
+header("location:../../HTML/index.html");
 echo "Todo correcto";
   }
            
