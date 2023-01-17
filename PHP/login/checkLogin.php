@@ -3,7 +3,7 @@
     require ('../modelo/classModelo.php');
     require ('../modelo/classUsuario.php');
     require ('../BaseDeDatos/conexion.php');
-    acabecera("Log In");
+    cabecera("Log In");
     $errores = [];
     
     /*THIS CHECKS IF A SESSION IS STARTED AND REDIRECTS TO TH MAIN PAGE IF IT DOES
