@@ -1,6 +1,9 @@
 <?php
     include("../libs/bGeneral.php");
-    cabecera("Log In");
+    require ('../modelo/classModelo.php');
+    require ('../modelo/classUsuario.php');
+    require ('../BaseDeDatos/conexion.php');
+    acabecera("Log In");
     $errores = [];
     
     /*THIS CHECKS IF A SESSION IS STARTED AND REDIRECTS TO TH MAIN PAGE IF IT DOES
@@ -23,9 +26,18 @@
             $errores["NoPassLogin"] = "Password cannot be empty";
         }
 
-        if(count($errores) === 0){//This should check if the username and password exists and if it doesn't, it will show an error
+        if(count($errores) === 0){ //This checks if the username and password exist
             try{
-                include("../BaseDeDatos/conexion.php");
+                $usuario = new Usuario();
+                if($usuario = $userBD->checkPassword($user, $password)){
+                    session_start();
+                        $_SESSION["user"] = $user;
+                        header("location:../../HTML/index.html"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+                } else{
+                    $errores["NoUserLogin"] = "The email or password is incorrect";
+                    require("formLogin.php");
+                }
+                /*include("../BaseDeDatos/conexion.php");
                 $consultaLogin = $pdo->prepare("select * FROM usuarios WHERE usuario = ?");
                 $consultaLogin->bindParam(1, $user);
                 $consultaLogin->execute();
@@ -34,14 +46,9 @@
                     if($checkPass === $consultas['contraseñaEncriptada']){
                         session_start();
                         $_SESSION["user"] = $user;
-                        header("location:../../HTML/index.html"); //Change url config so the user profile picture appears  at the top-right corner of the screen
-                    } /*else{
-                        $errores["NoUserLogin"] = "The email or password is incorrect";
-                        require("formLogin.php");
-                    }*/
-                }
-                $errores["NoUserLogin"] = "The email or password is incorrect";
-                require("formLogin.php");
+                        header("location:../../HTML/index.html");
+                    }
+                } CÓDIGO ANTIGUO (NUEVO EN modelo/classUsuario.php)*/ 
             } catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                 // guardamos en ·errores el error que queremos mostrar a los usuarios

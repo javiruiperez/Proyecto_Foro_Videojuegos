@@ -1,7 +1,9 @@
 <?php
-$db_hostname = "localhost";
-$db_nombre = "login";
-$db_usuario = "root";
-    $db_clave = "";
-
+    class Config
+    {
+        static public $db_hostname = "localhost";
+        static public $db_nombre = "login";
+        static public $db_usuario = "root";
+        static public $db_clave = "";
+    }
 ?>
