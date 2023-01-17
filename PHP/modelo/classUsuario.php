@@ -14,9 +14,9 @@
 
         public function checkPassword($user, $password)
         {
-            $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
+            $consulta = "SELECT * FROM usuarios WHERE usuario=?";
             $resultado = $this->prepare($consulta);
-            $resultado->bindParam(':user', $user);
+            $resultado->bindParam(1, $user);
             $resultado->execute();
             foreach($resultado as $result){
                 $checkPass = crypt($password, $result['contraseñaEncriptada']);

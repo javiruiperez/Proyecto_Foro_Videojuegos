@@ -1,5 +1,4 @@
 <?php
-    include("../BaseDeDatos/config.php");
     class Modelo extends PDO //Esta clase sirve como conexión a la base de datos del model MVC
     {
         private $conexion;
