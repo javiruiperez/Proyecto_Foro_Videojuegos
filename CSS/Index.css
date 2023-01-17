@@ -7,8 +7,15 @@ body{
     margin: 0px;
     padding: 0px;
     text-align: center;
+    background-image: url("/Interfaces\ Proyecto/fondo_web.png");
 }
 
+h1{
+    margin-top: 5%;
+    font-family: 'VT323', monospace;
+    font-size: 82px;
+    color: #fff;
+}
 
 a {
     text-decoration: none;
@@ -32,7 +39,7 @@ header .barra_busqueda {
     width: 50%;
     height: 40px;
     line-height: 40px;
-    background: rgb(202, 202, 202);
+    background: #fff;
     padding: 20px;
     border-radius: 100px;
     border: none;
@@ -47,7 +54,7 @@ header .categorias {
 }
 
 header .categorias a {
-    color: #9B9B9B;
+    color: #fff;
     margin: 10px 20px;
     font-size: 18px;
     font-weight: 700;
@@ -81,7 +88,7 @@ header .categorias a.activo {
 
 
 
-
+/* 
 .grid {
     position: relative;
     width: 100%;
@@ -114,7 +121,7 @@ header .categorias a.activo {
 
 /*
 Overlay
-*/
+
 
 .overlay {
     position: fixed;
@@ -162,7 +169,7 @@ Overlay
     position: absolute;
     right: -20px;
 }
-
+ */
 
 
 
