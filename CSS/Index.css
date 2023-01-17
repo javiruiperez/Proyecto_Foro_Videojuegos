@@ -8,10 +8,12 @@ body{
     padding: 0px;
     text-align: center;
     background-image: url("/Interfaces\ Proyecto/fondo_web.png");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
 h1{
-    margin-top: 5%;
+    margin-top: 2.5%;
     font-family: 'VT323', monospace;
     font-size: 82px;
     color: #fff;
@@ -248,7 +250,7 @@ Overlay
     margin: 0% 1%;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 100%) {
     .footer {
         text-align: left;
         padding: 5%;
