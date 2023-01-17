@@ -7,11 +7,38 @@ body{
     margin: 0px;
     padding: 0px;
     text-align: center;
+    background-image: url("/Interfaces\ Proyecto/fondo_web.png");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+h1{
+    text-align: center;
+    width: 100%;
+    float: center;
+    margin-top: 2.5%;
+    font-family: 'VT323', monospace;
+    font-size: 82px;
+    color: #fff;
+    text-shadow: 2px 5px 5px #000000;
+}
 
 a {
     text-decoration: none;
+}
+
+.log-In{
+    float: right;
+    margin: 9%;
+}
+.sign-In{
+    float: right;
+    margin: 9%;
 }
 
 header form {
@@ -32,7 +59,7 @@ header .barra_busqueda {
     width: 50%;
     height: 40px;
     line-height: 40px;
-    background: rgb(202, 202, 202);
+    background: #fff;
     padding: 20px;
     border-radius: 100px;
     border: none;
@@ -47,7 +74,7 @@ header .categorias {
 }
 
 header .categorias a {
-    color: #9B9B9B;
+    color: #fff;
     margin: 10px 20px;
     font-size: 18px;
     font-weight: 700;
@@ -81,7 +108,7 @@ header .categorias a.activo {
 
 
 
-
+/* 
 .grid {
     position: relative;
     width: 100%;
@@ -114,7 +141,7 @@ header .categorias a.activo {
 
 /*
 Overlay
-*/
+
 
 .overlay {
     position: fixed;
@@ -162,7 +189,7 @@ Overlay
     position: absolute;
     right: -20px;
 }
-
+ */
 
 
 
@@ -241,7 +268,7 @@ Overlay
     margin: 0% 1%;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 100%) {
     .footer {
         text-align: left;
         padding: 5%;
