@@ -8,17 +8,37 @@ body{
     padding: 0px;
     text-align: center;
     background-image: url("/Interfaces\ Proyecto/fondo_web.png");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 h1{
-    margin-top: 5%;
+    text-align: center;
+    width: 100%;
+    float: center;
+    margin-top: 2.5%;
     font-family: 'VT323', monospace;
     font-size: 82px;
     color: #fff;
+    text-shadow: 2px 5px 5px #000000;
 }
 
 a {
     text-decoration: none;
+}
+
+.log-In{
+    float: right;
+    margin: 9%;
+}
+.sign-In{
+    float: right;
+    margin: 9%;
 }
 
 header form {
@@ -248,7 +268,7 @@ Overlay
     margin: 0% 1%;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 100%) {
     .footer {
         text-align: left;
         padding: 5%;
