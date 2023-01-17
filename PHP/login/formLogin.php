@@ -11,7 +11,7 @@
     <div class="form">
         <form action="" method="post" class="formLogin">
             <label>Username</label>
-            <input type="text" name="usernameLogin"/>
+            <input type="text" name="usernameLogin" value="<?php if (isset($_REQUEST['usernameLogin'])) echo $_POST['usernameLogin']; ?>"/>
             <?php
                 echo (isset($errores["NoUserLogin"])) ? "$errores[NoUserLogin]": "";
             ?>

@@ -1,7 +1,7 @@
 <?php
 include ('config.php');
 try {
-    $pdo = new PDO('mysql:host='.$db_hostname, $db_usuario, $db_clave);
+    $pdo = new PDO('mysql:host='.Config::$db_hostname, Config::$db_usuario, Config::$db_clave);
     $pdo->exec("set names utf8");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sqlBD = file_get_contents("BD_usuarios.sql");
