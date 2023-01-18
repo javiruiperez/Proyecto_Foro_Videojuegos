@@ -35,10 +35,16 @@ a {
 .log-In{
     float: right;
     margin: 9%;
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 2px 2.5px 2.5px #000000;
 }
 .sign-In{
     float: right;
     margin: 9%;
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 2px 2.5px 2.5px #000000;
 }
 
 header form {
@@ -64,52 +70,41 @@ header .barra_busqueda {
     border-radius: 100px;
     border: none;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
 }
-
 header .categorias {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
-
 header .categorias a {
     color: #fff;
     margin: 10px 20px;
     font-size: 18px;
     font-weight: 700;
-    
+    text-shadow: 2px 2.5px 2.5px #000000;
 }
-
 header .categorias a.activo {
     color: #2FA9F3;
 }
 
+select{
+    color: #fff;
+    background-color: #00000000;
+    text-shadow: 2px 2.5px 2.5px #000000;
+    font-size: 18px;
+    margin: 10px 20px;
+    font-weight: 700;
+    border-style: none;
+}
+option{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    border-style: none;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.grid {
+/* .grid {
     position: relative;
     width: 100%;
     opacity: 0;
@@ -137,11 +132,7 @@ header .categorias a.activo {
     cursor: pointer;
     vertical-align: top;
 }
-
-
-/*
-Overlay
-
+ */
 
 .overlay {
     position: fixed;
@@ -189,39 +180,6 @@ Overlay
     position: absolute;
     right: -20px;
 }
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .footer {
@@ -246,7 +204,7 @@ Overlay
 
 .footer .row a {
     text-decoration: none;
-    color: gray;
+    color: rgb(128, 128, 128);
     transition: 0.5s;
 }
 
