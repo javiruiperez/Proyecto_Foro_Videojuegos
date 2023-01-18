@@ -55,5 +55,19 @@ include("../register/encriptarContraseñas.php");
             $resultado->bindParam(':email', $email);
             $resultado->execute();
         }
+
+        public function insertUser($nombre,$usuario,$contraseña,$email){
+           
+              
+            $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $nombre);
+            $stmt->bindParam(2, $usuario);
+            $stmt->bindParam(3, $contraseña);
+            $stmt->bindParam(4, $email);
+           
+            return  $stmt->execute();
+        
+    }
     }
 ?>
