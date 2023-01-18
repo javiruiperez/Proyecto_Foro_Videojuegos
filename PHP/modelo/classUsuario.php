@@ -1,4 +1,5 @@
 <?php
+include("../register/encriptarContraseñas.php");
     class Usuario extends Modelo
     {
         public function getUser($user)
@@ -26,6 +27,33 @@
                     return false;
                 }
             }
+        }
+
+        public function checkEmail($email)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE correo=?";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(1, $email);
+            $resultado->execute();
+
+            foreach($resultado as $result){
+                if($email === $result['correo']){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+        }
+
+        public function modifyPassword($newPassword, $email)
+        {
+            $cryptPass = crypt_blowfish($newPassword);
+
+            $consulta = "UPDATE usuarios SET contraseñaEncriptada =:newPassword WHERE correo=:email";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(':newPassword', $cryptPass);
+            $resultado->bindParam(':email', $email);
+            $resultado->execute();
         }
     }
 ?>

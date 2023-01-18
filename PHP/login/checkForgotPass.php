@@ -1,5 +1,8 @@
 <?php
     include("../libs/bGeneral.php");
+    require("../modelo/classModelo.php");
+    require("../modelo/classUsuario.php");
+    require("../BaseDeDatos/config.php");
     cabecera("Account Recovery");
     $errores = [];
 
@@ -17,7 +20,21 @@
         }
 
         if(count($errores) === 0){
-            echo "correcto";
+            try{
+                $usuarioEmail = new Usuario();
+                if($emailBD = $usuarioEmail->checkEmail($email)){
+                    $newPass = randomPassword();
+                    $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
+                    sendMail($email, $newPass);
+                    header("location:checkLogin.php");
+                } else{
+                    $errores["emailForgot"] = "The email does not exist";
+                    require("forgotPass.php");
+                }
+            } catch(PDOException $e){
+                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                $errores['datos'] = "Ha habido un error <br>";
+            }
             
         } else{
             require("forgotPass.php");

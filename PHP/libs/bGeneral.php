@@ -26,6 +26,33 @@ function pie()
 	</html>";
 }
 
+function randomPassword() {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $pass = array();
+    $alphaLength = strlen($alphabet) - 1;
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    $strPassword = implode($pass);
+
+    return $strPassword;
+}
+
+function sendMail($mail, $pass){
+    $subject = "Account Recovery - ForoGamers";
+    $message = "We received an account recovery request on ForoGamers for ".$mail.". <br> This is your new password: " .$pass."<br> Please log in into your account now.";
+    $headers = 'From: webmaster@example.com'       . "\r\n" .
+    'Reply-To: noreply@forogamers.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+    if(mail($mail, $subject, $message, $headers)){
+        echo "email enviado";
+    } else{
+        echo "email NO enviado";
+    }
+}
+
 function sinTildes($frase)
 {
     $no_permitidas = array(
