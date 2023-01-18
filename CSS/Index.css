@@ -6,10 +6,10 @@
 body{
     margin: 0px;
     padding: 0px;
-    text-align: center;
     background-image: url("/Interfaces\ Proyecto/fondo_web.png");
     background-repeat:no-repeat;
     background-attachment:fixed;
+    font-family: 'Roboto', sans-serif;
 }
 
 .grid-container {
@@ -17,7 +17,7 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-h1{
+.titulo{
     text-align: center;
     width: 100%;
     float: center;
@@ -26,6 +26,11 @@ h1{
     font-size: 82px;
     color: #fff;
     text-shadow: 2px 5px 5px #000000;
+}
+
+h1{
+    text-align: center;
+    font-size: 32px;
 }
 
 a {
@@ -104,7 +109,17 @@ option{
     border-style: none;
 }
 
-/* .grid {
+.div_principal{
+    opacity: 0.85;
+    color: rgb(255, 255, 255);
+    background-color: #232323; 
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 1.5%;
+}
+
+.grid {
     position: relative;
     width: 100%;
     opacity: 0;
@@ -132,7 +147,7 @@ option{
     cursor: pointer;
     vertical-align: top;
 }
- */
+ 
 
 .overlay {
     position: fixed;
