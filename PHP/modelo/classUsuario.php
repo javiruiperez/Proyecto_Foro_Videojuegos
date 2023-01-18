@@ -1,5 +1,5 @@
 <?php
-include("../register/encriptarContraseñas.php");
+
     class Usuario extends Modelo
     {
         public function getUser($user)
@@ -69,5 +69,14 @@ include("../register/encriptarContraseñas.php");
             return  $stmt->execute();
         
     }
+
+  public  function cryptPassword($password) {
+
+        $salt = '$2a$07$usesomesillystringforsalt$';
+        $pass= crypt($password, $salt);
+        
+      
+        return $pass;
+        }
     }
 ?>

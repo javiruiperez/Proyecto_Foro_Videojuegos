@@ -78,6 +78,7 @@ echo "Esta mal el nombre";
                 echo "Esta bien la contraseña";
                 $passwordBD = crypt_blowfish ($datesform[PASSWD]);
                 $datesform[PASSWD]=$passwordBD;
+            
                 }
                 else{
                     echo "Esta mal la contraseña";
@@ -179,9 +180,9 @@ catch (PDOException $e) {
      // guardamos en ·errores el error que queremos mostrar a los usuarios
      $errores['datos'] = "Ha habido un error <br>";
 }
-// header("location:../../HTML/Inicio.html");
+header("location:../../HTML/Index.html");
 
-header("location:enviar.php");
+// header("location:enviar.php");
   }
            
            
