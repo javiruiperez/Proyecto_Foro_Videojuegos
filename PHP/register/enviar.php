@@ -32,7 +32,6 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $nombre=$datesform[NAME];
 // $correo=$datesform[EMAIL];
 //  echo $datesform[NAME];
- sendemail("franbotella97@gmail.com","Florista97$$","franbotella97@gmail.com","franbotella97@gmail.com","franbotella97@gmail.com","adf","adfd","./mensajeEnviar.html")
 
 // $asunto="Confirmar cuenta ForoGamers";
 // $carta="De: $nombre \n  ";
