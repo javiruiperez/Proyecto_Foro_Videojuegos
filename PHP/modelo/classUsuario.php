@@ -1,5 +1,5 @@
 <?php
-
+include("../register/encriptarContraseñas.php");
     class Usuario extends Modelo
     {
         public function getUser($user)
@@ -8,9 +8,15 @@
             $result = $this->prepare($consulta);
             $result->bindParam(':user', $user);
             $result->execute();
-            $resultadoUsuario = $result->fetch(PDO::FETCH_ASSOC);
+            $resultadoUsuario = $result;
+            // ->fetch(PDO::FETCH_ASSOC)
+            foreach ($resultadoUsuario as $row) {
 
-            return $resultadoUsuario;
+                $nameUser= $row['usuario'] ;
+             
+            }
+         
+            return $nameUser;
         }
 
         public function checkPassword($user, $password)
@@ -47,8 +53,7 @@
 
         public function modifyPassword($newPassword, $email)
         {
-            $salt = '$2a$07$usesomesillystringforsalt$';
-            $cryptPass= crypt($newPassword, $salt);
+            $cryptPass = crypt_blowfish($newPassword);
 
             $consulta = "UPDATE usuarios SET contraseñaEncriptada =:newPassword WHERE correo=:email";
             $resultado = $this->prepare($consulta);

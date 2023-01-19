@@ -1,8 +1,8 @@
 <?php
 
-$nombre=$_POST["nombre"];
-$correo=$_POST["email"];
- echo $nombre;
+$nombre=$datesform[NAME];
+$correo=$datesform[EMAIL];
+ echo $datesform[NAME];
 $asunto="Confirmar cuenta ForoGamers";
 $carta="De: $nombre \n  ";
 $carta .="Correo: $correo \n";
