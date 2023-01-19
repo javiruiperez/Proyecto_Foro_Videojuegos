@@ -37,4 +37,19 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $carta .="Correo: $correo \n";
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
+<<<<<<< HEAD
 ?>
+=======
+=======
+
+$nombre=$datesform[NAME];
+$correo=$datesform[EMAIL];
+ echo $datesform[NAME];
+$asunto="Confirmar cuenta ForoGamers";
+$carta="De: $nombre \n  ";
+$carta .="Correo: $correo \n";
+mail($correo,$asunto,$carta);
+header('Location :mensajeEnviado.html');
+>>>>>>> 30fe53adca315a255b4b76455be3c511651ae2c0
+?>
+>>>>>>> 847acef5a0aa2acfb5a2b959edd53e70841bed0d
