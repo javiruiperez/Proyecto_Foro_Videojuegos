@@ -1,8 +1,8 @@
 <?php
 
- const NAME = "nombre";
- const USER = "usuario";
- const PASSWD = "password";
- const EMAIL="email";
+ const NAME = "Name";
+ const USER = "Username";
+ const PASSWD = "Password";
+ const EMAIL="Email";
 
 ?>
