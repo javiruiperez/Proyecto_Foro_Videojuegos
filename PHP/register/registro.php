@@ -25,7 +25,7 @@ if (!isset($_REQUEST['bAcept'])) {
     <link rel="stylesheet" href="../../CSS/Registro.css">
 </head>
 <body>
-<form name="register" method="post" action="" enctype="multipart/form-data">
+<form name="register" method="post" action="" enctype="multipart/form-data" class="form">
 <table>
 <?php
 foreach($datesform as $campo=>$valor ) {
@@ -48,10 +48,10 @@ foreach($datesform as $campo=>$valor ) {
 ?>
 <input TYPE="submit" name="bAcept" VALUE="acept">
 </table>
-
 </form>
-<div>
-<p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
+
+<div class="messageLogin">
+<p>Si ya tienes cuenta <a href="../login/checkLogin.php"> iniciaSesion</a></p>
 </div>
 </body>
 </html>
@@ -128,7 +128,7 @@ foreach($datesform as $campo=>$valor ) {
 </table>
 
 </form>
-<div>
+<div class="messageLogin">
 <p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
 </div>
 </body>

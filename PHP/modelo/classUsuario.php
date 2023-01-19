@@ -47,7 +47,8 @@
 
         public function modifyPassword($newPassword, $email)
         {
-            $cryptPass = crypt_blowfish($newPassword);
+            $salt = '$2a$07$usesomesillystringforsalt$';
+            $cryptPass= crypt($newPassword, $salt);
 
             $consulta = "UPDATE usuarios SET contraseñaEncriptada =:newPassword WHERE correo=:email";
             $resultado = $this->prepare($consulta);
@@ -57,8 +58,6 @@
         }
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
-           
-              
             $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1, $nombre);
@@ -67,16 +66,6 @@
             $stmt->bindParam(4, $email);
            
             return  $stmt->execute();
-        
-    }
-
-  public  function cryptPassword($password) {
-
-        $salt = '$2a$07$usesomesillystringforsalt$';
-        $pass= crypt($password, $salt);
-        
-      
-        return $pass;
         }
     }
 ?>
