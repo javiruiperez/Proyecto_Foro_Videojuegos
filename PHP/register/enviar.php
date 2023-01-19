@@ -39,3 +39,5 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
 ?>
+?>
+>>>>>>> 847acef5a0aa2acfb5a2b959edd53e70841bed0d
