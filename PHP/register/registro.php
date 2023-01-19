@@ -22,10 +22,10 @@ if (!isset($_REQUEST['bAcept'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <!-- <link rel="stylesheet" href="../css/estilos.css"> -->
+    <link rel="stylesheet" href="../../CSS/Registro.css">
 </head>
 <body>
-<form name="register" method="post" action="" enctype="multipart/form-data">
+<form name="register" method="post" action="" enctype="multipart/form-data" class="form">
 <table>
 <?php
 foreach($datesform as $campo=>$valor ) {
@@ -49,10 +49,10 @@ foreach($datesform as $campo=>$valor ) {
 ?>
 <input TYPE="submit" name="bAcept" VALUE="acept">
 </table>
-
 </form>
-<div>
-<p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
+
+<div class="messageLogin">
+<p>Si ya tienes cuenta <a href="../login/checkLogin.php"> iniciaSesion</a></p>
 </div>
 </body>
 </html>
@@ -79,6 +79,7 @@ echo "Esta mal el nombre";
                 echo "Esta bien la contraseña";
                 $passwordBD = crypt_blowfish ($datesform[PASSWD]);
                 $datesform[PASSWD]=$passwordBD;
+            
                 }
                 else{
                     echo "Esta mal la contraseña";
@@ -129,7 +130,7 @@ foreach($datesform as $campo=>$valor ) {
 </table>
 
 </form>
-<div>
+<div class="messageLogin">
 <p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
 </div>
 </body>

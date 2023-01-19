@@ -1,0 +1,26 @@
+.form, .messageLogin { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
+
+.messageLogin{
+    background-color: aqua;
+    color:black;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+  
