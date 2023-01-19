@@ -1,12 +1,16 @@
 <?php
 include("./arrays.php");
 include("./encriptarContraseñas.php");
+require("../modelo/classModelo.php");
+require("../modelo/classUsuario.php");
+require("../BaseDeDatos/config.php");
 $datesform=array(
-     NAME=>"" ,
+     NAME=>"",
      USER=>"",
      PASSWD=>"", 
      EMAIL=>""
 );
+
 if (!isset($_REQUEST['bAcept'])) {
 ?>
 
@@ -25,13 +29,22 @@ if (!isset($_REQUEST['bAcept'])) {
 <table>
 <?php
 foreach($datesform as $campo=>$valor ) {
-   
+    if($campo!="password"){
   ?>
-<input type="text" name="<?php echo $campo ?>"><?php echo  $campo ?></input>
+<label><?php echo  $campo ?></label>
+<input type="text" name="<?php echo $campo ?>"></input>
 <br>
 
 
 <?php
+ }
+ else{
+    ?>
+    <label><?php echo  $campo ?></label>
+   <input type="password" name="<?php echo $campo ?>"></input>
+<br>
+<?php
+ }
 };
 ?>
 <input TYPE="submit" name="bAcept" VALUE="acept">
@@ -39,7 +52,7 @@ foreach($datesform as $campo=>$valor ) {
 
 </form>
 <div>
-<p>Si ya tienes cuenta <a href="../login/checkLogin.php"> iniciaSesion</a></p>
+<p>Si ya tienes cuenta <a href="../login/formLogin.php"> iniciaSesion</a></p>
 </div>
 </body>
 </html>
@@ -94,19 +107,24 @@ echo "Esta mal el nombre";
 <table>
 <?php
 foreach($datesform as $campo=>$valor ) {
-
-       
-  ?>
-<input type="text" name="<?php echo $campo ?>" VALUE="<?=
-         isset($valor)?$valor: "";?>"><?php echo  $campo ?></input>
-<br>
-
-<?php
-
-    
-
-};
-?>
+    if($campo!="password"){  
+        ?>
+      <label><?php echo  $campo ?></label>
+      <input type="text" name="<?php echo $campo ?>" value="<?php echo $valor ?>"></input>
+      <br>
+      
+      
+      <?php
+       }
+       else{
+          ?>
+          <label><?php echo  $campo ?></label>
+         <input type="password" name="<?php echo $campo ?>" value="<?php echo $valor ?>"></input>
+      <br>
+      <?php
+       }
+      };
+      ?>
 <input TYPE="submit" name="bAcept" VALUE="acept">
 </table>
 
@@ -117,30 +135,58 @@ foreach($datesform as $campo=>$valor ) {
 </body>
 </html>
 <?php
- $verificacionDef=false;
+ $verificacionDef=true;
  
  foreach($datesform as $campo=>$valor ) {
-if($valor!=""){
+if($valor!=""&&$verificacionDef!=false){
 $verificacionDef=true;
+
 }
 else{
     $verificacionDef=false;
 }
+
 }
+
 
  if($verificacionDef==true){
-  $_SESSION['nombre'] = $datosform[USER];
+  $_SESSION['nombre'] = $datesform[USER];
+  
   try{
-    include ('../BaseDeDatos/conexion.php');
-    $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)");
-            $stmt->bindParam(1, $datesform[NAME]);
-            $stmt->bindParam(2, $datesform[USER]);
-            $stmt->bindParam(3, $datesform[PASSWD]);
-            $stmt->bindParam(4, $datesform[EMAIL]);
-           
-            $stmt->execute();
-}
+    $usuario = new Usuario();
+    $usuarioBuscado=$usuario->getUser($datesform[USER]);
+    
+    if($usuarioBuscado!=$datesform[USER]){
 
+    $userInto=$usuario->insertUser($datesform[NAME],$datesform[USER],$datesform[PASSWD],$datesform[EMAIL]);
+    header("location:../../HTML/Index.html");
+   // header("location:enviar.php");
+    }
+    else{
+        echo "Ya esta registado este usuario";
+      
+    }
+    // function insertUsuario($nombre,$usuario,$contraseña,$email){
+    //     include ('../BaseDeDatos/conexion.php');
+    //     $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)");
+    //     $stmt->bindParam(1, $nombre);
+    //     $stmt->bindParam(2, $usuario);
+    //     $stmt->bindParam(3, $contraseña);
+    //     $stmt->bindParam(4, $email);
+       
+    //     return  $stmt->execute();
+    // }
+    // include ('../BaseDeDatos/conexion.php');
+// insertUsuario($datesform[NAME],$datesform[USER],$datesform[PASSWD],$datesform[EMAIL]);
+    // $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)");
+    //         $stmt->bindParam(1, $datesform[NAME]);
+    //         $stmt->bindParam(2, $datesform[USER]);
+    //         $stmt->bindParam(3, $datesform[PASSWD]);
+    //         $stmt->bindParam(4, $datesform[EMAIL]);
+           
+    //         $stmt->execute();
+}
+ 
 
 catch (PDOException $e) {
      // En este caso guardamos los errores en un archivo de errores log
@@ -148,8 +194,9 @@ catch (PDOException $e) {
      // guardamos en ·errores el error que queremos mostrar a los usuarios
      $errores['datos'] = "Ha habido un error <br>";
 }
-header("location:../../HTML/index.html");
-echo "Todo correcto";
+
+
+
   }
            
            
