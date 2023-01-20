@@ -5,35 +5,12 @@ function cabecera()
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"></div>
-                <div class="grid-item-center"><a href="Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
-                <div class="grid-item-right"><a href="#" class="sign-In">Registrarse</a><a href="#" class="log-In">Iniciar sesión</a></div>
-            </div>
-            <form action="">                
-                <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Buscar">
-            </form>
-            <div class="categorias" id="categorias">
-                <a href="#" class="activo">Todos</a>
-                <a href="#">Acción</a>
-                <a href="#">Aventuras</a>
-                <a href="#">Deportes</a>
-                <a href="#">Carreras</a>
-                <a href="#">Simulación</a>
-                <a href="#">Estrategia</a>
-                <br>
-                  <select>
-                    <option value=""> Año </option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                  </select>
-                  <select>
-                    <option value="">Consola</option>
-                    <option value="PS2">PS2</option>
-                    <option value="PS3">PS3</option>
-                    <option value="PS4">PS4</option>
-                    <option value="PS5">PS5</option>
-                  </select>
+                <div class="grid-item-left"><a href="../../HTML/Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="grid-item-center">
+                <form action="">                
+                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
+              </form></div>
+                <div class="grid-item-right"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div></nav>
     </header>
     <?php
@@ -46,10 +23,10 @@ function pie()
         <div class="footer">
             <div class="row">
                 <ul>
-                    <li><a href="#">Contacta con Nosotros</a></li>
-                    <li><a href="#">Nuestros servicios</a></li>
-                    <li><a href="#" download>Politicas de Privacidad</a></li>
-                    <li><a href="#" download>Terminos y Condiciones</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our services</a></li>
+                    <li><a href="#" download>Privacy politics</a></li>
+                    <li><a href="#" download>Terms and conditions</a></li>
                 </ul>
             </div>
             <div class="row">

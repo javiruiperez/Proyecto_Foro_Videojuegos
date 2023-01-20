@@ -15,30 +15,30 @@
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"></div>
-                <div class="grid-item-center"><a href="Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
-                <div class="grid-item-right"><a href="#" class="sign-In">Registrarse</a><a href="#" class="log-In">Iniciar sesión</a></div>
+                <div class="grid-item-left"><a href="Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="grid-item-center">
+                <form action="">                
+                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
+              </form></div>
+                <div class="grid-item-right"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
-            <form action="">                
-                <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Busca tu guía">
-            </form>
             <div class="categorias" id="categorias">
-                <a href="#" class="activo">Todos</a>
-                <a href="#">Acción</a>
-                <a href="#">Aventuras</a>
-                <a href="#">Deportes</a>
-                <a href="#">Carreras</a>
-                <a href="#">Simulación</a>
-                <a href="#">Estrategia</a>
+                <a href="#" class="activo">All</a>
+                <a href="#">Action</a>
+                <a href="#">Adventure</a>
+                <a href="#">Sports</a>
+                <a href="#">Racing</a>
+                <a href="#">Simulation</a>
+                <a href="#">Strategy</a>
                 <br>
                   <select>
-                    <option value=""> Año </option>
+                    <option value=""> Year </option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
                   </select>
                   <select>
-                    <option value="">Consola</option>
+                    <option value="">Platform</option>
                     <option value="PS2">PS2</option>
                     <option value="PS3">PS3</option>
                     <option value="PS4">PS4</option>
@@ -49,11 +49,11 @@
     <br>
     <br>
     <div class="div_principal">
-        <h1>¿Quienes somos?</h1>
+        <h1>Who are we?</h1>
         <br>
-        <p>En ForoGamers pensamos que no hay mejor profesor para un gamer como otro gamer. Somos un foro de personas amantes de videojuegos con ganas de ayudar a otros jugadores resolviendo su problema con la parte mas dificil o tediosa de su videojuego favorito.</p>
-        <p>Aqui podrás encontrar la guia perfecta para pasarte tu videojuego favorito, o a su vez, crear tu propia guia para que otros usuarios puedan verla y resolver sus dudas o solamente crear una pregunta para que otros usuarios rellenen la guia y puedas resolver tu duda.</p>
-        <p>En este proyecto esperamos crear una comunidad de jugadores que se ayuden mutuamente para sacarle el maximo partido a los videojuegos, por eso desde la administración de ForoGamers esperamos que usen este foro de manera responsable y sean respetuosos con el resto de jugadores.</p>
+        <p>En ForoGamers pensamos que no hay mejor profesor para un gamer como otro gamer. Somos un foro de amantes de videojuegos con ganas de ayudar a otros jugadores resolviendo su problema con la parte más difícil de tu videojuego favorito.</p>
+        <p>Aquí podrás encontrar la guía perfecta para pasarte tu videojuego o crear tu propia guía para que otros usuarios puedan verla y resolver sus dudas.</p>
+        <p>En este proyecto esperamos crear una comunidad de jugadores que se ayuden mutuamente, por eso desde la administración de ForoGamers esperamos que usen este foro de manera responsable y sean respetuosos con el resto de jugadores.</p>
         </div>
         <br>
         <br>
@@ -66,8 +66,8 @@
     </section> -->
     <div class="responsive">
         <div class="gallery">
-          <a target="_blank" href="/Interfaces Proyecto/foto_ejemplo_juego.png">
-            <img class="" src="/Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
+          <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
+            <img class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
           </a>
         </div>
       </div>
@@ -75,24 +75,24 @@
       
       <div class="responsive">
         <div class="gallery">
-          <a target="_blank" href="/Interfaces Proyecto/ejemplo_2.png">
-            <img src="/Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
+          <a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
+            <img src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
           </a>
         </div>
       </div>
       
       <div class="responsive">
         <div class="gallery">
-          <a target="_blank" href="/Interfaces Proyecto/ejemplo_3.png">
-            <img src="/Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
+          <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
+            <img src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
           </a>
           </div>
       </div>
 
       <div class="responsive">
         <div class="gallery">
-          <a target="_blank" href="/Interfaces Proyecto/fondo_web.png">
-            <img src="/Interfaces Proyecto/fondo_web.png" width="400" height="250">
+          <a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
+            <img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
           </a>
           </div>
       </div>
@@ -103,10 +103,10 @@
         <div class="footer">
             <div class="row">
                 <ul>
-                    <li><a href="#">Contacta con Nosotros</a></li>
-                    <li><a href="#">Nuestros servicios</a></li>
-                    <li><a href="#" download>Politicas de Privacidad</a></li>
-                    <li><a href="#" download>Terminos y Condiciones</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">Our services</a></li>
+                    <li><a href="#" download>Privacy politics</a></li>
+                    <li><a href="#" download>Terms and conditions</a></li>
                 </ul>
             </div>
             <div class="row">
