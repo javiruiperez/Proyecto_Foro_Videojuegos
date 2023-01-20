@@ -137,9 +137,6 @@ if (!isset($_REQUEST['bAcept'])) {
                 <div class="messageLogin">Already have an account? <a href="../login/checkLogin.php">Log in</a></div>
             </form>
         </div>
-        <?php
-            pie();
-        ?>
     </body>
     </html>
 
@@ -163,12 +160,14 @@ if (!isset($_REQUEST['bAcept'])) {
             $usuarioBuscado = $usuario->getUser($datesform[USER]);
 
             if ($usuarioBuscado != $datesform[USER]) {
-
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
+                pie();
                 header("location:../../HTML/Index.html");
                 // header("location:enviar.php");
             } else {
-                echo "Ya esta registado este usuario";
+                $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";
+                echo $erroresMsg[EMAIL];
+                pie();
             }
         } catch (PDOException $e) {
             // En este caso guardamos los errores en un archivo de errores log
