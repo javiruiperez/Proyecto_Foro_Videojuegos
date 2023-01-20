@@ -15,15 +15,18 @@ const cargarGeneros = async() =>{
         console.log(datosgenero.access_token);
         const generos2= await fetch(`https://api.igdb.com/v4/games`,{
             method:'POST',
+			
             headers:{
+				'Access-Control-Allow-Origin':'https://api.igdb.com/v4/games',
                 'Client-ID':'98ug9rutl1wpjdanyti97vxgss69k3',
-                'Authorization':'Bearer '+datosgenero.access_token,
+                'Authorization':'Bearer'+datosgenero.access_token,
                 'Body':'fields *;'
             }
         }
          
            );
-           console.log(generos2);
+		   const datosgenero2=await generos2.json();
+           console.log(datosgenero2);
 			
 	}
 	else if(respuesta.status===401){
