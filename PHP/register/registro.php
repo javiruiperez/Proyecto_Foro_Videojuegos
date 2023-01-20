@@ -27,6 +27,9 @@ if (!isset($_REQUEST['bAcept'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
         <title>Register</title>
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
@@ -98,6 +101,9 @@ if (!isset($_REQUEST['bAcept'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
         <title>Register</title>
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
@@ -137,9 +143,6 @@ if (!isset($_REQUEST['bAcept'])) {
                 <div class="messageLogin">Already have an account? <a href="../login/checkLogin.php">Log in</a></div>
             </form>
         </div>
-        <?php
-            pie();
-        ?>
     </body>
     </html>
 
@@ -163,12 +166,14 @@ if (!isset($_REQUEST['bAcept'])) {
             $usuarioBuscado = $usuario->getUser($datesform[USER]);
 
             if ($usuarioBuscado != $datesform[USER]) {
-
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
+                pie();
                 header("location:../../HTML/Index.html");
                 // header("location:enviar.php");
             } else {
-                echo "Ya esta registado este usuario";
+                $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";
+                echo $erroresMsg[EMAIL];
+                pie();
             }
         } catch (PDOException $e) {
             // En este caso guardamos los errores en un archivo de errores log

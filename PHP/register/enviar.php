@@ -28,6 +28,7 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 		echo '<p style="color:green">Tu mensaje ha sido enviado!</p>';
 	}
 }
+
 // $nombre=$datesform[NAME];
 // $correo=$datesform[EMAIL];
 //  echo $datesform[NAME];
@@ -37,6 +38,18 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $carta .="Correo: $correo \n";
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
+<<<<<<< HEAD
 ?>
+=======
+/*
+$nombre=$datesform[NAME];
+$correo=$datesform[EMAIL];
+ echo $datesform[NAME];
+$asunto="Confirmar cuenta ForoGamers";
+$carta="De: $nombre \n  ";
+$carta .="Correo: $correo \n";
+mail($correo,$asunto,$carta);
+header('Location :mensajeEnviado.html');
+*/
+>>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
 ?>
->>>>>>> 847acef5a0aa2acfb5a2b959edd53e70841bed0d

@@ -12,10 +12,8 @@
             foreach ($resultadoUsuario as $row) {
 
                 $nameUser= $row['usuario'] ;
-             
+                return $nameUser;
             }
-         
-            return $nameUser;
         }
 
         public function checkPassword($user, $password)
