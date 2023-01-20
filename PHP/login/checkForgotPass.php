@@ -3,13 +3,18 @@
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");
     require("../BaseDeDatos/config.php");
-    cabecera("Account Recovery");
+    require("../register/enviar.php");
     $errores = [];
 
     if(!isset($_REQUEST["submitForgot"])){
         require("forgotPass.php");
     } else{
         $email = recoge("emailForgot");
+        $emailSend = "forogamershelp@outlook.com";
+        $passwordSend = "forogamers1234";
+        $nombreSend = "User";
+        $templateSend = "../register/mensajeEnviar.html";
+        $subject = "Account Recovery - ForoGamers";
 
         if($email === ""){
             $errores["emailForgot"] = "Invalid email address";
@@ -25,8 +30,9 @@
                 if($emailBD = $usuarioEmail->checkEmail($email)){
                     $newPass = randomPassword();
                     $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
-                    sendMail($email, $newPass);
-                    header("location:checkLogin.php");
+                    $message = "We received an account recovery request on ForoGamers for ".$email.". <br> This is your new password: " .$newPass."<br> Please log in into your account now.";
+                    sendemail($emailSend, $passwordSend, $email, $nombreSend, $email, $message, $subject, $templateSend);
+                    //header("location:checkLogin.php");
                 } else{
                     $errores["emailForgot"] = "The email does not exist";
                     require("forgotPass.php");
