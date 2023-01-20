@@ -32,6 +32,7 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $nombre=$datesform[NAME];
 // $correo=$datesform[EMAIL];
 //  echo $datesform[NAME];
+ sendemail("forogamershelp@gamil.com","utzlyhimphkoarem","franbotella97@gmail.com","fran","franbotella97@gmail.com","hola","confirmar","mensajeEnviar.html")
 
 // $asunto="Confirmar cuenta ForoGamers";
 // $carta="De: $nombre \n  ";
@@ -53,3 +54,5 @@ header('Location :mensajeEnviado.html');
 */
 >>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
 ?>
+
+
