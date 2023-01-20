@@ -1,5 +1,5 @@
 numeroPagina=1;
-const cargarGeneros = async(genero) =>{
+const cargarNombreJuegosPorGenero = async(genero) =>{
 try{
 
 const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
@@ -13,10 +13,11 @@ if(options.status===200){
     options2.results.forEach(juegos=>{
         juegos.genres.forEach(nombregeneros=>{
             if(nombregeneros.name.includes(genero)){
-                console.log(nombregeneros.id);
+                // console.log(nombregeneros.id);
                 console.log(juegos.name);
+                // console.log(juegos.background_image);
             }
-        console.log(options2);
+        
              }
         )
         
@@ -29,7 +30,41 @@ if(options.status===200){
     console.log(error);
 }
 }
-cargarGeneros("Shooter");
+
+
+const cargarImagenesJuegosPorGenero = async(genero) =>{
+    try{
+    
+    const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+        method:'GET'
+    }
+    );
+    
+    if(options.status===200){
+        const options2=await options.json();
+        // console.log(options2);
+        options2.results.forEach(juegos=>{
+            juegos.genres.forEach(nombregeneros=>{
+                if(nombregeneros.name.includes(genero)){
+                  
+                    console.log(juegos.background_image);
+                }
+            
+                 }
+            )
+            
+          
+           
+        });
+    }
+    
+    }catch(error){
+        console.log(error);
+    }
+    }
+
+
+    cargarNombreJuegosPorGenero("Shooter");
 // btnAnterior.addEventListener('click',()=>{
 // 	if(pagina>1){
 // 	pagina--;
