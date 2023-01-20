@@ -41,4 +41,4 @@ const cargarConsolas = async(platformName) =>{
     }
 }
 
-cargarConsolas("Wii");
+cargarConsolas("PlayStation 5");
