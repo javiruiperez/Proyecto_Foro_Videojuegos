@@ -39,6 +39,9 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $carta .="Correo: $correo \n";
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
+<<<<<<< HEAD
+?>
+=======
 /*
 $nombre=$datesform[NAME];
 $correo=$datesform[EMAIL];
@@ -49,6 +52,7 @@ $carta .="Correo: $correo \n";
 mail($correo,$asunto,$carta);
 header('Location :mensajeEnviado.html');
 */
+>>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
 ?>
 
 
