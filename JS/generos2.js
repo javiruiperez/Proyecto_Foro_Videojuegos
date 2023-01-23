@@ -1,8 +1,29 @@
 numeroPagina=1;
+const cargarGeneros = async(genero) =>{
+try{
 
-totalJuegos = 0;
-images = "";
+const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+    method:'GET'
+}
+);
 
+if(options.status===200){
+    const options2=await options.json();
+    // console.log(options2);
+    options2.results.forEach(juegos=>{
+        juegos.genres.forEach(nombregeneros=>{
+            if(nombregeneros.name.includes(genero)){
+                console.log(nombregeneros.id);
+                console.log(juegos.name);
+            }
+        console.log(options2);
+             }
+        )
+        
+      
+       
+    });
+}
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
