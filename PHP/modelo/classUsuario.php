@@ -12,10 +12,8 @@
             foreach ($resultadoUsuario as $row) {
 
                 $nameUser= $row['usuario'] ;
-             
+                return $nameUser;
             }
-         
-            return $nameUser;
         }
 
         public function checkPassword($user, $password)
@@ -34,18 +32,20 @@
             }
         }
 
-        public function insertUser($nombre,$usuario,$contraseña,$email){
-           
-              
-                $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
-                $stmt=$this->prepare($consulta);
-                $stmt->bindParam(1, $nombre);
-                $stmt->bindParam(2, $usuario);
-                $stmt->bindParam(3, $contraseña);
-                $stmt->bindParam(4, $email);
-               
-                return  $stmt->execute();
-            
+        public function checkEmail($email)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE correo=?";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(1, $email);
+            $resultado->execute();
+
+            foreach($resultado as $result){
+                if($email === $result['correo']){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
         }
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
@@ -57,6 +57,18 @@
             $stmt->bindParam(4, $email);
            
             return  $stmt->execute();
+        }
+
+        public function modifyPassword($newPassword, $email)
+        {
+            $salt = '$2a$07$usesomesillystringforsalt$';
+            $cryptPass= crypt($newPassword, $salt);
+
+            $consulta = "UPDATE usuarios SET contraseñaEncriptada =:newPassword WHERE correo=:email";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(':newPassword', $cryptPass);
+            $resultado->bindParam(':email', $email);
+            $resultado->execute();
         }
     }
 ?>

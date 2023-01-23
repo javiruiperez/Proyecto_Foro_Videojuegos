@@ -1,4 +1,4 @@
-.form, .messageLogin { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
+.form { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
     width: 100%;
     max-width: 250px;
     margin: 0 auto;
@@ -6,14 +6,45 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: white;
     padding: 5px;
+    background-color: white;
+    border-radius: 4px;
 }
 
-.messageLogin{
-    background-color: aqua;
-    color:black;
+.form label{
+    font-weight: bold;
+}
+
+.errorMessage{
+    font-size:small;
+    color: red;
+}
+
+.buttonForm{
+    color: white;
+    width: 105%;
+    background-color: rgb(0, 166, 255);
+    height: 25px;
+    border: 1px solid rgb(0, 166, 255);
+    border-radius: 4px;
+}
+
+.buttonForm:hover{
+    cursor: pointer;
+    background-color: rgb(0, 118, 182);
+    border: 1px solid rgb(0, 118, 182);
+}
+
+a{
+    color: rgb(0, 118, 182);
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(0, 166, 255);
+}
+
+/*.messageLogin{ ARREGLAR
     width: 100%;
     max-width: 250px;
     margin: 0 auto;
@@ -22,5 +53,27 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+}*/
+
+.forgotPassword, .messageLogin{
+    font-size: small;
+    width: 100%;
+    max-width: 250px;
 }
-  
+
+.errorRegister{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: small;
+}
+
+input{
+    width: 100%;
+}
+
+.errorInput {
+    border: 1px solid red;
+}

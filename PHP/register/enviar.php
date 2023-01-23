@@ -3,7 +3,7 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 	require 'PHPMailer/PHPMailerAutoload.php';
 	$mail = new PHPMailer;
 	$mail->isSMTP();                            // Establecer el correo electrónico para utilizar SMTP
-	$mail->Host = 'smtp.gmail.com';             // Especificar el servidor de correo a utilizar 
+	$mail->Host = 'smtp.office365.com';             // Especificar el servidor de correo a utilizar 
 	$mail->SMTPAuth = true;                     // Habilitar la autenticacion con SMTP
 	$mail->Username = $mail_username;          // Correo electronico saliente ejemplo: tucorreo@gmail.com
 	$mail->Password = $mail_userpassword; 		// Tu contraseña de gmail
@@ -28,6 +28,7 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 		echo '<p style="color:green">Tu mensaje ha sido enviado!</p>';
 	}
 }
+
 // $nombre=$datesform[NAME];
 // $correo=$datesform[EMAIL];
 //  echo $datesform[NAME];
@@ -38,6 +39,20 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $carta .="Correo: $correo \n";
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
+<<<<<<< HEAD
 ?>
+=======
+/*
+$nombre=$datesform[NAME];
+$correo=$datesform[EMAIL];
+ echo $datesform[NAME];
+$asunto="Confirmar cuenta ForoGamers";
+$carta="De: $nombre \n  ";
+$carta .="Correo: $correo \n";
+mail($correo,$asunto,$carta);
+header('Location :mensajeEnviado.html');
+*/
+>>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
 ?>
->>>>>>> 847acef5a0aa2acfb5a2b959edd53e70841bed0d
+
+

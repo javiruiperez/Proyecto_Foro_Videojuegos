@@ -1,47 +1,115 @@
-const cargarGeneros = async() =>{
-	try{
-	
-		const generos= await fetch(`https://id.twitch.tv/oauth2/token?client_id=98ug9rutl1wpjdanyti97vxgss69k3&client_secret=v9e2wmjga7kq628q741yuhn832hgt0&grant_type=client_credentials`,{
-                            method:'POST'});
-	 
-	console.log("meme");
+numeroPagina = 1;
+totalJuegos = 0;
+newGames = "";
 
-   
-	 
-		if(generos.status===200){
-			const datosgenero=await generos.json();
-		console.log(datosgenero);
-        console.log(datosgenero.token_type);
-        console.log(datosgenero.access_token);
-        const generos2= await fetch(`https://api.igdb.com/v4/games`,{
-            method:'POST',
-			
-            headers:{
-				'Access-Control-Allow-Origin':'https://api.igdb.com/v4/games',
-                'Client-ID':'98ug9rutl1wpjdanyti97vxgss69k3',
-                'Authorization':'Bearer'+datosgenero.access_token,
-                'Body':'fields *;'
+const cargarJuegos = async(platformSelected) => {
+    try{
+        const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+        method:'GET'
+    }
+    );
+
+        if(options.status === 200){
+            const games = await options.json();
+
+            for(var i = 0; i < games.results.length; i++){
+                for(var j = 0; j < games.results[i].platforms.length; j++){
+                    if(games.results[i].platforms[j].platform.name === platformSelected){
+                        if(totalJuegos >= 10){
+                            break;
+                        }
+                        let name_game = games.results[i].name;
+                        let image_game = games.results[i].background_image;
+                        newGames += `<div class="responsive">
+                        <div class="gallery">
+                          <a target="_blank" href="${image_game}">
+                            <img class="" src="${image_game}" width="400" height="250">
+                            <p>${name_game}</p>
+                          </a>
+                        </div>
+                        </div>`
+                        totalJuegos++;
+                    }
+                }
             }
-        }
-         
-           );
-		   const datosgenero2=await generos2.json();
-           console.log(datosgenero2);
-			
-	}
-	else if(respuesta.status===401){
-		console.log("Pusistes la llave mal");
-	}else if(respuesta.status===404){
-		console.log("La pelicula que escogistes no existe");
-	}else{
-		console.log("Hubo un error paranormal");
-	}
-	
-	}catch(error){
-		console.log(error);
-	}
-	
-	}
-	cargarGeneros();
+            if(totalJuegos < 10){
+                numeroPagina++;
+                cargarJuegos(platformSelected);
+            } else{
+                document.getElementById("Images").innerHTML = newGames;
+                //We initialize these three variables in order to be able to load other platform later
+                totalJuegos = 0; 
+                newGames = "";
+                numeroPagina = 1;
+            }
 
-    //https://rapidapi.com/guides/fetch-api-async-await
+        }
+
+    } catch(error){
+        console.log(error);
+    }
+}
+
+let eventPlatform = document.getElementById("selectPlatform");
+
+eventPlatform.addEventListener("change", function(){
+    let juego = eventPlatform.value;
+    console.log(juego);
+    cargarJuegos(juego);
+})
+
+ /*MEJORAR PAGINACIÓN, QUE APAREZCA LOS JUEGOS DE CADA PÁGINA PERO EL USUARIO TIENE BOTÓN DE SIGUIENTE PÁGINA*/
+
+ numeroPagina = 1;
+ totalJuegos = 0;
+ newGames = "";
+ 
+//  const cargarImagenesJuegosPorGenero = async(genreSelected) => {
+//      try{
+//          const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+//          method:'GET'
+//      }
+//      );
+ 
+//          if(options.status === 200){
+//              const games = await options.json();
+ 
+//              for(var i = 0; i < games.results.length; i++){
+//                  for(var j = 0; j < games.results[i].genres.length; j++){
+//                      if(games.results[i].genres[j].name === genreSelected){
+//                          if(totalJuegos >= 10){
+//                              break;
+//                          }
+//                          let name_game = games.results[i].name;
+//                          let image_game = games.results[i].background_image;
+//                          newGames += `<div class="responsive">
+//                          <div class="gallery">
+//                            <a target="_blank" href="${image_game}">
+//                              <img class="" src="${image_game}" width="400" height="250">
+//                              <p>${name_game}</p>
+//                            </a>
+//                          </div>
+//                          </div>`
+//                          totalJuegos++;
+//                      }
+//                  }
+//              }
+//              if(totalJuegos < 10){
+//                  numeroPagina++;
+//                  cargarImagenesJuegosPorGenero(genreSelected);
+//              } else{
+//                  document.getElementById("platform").innerHTML = newGames;
+//                  //We initialize these three variables in order to be able to load other platform later
+//                  totalJuegos = 0; 
+//                  newGames = "";
+//                  numeroPagina = 1;
+//              }
+ 
+//          }
+ 
+//      } catch(error){
+//          console.log(error);
+//      }
+//  }
+    
+//      cargarImagenesJuegosPorGenero("Action");
