@@ -1,5 +1,7 @@
 numeroPagina=1;
 
+totalJuegos = 0;
+images = "";
 
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
@@ -31,9 +33,9 @@ images=images+`<div class="responsive">
   </a>
 </div>
 </div>`
-                
+            
 
-// document.getElementById('Images').innerHTML=images;
+document.getElementById('Images').innerHTML=images;
                     
                     
 
@@ -46,18 +48,20 @@ images=images+`<div class="responsive">
                )
             
        
-           if(images!=""){
-            document.getElementById('Images').innerHTML=images; 
         
-           }
-           else{
-            numeroPagina++;
-            cargarImagenesJuegosPorGenero(genero);
-           }
+            // document.getElementById('Images').innerHTML=images; 
+        
+           
+          
             
-           });
+           }
+           
+           
+           );
       }
-    
+
+     
+   
     }catch(error){
         console.log(error);
     }
@@ -65,7 +69,7 @@ images=images+`<div class="responsive">
 
 
    
-    // cargarImagenesJuegosPorGenero("Shooter");
+    cargarImagenesJuegosPorGenero("Action");
     const btnAnterior=document.getElementById('btnAnterior');
     const btnSiguiente=document.getElementById('btnSiguiente');
   const BtnGeneros= document.querySelectorAll('.genres');
@@ -76,7 +80,7 @@ BtnGeneros.forEach(nombre=>{
    tiposgeneros=document.getElementById(nombre.id);
    console.log(tiposgeneros);
    tiposgeneros.addEventListener('click',()=>{
-   console.log(cargarImagenesJuegosPorGenero(nombre.id)+"final");
+   cargarImagenesJuegosPorGenero(nombre.id);
    
      
     btnAnterior.addEventListener('click',()=>{
