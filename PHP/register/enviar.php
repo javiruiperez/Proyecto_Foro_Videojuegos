@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_setFromName,$mail_addAddress,$txt_message,$mail_subject,$template){
 	require 'PHPMailer/PHPMailerAutoload.php';
 	$mail = new PHPMailer;
@@ -43,6 +44,9 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 ?>
 =======
 /*
+=======
+
+>>>>>>> 344a5ababa76ed967f3e82351547a6d5ff8731de
 $nombre=$datesform[NAME];
 $correo=$datesform[EMAIL];
  echo $datesform[NAME];
@@ -51,8 +55,12 @@ $carta="De: $nombre \n  ";
 $carta .="Correo: $correo \n";
 mail($correo,$asunto,$carta);
 header('Location :mensajeEnviado.html');
+<<<<<<< HEAD
 */
 >>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
 ?>
 
 
+=======
+?>
+>>>>>>> 344a5ababa76ed967f3e82351547a6d5ff8731de
