@@ -12,12 +12,17 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
     images="";
     if(options.status===200){
         const options2=await options.json();
-        // console.log(options2);
+       
+        mostrarjuego=true; 
+       
         options2.results.forEach(juegos=>{
+           
             juegos.genres.forEach(nombregeneros=>{
                 if(nombregeneros.name.includes(genero)){
                   
                     console.log(juegos.background_image);
+                    
+                    
 images=images+`<div class="responsive">
 <div class="gallery">
   <a target="_blank" href="${juegos.background_image}">
@@ -26,22 +31,32 @@ images=images+`<div class="responsive">
   </a>
 </div>
 </div>`
-                   
+                
 
-document.getElementById('Images').innerHTML=images;
+// document.getElementById('Images').innerHTML=images;
+                    
+                    
 
 
 
                     
                 }
+                
+                    }
+               )
             
-                 }
-            )
+       
+           if(images!=""){
+            document.getElementById('Images').innerHTML=images; 
+        
+           }
+           else{
+            numeroPagina++;
+            cargarImagenesJuegosPorGenero(genero);
+           }
             
-          
-           
-        });
-    }
+           });
+      }
     
     }catch(error){
         console.log(error);
@@ -50,14 +65,55 @@ document.getElementById('Images').innerHTML=images;
 
 
    
-    cargarImagenesJuegosPorGenero("Shooter");
+    // cargarImagenesJuegosPorGenero("Shooter");
+    const btnAnterior=document.getElementById('btnAnterior');
+    const btnSiguiente=document.getElementById('btnSiguiente');
+  const BtnGeneros= document.querySelectorAll('.genres');
+console.log(BtnGeneros);
+
+BtnGeneros.forEach(nombre=>{
+   console.log(nombre.id); 
+   tiposgeneros=document.getElementById(nombre.id);
+   console.log(tiposgeneros);
+   tiposgeneros.addEventListener('click',()=>{
+   console.log(cargarImagenesJuegosPorGenero(nombre.id)+"final");
+   
+     
+    btnAnterior.addEventListener('click',()=>{
+        if(numeroPagina>1){
+            numeroPagina--;
+        cargarImagenesJuegosPorGenero(nombre.id);
+        }
+        });
+    
+        btnSiguiente.addEventListener('click',()=>{
+            if(numeroPagina<1000){
+                numeroPagina++;
+        cargarImagenesJuegosPorGenero(nombre.id);
+            }
+        });
+    
+   })
+})
+
 
 // btnAnterior.addEventListener('click',()=>{
-// 	if(pagina>1){
-// 	pagina--;
-// 	cargarPeliculas();
+// 	if(numeroPagina>1){
+//         numeroPagina--;
+//     cargarImagenesJuegosPorGenero("Shooter");
 // 	}
 // 	});
+
+//     btnSiguiente.addEventListener('click',()=>{
+//         if(numeroPagina<1000){
+//             numeroPagina++;
+//     cargarImagenesJuegosPorGenero("Shooter");
+//         }
+//     });
+
+
+  
+
 
 // const idGeneros= async(nombreGenero)=>{
 //     try{
