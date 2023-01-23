@@ -88,6 +88,7 @@ BtnGeneros.forEach(nombre=>{
    console.log(tiposgeneros);
    tiposgeneros.addEventListener('click',()=>{
     images="";
+    numeroPagina=1;
    cargarImagenesJuegosPorGenero(nombre.id);
    
      
