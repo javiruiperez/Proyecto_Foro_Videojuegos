@@ -113,7 +113,7 @@ BtnGeneros.forEach(nombre=>{
 
 
 
-numeroPagina = 1;
+
 totalJuegos = 0;
 newGames = "";
 
