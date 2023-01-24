@@ -295,7 +295,9 @@ div.gallery {
     font-size: 2em;
     margin: 0% 1%;
 }
-
+.ocultar{
+    display: none;
+}
 
 /* HACER PRIMERO LA PÁGINA WEB A MÓVIL (IMPORTANTE)
 HACER MÁS PEQUEÑO EL LOGO Y LA BARRA DE BUSQUEDA

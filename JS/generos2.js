@@ -16,7 +16,7 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
     if(options.status===200){
         const options2=await options.json();
        
-     console.log(cont+"hola"); 
+   
        if(cont==0){
         element = document.getElementById("borrar");
           element.remove();
@@ -28,13 +28,14 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
                 if(nombregeneros.name.includes(genero)){
                   
                     console.log(juegos.background_image);
-                    
-                    
+                    console.log(juegos.id);
+            //<a target="_blank" href="${juegos.background_image}">        
 images=images+`<div class="responsive">
 <div class="gallery">
-  <a target="_blank" href="${juegos.background_image}">
-    <img class="" src="${juegos.background_image}" width="400" height="250">
+ 
+    <img class="imagen" id=${juegos.id} src="${juegos.background_image}" width="400" height="250">
     <p>${juegos.name}</p>
+ 
   </a>
 </div>
 </div>`
@@ -65,9 +66,11 @@ totalJuegos++;
             }
             else{
                 console.log(totalJuegos);
-                if(totalJuegos<10)
+                if(totalJuegos<10){
                 document.getElementById('Images').innerHTML=images; 
-                numeroPagina=1;
+                
+                  numeroPagina=1;
+                }
             }  
           
             
@@ -82,6 +85,16 @@ totalJuegos++;
     }catch(error){
         console.log(error);
     }
+
+    const imagenImagen=document.querySelectorAll('.imagen');
+    imagenImagen.forEach(e=>{
+        e.addEventListener('click',()=>{
+
+
+window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuegoDef ;
+        })
+    })
+
     }
 
 
@@ -90,8 +103,7 @@ totalJuegos++;
     const btnAnterior=document.getElementById('btnAnterior');
     const btnSiguiente=document.getElementById('btnSiguiente');
   const BtnGeneros= document.querySelectorAll('.genres');
-
-
+ 
 
 
 BtnGeneros.forEach(nombre=>{
@@ -110,7 +122,7 @@ BtnGeneros.forEach(nombre=>{
     //  element.remove();
     //  element=null;
     //    }
-   
+ 
        
    cargarImagenesJuegosPorGenero(nombre.id);
    
@@ -165,16 +177,17 @@ const cargarJuegos = async(platformSelected) => {
                         newGames += `<div class="responsive">
                         <div class="gallery">
                           <a target="_blank" href="${image_game}">
-                            <img class="" src="${image_game}" width="400" height="250">
+                            <img class="imagen" id=${juegos.id}  src="${image_game}" width="400" height="250">
                             <p>${name_game}</p>
                           </a>
+                          <p class="ocultar">${games.results[i].id}</p>
                         </div>
                         </div>`
                         totalJuegos++;
                     }
                 }
             }
-            if(totalJuegos < 10){
+            if(totalJuegos < 9){
                 numeroPagina++;
                
                 cargarJuegos(platformSelected);
@@ -210,8 +223,25 @@ eventPlatform.addEventListener("change", function(){
 
 
 
+    
 
-  
+
+
+  /*
+<?php
+// comprobar si tenemos los parametros w1 y w2 en la URL
+if (isset($_GET["w1"]) && isset($_GET["w2"])) {
+    // asignar w1 y w2 a dos variables
+    $phpVar1 = $_GET["w1"];
+    $phpVar2 = $_GET["w2"];
+ 
+    // mostrar $phpVar1 y $phpVar2
+    echo "<p>Parameters: " . $phpVar1 . " " . $phpVar1 . "</p>";
+} else {
+    echo "<p>No parameters</p>";
+}
+?>
+*/
 
 
 // const idGeneros= async(nombreGenero)=>{
