@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="../../CSS/Index.css">
     <script src="/JS/Busqueda_menu.js"></script>
     <title>Pagina de Inicio</title>
 </head>
@@ -65,8 +65,13 @@
             <div id="imageUser"></div>
             <div id="nameUser"></div>
         </div>
-        <input type="textarea" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300">
-        <button onclick="createCommentGuide()" id="btnComment">Send</button>
+        <form action="" method="post">
+            <input type="textarea" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+            <?php
+                echo (isset($errores["NoComment"])) ? "<div class='errorMessage'>$errores[NoComment]</div><br>": "";
+            ?>
+            <input type="submit" value="Send" name="submitComment"/>
+        </form>
     </div>
 
     <div id="readComments">
@@ -88,6 +93,5 @@
             </div>
         </div>
     </footer>
-    <script src="../JS/comments.js"></script>
 </body>
 </html>

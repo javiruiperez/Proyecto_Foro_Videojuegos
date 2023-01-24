@@ -31,8 +31,8 @@ USE `BDComentarios_php`;
 --
 
 CREATE TABLE `comentarios` (
-  `idJuego` int NOT NULL,
   `idComentario` int NOT NULL,
+  `idJuego` int NOT NULL,
   `texto` text NOT NULL,
   `idUsuario` int NOT NULL
   
@@ -58,3 +58,5 @@ ALTER TABLE `comentarios`
 
 --
 
+ALTER TABLE `comentarios`
+  MODIFY `idComentario` int(1) NOT NULL AUTO_INCREMENT;

@@ -9,9 +9,19 @@ body{
     margin: 0px;
     padding: 0px;
     background-image: url('../Interfaces\ Proyecto/fondo_web.png');
-    background-repeat:no-repeat;
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment:fixed;
     font-family: 'Roboto', sans-serif;
+
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .grid-container {
@@ -113,9 +123,6 @@ option{
     border-style: none;
 }
 
-
-
-
 div.gallery {
     border: 1px solid #ccc;
   }
@@ -202,7 +209,6 @@ div.gallery {
     cursor: pointer;
     vertical-align: top;
 }
- 
 
 .overlay {
     position: fixed;
@@ -253,23 +259,19 @@ div.gallery {
 
 
 .footer {
-    background: #232323;
-    padding: 30px 0px;
+    opacity: 0.85;
+    background: #232323; /*COLOR VARIABLE SASS*/
+    padding-bottom: 5px;
     text-align: center;
     width: 100%;
     margin-top: 4em;
-    padding-top: 4em;
-    position:page;
-    bottom: 0;
-    clear: both;
 }
 
 .footer .row {
     width: 100%;
-    margin: 1% 0%;
-    padding: 0.6% 0%;
+    padding: 0.5% 0%;
     color: gray;
-    font-size: 1.3em;
+    font-size: 0.7rem;
 }
 
 .footer .row a {
@@ -291,8 +293,8 @@ div.gallery {
     margin: 0px 30px;
 }
 
-.footer .row a i {
-    font-size: 2em;
+.footer .row li a{
+    font-size: 0.7rem;
     margin: 0% 1%;
 }
 
