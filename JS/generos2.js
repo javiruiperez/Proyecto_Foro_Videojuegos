@@ -1,38 +1,14 @@
 numeroPagina=1;
-const cargarGeneros = async(genero) =>{
-try{
 
-const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
-    method:'GET'
-}
-);
-
-if(options.status===200){
-    const options2=await options.json();
-    // console.log(options2);
-    options2.results.forEach(juegos=>{
-        juegos.genres.forEach(nombregeneros=>{
-            if(nombregeneros.name.includes(genero)){
-                console.log(nombregeneros.id);
-                console.log(juegos.name);
-            }
-        console.log(options2);
-             }
-        )
-        
-      
-       
-    });
-}
-
+images="";
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
     
-    const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+    const options =await fetch( `https://api.rawg.io/api/games?key=94724ba87c45468abe5604e556c7366a&page=${numeroPagina}`,{
         method:'GET'
     }
     );
-    images="";
+    // images="";
     if(options.status===200){
         const options2=await options.json();
        
@@ -56,7 +32,7 @@ images=images+`<div class="responsive">
 </div>`
             
 
-document.getElementById('Images').innerHTML=images;
+// document.getElementById('Images').innerHTML=images;
                     
                     
 
@@ -65,6 +41,7 @@ document.getElementById('Images').innerHTML=images;
                     
                 }
                 
+                
                     }
                )
             
@@ -72,7 +49,16 @@ document.getElementById('Images').innerHTML=images;
         
             // document.getElementById('Images').innerHTML=images; 
         
-           
+            if(images==""){
+                numeroPagina++;
+                console.log(images+"hola");
+                cargarImagenesJuegosPorGenero(genero);
+                
+            }
+            else{
+                document.getElementById('Images').innerHTML=images; 
+                
+            }  
           
             
            }
@@ -90,7 +76,7 @@ document.getElementById('Images').innerHTML=images;
 
 
    
-    cargarImagenesJuegosPorGenero("Action");
+    // cargarImagenesJuegosPorGenero("Racing");
     const btnAnterior=document.getElementById('btnAnterior');
     const btnSiguiente=document.getElementById('btnSiguiente');
   const BtnGeneros= document.querySelectorAll('.genres');
@@ -101,6 +87,8 @@ BtnGeneros.forEach(nombre=>{
    tiposgeneros=document.getElementById(nombre.id);
    console.log(tiposgeneros);
    tiposgeneros.addEventListener('click',()=>{
+    images="";
+    numeroPagina=1;
    cargarImagenesJuegosPorGenero(nombre.id);
    
      
@@ -120,14 +108,6 @@ BtnGeneros.forEach(nombre=>{
     
    })
 })
-
-
-// btnAnterior.addEventListener('click',()=>{
-// 	if(numeroPagina>1){
-//         numeroPagina--;
-//     cargarImagenesJuegosPorGenero("Shooter");
-// 	}
-// 	});
 
 //     btnSiguiente.addEventListener('click',()=>{
 //         if(numeroPagina<1000){
