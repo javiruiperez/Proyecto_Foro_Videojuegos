@@ -1,6 +1,19 @@
 <?php
     class Usuario extends Modelo
     {
+        public function getIdUser($user)
+        {
+            $consulta = "SELECT id FROM usuarios WHERE usuario=:user";
+            $result = $this->prepare($consulta);
+            $result->bindParam(':user', $user);
+            $resultadoUsuario = $result;
+
+            foreach ($resultadoUsuario as $row){
+                $idUser = $row['id'];
+            }
+            return $idUser;
+        }
+
         public function getUser($user)
         {
             $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
@@ -72,32 +85,6 @@
             $resultado->bindParam(':email', $email);
             $resultado->execute();
         }
-        public function guardarComentario($idJuego, $idComentario, $texto, $idUsuario){
-            $consulta=" INSERT INTO `comentarios` (`idJuego`, `idComentario`, `texto`, `idUsuario`) VALUES (?, ?, ?, ?)";
-            $stmt=$this->prepare($consulta);
-            $stmt->bindParam(1, $idJuego);
-            $stmt->bindParam(2, $idComentario);
-            $stmt->bindParam(3, $texto);
-            $stmt->bindParam(4, $idUsuario);
-           
-            return  $stmt->execute();
-         }
-     
-         public function sacarComentariosOrdenPorJuego($idJuego){
-             $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
-             $stmt=$this->prepare($consulta);
-            $stmt->bindParam(1,$idJuego);
-            
-             return  $stmt->execute();
-         }
-         public function borrarComentario($idComentario){
-             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";
-             $stmt=$this->prepare($consulta);
-             $stmt->bindParam(1,$idComentario);
-             
-              return  $stmt->execute();
-         }
-    }
 
 /*
 <?php
@@ -115,5 +102,30 @@ if (isset($_GET["w1"]) && isset($_GET["w2"])) {
 ?>
 */
 
-   
+        public function guardarComentario($idJuego, $texto, $idUsuario){
+           $consulta=" INSERT INTO `comentarios` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
+           $stmt=$this->prepare($consulta);
+           $stmt->bindParam(1, $idJuego);
+           $stmt->bindParam(2, $texto);
+           $stmt->bindParam(3, $idUsuario);
+
+           return  $stmt->execute();
+        }
+
+        public function sacarComentariosOrdenPorJuego($idJuego){
+            $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idJuego);
+        
+            return  $stmt->execute();
+        }
+
+        public function borrarComentario($idComentario){
+            $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idComentario);
+
+             return  $stmt->execute();
+        }
+    }
 ?>

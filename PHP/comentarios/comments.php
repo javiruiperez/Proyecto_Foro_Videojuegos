@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="../../CSS/Index.css">
     <script src="/JS/Busqueda_menu.js"></script>
     <title>Pagina de Inicio</title>
 </head>
@@ -24,12 +24,12 @@
             </div>
             <div class="categorias" id="categorias">
                 <a href="#" class="activo">All</a>
-                <a href="#" class="genres" id="Action">Action</a>
-                <a href="#"class="genres" id="Adventure">Adventure</a>
-                <a href="#"class="genres" id="Sport">Sports</a>
-                <a href="#"class="genres" id="Racing">Racing</a>
-                <a href="#"class="genres" id="Simulation">Simulation</a>
-                <a href="#"class="genres" id="Strategy">Strategy</a>
+                <a href="#" id="Action">Action</a>
+                <a href="#">Adventure</a>
+                <a href="#">Sports</a>
+                <a href="#">Racing</a>
+                <a href="#">Simulation</a>
+                <a href="#">Strategy</a>
                 <br>
                   <select>
                     <option value=""> Year </option>
@@ -40,21 +40,44 @@
                   <select id="selectPlatform">
                     <option value="">Platform</option>
                     <option value="PlayStation 5">PS5</option>
-                    <option value="PlayStation 4">PS4</option>
                     <option value="Xbox Series S/X">Xbox Series X/S</option>
+                    <option value="PlayStation 4">PS4</option>
                     <option value="Xbox One">Xbox One</option>
-                    <option value="PC">PC</option>
                     <option value="Nintendo Switch">Nintendo Switch</option>
                   </select>
-            </div></nav>
-            <div class="paginacion">
-                <button id="btnAnterior">Anterior</button>
-                <button id="btnSiguiente">Siguiente</button>
             </div>
+        </nav>
     </header>
-    <br>
-    <br>
-    <div id="Images"></div>
+
+    <!-- Guías (HACER CON DOM y BD) -->
+    <div class="guide">
+        <div class="userGuideInfo">
+            <div id="imageGuide"></div>
+            <div id="nameUserGuide"></div>
+        </div>
+        <div class="titleGuide"></div>
+        <div class="textGuide"></div>
+    </div>
+
+    <!-- Comentarios (HACER CON DOM y BD) -->
+    <div class="createComments">
+        <div class="userInfo">
+            <div id="imageUser"></div>
+            <div id="nameUser"></div>
+        </div>
+        <form action="" method="post">
+            <input type="textarea" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+            <?php
+                echo (isset($errores["NoComment"])) ? "<div class='errorMessage'>$errores[NoComment]</div><br>": "";
+            ?>
+            <input type="submit" value="Send" name="submitComment"/>
+        </form>
+    </div>
+
+    <div id="readComments">
+
+    </div>
+
     <footer>
         <div class="footer">
             <div class="row">
@@ -70,6 +93,5 @@
             </div>
         </div>
     </footer>
-    <script src="../js/generos2.js"></script>
 </body>
 </html>
