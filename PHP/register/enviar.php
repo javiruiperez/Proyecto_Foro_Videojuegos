@@ -39,20 +39,14 @@ function sendemail($mail_username,$mail_userpassword,$mail_setFromEmail,$mail_se
 // $carta .="Correo: $correo \n";
 // mail($correo,$asunto,$carta);
 // header("location:./mensajeEnviado.html");
-<<<<<<< HEAD
 ?>
-=======
-/*
-$nombre=$datesform[NAME];
+<!-- $nombre=$datesform[NAME];
 $correo=$datesform[EMAIL];
  echo $datesform[NAME];
 $asunto="Confirmar cuenta ForoGamers";
 $carta="De: $nombre \n  ";
 $carta .="Correo: $correo \n";
 mail($correo,$asunto,$carta);
-header('Location :mensajeEnviado.html');
-*/
->>>>>>> 49ce53cc78a36e6eed975754850de05e92f38b97
-?>
+header('Location :mensajeEnviado.html'); -->
 
 
