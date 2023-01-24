@@ -1,1 +1,7 @@
 SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)## Fichero: C:\xampp\htdocs\proyecto\PHP\BaseDeDatos\crearBD.php## Línea: 4##Código: 1045##Instante: 0.41109500 1673957348
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') NOT NULL,
+  `idComentario` int() NOT NULL,
+  `texto` varchar(300) NOT NUL...' at line 8## Fichero: C:\xampp\htdocs\php\ProyectoForoDef3\Proyecto_Foro_Videojuegos\PHP\BaseDeDatos\crearBD2.php## Línea: 8##Código: 42000##Instante: 0.08695100 1674558069
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') NOT NULL,
+  `idComentario` int() NOT NULL,
+  `texto` varchar(300) NOT NUL...' at line 8## Fichero: C:\xampp\htdocs\php\ProyectoForoDef3\Proyecto_Foro_Videojuegos\PHP\BaseDeDatos\crearBD2.php## Línea: 8##Código: 42000##Instante: 0.41331600 1674558072

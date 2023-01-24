@@ -1,19 +1,27 @@
 numeroPagina=1;
 
 images="";
+ element =document.getElementById("borrar");
+ cont=0;
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
     
-    const options =await fetch( `https://api.rawg.io/api/games?key=94724ba87c45468abe5604e556c7366a&page=${numeroPagina}`,{
+    const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
         method:'GET'
     }
     );
     // images="";
+    
+  
     if(options.status===200){
         const options2=await options.json();
        
-        mostrarjuego=true; 
-       
+     console.log(cont+"hola"); 
+       if(cont==0){
+        element = document.getElementById("borrar");
+          element.remove();
+          cont++;
+       }
         options2.results.forEach(juegos=>{
            
             juegos.genres.forEach(nombregeneros=>{
@@ -30,7 +38,7 @@ images=images+`<div class="responsive">
   </a>
 </div>
 </div>`
-            
+totalJuegos++;           
 
 // document.getElementById('Images').innerHTML=images;
                     
@@ -49,15 +57,17 @@ images=images+`<div class="responsive">
         
             // document.getElementById('Images').innerHTML=images; 
         
-            if(images==""){
+            if(images==""&&totalJuegos<10){
                 numeroPagina++;
-                console.log(images+"hola");
+             
                 cargarImagenesJuegosPorGenero(genero);
                 
             }
             else{
+                console.log(totalJuegos);
+                if(totalJuegos<10)
                 document.getElementById('Images').innerHTML=images; 
-                
+                numeroPagina=1;
             }  
           
             
@@ -80,15 +90,28 @@ images=images+`<div class="responsive">
     const btnAnterior=document.getElementById('btnAnterior');
     const btnSiguiente=document.getElementById('btnSiguiente');
   const BtnGeneros= document.querySelectorAll('.genres');
-console.log(BtnGeneros);
+
+
+
 
 BtnGeneros.forEach(nombre=>{
    console.log(nombre.id); 
    tiposgeneros=document.getElementById(nombre.id);
    console.log(tiposgeneros);
    tiposgeneros.addEventListener('click',()=>{
+  
     images="";
     numeroPagina=1;
+    totalJuegos = 0;
+    newGames = "";
+     element = document.getElementById("borrar");
+    // if(element!=null){
+    //     element = document.getElementById("borrar");
+    //  element.remove();
+    //  element=null;
+    //    }
+   
+       
    cargarImagenesJuegosPorGenero(nombre.id);
    
      
@@ -119,14 +142,18 @@ newGames = "";
 
 const cargarJuegos = async(platformSelected) => {
     try{
-        const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+        const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
         method:'GET'
     }
     );
 
         if(options.status === 200){
             const games = await options.json();
-
+            element = document.getElementById("borrar");
+            if(element!=null){
+                element = document.getElementById("borrar");
+             element.remove();
+               }
             for(var i = 0; i < games.results.length; i++){
                 for(var j = 0; j < games.results[i].platforms.length; j++){
                     if(games.results[i].platforms[j].platform.name === platformSelected){
@@ -149,6 +176,7 @@ const cargarJuegos = async(platformSelected) => {
             }
             if(totalJuegos < 10){
                 numeroPagina++;
+               
                 cargarJuegos(platformSelected);
             } else{
                 document.getElementById("Images").innerHTML = newGames;
@@ -156,6 +184,8 @@ const cargarJuegos = async(platformSelected) => {
                 totalJuegos = 0; 
                 newGames = "";
                 numeroPagina = 1;
+                images="";
+               cont++;
             }
 
         }
@@ -170,6 +200,7 @@ let eventPlatform = document.getElementById("selectPlatform");
 eventPlatform.addEventListener("change", function(){
     let juego = eventPlatform.value;
     console.log(juego);
+    totalJuegos = 0; 
     cargarJuegos(juego);
 })
 

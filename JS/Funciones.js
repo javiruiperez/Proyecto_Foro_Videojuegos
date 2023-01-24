@@ -30,3 +30,5 @@ function filterRecentGames() {
       db.update('user', { rank: 'Rango II' });
     }
   }
+
+  

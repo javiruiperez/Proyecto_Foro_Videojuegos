@@ -72,5 +72,33 @@
             $resultado->bindParam(':email', $email);
             $resultado->execute();
         }
+
+
+    public function guardarComentario($idJuego, $idComentario, $texto, $idUsuario){
+       $consulta=" INSERT INTO `comentarios` (`idJuego`, `idComentario`, `texto`, `idUsuario`) VALUES (?, ?, ?, ?)";
+       $stmt=$this->prepare($consulta);
+       $stmt->bindParam(1, $idJuego);
+       $stmt->bindParam(2, $idComentario);
+       $stmt->bindParam(3, $texto);
+       $stmt->bindParam(4, $idUsuario);
+      
+       return  $stmt->execute();
     }
+
+    public function sacarComentariosOrdenPorJuego($idJuego){
+        $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
+        $stmt=$this->prepare($consulta);
+        $stmt->bindParam(1,$idJuego);
+       
+        return  $stmt->execute();
+    }
+
+    public function borrarComentario($idComentario){
+        $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";
+        $stmt=$this->prepare($consulta);
+        $stmt->bindParam(1,$idComentario);
+        
+         return  $stmt->execute();
+    }
+}
 ?>
