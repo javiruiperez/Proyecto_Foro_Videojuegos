@@ -92,8 +92,9 @@ totalJuegos++;
     imagenImagen.forEach(e=>{
         e.addEventListener('click',()=>{
 console.log(e.id);
-
-window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + e.id +"?w2"+e.src ;
+ var idJuego=e.id;
+ var enlace=e.src;
+window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2"+enlace ;
 
         })
     })
@@ -211,7 +212,7 @@ const cargarJuegos = async(platformSelected) => {
                    e.addEventListener('click',()=>{
                console.log(e.id+ " "+e.src);
                
-              window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + e.id +"?w2"+e.src ;
+              window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + e.id +"&w2"+e.src ;
                
                    })
                })
