@@ -8,11 +8,13 @@
             $result->bindParam(':user', $user);
             $result->execute();
             $resultadoUsuario = $result;
+            // ->fetch(PDO::FETCH_ASSOC)
+            foreach ($resultadoUsuario as $row) {
 
-            foreach ($resultadoUsuario as $row){
-                $idUser = $row['id'];
+                $nameUser= $row['id'] ;
+           
             }
-            return $idUser;
+            return $nameUser;
         }
 
         public function getUser($user)
@@ -26,7 +28,7 @@
             foreach ($resultadoUsuario as $row) {
 
                 $nameUser= $row['usuario'] ;
-             
+            
             }
             return $nameUser;
         }
@@ -112,4 +114,8 @@
             return  $stmt->execute();
         }
     }
+
+
+
+
 ?>

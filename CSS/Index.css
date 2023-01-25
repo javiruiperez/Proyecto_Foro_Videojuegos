@@ -19,14 +19,30 @@ body{
     font-family: 'Roboto', sans-serif;
 
     display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3,1fr);
+}
+@media only screen and (max-width: 768px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .col-1 {
+        width: 100%;
+      }
+      .col-2 {
+        width: 100%;
+      }
+      .col-3 {
+        width: 100%;
+      }
 }
 
 .titulo{
@@ -35,7 +51,7 @@ body{
     float: center;
     margin-top: 2.5%;
     font-family: 'VT323', monospace;
-    font-size: 82px;
+    font-size: 62px;
     color: #fff;
     text-shadow: 2px 5px 5px #000000;
 }
@@ -54,6 +70,7 @@ a {
     margin: 9%;
     color: #fff;
     font-size: 18px;
+    font-weight: 700;
     text-shadow: 2px 2.5px 2.5px #000000;
 }
 .sign-In{
@@ -61,6 +78,7 @@ a {
     margin: 9%;
     color: #fff;
     font-size: 18px;
+    font-weight: 700;
     text-shadow: 2px 2.5px 2.5px #000000;
 }
 
@@ -259,7 +277,7 @@ div.gallery {
 
 
 .footer {
-    opacity: 0.85;
+    opacity: 0.90;
     background: #232323; /*COLOR VARIABLE SASS*/
     padding-bottom: 5px;
     text-align: center;
@@ -297,10 +315,11 @@ div.gallery {
     font-size: 0.7rem;
     margin: 0% 1%;
 }
-
+.ocultar{
+    display: none;
+}
 
 /* HACER PRIMERO LA PÁGINA WEB A MÓVIL (IMPORTANTE)
-HACER MÁS PEQUEÑO EL LOGO Y LA BARRA DE BUSQUEDA
 HACER UN SUBMENÚ DESPLEGABLE PARA LOS GÉNEROS CUANDO SEA FORMATO MÓVIL */
 @media (max-width: 100%) { 
     .footer {
