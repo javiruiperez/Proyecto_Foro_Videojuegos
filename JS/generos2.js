@@ -89,9 +89,10 @@ totalJuegos++;
     const imagenImagen=document.querySelectorAll('.imagen');
     imagenImagen.forEach(e=>{
         e.addEventListener('click',()=>{
+console.log(e.id);
 
+window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + e.id +"?w2"+e.src ;
 
-window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuegoDef ;
         })
     })
 
@@ -174,13 +175,14 @@ const cargarJuegos = async(platformSelected) => {
                         }
                         let name_game = games.results[i].name;
                         let image_game = games.results[i].background_image;
+                        // <a target="_blank" href="${image_game}">
                         newGames += `<div class="responsive">
                         <div class="gallery">
-                          <a target="_blank" href="${image_game}">
-                            <img class="imagen" id=${juegos.id}  src="${image_game}" width="400" height="250">
+                         
+                            <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
                             <p>${name_game}</p>
                           </a>
-                          <p class="ocultar">${games.results[i].id}</p>
+                       
                         </div>
                         </div>`
                         totalJuegos++;
@@ -199,6 +201,18 @@ const cargarJuegos = async(platformSelected) => {
                 numeroPagina = 1;
                 images="";
                cont++;
+
+
+               const imagenImagen2=document.querySelectorAll('.imagen');
+               console.log(imagenImagen2);
+               imagenImagen2.forEach(e=>{
+                   e.addEventListener('click',()=>{
+               console.log(e.id+ " "+e.src);
+               
+              window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + e.id +"?w2"+e.src ;
+               
+                   })
+               })
             }
 
         }
@@ -215,6 +229,7 @@ eventPlatform.addEventListener("change", function(){
     console.log(juego);
     totalJuegos = 0; 
     cargarJuegos(juego);
+
 })
 
 
