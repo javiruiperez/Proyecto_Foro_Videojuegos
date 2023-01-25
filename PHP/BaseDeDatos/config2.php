@@ -1,5 +1,5 @@
 <?php
-    class Config
+    class Config2
     {
         static public $db_hostname = "localhost";
         static public $db_nombre = "BDComentarios_php";

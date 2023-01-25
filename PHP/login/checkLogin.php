@@ -28,13 +28,6 @@
 
         if(count($errores) === 0){//This should check if the username and password exists and if it doesn't, it will show an error
             try{
-                // include("../BaseDeDatos/conexion.php");
-                // $consultaLogin = $pdo->prepare("select * FROM usuarios WHERE usuario = ?");
-                // $consultaLogin->bindParam(1, $user);
-                // $consultaLogin->execute();
-                // foreach ($consultaLogin as $consultas){
-                //     $checkPass = crypt($password, $consultas['contraseñaEncriptada']);
-                //     if($checkPass === $consultas['contraseñaEncriptada']){
                     $usuario = new Usuario();
                     if($userBD=$usuario->checkPassword($user, $password)){
                         session_start();

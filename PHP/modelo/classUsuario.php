@@ -3,9 +3,10 @@
     {
         public function getIdUser($user)
         {
-            $consulta = "SELECT id FROM usuarios WHERE usuario=:user";
+            $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
             $result = $this->prepare($consulta);
             $result->bindParam(':user', $user);
+            $result->execute();
             $resultadoUsuario = $result;
 
             foreach ($resultadoUsuario as $row){
@@ -27,7 +28,6 @@
                 $nameUser= $row['usuario'] ;
              
             }
-         
             return $nameUser;
         }
 
@@ -86,7 +86,6 @@
             $resultado->execute();
         }
 
-
         public function guardarComentario($idJuego, $texto, $idUsuario){
            $consulta=" INSERT INTO `comentarios` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
            $stmt=$this->prepare($consulta);
@@ -110,7 +109,7 @@
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idComentario);
 
-             return  $stmt->execute();
+            return  $stmt->execute();
         }
     }
 ?>
