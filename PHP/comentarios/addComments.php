@@ -3,17 +3,19 @@
     include("../libs/bGeneral.php");
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");
-    require("../BaseDeDatos/config2.php");
+    require("../BaseDeDatos/config.php");
     $errores = [];
 
     if(!isset($_REQUEST["submitComment"])){
         require("comments.php");
+      
     } else{
         session_start();
         $userSession = $_SESSION["user"];
         $content = recoge("newComment");
         $idGame = rand(1, 100);
-
+     
+        require("comments.php");
         if($content === ""){
             $errores["NoComment"] = "The comment cannot be blank";
         }
@@ -21,11 +23,17 @@
         if(count($errores) === 0){
             try{
                 $usuario = new Usuario();
+              
+                $userBD = $usuario->getIdUser($userSession);
+                echo $userBD;
+                echo "entra";
                 if($userBD = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
                     //ERROR POR NO TENER ID DE JUEGO (AÑADIR CON FUNCIÓN DE FRAN)
+                    echo "entra";
+                    
                     if($commentBD = $usuario->guardarComentario($idGame, $content, $userBD)){ //añadir comentario
                         echo "comentario añadido";
-                        header("location:../../HTML/index.html");
+                        // header("location:../../HTML/index.html");
                     } else{
                         echo "comentario incorrecto";
                         require("comments.php");

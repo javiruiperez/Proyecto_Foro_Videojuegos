@@ -3,15 +3,19 @@
     {
         public function getIdUser($user)
         {
-            $consulta = "SELECT id FROM usuarios WHERE usuario=:user";
+            $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
             $result = $this->prepare($consulta);
             $result->bindParam(':user', $user);
+            $result->execute();
             $resultadoUsuario = $result;
+            // ->fetch(PDO::FETCH_ASSOC)
+            foreach ($resultadoUsuario as $row) {
 
-            foreach ($resultadoUsuario as $row){
-                $idUser = $row['id'];
+                $nameUser= $row['id'] ;
+           
             }
-            return $idUser;
+         
+            return $nameUser;
         }
 
         public function getUser($user)
@@ -25,7 +29,7 @@
             foreach ($resultadoUsuario as $row) {
 
                 $nameUser= $row['usuario'] ;
-             
+            
             }
          
             return $nameUser;
@@ -128,4 +132,8 @@ if (isset($_GET["w1"]) && isset($_GET["w2"])) {
              return  $stmt->execute();
         }
     }
+
+
+
+
 ?>
