@@ -315,7 +315,9 @@ div.gallery {
     font-size: 0.7rem;
     margin: 0% 1%;
 }
-
+.ocultar{
+    display: none;
+}
 
 /* HACER PRIMERO LA PÁGINA WEB A MÓVIL (IMPORTANTE)
 HACER UN SUBMENÚ DESPLEGABLE PARA LOS GÉNEROS CUANDO SEA FORMATO MÓVIL */
