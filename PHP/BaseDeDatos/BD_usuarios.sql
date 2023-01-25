@@ -40,6 +40,21 @@ CREATE TABLE `usuarios` (
   `comentario` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+CREATE TABLE `comentarios` (
+  `idComentario` int NOT NULL,
+  `idJuego` int NOT NULL,
+  `texto` text NOT NULL,
+  `idUsuario` int NOT NULL
+  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`idComentario`);
+  ALTER TABLE `comentarios`
+  MODIFY `idComentario` int(1) NOT NULL AUTO_INCREMENT;
 --
 -- Índices para tablas volcadas
 --
