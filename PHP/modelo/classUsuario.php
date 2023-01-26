@@ -10,9 +10,7 @@
             $resultadoUsuario = $result;
             // ->fetch(PDO::FETCH_ASSOC)
             foreach ($resultadoUsuario as $row) {
-
                 $nameUser= $row['id'] ;
-           
             }
             return $nameUser;
         }
@@ -26,9 +24,7 @@
             $resultadoUsuario = $result;
             // ->fetch(PDO::FETCH_ASSOC)
             foreach ($resultadoUsuario as $row) {
-
                 $nameUser= $row['usuario'] ;
-            
             }
             return $nameUser;
         }
@@ -99,20 +95,13 @@
         }
 
         public function sacarComentariosOrdenPorJuego($idJuego){
-            $texto="";
-            $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
+            $consulta="SELECT * FROM `comentarios` where idJuego=? ORDER BY idComentario;";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idJuego);
-          $stmt->execute();
+            $stmt->execute();
 
-          $arrayComentarios=$stmt->fetchAll();
-          return $arrayComentarios;
-        //   foreach ($stmt as $row) {
-
-        //     $texto=$texto.$row['texto'] ;
-        
-        // }
-        // return $texto;
+            $arrayComentarios=$stmt->fetchAll();
+            return $arrayComentarios;
         }
 
         public function borrarComentario($idComentario){
