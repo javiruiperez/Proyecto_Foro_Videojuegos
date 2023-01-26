@@ -15,6 +15,7 @@
 
     if(!isset($_REQUEST["submitLogin"])){
         require("formLogin.php");
+   
     } else{
         $user = recoge("usernameLogin");
         $password = recoge("passwordLogin");
@@ -38,6 +39,8 @@
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");
+                        $logeado=false;
+                        echo json_encode($logeado); 
                     }
             } catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
@@ -46,5 +49,8 @@
             }
         } else{
             require("formLogin.php");
+           
         }
+
+      
     }
