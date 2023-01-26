@@ -14,6 +14,7 @@
 
     if(!isset($_REQUEST["submitLogin"])){
         require("formLogin.php");
+   
     } else{
         $user = recoge("usernameLogin");
         $password = recoge("passwordLogin");
@@ -33,11 +34,12 @@
                         session_start();
                         $_SESSION["user"] = $user;
                        
-
-                        header("location:../../HTML/index.html?entrar=true"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+                        header("location:../../HTML/index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");
+                        $logeado=false;
+                        echo json_encode($logeado); 
                     }
             } catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
@@ -46,5 +48,8 @@
             }
         } else{
             require("formLogin.php");
+           
         }
+
+      
     }

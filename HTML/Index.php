@@ -1,3 +1,14 @@
+
+<?php
+if(!isset($_SESSION["user"])){
+
+}
+else{
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +128,13 @@
             </div>
         </div>
     </footer>
-    <script></script>
+    
+                                                                                                           
     <script src="../JS/generos2.js"></script>
+    <script src="../JS/perfil.js"></script>
 </body>
 </html>
+
+<?php
+}
+?>
