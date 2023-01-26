@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
+    
     <script src="/JS/Busqueda_menu.js"></script>
     <title>Pagina de Inicio</title>
 </head>
@@ -15,7 +16,7 @@
     <header>
         <nav>
             <div class="grid-container">
-                <div class="col-1"><a href="Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
@@ -64,6 +65,14 @@
         </section> -->
         <div class="responsive">
           <div class="gallery">
+            <a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
+              <img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
+            </a>
+            </div>
+        </div>
+        
+        <div class="responsive">
+          <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
               <img class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
             </a>
@@ -87,13 +96,7 @@
             </div>
         </div>
 
-        <div class="responsive">
-          <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
-              <img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
-            </a>
-            </div>
-        </div>
+        
         <div class="clearfix"></div>
       </div>
       <div class="clearfix"></div>
@@ -114,6 +117,7 @@
             </div>
         </div>
     </footer>
+    <script></script>
     <script src="../JS/generos2.js"></script>
 </body>
 </html>

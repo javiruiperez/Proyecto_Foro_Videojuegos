@@ -168,7 +168,7 @@ if (!isset($_REQUEST['bAcept'])) {
             if ($usuarioBuscado != $datesform[USER]) {
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
                 pie();
-                header("location:../../HTML/Index.html");
+                header("location:../../HTML/Index.php");
                 // header("location:enviar.php");
             } else {
                 $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";

@@ -14,7 +14,7 @@
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"><a href="../../HTML/Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="grid-item-left"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="grid-item-center">
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
@@ -50,7 +50,6 @@
     </header>
 
     <div id="borrar">
-        <!-- Guías (HACER CON DOM y BD) -->
         <div class="guide">
             <div class="userGuideInfo">
                 <div id="imageGuide"></div>
@@ -60,8 +59,7 @@
             <div class="textGuide"></div>
         </div>
 
-        <!-- Comentarios (HACER CON DOM y BD) -->
-        <div class="createComments">
+        <div class=`<?php echo (isset($errores["NoSession"])) ? "noSession": "createComments" ?>`>
             <div class="userInfo">
                 <div id="imageUser"></div>
                 <div id="nameUser"></div>
@@ -76,6 +74,24 @@
         </div>
 
         <div id="readComments">
+            <?php 
+                if (isset($_GET["w1"])) {
+                    $phpVar1 = $_GET['w1'];
+                }
+                try{
+                    $comentarios = new Usuario();
+                    $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
+        
+                    foreach($commentsArray as $comment){
+                        echo '<div class=comment>'. $comment["texto"].'</div>';
+                    }
+        
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $errores['NoComment'] = "Ha habido un error <br>";
+                }
+            ?>
         </div>
     </div>
     <div id="Images"></div>

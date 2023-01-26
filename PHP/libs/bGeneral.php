@@ -5,7 +5,7 @@ function cabecera()
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"><a href="../../HTML/Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="grid-item-left"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="grid-item-center">
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">

@@ -1,0 +1,1 @@
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'idJuego' cannot be null##Código: 23000  0.86901100 1674725286

@@ -95,16 +95,13 @@
         }
 
         public function sacarComentariosOrdenPorJuego($idJuego){
-            $texto = "";
-            $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
+            $consulta="SELECT * FROM `comentarios` where idJuego=? ORDER BY idComentario;";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idJuego);
             $stmt->execute();
 
-            foreach ($stmt as $row){
-                $texto = $texto .$row['texto'];
-            }
-            return $texto;
+            $arrayComentarios=$stmt->fetchAll();
+            return $arrayComentarios;
         }
 
         public function borrarComentario($idComentario){

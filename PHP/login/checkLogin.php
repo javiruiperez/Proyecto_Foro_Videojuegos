@@ -6,11 +6,12 @@
     cabecera("Log In");
     $errores = [];
     
-    /*THIS CHECKS IF A SESSION IS STARTED AND REDIRECTS TO TH MAIN PAGE IF IT DOES
-    session_start();
-    if($_SESSION["user"] != ""){
-        header("location:../../HTML/index.html");
-    }*/
+    //CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
+    // session_start();
+    // if (isset($_SESSION["user"])) {
+    //     echo "holaxd";
+    //     header("location:../../HTML/Index.php?entrar=true");
+    // }
 
     if(!isset($_REQUEST["submitLogin"])){
         require("formLogin.php");
@@ -32,7 +33,8 @@
                     if($userBD=$usuario->checkPassword($user, $password)){
                         session_start();
                         $_SESSION["user"] = $user;
-                        header("location:../../HTML/index.html"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+
+                        header("location:../../HTML/Index.php?entrar=true"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");
