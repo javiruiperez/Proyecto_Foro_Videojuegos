@@ -26,13 +26,14 @@ body{
 
 .grid-container {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(3,1fr);
 }
 @media only screen and (max-width: 768px) {
     .grid-container {
         display: grid;
         grid-template-columns: none;
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr 1fr;
     }
     .col-1 {
         width: 100%;
@@ -64,18 +65,21 @@ h1{
 a {
     text-decoration: none;
 }
-
+.col-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 .log-In{
-    float: right;
-    margin: 9%;
+    margin-top: 15%;
+    text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 700;
     text-shadow: 2px 2.5px 2.5px #000000;
 }
 .sign-In{
-    float: right;
-    margin: 9%;
+    margin-top: 15%;
+    text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 700;
@@ -89,13 +93,6 @@ header form {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-}
-
-.Logo{
-    float: center;
-    width: 240px;
-    height: 100px;
-    padding: 0px;
 }
 
 header .barra_busqueda {
@@ -315,9 +312,7 @@ div.gallery {
     font-size: 0.7rem;
     margin: 0% 1%;
 }
-.ocultar{
-    display: none;
-}
+
 
 /* HACER PRIMERO LA PÁGINA WEB A MÓVIL (IMPORTANTE)
 HACER UN SUBMENÚ DESPLEGABLE PARA LOS GÉNEROS CUANDO SEA FORMATO MÓVIL */
