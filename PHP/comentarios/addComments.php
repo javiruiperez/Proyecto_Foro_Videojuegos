@@ -14,6 +14,7 @@
     if(!isset($_REQUEST["submitComment"])){
         require("comments.php");
     } else{
+        
         $userSession = $_SESSION["user"];
         $content = recoge("newComment");
 
@@ -37,14 +38,14 @@
         if($content === ""){
             $errores["NoComment"] = "<div class='errorMessage'>Comment cannot be blank</div>";
         }
-        require("comments.php");
+      
         
         if(count($errores) === 0){
             try{
                 $usuario = new Usuario();
                 if($userBD = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
                     if($commentBD = $usuario->guardarComentario($phpVar1, $content, $userBD)){ //añadir comentario
-                        header("Refresh:0");
+                        // header("Refresh:0");
                     }
                 }
 
