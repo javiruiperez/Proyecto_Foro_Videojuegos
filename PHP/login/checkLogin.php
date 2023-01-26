@@ -34,7 +34,7 @@
                         session_start();
                         $_SESSION["user"] = $user;
 
-                        header("location:../../HTML/Index.php?entrar=true"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+                        header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");

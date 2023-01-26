@@ -74,25 +74,28 @@
         </div>
 
         <div id="readComments">
-            <?php 
+            <?php
                 if (isset($_GET["w1"])) {
                     $phpVar1 = $_GET['w1'];
+                } 
+                else{
+                    header("Location:../../HTML/Index.php");
                 }
                 try{
                     $comentarios = new Usuario();
                     $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-        
+                    echo print_r($commentsArray);
+                    
                     foreach($commentsArray as $comment){
                         echo '<div class=comment>'. $comment["texto"].'</div>';
                     }
-        
+                    
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                     // guardamos en ·errores el error que queremos mostrar a los usuarios
                     $errores['NoComment'] = "Ha habido un error <br>";
                 }
             ?>
-        </div>
     </div>
     <div id="Images"></div>
 
