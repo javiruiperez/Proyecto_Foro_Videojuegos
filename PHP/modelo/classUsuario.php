@@ -104,12 +104,15 @@
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idJuego);
           $stmt->execute();
-          foreach ($stmt as $row) {
 
-            $texto=$texto. $row['texto'] ;
+          $arrayComentarios=$stmt->fetchAll();
+          return $arrayComentarios;
+        //   foreach ($stmt as $row) {
+
+        //     $texto=$texto.$row['texto'] ;
         
-        }
-        return $texto;
+        // }
+        // return $texto;
         }
 
         public function borrarComentario($idComentario){
