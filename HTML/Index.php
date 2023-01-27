@@ -104,10 +104,11 @@
       </div>
       <div class="clearfix"></div>
     </div>
-    <div>
-     <button type="button" class="Siguiente" id="Siguiente">Siguinte</button>
-      <button type="button" class="Atras" id="Atras">Atras</button>
-  </div>
+    <div class="Botones" id="Botones">
+     
+     <button type="button" class="Atras" id="Atras">Atras</button>
+     <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
+ </div>
       <div id="Images"></div>
     <footer>
         <div class="footer">
@@ -227,9 +228,10 @@
       </div>
       <div class="clearfix"></div>
     </div>
-    <div>
-     <button type="button" class="Siguiente" id="Siguiente">Siguinte</button>
+    <div class="Botones" id="Botones">
+     
       <button type="button" class="Atras" id="Atras">Atras</button>
+      <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
   </div>
       <div id="Images"></div>
     <footer>

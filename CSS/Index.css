@@ -122,6 +122,10 @@ header .categorias a.activo {
     color: #2FA9F3;
 }
 
+.genres:hover, .sign-In:hover, #selectPlatform:hover{
+    color: #2FA9F3;
+}
+
 select{
     color: #fff;
     background-color: #00000000;
@@ -216,9 +220,16 @@ div.gallery {
 }
 .Siguiente, .Atras{
     width: 80px;
-    display: none;
+  
     
 }
+.Botones{
+    display: none;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+
 .grid.imagenes-cargadas {
     opacity: 1;
 }

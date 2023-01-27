@@ -30,8 +30,10 @@
             <?php
                 try{
                     $guia = new Usuario();
+                    $issetGuide = false;
                     $phpVar1 = $_GET['w1'];
                     if($guideGame = $guia->sacarGuiaPorJuego($phpVar1)){
+                        $issetGuide = true;
                         echo "<div class=guiaJuego>".$guideGame."</div>";
                     } else{
                         ?>
@@ -79,13 +81,20 @@ else{
                 <div id="imageUser"></div>
                 <div id="nameUser"></div>
             </div>
-            <form action="" method="post">
-                <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
-                <?php
-                    echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment[NoComment]</div><br>": "";
+            <?php
+            if($issetGuide){
                 ?>
-                <input type="submit" value="Send" name="submitComment"/>
-            </form>
+                <form action="" method="post">
+                    <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+                    <?php
+                        echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div><br>": "";
+                    ?>
+                    <input type="submit" value="Send" name="submitComment"/>
+                </form>
+            <?php
+                }
+            ?>
+            
         </div>
 
         <div id="readComments">

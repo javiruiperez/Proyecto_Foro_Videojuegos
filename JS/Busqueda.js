@@ -1,10 +1,11 @@
 numeroPagina=1;
 
 entra=false;
+const APIKEY2 = "229705cef01a4e4c879872d1fceb9c08";
 const Busqueda = async(nombreJuego) =>{
 
 try{
-    const options =await fetch( `https://api.rawg.io/api/tags?key=a580e38977014c8b9b571daecae598ef`,{
+    const options =await fetch( `https://api.rawg.io/api/tags?key=${APIKEY2}`,{
         method:'GET'
     }
     );
@@ -42,7 +43,7 @@ options2.results.forEach(element => {
 
 const cargarImagenesJuegosPorNombre = async(nombreJuego) =>{
     try{
-        const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
+        const options =await fetch( `https://api.rawg.io/api/games?key=${APIKEY2}&page=${numeroPagina}`,{
             method:'GET'
         }
         );
