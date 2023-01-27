@@ -29,7 +29,7 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
                         images=images+`<div class="responsive">
                             <div class="gallery">
                             <img class="imagen" id=${juegos.id} src="${juegos.background_image}" width="400"    height="250">
-                            <p>${juegos.name}</p>
+                            <p class="tituloJuego">${juegos.name}</p>
                             </a>
                             </div>
                         </div>`
@@ -40,13 +40,13 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
 
                 // document.getElementById('Images').innerHTML=images; 
             
-                if(images==""&&totalJuegos<10){
+                if(images==""&&totalJuegos<8){
                     numeroPagina++;
                     cargarImagenesJuegosPorGenero(genero);
                 }
                 else{
                     console.log(totalJuegos);
-                    if(totalJuegos<10){
+                    if(totalJuegos<9){
                         document.getElementById('Images').innerHTML=images; 
                         numeroPagina=1;
                     }
@@ -127,7 +127,7 @@ const cargarJuegos = async(platformSelected) => {
             for(var i = 0; i < games.results.length; i++){
                 for(var j = 0; j < games.results[i].platforms.length; j++){
                     if(games.results[i].platforms[j].platform.name === platformSelected){
-                        if(totalJuegos >= 10){
+                        if(totalJuegos >= 8){
                             break;
                         }
                         let name_game = games.results[i].name;
@@ -136,7 +136,7 @@ const cargarJuegos = async(platformSelected) => {
                         newGames += `<div class="responsive">
                         <div class="gallery">
                             <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
-                            <p>${name_game}</p>
+                            <p class="tituloJuego">${name_game}</p>
                           </a>
                         </div>
                         </div>`
@@ -144,7 +144,7 @@ const cargarJuegos = async(platformSelected) => {
                     }
                 }
             }
-            if(totalJuegos < 9){
+            if(totalJuegos < 8){
                 numeroPagina++;
                 cargarJuegos(platformSelected);
             } else{

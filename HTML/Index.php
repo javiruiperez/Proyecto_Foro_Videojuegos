@@ -27,7 +27,7 @@
                 <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Usuario</a></div>
             </div>
             <div class="categorias" id="categorias">
-                <a href="#" class="activo">All</a>
+             
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="Adventure">Adventure</a>
                 <a href="#" class="genres" id="Sports">Sports</a>
@@ -122,6 +122,7 @@
     </footer>                                                                                       
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
+    <script src="../JS/Busqueda.js"></script>
 </body>
 </html>
 
@@ -154,7 +155,7 @@
                 <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
             <div class="categorias" id="categorias">
-                <a href="#" class="activo">All</a>
+              
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="Adventure">Adventure</a>
                 <a href="#" class="genres" id="Sports">Sports</a>
@@ -240,6 +241,7 @@
     </footer>                                                                                               
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
+    <script src="../JS/Busqueda.js"></script>
 </body>
 </html>
 <?php

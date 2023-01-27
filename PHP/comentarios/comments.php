@@ -21,31 +21,7 @@
               </form></div>
                 <div class="grid-item-right"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
-            <div class="categorias" id="categorias">
-                <a href="#" class="activo">All</a>
-                <a href="#" id="Action">Action</a>
-                <a href="#">Adventure</a>
-                <a href="#">Sports</a>
-                <a href="#">Racing</a>
-                <a href="#">Simulation</a>
-                <a href="#">Strategy</a>
-                <br>
-                <select>
-                    <option value=""> Year </option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                </select>
-                <select id="selectPlatform">
-                    <option value="">Platform</option>
-                    <option value="PlayStation 5">PS5</option>
-                    <option value="PlayStation 4">PS4</option>
-                    <option value="Xbox Series S/X">Xbox Series X/S</option>
-                    <option value="Xbox One">Xbox One</option>
-                    <option value="PC">PC</option>
-                    <option value="Nintendo Switch">Nintendo Switch</option>
-                </select>
-            </div>
+          
         </nav>
     </header>
 

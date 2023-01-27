@@ -18,6 +18,7 @@
         $userSession = $_SESSION["user"];
         $content = recoge("newComment");
         
+
         if (isset($_GET["w1"])) {
             $phpVar1 = $_GET['w1'];
         }

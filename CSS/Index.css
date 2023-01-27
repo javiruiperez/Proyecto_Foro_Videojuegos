@@ -131,6 +131,17 @@ select{
     font-weight: 700;
     border-style: none;
 }
+
+.tituloJuego{
+   
+    color: white;
+     text-align: center;
+     text-transform: uppercase;
+     font-family: 'VT323', monospace;
+     font-size: 25px;
+}
+
+
 option{
     color: #000000;
     font-size: 18px;
@@ -140,6 +151,7 @@ option{
 
 div.gallery {
     border: 1px solid #ccc;
+    background-color: black;
   }
   
   div.gallery:hover {

@@ -10,7 +10,7 @@
     // session_start();
     // if (isset($_SESSION["user"])) {
     //     echo "holaxd";
-    //     header("location:../../HTML/Index.php?entrar=true");
+    //     header("location:../../HTML/Index.php");
     // }
 
     if(!isset($_REQUEST["submitLogin"])){
