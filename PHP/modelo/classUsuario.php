@@ -10,8 +10,9 @@
             $resultadoUsuario = $result;
             // ->fetch(PDO::FETCH_ASSOC)
             foreach ($resultadoUsuario as $row) {
-                $nameUser= $row['id'] ;
+                $nameUser= $row['id'];
             }
+            //Error: si no tiene la sesión iniciada da error -> que te lleve a index.php
             return $nameUser;
         }
 
@@ -22,7 +23,7 @@
             $result->bindParam(':user', $user);
             $result->execute();
             $resultadoUsuario = $result;
-            // ->fetch(PDO::FETCH_ASSOC)
+
             foreach ($resultadoUsuario as $row) {
                 $nameUser= $row['usuario'] ;
             }
@@ -112,45 +113,52 @@
             return  $stmt->execute();
         }
 
-
         public function guardarGuia($idJuego, $texto, $idUsuario){
-            $consulta=" INSERT INTO `guias` (`idGuia`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
+            $consulta=" INSERT INTO `guias` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1, $idJuego);
             $stmt->bindParam(2, $texto);
             $stmt->bindParam(3, $idUsuario);
  
             return  $stmt->execute();
-         }
+        }
  
-         public function sacarGuiaPorJuego($idJuego){
-             $consulta="SELECT * FROM `guias` where idJuego=? ;";
-             $stmt=$this->prepare($consulta);
-             $stmt->bindParam(1,$idJuego);
-             $stmt->execute();
- 
-            
+        public function sacarGuiaPorJuego($idJuego){
+            $consulta="SELECT * FROM `guias` where idJuego=? ;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idJuego);
+            $stmt->execute();
 
-             foreach ($stmt as $row) {
-                $guia= $row['texto'] ;
+            foreach ($stmt as $row) {
+                $guia = $row['texto'];
+            }
+            $issetGuia = isset($guia);
+
+            if(!$issetGuia){
+                return;
+            } else{
+                return $guia;
+            }
+        }
+
+        public function borrarGuia($idGuia){
+            $consulta="DELETE FROM `guias` WHERE `guias`.`idGuia` = ?;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idGuia);
+ 
+            return  $stmt->execute();
+        }
+
+        public function mostrarUsuarioGuia($idJuego){
+            $consulta = "SELECT * FROM guias WHERE idJuego = ?";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $idJuego);
+
+            foreach($stmt as $row){
+                $idUser = $row['idUsuario'];
             }
 
-             return $guia;
-         }
- 
-         public function borrarGuia($idGuia){
-             $consulta="DELETE FROM `guiass` WHERE `guias`.`idGuia` = ?;";
-             $stmt=$this->prepare($consulta);
-             $stmt->bindParam(1,$idComentario);
- 
-             return  $stmt->execute();
-         }
-
-
-        
+            return $idUser;
+        }
     }
-
-
-
-
 ?>
