@@ -62,18 +62,15 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
         e.addEventListener('click',()=>{
             var idJuego = e.id;
             var enlace = e.src;
-            window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2"+enlace ;
+            window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace ;
         })
     })
 }
-
-
    
 // cargarImagenesJuegosPorGenero("Racing");
 const btnAnterior=document.getElementById('btnAnterior');
 const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
-
 
 BtnGeneros.forEach(nombre=>{
     console.log(nombre.id); 
@@ -117,8 +114,8 @@ const cargarJuegos = async(platformSelected) => {
     try{
         const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
         method:'GET'
-    }
-    );
+        }
+        );
 
         if(options.status === 200){
             const games = await options.json();
@@ -138,11 +135,9 @@ const cargarJuegos = async(platformSelected) => {
                         // <a target="_blank" href="${image_game}">
                         newGames += `<div class="responsive">
                         <div class="gallery">
-                         
                             <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
                             <p>${name_game}</p>
                           </a>
-                       
                         </div>
                         </div>`
                         totalJuegos++;
@@ -161,14 +156,13 @@ const cargarJuegos = async(platformSelected) => {
                 images="";
                 cont++;
 
-
                 const imagenImagen2=document.querySelectorAll('.imagen');
                 console.log(imagenImagen2);
-                imagenImagen2.forEach(e=>{
-                    e.addEventListener('click',()=>{
-                        var idJuego = e.id;
-                        var enlace = e.src;
-                        window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2"+enlace ;
+                imagenImagen2.forEach(i=>{
+                    i.addEventListener('click',()=>{
+                        var idJuego = i.id;
+                        var enlace = i.src;
+                        window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace;
                    })
                })
             }
@@ -186,7 +180,6 @@ eventPlatform.addEventListener("change", function(){
     console.log(juego);
     totalJuegos = 0; 
     cargarJuegos(juego);
-
 })
 
 

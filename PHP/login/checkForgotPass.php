@@ -27,7 +27,7 @@
                     $newPass = randomPassword();
                     $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
                    
-                    $to =$emailBD "franbotella97@gmail.com";
+                    $to = "franbotella97@gmail.com";
                     $subject = "Recuperar Contraseña";
                     $headers = "MIME-Version: 1.0" . "\r\n";
                     $headers .= "Contenttype:text/html;charset=UTF-8" . "\r\n";

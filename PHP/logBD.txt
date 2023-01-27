@@ -1,2 +1,5 @@
 SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'idJuego' cannot be null##Código: 23000  0.86901100 1674725286
 SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'idJuego' cannot be null##Código: 23000  0.55396900 1674733459
+SQLSTATE[HY000] [1049] Unknown database 'bdforousuarios_php'##Código: 1049  0.87808800 1674804969
+SQLSTATE[HY000] [1049] Unknown database 'bdforousuarios_php'##Código: 1049  0.98736200 1674804975
+SQLSTATE[HY000] [1049] Unknown database 'bdforousuarios_php'##Código: 1049  0.69392100 1674804978
