@@ -2,10 +2,11 @@ numeroPagina=1;
 images="";
 element =document.getElementById("borrar");
 cont=0;
+const APIKEY = "229705cef01a4e4c879872d1fceb9c08";
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
-        const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
+        const options =await fetch( `https://api.rawg.io/api/games?key=${APIKEY}&page=${numeroPagina}`,{
             method:'GET'
         }
         );
@@ -112,7 +113,7 @@ newGames = "";
 
 const cargarJuegos = async(platformSelected) => {
     try{
-        const options =await fetch( `https://api.rawg.io/api/games?key=a580e38977014c8b9b571daecae598ef&page=${numeroPagina}`,{
+        const options =await fetch( `https://api.rawg.io/api/games?key=${APIKEY}}&page=${numeroPagina}`,{
         method:'GET'
         }
         );
@@ -178,7 +179,8 @@ let eventPlatform = document.getElementById("selectPlatform");
 eventPlatform.addEventListener("change", function(){
     let juego = eventPlatform.value;
     console.log(juego);
-    totalJuegos = 0; 
+    totalJuegos = 0;
+    numeroPagina = Math.floor(Math.random()*5+1);
     cargarJuegos(juego);
 })
 

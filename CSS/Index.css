@@ -122,6 +122,10 @@ header .categorias a.activo {
     color: #2FA9F3;
 }
 
+.genres:hover, .sign-In:hover, #selectPlatform:hover{
+    color: #2FA9F3;
+}
+
 select{
     color: #fff;
     background-color: #00000000;
