@@ -51,6 +51,28 @@
 
     <div id="borrar">
         <div class="guide">
+            <?php
+                try{
+                    $guia = new Usuario();
+                    $phpVar1 = $_GET['w1'];
+                    if($guideGame = $guia->sacarGuiaPorJuego($phpVar1)){
+                        echo "<div class=guiaJuego>".$guideGame."</div>";
+                    } else{
+                        ?>
+                        <div class="newGuide">
+                            <form action="" method="post">
+                                <input type="text" placeholder="Add a new guide..." name="textNewGuide">
+                                <input type="submit" value="Post" name="sendNewGuide">
+                            </form>
+                        </div>
+                        <?php
+                    }
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        $erroresComment['NoComment'] = "Ha habido un error <br>";
+                }
+            ?>
             <div class="userGuideInfo">
                 <div id="imageGuide">
                 <?php
@@ -76,7 +98,7 @@ else{
     header("Location:../../HTML/Index.php");
 }
 ?>
-        <div class=`<?php echo (isset($errores["NoSession"])) ? "noSession": "createComments" ?>`>
+        <div class=`<?php echo (isset($erroresComment["NoSession"])) ? "noSession": "createComments" ?>`>
             <div class="userInfo">
                 <div id="imageUser"></div>
                 <div id="nameUser"></div>
@@ -84,7 +106,7 @@ else{
             <form action="" method="post">
                 <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
                 <?php
-                    echo (isset($errores["NoComment"])) ? "<div class='errorMessage'>$errores[NoComment]</div><br>": "";
+                    echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment[NoComment]</div><br>": "";
                 ?>
                 <input type="submit" value="Send" name="submitComment"/>
             </form>
@@ -110,7 +132,7 @@ else{
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                     // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $errores['NoComment'] = "Ha habido un error <br>";
+                    $erroresComment['NoComment'] = "Ha habido un error <br>";
                 }
             ?>
     </div>

@@ -9,7 +9,6 @@
     //CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
     // session_start();
     // if (isset($_SESSION["user"])) {
-    //     echo "holaxd";
     //     header("location:../../HTML/Index.php?entrar=true");
     // }
 
