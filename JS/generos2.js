@@ -62,7 +62,7 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
         e.addEventListener('click',()=>{
             var idJuego = e.id;
             var enlace = e.src;
-            window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2"+enlace ;
+            window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace ;
         })
     })
 }
@@ -164,11 +164,11 @@ const cargarJuegos = async(platformSelected) => {
 
                 const imagenImagen2=document.querySelectorAll('.imagen');
                 console.log(imagenImagen2);
-                imagenImagen2.forEach(e=>{
-                    e.addEventListener('click',()=>{
-                        var idJuego = e.id;
-                        var enlace = e.src;
-                        window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2"+enlace ;
+                imagenImagen2.forEach(i=>{
+                    i.addEventListener('click',()=>{
+                        var idJuego = i.id;
+                        var enlace = i.src;
+                        window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace ;
                    })
                })
             }

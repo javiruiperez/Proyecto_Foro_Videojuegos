@@ -111,6 +111,43 @@
 
             return  $stmt->execute();
         }
+
+
+        public function guardarGuia($idJuego, $texto, $idUsuario){
+            $consulta=" INSERT INTO `guias` (`idGuia`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $idJuego);
+            $stmt->bindParam(2, $texto);
+            $stmt->bindParam(3, $idUsuario);
+ 
+            return  $stmt->execute();
+         }
+ 
+         public function sacarGuiaPorJuego($idJuego){
+             $consulta="SELECT * FROM `guias` where idJuego=? ;";
+             $stmt=$this->prepare($consulta);
+             $stmt->bindParam(1,$idJuego);
+             $stmt->execute();
+ 
+            
+
+             foreach ($stmt as $row) {
+                $guia= $row['texto'] ;
+            }
+
+             return $guia;
+         }
+ 
+         public function borrarGuia($idGuia){
+             $consulta="DELETE FROM `guiass` WHERE `guias`.`idGuia` = ?;";
+             $stmt=$this->prepare($consulta);
+             $stmt->bindParam(1,$idComentario);
+ 
+             return  $stmt->execute();
+         }
+
+
+        
     }
 
 

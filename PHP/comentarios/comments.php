@@ -58,7 +58,14 @@
             <div class="titleGuide"></div>
             <div class="textGuide"></div>
         </div>
-
+<?php
+ if (isset($_GET["w2"])) {
+    $phpVar1 = $_GET['w2'];
+} 
+else{
+    header("Location:../../HTML/Index.php");
+}
+?>
         <div class=`<?php echo (isset($errores["NoSession"])) ? "noSession": "createComments" ?>`>
             <div class="userInfo">
                 <div id="imageUser"></div>
