@@ -24,7 +24,7 @@
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Usuario</a></div>
+                <div class="col-3-1"><a href="../PHP/register/registro.php" class="usuario">Usuario</a></div>
             </div>
             <div class="categorias" id="categorias">
              

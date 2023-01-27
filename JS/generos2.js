@@ -130,7 +130,11 @@ function hacerloVisible(){
     document.getElementById("Atras").style.display='inline-block';
     document.getElementById("Botones").style.display="block";
 }
-
+function hacerInvisible(){
+    document.getElementById("Siguiente").style.display='none';
+    document.getElementById("Atras").style.display='none';
+    document.getElementById("Botones").style.display="none";
+}
 function siguiente(){
     numeroPagina++;
 }
@@ -191,6 +195,7 @@ const cargarJuegos = async(platformSelected) => {
                 console.log(imagenImagen2);
                 imagenImagen2.forEach(i=>{
                     i.addEventListener('click',()=>{
+                      
                         var idJuego = i.id;
                         var enlace = i.src;
                         window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace;
@@ -211,6 +216,7 @@ eventPlatform.addEventListener("change", function(){
     console.log(juego);
     totalJuegos = 0;
     numeroPagina = Math.floor(Math.random()*5+1);
+    hacerInvisible();
     cargarJuegos(juego);
 })
 
