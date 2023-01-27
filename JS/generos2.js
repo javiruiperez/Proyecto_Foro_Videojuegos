@@ -73,10 +73,21 @@ const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
 
 BtnGeneros.forEach(nombre=>{
+   
+
     console.log(nombre.id); 
     tiposgeneros=document.getElementById(nombre.id);
     console.log(tiposgeneros);
     tiposgeneros.addEventListener('click',()=>{
+        hacerloVisible();
+        BTNSiguiente=document.getElementById("Siguiente");
+        BTNSiguiente.addEventListener('click',()=>{
+            siguiente();
+        })
+        BTNAtras=document.getElementById("Atras");
+        BTNAtras.addEventListener('click',()=>{
+            atras();
+        })
         images="";
         numeroPagina=1;
         totalJuegos = 0;
@@ -105,7 +116,16 @@ BtnGeneros.forEach(nombre=>{
         });
     })
 })
+function hacerloVisible(){
+    document.getElementById(Siguiente).style.display='block';
+}
 
+function siguiente(){
+    numeroPagina++;
+}
+function atras(){
+    numeroPagina--;
+}
 
 totalJuegos = 0;
 newGames = "";
@@ -179,6 +199,7 @@ eventPlatform.addEventListener("change", function(){
     let juego = eventPlatform.value;
     console.log(juego);
     totalJuegos = 0; 
+    numeroPagina=Math.floor(Math.random()*5+1);
     cargarJuegos(juego);
 })
 

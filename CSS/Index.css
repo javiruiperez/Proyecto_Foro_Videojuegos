@@ -214,7 +214,11 @@ div.gallery {
     opacity: 0;
     transition: opacity 0.5s linear 1s;
 }
-
+.Siguiente, .Atras{
+    width: 80px;
+    display: none;
+    
+}
 .grid.imagenes-cargadas {
     opacity: 1;
 }

@@ -104,6 +104,10 @@
       </div>
       <div class="clearfix"></div>
     </div>
+    <div>
+     <button type="button" class="Siguiente" id="Siguiente">Siguinte</button>
+      <button type="button" class="Atras" id="Atras">Atras</button>
+  </div>
       <div id="Images"></div>
     <footer>
         <div class="footer">
@@ -223,6 +227,10 @@
       </div>
       <div class="clearfix"></div>
     </div>
+    <div>
+     <button type="button" class="Siguiente" id="Siguiente">Siguinte</button>
+      <button type="button" class="Atras" id="Atras">Atras</button>
+  </div>
       <div id="Images"></div>
     <footer>
         <div class="footer">
