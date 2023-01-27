@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
-    <title>Pagina de Inicio</title>
+    <title>ForoGamers</title>
 </head>
 <body>
     <header>
@@ -52,7 +52,17 @@
     <div id="borrar">
         <div class="guide">
             <div class="userGuideInfo">
-                <div id="imageGuide"></div>
+                <div id="imageGuide">
+                <?php
+                    //Image of the game is put into the guide div
+                    if(isset($_GET["w2"])){
+                        $phpVar2 = $_GET["w2"];
+                        echo "<img src=".$phpVar2." width=300px></img>";
+                    } else{
+                        header("Location:../../HTML/Index.php");
+                    }
+                ?>
+                </div>
                 <div id="nameUserGuide"></div>
             </div>
             <div class="titleGuide"></div>
@@ -84,6 +94,7 @@ else{
             <?php
                 if (isset($_GET["w1"])) {
                     $phpVar1 = $_GET['w1'];
+                    $phpVar2 = $_GET['w2'];
                 } 
                 else{
                     header("Location:../../HTML/Index.php");
@@ -91,7 +102,6 @@ else{
                 try{
                     $comentarios = new Usuario();
                     $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-                    echo print_r($commentsArray);
                     
                     foreach($commentsArray as $comment){
                         echo '<div class=comment>'. $comment["texto"].'</div>';

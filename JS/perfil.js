@@ -1,5 +1,3 @@
-
-
 var xhr=new XMLHttpRequest();
 xhr.open('GET','PRUEBA.PHP');
 xhr.onload=function(){

@@ -1,11 +1,7 @@
-
-
 <?php
-session_start();
-// session_destroy();
-if(isset($_SESSION["user"])){
- 
-  ?>
+  session_start();
+  if(isset($_SESSION["user"])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +12,6 @@ if(isset($_SESSION["user"])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
-    
     <script src="/JS/Busqueda_menu.js"></script>
     <title>Pagina de Inicio</title>
 </head>
@@ -124,19 +119,16 @@ if(isset($_SESSION["user"])){
                 ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran Botella, Oscar Delicado
             </div>
         </div>
-    </footer>
-    
-                                                                                                           
+    </footer>                                                                                       
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
 </body>
 </html>
+
 <?php
-}
-else{
+  }
+  else{
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,7 +139,6 @@ else{
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
-    
     <script src="/JS/Busqueda_menu.js"></script>
     <title>Pagina de Inicio</title>
 </head>
@@ -195,13 +186,6 @@ else{
       </div>
       <br>
       <br>
-        <!-- <section class="grid" id="grid">
-          <div class="item" data-categoria="Historia" data-etiquetas="historia Historia inicicios primer equipo" data-descripcion="Aqui va la descripcion">
-              <div class="item_contenido">
-                  <img src="/Interfaces Proyecto/foto_ejemplo_juego.png" alt=" ">
-              </div>
-          </div>
-        </section> -->
         <div class="responsive">
           <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
@@ -218,7 +202,6 @@ else{
           </div>
         </div>
 
-
         <div class="responsive">
           <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
@@ -234,7 +217,6 @@ else{
             </a>
             </div>
         </div>
-
         
         <div class="clearfix"></div>
       </div>
@@ -255,14 +237,11 @@ else{
                 ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran Botella, Oscar Delicado
             </div>
         </div>
-    </footer>
-    
-                                                                                                           
+    </footer>                                                                                               
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
 </body>
 </html>
-
 <?php
-}
+  }
 ?>

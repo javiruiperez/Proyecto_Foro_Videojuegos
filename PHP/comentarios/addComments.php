@@ -15,8 +15,8 @@
     if(!isset($_REQUEST["submitComment"])){
         require("comments.php");
     } else{
-            $userSession = $_SESSION["user"];
-            $content = recoge("newComment");
+        $userSession = $_SESSION["user"];
+        $content = recoge("newComment");
         
         if (isset($_GET["w1"])) {
             $phpVar1 = $_GET['w1'];
