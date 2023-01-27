@@ -2,9 +2,9 @@
 
 <?php
 session_start();
-session_destroy();
+// session_destroy();
 if(isset($_SESSION["user"])){
-  echo "meme";
+ 
   ?>
 <!DOCTYPE html>
 <html lang="en">
