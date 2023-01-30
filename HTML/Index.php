@@ -21,15 +21,9 @@
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
                 <form action="">                
-<<<<<<< HEAD
-                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-              </form></div>
-                <div class="col-3-1"><a href="../PHP/register/registro.php" class="usuario">Usuario</a></div>
-=======
                     <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
                 </form></div>
                 <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Usuario</a></div>
->>>>>>> 133c528deb07c9e1f94c2c8cb3c09f38ade7e1f1
             </div>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
