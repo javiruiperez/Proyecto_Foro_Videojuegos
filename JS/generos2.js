@@ -10,8 +10,6 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
             method:'GET'
         }
         );
-        // images="";
-
         if(options.status===200){
             const options2=await options.json();
 
@@ -34,12 +32,9 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
                             </a>
                             </div>
                         </div>`
-                        totalJuegos++;           
-                        // document.getElementById('Images').innerHTML=images;             
+                        totalJuegos++;                
                     }
                 })
-
-                // document.getElementById('Images').innerHTML=images; 
             
                 if(images==""&&totalJuegos<8){
                     numeroPagina++;
@@ -219,44 +214,3 @@ eventPlatform.addEventListener("change", function(){
     hacerInvisible();
     cargarJuegos(juego);
 })
-
-
-  /*
-<?php
-// comprobar si tenemos los parametros w1 y w2 en la URL
-if (isset($_GET["w1"]) && isset($_GET["w2"])) {
-    // asignar w1 y w2 a dos variables
-    $phpVar1 = $_GET["w1"];
-    $phpVar2 = $_GET["w2"];
- 
-    // mostrar $phpVar1 y $phpVar2
-    echo "<p>Parameters: " . $phpVar1 . " " . $phpVar1 . "</p>";
-} else {
-    echo "<p>No parameters</p>";
-}
-?>
-*/
-
-
-// const idGeneros= async(nombreGenero)=>{
-//     try{
-//         const generos=await fetch('https://api.rawg.io/api/genres?key=d22b44fd751e438f943040e82cf43c0e',{
-//             mehtod:'GET',
-        
-//         })
-//         if(generos.status===200){
-//             const generos2=await generos.json();
-//             // console.log(generos2);
-//             generos2.results.forEach(juego=>{
-//                 if(nombreGenero==juego.name)
-// console.log(juego.id);
-//             })
-//         }
-        
-       
-//     }
-// catch(error){
-//     console.log(error);
-// }
-// }
-// idGeneros("Action");
