@@ -2,7 +2,7 @@ numeroPagina=1;
 images="";
 element =document.getElementById("borrar");
 cont=0;
-const APIKEY = "229705cef01a4e4c879872d1fceb9c08";
+const APIKEY = "33edcf04053d452982094c7b3cabcb86";
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
@@ -62,15 +62,12 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
         })
     })
 }
-   
-// cargarImagenesJuegosPorGenero("Racing");
+
 const btnAnterior=document.getElementById('btnAnterior');
 const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
 
 BtnGeneros.forEach(nombre=>{
-   
-
     console.log(nombre.id); 
     tiposgeneros=document.getElementById(nombre.id);
     console.log(tiposgeneros);
@@ -120,6 +117,7 @@ BtnGeneros.forEach(nombre=>{
         });
     })
 })
+
 function hacerloVisible(){
     document.getElementById("Siguiente").style.display='inline-block';
     document.getElementById("Atras").style.display='inline-block';

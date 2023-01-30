@@ -104,10 +104,10 @@ a {
     text-shadow: 2px 2.5px 2.5px #000000; 
 }
 /* //mirar */
-header{
+/* header{
     background-color: #000000;
     position: fixed;
-}
+} */
 
 header form {
     position: relative;

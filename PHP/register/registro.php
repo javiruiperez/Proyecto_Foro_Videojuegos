@@ -54,8 +54,6 @@ if (!isset($_REQUEST['bAcept'])) {
                         <label><?php echo  $campo ?></label><br>
                         <input type="text" name="<?php echo $campo ?>" ></input>
                         <br>
-
-
                     <?php
                     } else {
                     ?>
@@ -131,8 +129,6 @@ if (!isset($_REQUEST['bAcept'])) {
                             echo $erroresMsg[$campo];
                         ?>
                         <br>
-
-
                     <?php
                     } else {
                     ?>
@@ -174,6 +170,8 @@ if (!isset($_REQUEST['bAcept'])) {
 
             if ($usuarioBuscado != $datesform[USER]) {
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
+                mkdir("../../img/".$datesform[NAME]);
+                copy("../../img/image.png", "../../img/".$datesform[NAME]."/image.png");
                 pie();
                 header("location:../../HTML/Index.php");
                 // header("location:enviar.php");

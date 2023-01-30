@@ -21,15 +21,9 @@
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
                 <form action="">                
-<<<<<<< HEAD
-                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-              </form></div>
-                <div class="col-3-1"><a href="../PHP/register/registro.php" class="usuario">Usuario</a></div>
-=======
                     <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
                 </form></div>
                 <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Usuario</a></div>
->>>>>>> 133c528deb07c9e1f94c2c8cb3c09f38ade7e1f1
             </div>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
@@ -77,12 +71,6 @@
             </a>
         </div>
     </div>
-    <div class="Botones" id="Botones">
-     
-     <button type="button" class="Atras" id="Atras">Atras</button>
-     <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
- </div>
-      <div id="Images"></div>
     <div class="responsive">
         <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
@@ -110,7 +98,12 @@
 
     <div class="clearfix"></div>
     <div class="clearfix"></div>
+    <div class="Botones" id="Botones">
+        <button type="button" class="Atras" id="Atras">Atras</button>
+        <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
+    </div>
     <div id="Images"></div>
+    
 
     <footer>
         <div class="footer">
@@ -192,12 +185,6 @@
     </div>
     <br>
     <br>
-    <div class="Botones" id="Botones">
-     
-     <button type="button" class="Atras" id="Atras">Atras</button>
-     <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
- </div>
-      <div id="Images"></div>
     <div class="responsive">
       	<div class="gallery">
         	<a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
@@ -232,6 +219,10 @@
 
     <div class="clearfix"></div>
     <div class="clearfix"></div>
+    <div class="Botones" id="Botones">
+        <button type="button" class="Atras" id="Atras">Atras</button>
+        <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
+    </div>
     <div id="Images"></div>
 
     <footer>

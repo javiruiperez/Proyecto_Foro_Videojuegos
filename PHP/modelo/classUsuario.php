@@ -160,5 +160,30 @@
 
             return $idUser;
         }
+
+        public function changeProfilePicture($imageName, $username){
+            // SI NO TIENE FOTO DE PERFIL GUARDAR UNA DEFAULT
+            $image = $_FILES[$imageName]['name'];
+            if(isset($image) && $image != ""){
+                $type = $_FILES[$imageName]['type'];
+                $size = $_FILES[$imageName]['size'];
+                $temp = $_FILES[$imageName]['tmp_name'];
+
+                if(!((strpos($type, "jpg") || strpos($type, "png") || strpos($type, "jpeg")) && ($size < 2000000))){
+                    return "Error with the profile picture";
+                } else{
+                    if(is_file("../../img/".$username."/".$image)){
+                        $image = time() . $image;
+                    }
+                    if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
+                        return "imagen subida";
+                    } else{
+                        return "error al subir la imagen";
+                    }
+                }
+            } else{
+                return "imagen vacía";
+            }
+        }
     }
 ?>

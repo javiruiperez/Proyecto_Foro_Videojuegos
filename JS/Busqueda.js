@@ -1,7 +1,7 @@
 numeroPagina=1;
 
 entra=false;
-const APIKEY2 = "229705cef01a4e4c879872d1fceb9c08";
+const APIKEY2 = "33edcf04053d452982094c7b3cabcb86";
 const Busqueda = async(nombreJuego) =>{
 
 try{
