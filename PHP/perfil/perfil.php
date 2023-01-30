@@ -2,12 +2,10 @@
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
-include("../libs/bGeneral.php");
- session_start();
+session_start();
 
  if(isset($_SESSION["user"])){
     try{
-    
         $usuario = new Usuario();
 
         $usuarioBuscado = $usuario->getUser($_SESSION["user"]);
@@ -19,15 +17,10 @@ include("../libs/bGeneral.php");
         // guardamos en ·errores el error que queremos mostrar a los usuarios
         $erroresGuide['NoGuide'] = "Ha habido un error <br>";
     }
-    
+
+$nombreArchivo = "";
 $dir = "../../img";
-/**
- * Tamaño máximo aceptado, si queremos que sea inferior al configurado en php.ini
- **/
-$max_file_size = "512000000";
-/**
- * Creamos una lista de extensiones permitidas, por seguridad es lo más válido.
- */
+$max_file_size = "51200000";
 $extensionesValidas = array(
     "jpg",
     "png",
@@ -75,22 +68,33 @@ form{
     </header>
     <div class="form">
         <form action="" method="post" enctype="multipart/form-data">
-        <div class="box"><img src="../../img/image.png" ></div>
+        <div class="box"><img src=
+        <?php
+            echo "../../img/".$usuarioBuscado."/image.png"; 
+        ?>></div>
             <label>Nombre</label><br>
-            <label><?php echo  $nombreBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre"  id="Nombre"class="pendiente"></input><br>
             <label>User</label><br>
             <label><?php echo  $usuarioBuscado  ?></label><br>
             <label>Email</label><br>
-            <label><?php echo  $emailBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $emailBuscado  ?>" name="Email" id="Email" class="pendiente"></input><br>
+            <label>Contraseña</label><br>
+            <input type="text" value="" name="Contraseña" id="Contraseña" class="pendiente"></input><br>
           
-    <input type="file" name="imagen" id="imagen" />
+    <input type="file" name="imagen" id="imagen"/>
             
            <br>
-           <input type="submit" class="buttonForm" name="submit" value="bAceptar"/>
-           <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
+           <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
+           <input type="button" name="Cancelar" value="Cancelar" id="Cancelar" >
 
             <br>
-            <a href="cerrarSession.php" class="CerrarSession">CerrarrSession</a>
+            <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" >
+            <?php
+if(isset($_REQUEST["CerrarSession"])){
+    session_destroy();
+    header("Location:../../HTML/Index.php");
+}
+            ?>
         </form>
 
     <footer>
@@ -109,82 +113,98 @@ form{
         </div>
     </footer>
 </body>
+<script>
+
+let cancelar=document.getElementById("Cancelar");
+
+    
+
+    
+
+cancelar.addEventListener('click',()=>{
+    let cancelarV=document.querySelectorAll(".pendiente");
+    console.log(cancelarV);
+    cancelarV.forEach(nombre=>{
+        console.log( document.getElementById(nombre.id).value);
+    document.getElementById(nombre.id).value="";
+
+})
+})
+</script>
 </html>
 
 <?php
 
-if (isset($_REQUEST['submit'])) {
- 
-if (!isset($_FILES['imagen'])) {
-    $errores["imagen"] = "Error en la imagen";
-  
+
+
+if (!isset($_REQUEST['submitImage'])) {
+    echo "error";
 } else {
 
-        /**
-         * Guardamos el nombre original del fichero
-         **/
- 
-        $nombreArchivo = $_FILES['imagen']['name'];
-        /*
-         * Guardamos nombre del fichero en el servidor
-        */
-        $directorioTemp = $_FILES['imagen']['tmp_name'];
-        /*
-         * Calculamos el tamaño del fichero
-        */
-        //directoriotemp es igual a fichero
-        $tamanyoFile = filesize($directorioTemp);
-        /*
-        * Extraemos la extensión del fichero, desde el último punto. Si hubiese doble extensión, no lo
-        * tendría en cuenta.
-        */
-        $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
-
-     
+    try{
+        $usuarioCambiando = new Usuario();
+        $contraseñaEncriptada= $usuarioCambiando->modifyPassword($_REQUEST["Contraseña"], $_REQUEST["Email"]);
+        $usuarioBuscado = $usuarioCambiando->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$_SESSION["user"]);
     
-    
-            /**
-             * 
-             * Tenemos que buscar un nombre único para guardar el fichero de manera definitiva
-             * Añadimos microtime() al nombre del fichero si ya existe un archivo guardado con ese nombre.
-             * */
-            //directory_separator es igual a \
-            $nombreArchivo = is_file($dir . DIRECTORY_SEPARATOR . $nombreArchivo) ? time() . $nombreArchivo : $nombreArchivo;
-            $nombreCompleto = $dir . DIRECTORY_SEPARATOR . $nombreArchivo;
-            /**
-             * Movemos el fichero a la ubicación definitiva.
-             * */
-            
-
-             if(isset($image) &&  $nombreArchivo != ""){
-                $type =  $extension;
-                $size = $tamanyoFile;
-                $temp = $nombreArchivo;
-
-                if(!((strpos($type, "jpg") || strpos($type, "png") || strpos($type, "jpeg")) && ($size < 2000000))){
-                    echo "Error with the profile picture";
-                } else{
-                    if(is_file("../../img/".$username."/".$image)){
-                        $image = time() . $image;
-                    }
-                    if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
-                        echo  "imagen subida";
-                    } else{
-                        echo "error al subir la imagen";
-                    }
-                }
-            } else{
-                echo "imagen vacía";
+    }  catch (PDOException $e) {
+                // En este caso guardamos los errores en un archivo de errores log
+                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "./logBD.txt");
+                // guardamos en ·errores el error que queremos mostrar a los usuarios
+                $errores['datos'] = "Ha habido un error <br>";
             }
 
 
 
+
+    if (($_FILES['imagen']['error'] != 0)) {
+        switch ($_FILES['imagen']['error']) {
+            case 1:
+                $errores["imagen"] = "UPLOAD_ERR_INI_SIZE. Fichero demasiado grande";
+                break;
+            case 2:
+                $errores["imagen"] = "UPLOAD_ERR_FORM_SIZE. El fichero es demasiado grande";
+                break;
+            case 3:
+                $errores["imagen"] = "UPLOAD_ERR_PARTIAL. El fichero no se ha podido subir entero";
+                break;
+            case 4:
+                $errores["imagen"] = "UPLOAD_ERR_NO_FILE. No se ha podido subir el fichero";
+                break;
+            case 6:
+                $errores["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Falta carpeta temporal<br>";
+            case 7:
+                $errores["imagen"] = "UPLOAD_ERR_CANT_WRITE. No se ha podido escribir en el disco<br>";
+
+            default:
+                $errores["imagen"] = 'Error indeterminado.';
+        }
+    } else {
+        $nombreArchivo = $_FILES['imagen']['name'];
+        $directorioTemp = $_FILES['imagen']['tmp_name'];
         
-    
-}
-}
-else{
-    echo "No entra";
+        $tamanyoFile = filesize($directorioTemp);
+        $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+
+        if (!in_array($extension, $extensionesValidas)) {
+            $errores["imagen"] = "La extensión del archivo no es válida";
+        }
+        if ($tamanyoFile > $max_file_size) {
+            $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
+        }
+
+        if (empty($errores)) {
+            $nombreArchivo = "image.png";
+            if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
+                unlink("../../img/".$usuarioBuscado."/image.png"); 
+            }
+
+            if(move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo)){
+                echo "imagen subida";
+            } else{
+                echo "error al subir la imagen";
+            }
+        }
+    }
 }
 
 }else{

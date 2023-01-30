@@ -95,6 +95,20 @@
         }
 
 
+        public function actualizainfo($nombre,$email,$usuario)
+        {
+           
+          $consulta="UPDATE `usuarios` SET `nombre` = ?, `correo` = ? WHERE usuario = ?";
+          $resultado = $this->prepare($consulta);
+            $resultado->bindParam(1, $nombre);
+            $resultado->bindParam(2, $email);
+            $resultado->bindParam(3, $usuario);
+            $resultado->execute();
+        }
+
+
+
+
         public function insertUser($nombre,$usuario,$contraseña,$email){
             $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
             $stmt=$this->prepare($consulta);
@@ -209,13 +223,13 @@
                         $image = time() . $image;
                     }
                     if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
-                        return "imagen subida";
+                        echo "imagen subida";
                     } else{
-                        return "error al subir la imagen";
+                        echo "error al subir la imagen";
                     }
                 }
             } else{
-                return "imagen vacía";
+                echo "imagen vacía";
             }
         }
     }
