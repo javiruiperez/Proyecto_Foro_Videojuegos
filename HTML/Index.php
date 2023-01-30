@@ -32,7 +32,6 @@
                 <a href="#" class="genres" id="Racing">Racing</a>
                 <a href="#" class="genres" id="Simulation">Simulation</a>
                 <a href="#" class="genres" id="Strategy">Strategy</a>
-                <br>
             <select id="selectPlatform">
                 <option value="">Platform</option>
                 <option value="PlayStation 5">PS5</option>
