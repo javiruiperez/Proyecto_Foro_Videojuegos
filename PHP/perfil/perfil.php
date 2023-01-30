@@ -38,7 +38,6 @@ $extensionesValidas = array(
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
- 
     <title>ForoGamers</title>
     <style>
 form{
@@ -78,13 +77,10 @@ form{
             <label><?php echo  $usuarioBuscado  ?></label><br>
             <label>Email</label><br>
             <label><?php echo  $emailBuscado  ?></label><br>
-          
-    <input type="file" name="imagen" id="imagen"/>
-            
-           <br>
-           <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
-           <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
-
+            <input type="file" name="imagen" id="imagen"/>
+            <br>
+            <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
+            <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
             <br>
             <a href="cerrarSession.php" class="CerrarSession">CerrarrSession</a>
         </form>
@@ -108,62 +104,56 @@ form{
 </html>
 
 <?php
-if (!isset($_REQUEST['submitImage'])) {
-    echo "error";
-} else {
-
-    if (($_FILES['imagen']['error'] != 0)) {
-        switch ($_FILES['imagen']['error']) {
-            case 1:
-                $errores["imagen"] = "UPLOAD_ERR_INI_SIZE. Fichero demasiado grande";
-                break;
-            case 2:
-                $errores["imagen"] = "UPLOAD_ERR_FORM_SIZE. El fichero es demasiado grande";
-                break;
-            case 3:
-                $errores["imagen"] = "UPLOAD_ERR_PARTIAL. El fichero no se ha podido subir entero";
-                break;
-            case 4:
-                $errores["imagen"] = "UPLOAD_ERR_NO_FILE. No se ha podido subir el fichero";
-                break;
-            case 6:
-                $errores["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Falta carpeta temporal<br>";
-            case 7:
-                $errores["imagen"] = "UPLOAD_ERR_CANT_WRITE. No se ha podido escribir en el disco<br>";
-
-            default:
-                $errores["imagen"] = 'Error indeterminado.';
-        }
+    if (!isset($_REQUEST['submitImage'])) {
     } else {
-        $nombreArchivo = $_FILES['imagen']['name'];
-        $directorioTemp = $_FILES['imagen']['tmp_name'];
-        
-        $tamanyoFile = filesize($directorioTemp);
-        $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+        if (($_FILES['imagen']['error'] != 0)) {
+            switch ($_FILES['imagen']['error']) {
+                case 1:
+                    $errores["imagen"] = "UPLOAD_ERR_INI_SIZE. Fichero demasiado grande";
+                    break;
+                case 2:
+                    $errores["imagen"] = "UPLOAD_ERR_FORM_SIZE. El fichero es demasiado grande";
+                    break;
+                case 3:
+                    $errores["imagen"] = "UPLOAD_ERR_PARTIAL. El fichero no se ha podido subir entero";
+                    break;
+                case 4:
+                    $errores["imagen"] = "UPLOAD_ERR_NO_FILE. No se ha podido subir el fichero";
+                    break;
+                case 6:
+                    $errores["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Falta carpeta temporal<br>";
+                case 7:
+                    $errores["imagen"] = "UPLOAD_ERR_CANT_WRITE. No se ha podido escribir en el disco<br>";
 
-        if (!in_array($extension, $extensionesValidas)) {
-            $errores["imagen"] = "La extensión del archivo no es válida";
-        }
-        if ($tamanyoFile > $max_file_size) {
-            $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
-        }
+                default:
+                    $errores["imagen"] = 'Error indeterminado.';
+            }
+        } else {
+            $nombreArchivo = $_FILES['imagen']['name'];
+            $directorioTemp = $_FILES['imagen']['tmp_name'];
 
-        if (empty($errores)) {
-            $nombreArchivo = "image.png";
-            if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
-                unlink("../../img/".$usuarioBuscado."/image.png"); 
+            $tamanyoFile = filesize($directorioTemp);
+            $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+
+            if (!in_array($extension, $extensionesValidas)) {
+                $errores["imagen"] = "La extensión del archivo no es válida";
+            }
+            if ($tamanyoFile > $max_file_size) {
+                $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
             }
 
-            if(move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo)){
-                echo "imagen subida";
-            } else{
-                echo "error al subir la imagen";
+            if (empty($errores)) {
+                $nombreArchivo = "image.png";
+                if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
+                    unlink("../../img/".$usuarioBuscado."/image.png"); 
+                }
+
+                move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
             }
         }
     }
-}
 
-}else{
-    header("Location:../../HTML/Index.php");
-}
+    }else{
+        header("Location:../../HTML/Index.php");
+    }
 ?>

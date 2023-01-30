@@ -170,8 +170,8 @@ if (!isset($_REQUEST['bAcept'])) {
 
             if ($usuarioBuscado != $datesform[USER]) {
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
-                mkdir("../../img/".$datesform[NAME]);
-                copy("../../img/image.png", "../../img/".$datesform[NAME]."/image.png");
+                mkdir("../../img/".$datesform[USER]);
+                copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");
                 pie();
                 header("location:../../HTML/Index.php");
                 // header("location:enviar.php");

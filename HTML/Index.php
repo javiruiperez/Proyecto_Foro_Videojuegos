@@ -27,11 +27,11 @@
             </div>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
-                <a href="#"class="genres" id="Adventure">Adventure</a>
+                <a href="#"class="genres" id="RPG">RPG</a>
                 <a href="#" class="genres" id="Sports">Sports</a>
-                <a href="#" class="genres" id="Racing">Racing</a>
+                <a href="#" class="genres" id="Shooter">Shooter</a>
                 <a href="#" class="genres" id="Simulation">Simulation</a>
-                <a href="#" class="genres" id="Strategy">Strategy</a>
+                <a href="#" class="genres" id="Indie">Indie</a>
                 <br>
             <select id="selectPlatform">
                 <option value="">Platform</option>
@@ -156,11 +156,11 @@
             </div>
             <div class="categorias" id="categorias">  
                 <a href="#" class="genres" id="Action">Action</a>
-                <a href="#"class="genres" id="Adventure">Adventure</a>
+                <a href="#"class="genres" id="RPG">RPG</a>
                 <a href="#" class="genres" id="Sports">Sports</a>
-                <a href="#" class="genres" id="Racing">Racing</a>
+                <a href="#" class="genres" id="Shooter">Shooter</a>
                 <a href="#" class="genres" id="Simulation">Simulation</a>
-                <a href="#" class="genres" id="Strategy">Strategy</a>
+                <a href="#" class="genres" id="Indie">Indie</a>
                 <br>
             <select id="selectPlatform">
         		<option value="">Platform</option>
