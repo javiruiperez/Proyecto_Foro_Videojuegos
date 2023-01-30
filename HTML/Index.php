@@ -56,53 +56,12 @@
     </div>
     <br>
     <br>
-        <!-- <section class="grid" id="grid">
-          <div class="item" data-categoria="Historia" data-etiquetas="historia Historia inicicios primer equipo" data-descripcion="Aqui va la descripcion">
-              <div class="item_contenido">
-                  <img src="/Interfaces Proyecto/foto_ejemplo_juego.png" alt=" ">
-              </div>
-          </div>
-        </section> -->
-    <div class="responsive">
-        <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
-                <img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
-            </a>
-        </div>
     </div>
     <div class="Botones" id="Botones">
      
      <button type="button" class="Atras" id="Atras">Atras</button>
      <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
  </div>
-      <div id="Images"></div>
-    <div class="responsive">
-        <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
-                <img class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
-            </a>
-        </div>
-    </div>
-
-    <div class="responsive">
-        <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
-                <img src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
-            </a>
-        </div>
-    </div>
-
-    <div class="responsive">
-        <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
-                <img src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
-            </a>
-        </div>
-    </div>
-  </div>
-
-    <div class="clearfix"></div>
-    <div class="clearfix"></div>
     <div id="Images"></div>
 
     <footer>
@@ -111,8 +70,8 @@
                 <ul>
                     <li><a href="#">Contact us</a></li>
                     <li><a href="#">Our services</a></li>
-                    <li><a href="#" download>Privacy politics</a></li>
-                    <li><a href="#" download>Terms and conditions</a></li>
+                    <li><a href="#">Privacy politics</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
                 </ul>
             </div>
             <div class="row">
@@ -185,46 +144,13 @@
     </div>
     <br>
     <br>
+    </div>
+
     <div class="Botones" id="Botones">
      
      <button type="button" class="Atras" id="Atras">Atras</button>
      <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
  </div>
-      <div id="Images"></div>
-    <div class="responsive">
-      	<div class="gallery">
-        	<a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
-          		<img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
-        	</a>
-        </div>
-    </div>
-        
-    <div class="responsive">
-      	<div class="gallery">
-        	<a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
-          		<img class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
-        	</a>
-      	</div>
-    </div>
-
-    <div class="responsive">
-      	<div class="gallery">
-      	  	<a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
-      	  		<img src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
-      	  	</a>
-      	</div>
-    </div>
-
-    <div class="responsive">
-        <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
-                <img src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
-            </a>
-        </div>
-    </div>
-
-    <div class="clearfix"></div>
-    <div class="clearfix"></div>
     <div id="Images"></div>
 
     <footer>
@@ -233,8 +159,8 @@
                 <ul>
                     <li><a href="#">Contact us</a></li>
                     <li><a href="#">Our services</a></li>
-                    <li><a href="#" download>Privacy politics</a></li>
-                    <li><a href="#" download>Terms and conditions</a></li>
+                    <li><a href="#">Privacy politics</a></li>
+                    <li><a href="#">Terms and conditions</a></li>
                 </ul>
             </div>
             <div class="row">
