@@ -122,11 +122,11 @@ header .categorias a.activo {
     color: #2FA9F3;
 }
 
-.genres:hover, .sign-In:hover, #selectPlatform:hover{
+.genres:hover, .sign-In:hover{
     color: #2FA9F3;
 }
 
-select{
+#selectPlatform{
     color: #fff;
     background-color: #00000000;
     text-shadow: 2px 2.5px 2.5px #000000;
@@ -137,14 +137,12 @@ select{
 }
 
 .tituloJuego{
-   
     color: white;
-     text-align: center;
-     text-transform: uppercase;
-     font-family: 'VT323', monospace;
-     font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
 }
-
 
 option{
     color: #000000;
