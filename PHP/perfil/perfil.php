@@ -2,11 +2,10 @@
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
- session_start();
+session_start();
 
  if(isset($_SESSION["user"])){
     try{
-    
         $usuario = new Usuario();
 
         $usuarioBuscado = $usuario->getUser($_SESSION["user"]);
@@ -18,15 +17,10 @@ require("../BaseDeDatos/config.php");
         // guardamos en ·errores el error que queremos mostrar a los usuarios
         $erroresGuide['NoGuide'] = "Ha habido un error <br>";
     }
-    
-$dir = "../img";
-/**
- * Tamaño máximo aceptado, si queremos que sea inferior al configurado en php.ini
- **/
+
+$nombreArchivo = "";
+$dir = "../../img";
 $max_file_size = "51200000";
-/**
- * Creamos una lista de extensiones permitidas, por seguridad es lo más válido.
- */
 $extensionesValidas = array(
     "jpg",
     "png",
@@ -73,8 +67,11 @@ form{
         </nav>
     </header>
     <div class="form">
-        <form action="" method="post">
-        <div class="box"><img src="../img/image.png" ></div>
+        <form action="" method="post" enctype="multipart/form-data">
+        <div class="box"><img src=
+        <?php
+            echo "../../img/".$usuarioBuscado."/image.png"; 
+        ?>></div>
             <label>Nombre</label><br>
             <label><?php echo  $nombreBuscado  ?></label><br>
             <label>User</label><br>
@@ -82,10 +79,10 @@ form{
             <label>Email</label><br>
             <label><?php echo  $emailBuscado  ?></label><br>
           
-    <input type="file" name="imagen" id="imagen" />
+    <input type="file" name="imagen" id="imagen"/>
             
            <br>
-           <input type="submit" class="buttonForm" name="submit" value="Aceptar"/>
+           <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
            <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
 
             <br>
@@ -111,8 +108,8 @@ form{
 </html>
 
 <?php
-if (!isset($_FILES['imagen'])) {
-    $errores["imagen"] = "Error en la imagen";
+if (!isset($_REQUEST['submitImage'])) {
+    echo "error";
 } else {
 
     if (($_FILES['imagen']['error'] != 0)) {
@@ -138,61 +135,31 @@ if (!isset($_FILES['imagen'])) {
                 $errores["imagen"] = 'Error indeterminado.';
         }
     } else {
-        /**
-         * Guardamos el nombre original del fichero
-         **/
         $nombreArchivo = $_FILES['imagen']['name'];
-        /*
-         * Guardamos nombre del fichero en el servidor
-        */
         $directorioTemp = $_FILES['imagen']['tmp_name'];
-        /*
-         * Calculamos el tamaño del fichero
-        */
-        //directoriotemp es igual a fichero
+        
         $tamanyoFile = filesize($directorioTemp);
-        /*
-        * Extraemos la extensión del fichero, desde el último punto. Si hubiese doble extensión, no lo
-        * tendría en cuenta.
-        */
         $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
 
-        /*
-        * Comprobamos la extensión del archivo dentro de la lista que hemos definido al principio
-        */
         if (!in_array($extension, $extensionesValidas)) {
             $errores["imagen"] = "La extensión del archivo no es válida";
         }
-        /*
-        * Comprobamos el tamaño del archivo
-        */
         if ($tamanyoFile > $max_file_size) {
             $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
         }
 
-        /*
-        * Si no ha habido errores, almacenamos el archivo en ubicación definitiva si no hay errores
-        */
         if (empty($errores)) {
-          $archivo=true;
-            /**
-             * 
-             * Tenemos que buscar un nombre único para guardar el fichero de manera definitiva
-             * Añadimos microtime() al nombre del fichero si ya existe un archivo guardado con ese nombre.
-             * */
-            //directory_separator es igual a \
-            $nombreArchivo = is_file($dir . DIRECTORY_SEPARATOR . $nombreArchivo) ? time() . $nombreArchivo : $nombreArchivo;
-            $nombreCompleto = $dir . DIRECTORY_SEPARATOR . $nombreArchivo;
-            /**
-             * Movemos el fichero a la ubicación definitiva.
-             * */
-            if (move_uploaded_file($directorioTemp, $nombreCompleto)) {
-                echo "<br> El fichero \"$nombreCompleto\" ha sido guardado";
-              
-            } else {
-                $errores["imagen"]= "Ha habido un erroe al subir el fichero";
+            $nombreArchivo = "image.png";
+            if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
+                unlink("../../img/".$usuarioBuscado."/image.png"); 
             }
-        } 
+
+            if(move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo)){
+                echo "imagen subida";
+            } else{
+                echo "error al subir la imagen";
+            }
+        }
     }
 }
 

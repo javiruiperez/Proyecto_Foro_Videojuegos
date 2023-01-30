@@ -209,13 +209,13 @@
                         $image = time() . $image;
                     }
                     if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
-                        return "imagen subida";
+                        echo "imagen subida";
                     } else{
-                        return "error al subir la imagen";
+                        echo "error al subir la imagen";
                     }
                 }
             } else{
-                return "imagen vacía";
+                echo "imagen vacía";
             }
         }
     }
