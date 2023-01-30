@@ -71,6 +71,7 @@
             </a>
         </div>
     </div>
+      
     <div class="responsive">
         <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
@@ -224,7 +225,6 @@
         <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
     </div>
     <div id="Images"></div>
-
     <footer>
         <div class="footer">
             <div class="row">
