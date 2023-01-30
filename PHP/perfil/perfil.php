@@ -2,6 +2,7 @@
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
+include("../libs/bGeneral.php");
  session_start();
 
  if(isset($_SESSION["user"])){
@@ -19,11 +20,11 @@ require("../BaseDeDatos/config.php");
         $erroresGuide['NoGuide'] = "Ha habido un error <br>";
     }
     
-$dir = "../img";
+$dir = "../../img";
 /**
  * Tamaño máximo aceptado, si queremos que sea inferior al configurado en php.ini
  **/
-$max_file_size = "51200000";
+$max_file_size = "512000000";
 /**
  * Creamos una lista de extensiones permitidas, por seguridad es lo más válido.
  */
@@ -73,8 +74,8 @@ form{
         </nav>
     </header>
     <div class="form">
-        <form action="" method="post">
-        <div class="box"><img src="../img/image.png" ></div>
+        <form action="" method="post" enctype="multipart/form-data">
+        <div class="box"><img src="../../img/image.png" ></div>
             <label>Nombre</label><br>
             <label><?php echo  $nombreBuscado  ?></label><br>
             <label>User</label><br>
@@ -85,7 +86,7 @@ form{
     <input type="file" name="imagen" id="imagen" />
             
            <br>
-           <input type="submit" class="buttonForm" name="submit" value="Aceptar"/>
+           <input type="submit" class="buttonForm" name="submit" value="bAceptar"/>
            <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
 
             <br>
@@ -111,36 +112,18 @@ form{
 </html>
 
 <?php
+
+if (isset($_REQUEST['submit'])) {
+ 
 if (!isset($_FILES['imagen'])) {
     $errores["imagen"] = "Error en la imagen";
+  
 } else {
 
-    if (($_FILES['imagen']['error'] != 0)) {
-        switch ($_FILES['imagen']['error']) {
-            case 1:
-                $errores["imagen"] = "UPLOAD_ERR_INI_SIZE. Fichero demasiado grande";
-                break;
-            case 2:
-                $errores["imagen"] = "UPLOAD_ERR_FORM_SIZE. El fichero es demasiado grande";
-                break;
-            case 3:
-                $errores["imagen"] = "UPLOAD_ERR_PARTIAL. El fichero no se ha podido subir entero";
-                break;
-            case 4:
-                $errores["imagen"] = "UPLOAD_ERR_NO_FILE. No se ha podido subir el fichero";
-                break;
-            case 6:
-                $errores["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Falta carpeta temporal<br>";
-            case 7:
-                $errores["imagen"] = "UPLOAD_ERR_CANT_WRITE. No se ha podido escribir en el disco<br>";
-
-            default:
-                $errores["imagen"] = 'Error indeterminado.';
-        }
-    } else {
         /**
          * Guardamos el nombre original del fichero
          **/
+ 
         $nombreArchivo = $_FILES['imagen']['name'];
         /*
          * Guardamos nombre del fichero en el servidor
@@ -157,24 +140,9 @@ if (!isset($_FILES['imagen'])) {
         */
         $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
 
-        /*
-        * Comprobamos la extensión del archivo dentro de la lista que hemos definido al principio
-        */
-        if (!in_array($extension, $extensionesValidas)) {
-            $errores["imagen"] = "La extensión del archivo no es válida";
-        }
-        /*
-        * Comprobamos el tamaño del archivo
-        */
-        if ($tamanyoFile > $max_file_size) {
-            $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
-        }
-
-        /*
-        * Si no ha habido errores, almacenamos el archivo en ubicación definitiva si no hay errores
-        */
-        if (empty($errores)) {
-          $archivo=true;
+     
+    
+    
             /**
              * 
              * Tenemos que buscar un nombre único para guardar el fichero de manera definitiva
@@ -186,14 +154,37 @@ if (!isset($_FILES['imagen'])) {
             /**
              * Movemos el fichero a la ubicación definitiva.
              * */
-            if (move_uploaded_file($directorioTemp, $nombreCompleto)) {
-                echo "<br> El fichero \"$nombreCompleto\" ha sido guardado";
-              
-            } else {
-                $errores["imagen"]= "Ha habido un erroe al subir el fichero";
+            
+
+             if(isset($image) &&  $nombreArchivo != ""){
+                $type =  $extension;
+                $size = $tamanyoFile;
+                $temp = $nombreArchivo;
+
+                if(!((strpos($type, "jpg") || strpos($type, "png") || strpos($type, "jpeg")) && ($size < 2000000))){
+                    echo "Error with the profile picture";
+                } else{
+                    if(is_file("../../img/".$username."/".$image)){
+                        $image = time() . $image;
+                    }
+                    if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
+                        echo  "imagen subida";
+                    } else{
+                        echo "error al subir la imagen";
+                    }
+                }
+            } else{
+                echo "imagen vacía";
             }
-        } 
-    }
+
+
+
+        
+    
+}
+}
+else{
+    echo "No entra";
 }
 
 }else{
