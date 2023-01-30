@@ -30,6 +30,23 @@
             return $nameUser;
         }
 
+
+        public function getNombre($user)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
+            $result = $this->prepare($consulta);
+            $result->bindParam(':user', $user);
+            $result->execute();
+            $resultadoUsuario = $result;
+
+            foreach ($resultadoUsuario as $row) {
+                $name= $row['nombre'] ;
+            }
+            return $name;
+        }
+
+
+
         public function checkPassword($user, $password)
         {
             $consulta = "SELECT * FROM usuarios WHERE usuario=?";
@@ -61,6 +78,22 @@
                 }
             }
         }
+
+
+        public function getEmail($usuario)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE usuario=?";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(1, $usuario);
+            $resultado->execute();
+
+            foreach($resultado as $result){
+                $emailBuscado=$result['correo'];
+                
+            }
+            return $emailBuscado;
+        }
+
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
             $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
