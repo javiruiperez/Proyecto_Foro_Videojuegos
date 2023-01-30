@@ -8,75 +8,120 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
-    <script src="/JS/Busqueda_menu.js"></script>
-    <title>Pagina de Inicio</title>
+    <title>ForoGamers</title>
 </head>
 <body>
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"><a href="Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
-                <div class="grid-item-center">
+                <div class="col-1"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="col-2">
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="grid-item-right"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
+                <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
-            <div class="categorias" id="categorias">
-                <a href="#" class="activo">All</a>
-                <a href="#" id="Action">Action</a>
-                <a href="#">Adventure</a>
-                <a href="#">Sports</a>
-                <a href="#">Racing</a>
-                <a href="#">Simulation</a>
-                <a href="#">Strategy</a>
-                <br>
-                  <select>
-                    <option value=""> Year </option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                  </select>
-                  <select id="selectPlatform">
-                    <option value="">Platform</option>
-                    <option value="PlayStation 5">PS5</option>
-                    <option value="Xbox Series S/X">Xbox Series X/S</option>
-                    <option value="PlayStation 4">PS4</option>
-                    <option value="Xbox One">Xbox One</option>
-                    <option value="Nintendo Switch">Nintendo Switch</option>
-                  </select>
-            </div>
+          
         </nav>
     </header>
 
-    <!-- Guías (HACER CON DOM y BD) -->
-    <div class="guide">
-        <div class="userGuideInfo">
-            <div id="imageGuide"></div>
-            <div id="nameUserGuide"></div>
-        </div>
-        <div class="titleGuide"></div>
-        <div class="textGuide"></div>
-    </div>
-
-    <!-- Comentarios (HACER CON DOM y BD) -->
-    <div class="createComments">
-        <div class="userInfo">
-            <div id="imageUser"></div>
-            <div id="nameUser"></div>
-        </div>
-        <form action="" method="post">
-            <input type="textarea" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+    <div id="borrar">
+        <div class="guide">
             <?php
-                echo (isset($errores["NoComment"])) ? "<div class='errorMessage'>$errores[NoComment]</div><br>": "";
+                try{
+                    $guia = new Usuario();
+                    $issetGuide = false;
+                    $phpVar1 = $_GET['w1'];
+                    if($guideGame = $guia->sacarGuiaPorJuego($phpVar1)){
+                        $issetGuide = true;
+                        echo "<div class=guiaJuego>".$guideGame."</div>";
+                    } else{
+                        ?>
+                        <div class="newGuide">
+                            <form action="" method="post">
+                                <input type="text" placeholder="Add a new guide..." name="textNewGuide">
+                                <input type="submit" value="Post" name="sendNewGuide">
+                            </form>
+                        </div>
+                        <?php
+                    }
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        $erroresComment['NoComment'] = "Ha habido un error <br>";
+                }
             ?>
-            <input type="submit" value="Send" name="submitComment"/>
-        </form>
-    </div>
+            <div class="userGuideInfo">
+                <div id="imageGuide">
+                <?php
+                    //Image of the game is put into the guide div
+                    if(isset($_GET["w2"])){
+                        $phpVar2 = $_GET["w2"];
+                        echo "<img src=".$phpVar2." width=300px></img>";
+                    } else{
+                        header("Location:../../HTML/Index.php");
+                    }
+                ?>
+                </div>
+                <div id="nameUserGuide"></div>
+            </div>
+            <div class="titleGuide"></div>
+            <div class="textGuide"></div>
+        </div>
+<?php
+ if (isset($_GET["w2"])) {
+    $phpVar1 = $_GET['w2'];
+} 
+else{
+    header("Location:../../HTML/Index.php");
+}
+?>
+        <div class=`<?php echo (isset($erroresComment["NoSession"])) ? "noSession": "createComments" ?>`>
+            <div class="userInfo">
+                <div id="imageUser"></div>
+                <div id="nameUser"></div>
+            </div>
+            <?php
+            if($issetGuide){
+                ?>
+                <form action="" method="post">
+                    <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+                    <?php
+                        echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div><br>": "";
+                    ?>
+                    <input type="submit" value="Send" name="submitComment"/>
+                </form>
+            <?php
+                }
+            ?>
+            
+        </div>
 
-    <div id="readComments">
-
+        <div id="readComments">
+            <?php
+                if (isset($_GET["w1"])) {
+                    $phpVar1 = $_GET['w1'];
+                    $phpVar2 = $_GET['w2'];
+                } 
+                else{
+                    header("Location:../../HTML/Index.php");
+                }
+                try{
+                    $comentarios = new Usuario();
+                    $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
+                    
+                    foreach($commentsArray as $comment){
+                        echo '<div class=comment>'. $comment["texto"].'</div>';
+                    }
+                    
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $erroresComment['NoComment'] = "Ha habido un error <br>";
+                }
+            ?>
     </div>
+    <div id="Images"></div>
 
     <footer>
         <div class="footer">
@@ -94,4 +139,5 @@
         </div>
     </footer>
 </body>
+<script src="../../JS/generos2.js"></script>
 </html>

@@ -18,6 +18,13 @@ $erroresMsg = array(
     EMAIL => ""
 );
 
+
+  // session_start();
+    // if (isset($_SESSION["user"])) {
+    //     echo "holaxd";
+    //     header("location:../../HTML/Index.php");
+    // }
+
 if (!isset($_REQUEST['bAcept'])) {
 ?>
     <!DOCTYPE html>
@@ -45,7 +52,7 @@ if (!isset($_REQUEST['bAcept'])) {
                     if ($campo != "Password") {
                 ?>
                         <label><?php echo  $campo ?></label><br>
-                        <input type="text" name="<?php echo $campo ?>"></input>
+                        <input type="text" name="<?php echo $campo ?>" ></input>
                         <br>
 
 
@@ -71,7 +78,7 @@ if (!isset($_REQUEST['bAcept'])) {
 
 <?php
 } else {
-    if (preg_match("#\w#i", $_REQUEST["Name"]) == 1) {
+    if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
         $datesform[NAME] = $_REQUEST["Name"];
     } else {
         $erroresMsg[NAME] = "<div class='errorMessage'>Not a valid name.</div";
@@ -168,7 +175,7 @@ if (!isset($_REQUEST['bAcept'])) {
             if ($usuarioBuscado != $datesform[USER]) {
                 $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
                 pie();
-                header("location:../../HTML/Index.html");
+                header("location:../../HTML/Index.php");
                 // header("location:enviar.php");
             } else {
                 $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";

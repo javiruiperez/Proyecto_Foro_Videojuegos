@@ -5,12 +5,12 @@ function cabecera()
     <header>
         <nav>
             <div class="grid-container">
-                <div class="grid-item-left"><a href="../../HTML/Index.html"><h1 class="titulo">ForoGamers</h1></a></div>
-                <div class="grid-item-center">
+                <div class="col-1"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
+                <div class="col-2">
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="grid-item-right"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
+                <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div></nav>
     </header>
     <?php

@@ -27,8 +27,9 @@ body{
 .grid-container {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:  repeat(3,1fr);
 }
+
 @media only screen and (max-width: 768px) {
     .grid-container {
         display: grid;
@@ -68,9 +69,15 @@ a {
 .col-3{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    
+}
+.col-3-1{
+    display: grid;
+    grid-template-columns: 1fr ;  
 }
 .log-In{
-    margin-top: 15%;
+    margin-top: 20%;
+    margin-left: 5%;
     text-align: center;
     color: #fff;
     font-size: 18px;
@@ -78,12 +85,28 @@ a {
     text-shadow: 2px 2.5px 2.5px #000000;
 }
 .sign-In{
-    margin-top: 15%;
+    margin-top: 20%;
+    margin-left: 5%;
     text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 700;
     text-shadow: 2px 2.5px 2.5px #000000;
+}
+
+.usuario{
+    margin-top: 10%;
+    margin-left: 5%;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 2px 2.5px 2.5px #000000; 
+}
+/* //mirar */
+header{
+    background-color: #000000;
+    position: fixed;
 }
 
 header form {
@@ -122,7 +145,11 @@ header .categorias a.activo {
     color: #2FA9F3;
 }
 
-select{
+.genres:hover, .sign-In:hover{
+    color: #2FA9F3;
+}
+
+#selectPlatform{
     color: #fff;
     background-color: #00000000;
     text-shadow: 2px 2.5px 2.5px #000000;
@@ -131,6 +158,15 @@ select{
     font-weight: 700;
     border-style: none;
 }
+
+.tituloJuego{
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+}
+
 option{
     color: #000000;
     font-size: 18px;
@@ -140,6 +176,7 @@ option{
 
 div.gallery {
     border: 1px solid #ccc;
+    background-color: black;
   }
   
   div.gallery:hover {
@@ -202,6 +239,17 @@ div.gallery {
     opacity: 0;
     transition: opacity 0.5s linear 1s;
 }
+.Siguiente, .Atras{
+    width: 80px;
+  
+    
+}
+.Botones{
+    display: none;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
 
 .grid.imagenes-cargadas {
     opacity: 1;

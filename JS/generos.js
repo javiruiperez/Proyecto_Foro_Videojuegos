@@ -4,7 +4,7 @@ newGames = "";
 
 const cargarJuegos = async(platformSelected) => {
     try{
-        const options =await fetch( `https://api.rawg.io/api/games?key=d22b44fd751e438f943040e82cf43c0e&page=${numeroPagina}`,{
+        const options =await fetch( `https://api.rawg.io/api/games?key=229705cef01a4e4c879872d1fceb9c08&page=${numeroPagina}`,{
         method:'GET'
     }
     );

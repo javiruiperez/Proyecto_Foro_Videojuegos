@@ -1,56 +1,75 @@
 <?php
-    /*ERROR, PÁGINA EN BLANCA AL DARLE AL BOTÓN DE ENVIAR (ARREGLAR)*/
+    // SI NO TIENE GUÍA, NO PUEDES COMENTAR (IMPORTANTE = CAMBIAR)
     include("../libs/bGeneral.php");
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");
     require("../BaseDeDatos/config.php");
-    $errores = [];
+    $erroresComment = [];
+    $erroresGuide = [];
 
-    if(!isset($_REQUEST["submitComment"])){
-        require("comments.php");
-      
-    } else{
-        session_start();
+    session_start();
+    if (!isset($_SESSION["user"])) {
+        $erroresComment["NoSession"] = "true";
+    }else{
         $userSession = $_SESSION["user"];
-        $content = recoge("newComment");
-        $idGame = rand(1, 100);
-     
+    }
+
+    if(!isset($_REQUEST["submitComment"]) && !isset($_REQUEST["sendNewGuide"])){
         require("comments.php");
-        if($content === ""){
-            $errores["NoComment"] = "The comment cannot be blank";
+    } else{
+        if(isset($_REQUEST["sendNewGuide"])){
+            $guideText = recoge("textNewGuide");
+
+            if (isset($_GET["w1"])) {
+                $phpVar1 = $_GET['w1'];
+            }
+
+            if($guideText === ""){
+                $errores["NoGuide"] = "Your guide cannot be blank";
+            }
+
+            if(count($erroresGuide) === 0){
+                try{
+                    $guiaBD = new Usuario();
+                    if($userId = $guiaBD->getIdUser($userSession))
+                    if($guiaGurdar = $guiaBD->guardarGuia($phpVar1, $guideText, $userId)){
+                        header("Refresh:0");
+                    }
+
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+                }
+            }
         }
 
-        if(count($errores) === 0){
-            try{
-                $usuario = new Usuario();
-              
-                $userBD = $usuario->getIdUser($userSession);
-                echo $userBD;
-                echo "entra";
-                if($userBD = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
-                    //ERROR POR NO TENER ID DE JUEGO (AÑADIR CON FUNCIÓN DE FRAN)
-                    echo "entra";
-                    
-                    if($commentBD = $usuario->guardarComentario($idGame, $content, $userBD)){ //añadir comentario
-                        echo "comentario añadido";
-                        // header("location:../../HTML/index.html");
-                    } else{
-                        echo "comentario incorrecto";
-                        require("comments.php");
-                    }
-                } else{
-                    //BORRAR LUEGO CUANDO YA ESTÉ RESUELTO
-                    echo "usuario no añadido".$userBD;
-                    require("comments.php");
-                }
-
-            } catch(PDOException $e){
-                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                // guardamos en ·errores el error que queremos mostrar a los usuarios
-                $errores['datos'] = "Ha habido un error <br>";
+        if(isset($_REQUEST["submitComment"])){
+            $content = recoge("newComment");
+            
+            if (isset($_GET["w1"])) {
+                $phpVar1 = $_GET['w1'];
             }
-        } else {
-            require("comments.php");
+
+            if($content === ""){
+                $erroresComment["NoComment"] = "<div class='errorMessage'>Comment cannot be blank</div>";
+            }
+
+            if(count($erroresComment) === 0){
+                try{
+                    $usuario = new Usuario();
+                    if($userBD = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
+                        if($commentBD = $usuario->guardarComentario($phpVar1, $content, $userBD)){ //añadir comentario
+                            header("Refresh:0");
+                        }
+                    }
+                
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $erroresComment['NoComment'] = "Ha habido un error <br>";
+                }
+            }
         }
     }
 ?>

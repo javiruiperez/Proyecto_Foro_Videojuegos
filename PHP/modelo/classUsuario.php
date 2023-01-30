@@ -10,11 +10,9 @@
             $resultadoUsuario = $result;
             // ->fetch(PDO::FETCH_ASSOC)
             foreach ($resultadoUsuario as $row) {
-
-                $nameUser= $row['id'] ;
-           
+                $nameUser= $row['id'];
             }
-         
+            //Error: si no tiene la sesión iniciada da error -> que te lleve a index.php
             return $nameUser;
         }
 
@@ -25,13 +23,10 @@
             $result->bindParam(':user', $user);
             $result->execute();
             $resultadoUsuario = $result;
-            // ->fetch(PDO::FETCH_ASSOC)
-            foreach ($resultadoUsuario as $row) {
 
+            foreach ($resultadoUsuario as $row) {
                 $nameUser= $row['usuario'] ;
-            
             }
-         
             return $nameUser;
         }
 
@@ -90,22 +85,6 @@
             $resultado->execute();
         }
 
-/*
-<?php
-// comprobar si tenemos los parametros w1 y w2 en la URL
-if (isset($_GET["w1"]) && isset($_GET["w2"])) {
-    // asignar w1 y w2 a dos variables
-    $phpVar1 = $_GET["w1"];
-    $phpVar2 = $_GET["w2"];
- 
-    // mostrar $phpVar1 y $phpVar2
-    echo "<p>Parameters: " . $phpVar1 . " " . $phpVar1 . "</p>";
-} else {
-    echo "<p>No parameters</p>";
-}
-?>
-*/
-
         public function guardarComentario($idJuego, $texto, $idUsuario){
            $consulta=" INSERT INTO `comentarios` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
            $stmt=$this->prepare($consulta);
@@ -117,11 +96,13 @@ if (isset($_GET["w1"]) && isset($_GET["w2"])) {
         }
 
         public function sacarComentariosOrdenPorJuego($idJuego){
-            $consulta="SELECT texto FROM `comentarios` where idJuego=? ORDER BY idComentario;";
+            $consulta="SELECT * FROM `comentarios` where idJuego=? ORDER BY idComentario;";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idJuego);
-        
-            return  $stmt->execute();
+            $stmt->execute();
+
+            $arrayComentarios=$stmt->fetchAll();
+            return $arrayComentarios;
         }
 
         public function borrarComentario($idComentario){
@@ -129,11 +110,55 @@ if (isset($_GET["w1"]) && isset($_GET["w2"])) {
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idComentario);
 
-             return  $stmt->execute();
+            return  $stmt->execute();
+        }
+
+        public function guardarGuia($idJuego, $texto, $idUsuario){
+            $consulta=" INSERT INTO `guias` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $idJuego);
+            $stmt->bindParam(2, $texto);
+            $stmt->bindParam(3, $idUsuario);
+ 
+            return  $stmt->execute();
+        }
+ 
+        public function sacarGuiaPorJuego($idJuego){
+            $consulta="SELECT * FROM `guias` where idJuego=? ;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idJuego);
+            $stmt->execute();
+
+            foreach ($stmt as $row) {
+                $guia = $row['texto'];
+            }
+            $issetGuia = isset($guia);
+
+            if(!$issetGuia){
+                return;
+            } else{
+                return $guia;
+            }
+        }
+
+        public function borrarGuia($idGuia){
+            $consulta="DELETE FROM `guias` WHERE `guias`.`idGuia` = ?;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$idGuia);
+ 
+            return  $stmt->execute();
+        }
+
+        public function mostrarUsuarioGuia($idJuego){
+            $consulta = "SELECT * FROM guias WHERE idJuego = ?";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $idJuego);
+
+            foreach($stmt as $row){
+                $idUser = $row['idUsuario'];
+            }
+
+            return $idUser;
         }
     }
-
-
-
-
 ?>

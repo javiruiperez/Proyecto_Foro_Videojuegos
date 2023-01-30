@@ -6,14 +6,15 @@
     cabecera("Log In");
     $errores = [];
     
-    /*THIS CHECKS IF A SESSION IS STARTED AND REDIRECTS TO TH MAIN PAGE IF IT DOES
-    session_start();
-    if($_SESSION["user"] != ""){
-        header("location:../../HTML/index.html");
-    }*/
+    //CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
+    // session_start();
+    // if (isset($_SESSION["user"])) {
+    //     header("location:../../HTML/Index.php?entrar=true");
+    // }
 
     if(!isset($_REQUEST["submitLogin"])){
         require("formLogin.php");
+   
     } else{
         $user = recoge("usernameLogin");
         $password = recoge("passwordLogin");
@@ -28,21 +29,16 @@
 
         if(count($errores) === 0){//This should check if the username and password exists and if it doesn't, it will show an error
             try{
-                // include("../BaseDeDatos/conexion.php");
-                // $consultaLogin = $pdo->prepare("select * FROM usuarios WHERE usuario = ?");
-                // $consultaLogin->bindParam(1, $user);
-                // $consultaLogin->execute();
-                // foreach ($consultaLogin as $consultas){
-                //     $checkPass = crypt($password, $consultas['contraseñaEncriptada']);
-                //     if($checkPass === $consultas['contraseñaEncriptada']){
                     $usuario = new Usuario();
                     if($userBD=$usuario->checkPassword($user, $password)){
                         session_start();
                         $_SESSION["user"] = $user;
-                        header("location:../../HTML/index.html"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+
+                        header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");
+                       
                     }
             } catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
@@ -51,5 +47,8 @@
             }
         } else{
             require("formLogin.php");
+           
         }
+
+      
     }
