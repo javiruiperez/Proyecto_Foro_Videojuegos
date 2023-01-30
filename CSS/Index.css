@@ -71,10 +71,6 @@ a {
     grid-template-columns: 1fr 1fr;
     
 }
-.col-3-1{
-    display: grid;
-    grid-template-columns: 1fr ;  
-}
 .log-In{
     margin-top: 20%;
     margin-left: 5%;
