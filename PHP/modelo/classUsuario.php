@@ -30,6 +30,20 @@
             return $nameUser;
         }
 
+        public function getUsername($idUser)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE id=:idUser";
+            $result = $this->prepare($consulta);
+            $result->bindParam(':idUser', $idUser);
+            $result->execute();
+            $resultadoUsuario = $result;
+
+            foreach ($resultadoUsuario as $row) {
+                $nameUser= $row['usuario'] ;
+            }
+            return $nameUser;
+        }
+
 
         public function getNombre($user)
         {

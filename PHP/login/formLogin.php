@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../CSS/Registro.css">
     <link rel="stylesheet" href="../../CSS/Index.css">
     <title>Log In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
     <div class="form">
@@ -20,7 +21,9 @@
                 echo (isset($errores["NoUserLogin"])) ? "<div class='errorMessage'>$errores[NoUserLogin]</div>": "";
             ?>
             <label>Password</label><br>
-            <input type="password" name="passwordLogin"/><br>
+            <input type="password" name="passwordLogin" id="password"/><br>
+            <i class="show fa fa-eye"></i>
+            <i class="hide fa fa-eye-slash"></i>
             <?php
                 echo (isset($errores["NoPassLogin"])) ? "<div class='errorMessage'>$errores[NoPassLogin]</div><br>": "";
             ?>
@@ -33,5 +36,23 @@
     <?php
         pie();
     ?>
+    <script>
+        var passwordField = document.getElementById("password");
+        var show = document.querySelector(".show");
+        var hide = document.querySelector(".hide");
+
+        show.onclick = function(){
+            passwordField.setAttribute("type", "text");
+            show.style.display = "none";
+            hide.style.display = "block";
+        }
+
+        hide.onclick = function(){
+            passwordField.setAttribute("type", "password");
+            hide.style.display = "none";
+            show.style.display = "block";
+        }
+
+    </script>
 </body>
 </html>
