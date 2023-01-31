@@ -200,7 +200,21 @@ div.gallery img {
     font-family: 'VT323', monospace;
     font-size: 25px;
 }
+.comment{
+    border:blue;
+    color: red;
+}
 
+
+.commentSin{
+    color:green;
+}
+option{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    border-style: none;
+}
 
 div.desc {
     padding: 15px;

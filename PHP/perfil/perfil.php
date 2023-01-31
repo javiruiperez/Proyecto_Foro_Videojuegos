@@ -2,6 +2,7 @@
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
+require("../modelo/classAdmin.php");
 session_start();
 
 if(isset($_SESSION["user"])){
@@ -71,17 +72,60 @@ if(isset($_SESSION["user"])){
             echo "../../img/".$usuarioBuscado."/image.png"; 
         ?>></div>
             <label>Nombre</label><br>
-            <label><?php echo  $nombreBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre"  id="Nombre"class="pendiente"></input><br>
             <label>User</label><br>
             <label><?php echo  $usuarioBuscado  ?></label><br>
             <label>Email</label><br>
             <label><?php echo  $emailBuscado  ?></label><br>
+            <?php
+         
+        
+            try{
+              
+                $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
+               
+            if($usuarioNivel==2){
+            
+            ?>
+            <label class="bloquear">Bloquear usuario<label>
+                <br>
+            <input type="text" class="bloquearusuario" name="bloquearUsuario"> </input>
+            <br>
+            <label class="bloquear">Nueva Contraseña<label>
+                <br>
+            <input type="text" class="bloquearTexto" name="bloquearTexto"> </input>
+            <br>
+            <input type="submit" class="buttonForm" name="submitBloquear" value="Bloquear"/>
+            <br>
+            <?php
+        
+        
+        }
+        if(isset($_REQUEST['submitBloquear'])){
+            $admin=new Administrador();
+            $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["bloquearTexto"],$_REQUEST["bloquearUsuario"]);
+            echo "entra";
+        }
+            }catch(PDOException $e){
+                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                // guardamos en ·errores el error que queremos mostrar a los usuarios
+                $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+            }
+
+            ?>
             <input type="file" name="imagen" id="imagen"/>
             <br>
             <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
             <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
             <br>
-            <a href="cerrarSession.php" class="CerrarSession">CerrarrSession</a>
+           
+            <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" >
+            <?php
+if(isset($_REQUEST["CerrarSession"])){
+    session_destroy();
+    header("Location:../../HTML/Index.php");
+}
+            ?>
         </form>
 
     <footer>
@@ -100,6 +144,22 @@ if(isset($_SESSION["user"])){
         </div>
     </footer>
 </body>
+<script>
+
+let cancelar=document.getElementById("Cancelar");
+
+    
+
+cancelar.addEventListener('click',()=>{
+    let cancelarV=document.querySelectorAll(".pendiente");
+    console.log(cancelarV);
+    cancelarV.forEach(nombre=>{
+        console.log( document.getElementById(nombre.id).value);
+    document.getElementById(nombre.id).value="";
+
+})
+})
+</script>
 </html>
 
 <?php

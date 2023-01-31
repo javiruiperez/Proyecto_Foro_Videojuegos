@@ -109,13 +109,21 @@
                 try{
                     $comentarios = new Usuario();
                     $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-                    
+                  
                     foreach($commentsArray as $comment){
-                        $userId = $comment["idUsuario"];
-                        $userComment = $comentarios->getUsername($userId);
+                       $numeroComentarios= $comentarios->numeroComentarios($comment["idUsuario"]);
+                       $userId = $comment["idUsuario"];
+                       $userComment = $comentarios->getUsername($userId);
+                        if($numeroComentarios>=5){
                         echo '<div class=userComment>'.$userComment.'</div>';
                         echo '<img src=../../img/'.$userComment.'/image.png>';
                         echo '<div class=comment>'. $comment["texto"].'</div>';
+                        }
+                        else{
+                            echo '<div class=userComment>'.$userComment.'</div>';
+                             echo '<img src=../../img/'.$userComment.'/image.png>';
+                            echo '<div class=commentSin>'. $comment["texto"].'</div>';  
+                        }
                     }
                     
                 } catch(PDOException $e){
