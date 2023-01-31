@@ -46,27 +46,35 @@ if (!isset($_REQUEST['bAcept'])) {
             cabecera();
         ?>
         <div class="form">
+        <div class="register-box">
             <form name="register" method="post" action="" enctype="multipart/form-data">
                 <?php
                 foreach ($datesform as $campo => $valor) {
                     if ($campo != "Password") {
                 ?>
+                        <div class="user-box">
                         <label><?php echo  $campo ?></label><br>
                         <input type="text" name="<?php echo $campo ?>" ></input>
                         <br>
+                        </div>
+
+
                     <?php
                     } else {
                     ?>
+                        <div class="user-box">
                         <label><?php echo  $campo ?></label><br>
                         <input type="password" name="<?php echo $campo ?>"></input>
                         <br>
+                        </div>
                 <?php
                     }
                 };
-                ?><br>
+                ?>
                 <input TYPE="submit" name="bAcept" VALUE="Sign up" class="buttonForm">
                 <div class="messageLogin">Already have an account? <a href="../login/checkLogin.php">Log in</a></div>
             </form>
+        </div>
         </div>
         <?php
             pie();
@@ -118,26 +126,33 @@ if (!isset($_REQUEST['bAcept'])) {
         cabecera();
     ?>
         <div class="form">
+        <div class="register-box">
             <form name="register" method="post" action="" enctype="multipart/form-data">
                 <?php
                 foreach ($datesform as $campo => $valor) {
                     if ($campo != "Password") {
                 ?>
-                        <label><?php echo  $campo ?></label><br>
+                        <div class="user-box">
+                        <label><?php echo  $campo ?></label>
                         <input type="text" name="<?php echo $campo ?>" value="<?php echo $valor ?>"></input>
                         <?php
                             echo $erroresMsg[$campo];
                         ?>
                         <br>
+                        </div>
+
+
                     <?php
                     } else {
                     ?>
-                        <label><?php echo  $campo ?></label><br>
+                        <div class="user-box">
+                        <label><?php echo  $campo ?></label>
                         <input type="password" name="<?php echo $campo ?>" value="<?php echo $valor ?>"></input>
                         <?php
                             echo $erroresMsg[$campo];
                         ?>
                         <br>
+                        </div>
                 <?php
                     }
                 };
@@ -145,6 +160,7 @@ if (!isset($_REQUEST['bAcept'])) {
                 <input TYPE="submit" name="bAcept" VALUE="Sign up" class="buttonForm"><br>
                 <div class="messageLogin">Already have an account? <a href="../login/checkLogin.php">Log in</a></div>
             </form>
+        </div>
         </div>
     </body>
     </html>

@@ -24,6 +24,7 @@ body{
     justify-content: space-between;
 }
 
+/*Header*/
 .grid-container {
     display: grid;
     justify-content: center;
@@ -71,10 +72,6 @@ a {
     grid-template-columns: 1fr 1fr;
     
 }
-.col-3-1{
-    display: grid;
-    grid-template-columns: 1fr ;  
-}
 .log-In{
     margin-top: 20%;
     margin-left: 5%;
@@ -105,15 +102,9 @@ a {
 }
 /* //mirar */
 /* header{
-<<<<<<< HEAD
     background-color: #000000;
     position: fixed;
-=======
-
-    
->>>>>>> be8175f9e3a0522fc979042311a36f90c3518422
 } */
-
 header form {
     position: relative;
     top: 25%;
@@ -153,6 +144,9 @@ header .categorias a.activo {
 .genres:hover, .sign-In:hover{
     color: #2FA9F3;
 }
+.genres:hover, .log-In:hover{
+    color: #2FA9F3;
+}
 
 #selectPlatform{
     color: #fff;
@@ -164,6 +158,41 @@ header .categorias a.activo {
     border-style: none;
 }
 
+option{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 700;
+    border-style: none;
+}
+
+/*Body*/
+.div_principal{
+    opacity: 0.95;
+    color: rgb(255, 255, 255);
+    background-color: #232323; 
+    border-radius: 20px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 1.5%;
+    text-align: center;
+}
+
+div.gallery {
+    border: 5px solid #232323;
+    background-color: #232323;
+    border-radius: 10px;
+    height: 350px;
+}
+div.gallery:hover{
+    border: 1px solid #fff;
+}
+  
+div.gallery img {
+    width: 100%;
+    border-top-left-radius: 10px; 
+	border-top-right-radius: 10px;
+}
+
 .tituloJuego{
     color: white;
     text-align: center;
@@ -172,37 +201,18 @@ header .categorias a.activo {
     font-size: 25px;
 }
 
-option{
-    color: #000000;
-    font-size: 18px;
-    font-weight: 700;
-    border-style: none;
-}
 
-div.gallery {
-    border: 1px solid #ccc;
-    background-color: black;
-  }
-  
-  div.gallery:hover {
-    border: 1px solid #777;
-  }
-  
-  div.gallery img {
-    width: 100%;
-  }
-  
-  div.desc {
+div.desc {
     padding: 15px;
     text-align: center;
-  }
-  
-  * {
+}
+
+* {
     box-sizing: border-box;
   }
   
   .responsive {
-    padding: 0 6px;
+    padding: 6px 6px;
     float: left;
     width: 24.99999%;
   }
@@ -219,116 +229,25 @@ div.gallery {
       width: 100%;
     }
   }
-  
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
 
-
-
-.div_principal{
-    opacity: 0.85;
-    color: rgb(255, 255, 255);
-    background-color: #232323; 
-    border-radius: 20px;
-    width: 60%;
-    margin: 0 auto;
-    padding: 1.5%;
-}
-
-.grid {
-    position: relative;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s linear 1s;
-}
 .Siguiente, .Atras{
-    width: 80px;
-  
-    
+    width: 100px;
+    color: #fff;
+    background-color: #232323; 
+    border-radius: 5px;
+    opacity: 0.95;
 }
+
 .Botones{
     display: none;
     margin: auto;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-
-.grid.imagenes-cargadas {
-    opacity: 1;
-}
-
-.grid .item {
-    position: absolute;
-    display: block;
-    padding: 0;
-    margin: 10px;
-    width: calc(33.333333% - 20px);
-}
-
-.grid .item .item_contenido {
-    position: relative;
-}
-
-.grid .item img {
-    width: 100%;
-    cursor: pointer;
-    vertical-align: top;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, .9);
-    width: 100%;
-    height: 100vh;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.overlay.activo {
-    display: flex;
-}
-
-.overlay img {
-    max-width: 100%;
-}
-
-.overlay .descripcion {
-    display: block;
-    background: #fff;
-    padding: 20px;
-    text-align: center;
-    margin-top: 5px;
-    border-radius: 10px;
-    max-width: 50%;
-}
-
-.contenedor-img {
-    position: relative;
-}
-
-.overlay #btn-cerrar-popup {
-    background: none;
-    font-size: 20px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    right: -20px;
-}
-
-
+/*Footer*/
 .footer {
     opacity: 0.90;
-    background: #232323; /*COLOR VARIABLE SASS*/
+    background: #232323;
     padding-bottom: 5px;
     text-align: center;
     width: 100%;
@@ -339,13 +258,14 @@ div.gallery {
     width: 100%;
     padding: 0.5% 0%;
     color: gray;
-    font-size: 0.7rem;
+    font-size: 18px;
 }
 
 .footer .row a {
     text-decoration: none;
     color: rgb(128, 128, 128);
     transition: 0.5s;
+    font-size: 18px;
 }
 
 .footer .row a:hover {
@@ -362,13 +282,9 @@ div.gallery {
 }
 
 .footer .row li a{
-    font-size: 0.7rem;
     margin: 0% 1%;
 }
 
-
-/* HACER PRIMERO LA PÁGINA WEB A MÓVIL (IMPORTANTE)
-HACER UN SUBMENÚ DESPLEGABLE PARA LOS GÉNEROS CUANDO SEA FORMATO MÓVIL */
 @media (max-width: 100%) { 
     .footer {
         text-align: left;
