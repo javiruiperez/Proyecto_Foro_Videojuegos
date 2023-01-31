@@ -106,7 +106,7 @@
             $resultado->execute();
         }
 
-
+ 
 
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
@@ -151,6 +151,17 @@
             $arrayComentarios=$stmt->fetchAll();
             return $arrayComentarios;
         }
+
+
+        public function contarComentarios($idUsuario){
+         $consulta="SELECT count(*) FROM `comentarios`where idUsuario=?;";
+         $stmt=$this->prepare($consulta);
+         $stmt->bindParam(1,$idUsuario);
+       return  $stmt->execute();
+
+        }
+
+
 
         public function borrarComentario($idComentario){
             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";

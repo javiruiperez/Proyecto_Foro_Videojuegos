@@ -111,7 +111,13 @@ else{
                     $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
                     
                     foreach($commentsArray as $comment){
+                       $numeroComentarios= $comentarios->contarComentarios($comment["idUsuario"]);
+                        if($numeroComentarios>=3){
                         echo '<div class=comment>'. $comment["texto"].'</div>';
+                        }
+                        else{
+                            echo '<div class=commentSin>'. $comment["texto"].'</div>';  
+                        }
                     }
                     
                 } catch(PDOException $e){

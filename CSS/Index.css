@@ -105,13 +105,8 @@ a {
 }
 /* //mirar */
 /* header{
-<<<<<<< HEAD
-    background-color: #000000;
-    position: fixed;
-=======
 
     
->>>>>>> be8175f9e3a0522fc979042311a36f90c3518422
 } */
 
 header form {
@@ -171,7 +166,15 @@ header .categorias a.activo {
     font-family: 'VT323', monospace;
     font-size: 25px;
 }
+.comment{
+    border:blue;
+    color: red;
+}
 
+
+.commentSin{
+    color:green;
+}
 option{
     color: #000000;
     font-size: 18px;
