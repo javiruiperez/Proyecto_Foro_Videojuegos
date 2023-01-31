@@ -62,7 +62,7 @@ if(!isset($_SESSION["user"])){
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
+              <div class="col-3"><a href="perfil.php" class="sign-In">Usuario</a></div>
             </div>
           
         </nav>
@@ -73,9 +73,9 @@ if(!isset($_SESSION["user"])){
                 echo "../../img/".$usuarioBuscado."/image.png"; 
             ?>></div>
             <label>Nombre</label><br>
-            <label><?php echo  $nombreBuscado  ?></label><br>
+            <input type="text" value="<?php echo $nombreBuscado?>" name="Nombre" id="Nombre" class="pendiente"></label><br>
             <label>User</label><br>
-            <input type="text" value="<?php echo  $usuarioBuscado  ?>"name="Usuario" id="Usuario" class="pendiente"></input><br>
+            <label><?php echo $usuarioBuscado?></label><br>
             <label>Email</label><br>
             <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
             <?php
