@@ -96,12 +96,15 @@
 
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
-            $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
+            $defaultValue = 0;
+            $consulta = "INSERT INTO usuarios (nombre, usuario, contraseñaEncriptada, correo, puntuacion, comentario) values (?, ?, ?, ?, ?, ?)";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1, $nombre);
             $stmt->bindParam(2, $usuario);
             $stmt->bindParam(3, $contraseña);
             $stmt->bindParam(4, $email);
+            $stmt->bindParam(5, $defaultValue);
+            $stmt->bindParam(6, $defaultValue);
            
             return  $stmt->execute();
         }
@@ -115,6 +118,13 @@
             $resultado = $this->prepare($consulta);
             $resultado->bindParam(':newPassword', $cryptPass);
             $resultado->bindParam(':email', $email);
+            $resultado->execute();
+        }
+
+        public function sumarComentario($idUsuario){
+            $consulta = "UPDATE usuarios SET comentario = comentario + 1 WHERE id=:idUsuario";
+            $resultado=$this->prepare($consulta);
+            $resultado->bindParam(':idUsuario', $idUsuario);
             $resultado->execute();
         }
 
