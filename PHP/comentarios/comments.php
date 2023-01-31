@@ -83,6 +83,7 @@
             </div>
             <?php
                 if($issetGuide){
+                    if(isset($_SESSION["user"])){
             ?>
                 <form action="" method="post">
                     <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
@@ -92,7 +93,10 @@
                     <input type="submit" value="Send" name="submitComment"/>
                 </form>
             <?php
+                } else{
+                    echo "<div class=noLogIn>Log In to comment</div>";
                 }
+            }
             ?>
             
         </div>

@@ -73,11 +73,11 @@ if(!isset($_SESSION["user"])){
                 echo "../../img/".$usuarioBuscado."/image.png"; 
             ?>></div>
             <label>Nombre</label><br>
-            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre"  id="Nombre"class="pendiente"></input><br>
+            <label><?php echo  $nombreBuscado  ?></label><br>
             <label>User</label><br>
-            <input type="text" value="<?php echo  $usuarioBuscado?>" name="Usuario" id="Usuario" class="pendiente"></input><br>
+            <input type="text" value="<?php echo  $usuarioBuscado  ?>"name="Usuario" id="Usuario" class="pendiente"></input><br>
             <label>Email</label><br>
-            <input type="text" value="<?php echo  $emailBuscado  ?>" name="Email" id="Email" class="pendiente"></input><br>
+            <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
             <?php
                 try{
                     $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
@@ -151,7 +151,10 @@ if(!isset($_SESSION["user"])){
 </html>
 
 <?php
+
     if (!isset($_REQUEST['submitImage'])) {
+
+
     } else {
         if (($_FILES['imagen']['error'] != 0)) {
             switch ($_FILES['imagen']['error']) {
@@ -198,6 +201,17 @@ if(!isset($_SESSION["user"])){
                 move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
             }
         }
+try{
+
+  $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
+ }catch(PDOException $e){
+                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                // guardamos en ·errores el error que queremos mostrar a los usuarios
+                $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+            }
+       
+
     }
+
     }
 ?>
