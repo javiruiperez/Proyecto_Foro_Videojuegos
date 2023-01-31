@@ -60,7 +60,8 @@ if(isset($_SESSION["user"])){
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
+          
+              <div class="col-3"><a href="perfil.php" class="sign-In">Usuario</a></div>
             </div>
           
         </nav>
@@ -72,9 +73,9 @@ if(isset($_SESSION["user"])){
             echo "../../img/".$usuarioBuscado."/image.png"; 
         ?>></div>
             <label>Nombre</label><br>
-            <label><?php echo  $nombreBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre" id="Nombre" class="pendiente"></input><br>
             <label>User</label><br>
-            <input type="text" value="<?php echo  $usuarioBuscado  ?>"name="Usuario" id="Usuario" class="pendiente"></input><br>
+            <label><?php echo  $usuarioBuscado  ?></label><br>
             <label>Email</label><br>
             <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
             <?php
@@ -214,8 +215,20 @@ cancelar.addEventListener('click',()=>{
             }
         }
 try{
-
+    $ComprobarEmail=false;
+    $ComprobarNombre=false;
+    if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
+       $ComprobarEmail=true;
+    }
+    if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Nombre"]) == 1) {
+       $ComprobarNombre=true;
+    } 
+    if($ComprobarEmail==true&&$ComprobarNombre==true){
   $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
+    }
+  else{
+echo "Mal";
+  }
  }catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                 // guardamos en ·errores el error que queremos mostrar a los usuarios
