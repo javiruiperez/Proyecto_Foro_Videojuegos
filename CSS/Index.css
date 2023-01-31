@@ -141,10 +141,7 @@ header .categorias a.activo {
     color: #2FA9F3;
 }
 
-.genres:hover, .sign-In:hover{
-    color: #2FA9F3;
-}
-.genres:hover, .log-In:hover{
+.genres:hover, .log-In:hover, .sign-In:hover{
     color: #2FA9F3;
 }
 
@@ -184,6 +181,7 @@ div.gallery {
     height: 350px;
 }
 div.gallery:hover{
+    cursor: pointer;
     border: 1px solid #fff;
 }
   

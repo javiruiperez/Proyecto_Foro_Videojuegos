@@ -23,9 +23,11 @@
                 echo (isset($errores["NoUserLogin"])) ? "<div class='errorMessage'>$errores[NoUserLogin]</div>": "";
             ?>
             <label>Password</label><br>
-            <input type="password" name="passwordLogin" id="password"/><br>
-            <i class="show fa fa-eye"></i>
-            <i class="hide fa fa-eye-slash"></i>
+            <label class="passLabel">
+                <input type="password" name="passwordLogin" id="password"/>
+                <i class="hide fa fa-eye"></i>
+                <i class="show fa fa-eye-slash"></i>
+            </label>
             <?php
                 echo (isset($errores["NoPassLogin"])) ? "<div class='errorMessage'>$errores[NoPassLogin]</div><br>": "";
             ?>

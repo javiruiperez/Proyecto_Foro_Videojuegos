@@ -6,11 +6,11 @@
     cabecera("Log In");
     $errores = [];
     
-    // // CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
-    // session_start();
-    // if (isset($_SESSION["user"])) {
-    //     header("location:../../HTML/Index.php");
-    // }
+    // CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
+    session_start();
+    if (isset($_SESSION["user"])) {
+        header("location:../../HTML/Index.php");
+    }
 
     if(!isset($_REQUEST["submitLogin"])){
         require("formLogin.php");

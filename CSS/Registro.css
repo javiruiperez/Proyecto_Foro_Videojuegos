@@ -1,3 +1,19 @@
+.passLabel{
+    position: relative;
+    display: block;
+}
+
+.show, .hide{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size:30px;
+}
+
+.hide{
+    display: none;
+}
+
  .form { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
     width: 100%;
     max-width: 350px;
