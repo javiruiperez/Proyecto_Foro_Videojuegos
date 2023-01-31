@@ -72,11 +72,11 @@ if(isset($_SESSION["user"])){
             echo "../../img/".$usuarioBuscado."/image.png"; 
         ?>></div>
             <label>Nombre</label><br>
-            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre"  id="Nombre"class="pendiente"></input><br>
+            <label><?php echo  $nombreBuscado  ?></label><br>
             <label>User</label><br>
-            <label><?php echo  $usuarioBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $usuarioBuscado  ?>"name="Usuario" id="Usuario" class="pendiente"></input><br>
             <label>Email</label><br>
-            <label><?php echo  $emailBuscado  ?></label><br>
+            <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
             <?php
          
         
@@ -116,7 +116,7 @@ if(isset($_SESSION["user"])){
             <input type="file" name="imagen" id="imagen"/>
             <br>
             <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
-            <input type="button" name="Cancelar" value="Cancelar" onClick="perfil.php">
+            <input type="button" id="Cancelar" name="Cancelar" value="Cancelar" onClick="perfil.php">
             <br>
            
             <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" >
@@ -163,7 +163,10 @@ cancelar.addEventListener('click',()=>{
 </html>
 
 <?php
+
     if (!isset($_REQUEST['submitImage'])) {
+
+
     } else {
         if (($_FILES['imagen']['error'] != 0)) {
             switch ($_FILES['imagen']['error']) {
@@ -210,9 +213,22 @@ cancelar.addEventListener('click',()=>{
                 move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
             }
         }
-    }
+try{
 
-    }else{
+  $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
+ }catch(PDOException $e){
+                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                // guardamos en ·errores el error que queremos mostrar a los usuarios
+                $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+            }
+       
+
+    }
+    
+
+   
+
+}else{
         header("Location:../../HTML/Index.php");
     }
 ?>
