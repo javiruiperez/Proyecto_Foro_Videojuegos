@@ -1,18 +1,64 @@
-.form { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
+.passLabel{
+    position: relative;
+    display: block;
+}
+
+.show, .hide{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size:30px;
+}
+
+.hide{
+    display: none;
+}
+
+ .form { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    background-color: white;
-    border-radius: 4px;
+    padding: 30px;
+    background-color: #232323;
+    opacity: 0.95;
+    border-radius: 10px;
+    color: #fff;
+
 }
 
 .form label{
     font-weight: bold;
+}
+.register-box{
+    width: 100%;
+}
+
+.register-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
 }
 
 .errorMessage{
@@ -22,16 +68,16 @@
 
 .buttonForm{
     color: white;
-    width: 105%;
+    width: 100%;
     background-color: rgb(0, 166, 255);
     height: 25px;
     border: 1px solid rgb(0, 166, 255);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .buttonForm:hover{
     cursor: pointer;
-    background-color: rgb(0, 118, 182);
+    background-color: rgb(0, 130, 182);
     border: 1px solid rgb(0, 118, 182);
 }
 
@@ -76,4 +122,4 @@ input{
 
 .errorInput {
     border: 1px solid red;
-}
+} 

@@ -5,7 +5,9 @@ require("../BaseDeDatos/config.php");
 require("../modelo/classAdmin.php");
 session_start();
 
-if(isset($_SESSION["user"])){
+if(!isset($_SESSION["user"])){
+    header("Location:../../HTML/Index.php");
+}else{
     try{
         $usuario = new Usuario();
 
@@ -60,33 +62,26 @@ if(isset($_SESSION["user"])){
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-          
               <div class="col-3"><a href="perfil.php" class="sign-In">Usuario</a></div>
             </div>
           
         </nav>
     </header>
-    <div class="form">
         <form action="" method="post" enctype="multipart/form-data">
-        <div class="box"><img src=
-        <?php
-            echo "../../img/".$usuarioBuscado."/image.png"; 
-        ?>></div>
+            <div class="box"><img src=
+            <?php
+                echo "../../img/".$usuarioBuscado."/image.png"; 
+            ?>></div>
             <label>Nombre</label><br>
-            <input type="text" value="<?php echo  $nombreBuscado  ?>" name="Nombre" id="Nombre" class="pendiente"></input><br>
+            <input type="text" value="<?php echo $nombreBuscado?>" name="Nombre" id="Nombre" class="pendiente"></label><br>
             <label>User</label><br>
-            <label><?php echo  $usuarioBuscado  ?></label><br>
+            <label><?php echo $usuarioBuscado?></label><br>
             <label>Email</label><br>
             <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
             <?php
-         
-        
-            try{
-              
-                $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
-               
-            if($usuarioNivel==2){
-            
+                try{
+                    $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
+                    if($usuarioNivel==2){
             ?>
             <label class="bloquear">Bloquear usuario<label>
                 <br>
@@ -99,20 +94,17 @@ if(isset($_SESSION["user"])){
             <input type="submit" class="buttonForm" name="submitBloquear" value="Bloquear"/>
             <br>
             <?php
-        
-        
-        }
-        if(isset($_REQUEST['submitBloquear'])){
-            $admin=new Administrador();
-            $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["bloquearTexto"],$_REQUEST["bloquearUsuario"]);
-            echo "entra";
-        }
-            }catch(PDOException $e){
-                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                // guardamos en ·errores el error que queremos mostrar a los usuarios
-                $erroresGuide['NoGuide'] = "Ha habido un error <br>";
-            }
-
+                }
+                    if(isset($_REQUEST['submitBloquear'])){
+                        $admin=new Administrador();
+                        $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["bloquearTexto"],$_REQUEST   ["bloquearUsuario"]);
+                        echo "entra";
+                    }
+                }catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+                }
             ?>
             <input type="file" name="imagen" id="imagen"/>
             <br>
@@ -121,14 +113,17 @@ if(isset($_SESSION["user"])){
             <br>
            
             <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" >
+            <br>
             <?php
-if(isset($_REQUEST["CerrarSession"])){
-    session_destroy();
-    header("Location:../../HTML/Index.php");
-}
+                if(isset($_REQUEST["CerrarSession"])){
+                    session_destroy();
+                    header("Location:../../HTML/Index.php");
+                }
             ?>
-        </form>
+<div id="errores"></div>
 
+        </form>
+        
     <footer>
         <div class="footer">
             <div class="row">
@@ -146,20 +141,16 @@ if(isset($_REQUEST["CerrarSession"])){
     </footer>
 </body>
 <script>
+    let cancelar=document.getElementById("Cancelar");
 
-let cancelar=document.getElementById("Cancelar");
-
-    
-
-cancelar.addEventListener('click',()=>{
-    let cancelarV=document.querySelectorAll(".pendiente");
-    console.log(cancelarV);
-    cancelarV.forEach(nombre=>{
-        console.log( document.getElementById(nombre.id).value);
-    document.getElementById(nombre.id).value="";
-
-})
-})
+    cancelar.addEventListener('click',()=>{
+        let cancelarV=document.querySelectorAll(".pendiente");
+        console.log(cancelarV);
+        cancelarV.forEach(nombre=>{
+            console.log( document.getElementById(nombre.id).value);
+            document.getElementById(nombre.id).value="";
+        })
+    })
 </script>
 </html>
 
@@ -215,6 +206,7 @@ cancelar.addEventListener('click',()=>{
             }
         }
 try{
+    $errores=[];
     $ComprobarEmail=false;
     $ComprobarNombre=false;
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
@@ -226,9 +218,8 @@ try{
     if($ComprobarEmail==true&&$ComprobarNombre==true){
   $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
     }
-  else{
-echo "Mal";
-  }
+
+    
  }catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                 // guardamos en ·errores el error que queremos mostrar a los usuarios
@@ -237,11 +228,7 @@ echo "Mal";
        
 
     }
-    
 
-   
-
-}else{
-        header("Location:../../HTML/Index.php");
     }
+
 ?>
