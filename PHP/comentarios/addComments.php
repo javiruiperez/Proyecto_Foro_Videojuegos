@@ -1,5 +1,4 @@
 <?php
-    // SI NO TIENE GUÍA, NO PUEDES COMENTAR (IMPORTANTE = CAMBIAR)
     include("../libs/bGeneral.php");
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");

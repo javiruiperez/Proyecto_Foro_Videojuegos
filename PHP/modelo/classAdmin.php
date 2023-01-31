@@ -2,12 +2,7 @@
   include("../libs/bGeneral.php");
     class Administrador extends Modelo
     {
-
-
-
-
-       
-
+    
     public function modifyPassword($newPassword, $user)
     {
         $salt = '$2a$07$usesomesillystringforsalt$';
@@ -21,6 +16,4 @@
     }
 
     }
-
-
 ?>

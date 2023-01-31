@@ -68,22 +68,22 @@
             <div class="titleGuide"></div>
             <div class="textGuide"></div>
         </div>
-<?php
- if (isset($_GET["w2"])) {
-    $phpVar1 = $_GET['w2'];
-} 
-else{
-    header("Location:../../HTML/Index.php");
-}
-?>
+        <?php
+            if (isset($_GET["w2"])) {
+                $phpVar1 = $_GET['w2'];
+            } 
+            else{
+                header("Location:../../HTML/Index.php");
+            }
+        ?>
         <div class=`<?php echo (isset($erroresComment["NoSession"])) ? "noSession": "createComments" ?>`>
             <div class="userInfo">
                 <div id="imageUser"></div>
                 <div id="nameUser"></div>
             </div>
             <?php
-            if($issetGuide){
-                ?>
+                if($issetGuide){
+            ?>
                 <form action="" method="post">
                     <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
                     <?php
@@ -112,10 +112,16 @@ else{
                   
                     foreach($commentsArray as $comment){
                        $numeroComentarios= $comentarios->numeroComentarios($comment["idUsuario"]);
+                       $userId = $comment["idUsuario"];
+                       $userComment = $comentarios->getUsername($userId);
                         if($numeroComentarios>=5){
+                        echo '<div class=userComment>'.$userComment.'</div>';
+                        echo '<img src=../../img/'.$userComment.'/image.png>';
                         echo '<div class=comment>'. $comment["texto"].'</div>';
                         }
                         else{
+                            echo '<div class=userComment>'.$userComment.'</div>';
+                             echo '<img src=../../img/'.$userComment.'/image.png>';
                             echo '<div class=commentSin>'. $comment["texto"].'</div>';  
                         }
                     }

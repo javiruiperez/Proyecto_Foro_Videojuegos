@@ -5,7 +5,7 @@ require("../BaseDeDatos/config.php");
 require("../modelo/classAdmin.php");
 session_start();
 
- if(isset($_SESSION["user"])){
+if(isset($_SESSION["user"])){
     try{
         $usuario = new Usuario();
 
@@ -19,14 +19,14 @@ session_start();
         $erroresGuide['NoGuide'] = "Ha habido un error <br>";
     }
 
-$nombreArchivo = "";
-$dir = "../../img";
-$max_file_size = "51200000";
-$extensionesValidas = array(
-    "jpg",
-    "png",
-    "gif"
-);
+    $nombreArchivo = "";
+    $dir = "../../img";
+    $max_file_size = "51200000";
+    $extensionesValidas = array(
+        "jpg",
+        "png",
+        "gif"
+    );  
 ?>
 
 <!DOCTYPE html>
@@ -41,16 +41,15 @@ $extensionesValidas = array(
     <link rel="stylesheet" href="../../CSS/Index.css">
     <title>ForoGamers</title>
     <style>
-form{
-    width:400px;
-    border:1px solid white;
-    text-align:center;
-    background-color:black;
-    color:white;
-    margin :0 auto;
-}
-
-        </style>
+        form{
+            width:400px;
+            border:1px solid white;
+            text-align:center;
+            background-color:black;
+            color:white;
+            margin :0 auto;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -205,7 +204,7 @@ cancelar.addEventListener('click',()=>{
             if (empty($errores)) {
                 $nombreArchivo = "image.png";
                 if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
-                    unlink("../../img/".$usuarioBuscado."/image.png"); 
+                    unlink("../../img/".$usuarioBuscado."/image.png");
                 }
 
                 move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
