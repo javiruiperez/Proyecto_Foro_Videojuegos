@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Pagina de Inicio</title>
 </head>
@@ -23,15 +24,9 @@
                 <form action="">                
                     <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
                 </form></div>
-                <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Usuario</a></div>
+                <div class="col-3-1"><a href="../PHP/register/registro.php" class="usuario"><img src="../Interfaces Proyecto/ejemplo_3.png" alt="foto de perfil" class="foto-perfil"></a></div>
             </div>
-            <div class="categorias" id="categorias"> 
-                <a href="#" class="genres" id="Action">Action</a>
-                <a href="#"class="genres" id="Adventure">Adventure</a>
-                <a href="#" class="genres" id="Sports">Sports</a>
-                <a href="#" class="genres" id="Racing">Racing</a>
-                <a href="#" class="genres" id="Simulation">Simulation</a>
-                <a href="#" class="genres" id="Strategy">Strategy</a>
+            <div class="categorias" id="misCategorias"> 
             <select id="selectPlatform">
                 <option value="">Platform</option>
                 <option value="PlayStation 5">PS5</option>
@@ -41,6 +36,16 @@
                 <option value="PC">PC</option>
                 <option value="Nintendo Switch">Nintendo Switch</option>
             </select>
+                <a href="#" class="genres" id="Action">Action</a>
+                <a href="#" class="genres" id="Adventure">Adventure</a>
+                <a href="#" class="genres" id="Sports">Sports</a>
+                <a href="#" class="genres" id="Racing">Racing</a>
+                <a href="#" class="genres" id="Simulation">Simulation</a>
+                <a href="#" class="genres" id="Strategy">Strategy</a>
+                
+            <a href="javascript:void(0);" class="icon" onclick="menu()">
+            <i class="fa fa-bars"></i>
+            </a>
             </div>
           </nav>
     </header>
@@ -82,6 +87,15 @@
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
     <script src="../JS/Busqueda.js"></script>
+    <script>
+    function menu() {
+  var x = document.getElementById("misCategorias");
+  if (x.className === "categorias") {
+    x.className += " responsive-menu";
+  } else {
+    x.className = "categorias";
+  }
+} </script>
 </body>
 </html>
 
@@ -98,6 +112,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Pagina de Inicio</title>
 </head>
@@ -112,7 +127,7 @@
               </form></div>
                 	<div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
-            <div class="categorias" id="categorias">  
+            <div class="categorias" id="misCategorias">  
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="Adventure">Adventure</a>
                 <a href="#" class="genres" id="Sports">Sports</a>
@@ -129,6 +144,9 @@
         		<option value="PC">PC</option>
         		<option value="Nintendo Switch">Nintendo Switch</option>
             </select>
+            <a href="javascript:void(0);" class="icon" onclick="menu()">
+            <i class="fa fa-bars"></i>
+            </a>
             </div>
         </nav>
     </header>
@@ -171,6 +189,15 @@
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
     <script src="../JS/Busqueda.js"></script>
+    <script>
+    function menu() {
+  var x = document.getElementById("misCategorias");
+  if (x.className === "categorias") {
+    x.className += " responsive-menu";
+  } else {
+    x.className = "categorias";
+  }
+}</script>
 </body>
 </html>
 <?php
