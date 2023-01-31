@@ -58,8 +58,9 @@
             if(count($erroresComment) === 0){
                 try{
                     $usuario = new Usuario();
-                    if($userBD = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
-                        if($commentBD = $usuario->guardarComentario($phpVar1, $content, $userBD)){ //añadir comentario
+                    if($IDuser = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
+                        if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //añadir comentario
+                            $addComment = $usuario->sumarComentario($IDuser);
                             header("Refresh:0");
                         }
                     }

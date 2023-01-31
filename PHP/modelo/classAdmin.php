@@ -16,7 +16,7 @@
         $consulta = "UPDATE usuarios SET contraseñaEncriptada =:newPassword WHERE usuario=:user";
         $resultado = $this->prepare($consulta);
         $resultado->bindParam(':newPassword', $cryptPass);
-        $resultado->bindParam(':email', $email);
+        $resultado->bindParam(':user', $user);
         $resultado->execute();
     }
 

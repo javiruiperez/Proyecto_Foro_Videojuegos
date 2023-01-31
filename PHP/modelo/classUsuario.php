@@ -110,12 +110,17 @@
 
 
         public function insertUser($nombre,$usuario,$contraseña,$email){
-            $consulta = "INSERT INTO usuarios (nombre, usuario,contraseñaEncriptada, correo) values (?, ?, ?,?)";
+            $defaultValue = 0;
+            $nivel=1;
+            $consulta = "INSERT INTO usuarios (nombre, usuario, contraseñaEncriptada, correo, puntuacion, comentario,nivel) values (?, ?, ?, ?, ?, ?,?)";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1, $nombre);
             $stmt->bindParam(2, $usuario);
             $stmt->bindParam(3, $contraseña);
             $stmt->bindParam(4, $email);
+            $stmt->bindParam(5, $defaultValue);
+            $stmt->bindParam(6, $defaultValue);
+            $stmt->bindParam(7,$nivel);
            
             return  $stmt->execute();
         }
@@ -129,6 +134,13 @@
             $resultado = $this->prepare($consulta);
             $resultado->bindParam(':newPassword', $cryptPass);
             $resultado->bindParam(':email', $email);
+            $resultado->execute();
+        }
+
+        public function sumarComentario($idUsuario){
+            $consulta = "UPDATE usuarios SET comentario = comentario + 1 WHERE id=:idUsuario";
+            $resultado=$this->prepare($consulta);
+            $resultado->bindParam(':idUsuario', $idUsuario);
             $resultado->execute();
         }
 
@@ -153,15 +165,33 @@
         }
 
 
-        public function contarComentarios($idUsuario){
-         $consulta="SELECT count(*) FROM `comentarios`where idUsuario=?;";
+        public function numeroComentarios($idUsuario){
+         $consulta="SELECT * FROM `usuarios`where id=?;";
          $stmt=$this->prepare($consulta);
          $stmt->bindParam(1,$idUsuario);
-       return  $stmt->execute();
+         $stmt->execute();
+         $resultado=$stmt;
+         foreach($resultado as $result){
+            $numero=$result['comentario'];
+            
+        }
+        return $numero;
+      
 
         }
 
-
+public function sacarNivel($nameUser){
+    $consulta="SELECT * FROM `usuarios`where usuario=?;";
+    $stmt=$this->prepare($consulta);
+    $stmt->bindParam(1,$nameUser);
+    $stmt->execute();
+    $resultado=$stmt;
+    foreach($resultado as $result){
+       $numero=$result['nivel'];
+       
+   }
+   return $numero;
+}
 
         public function borrarComentario($idComentario){
             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";

@@ -109,10 +109,10 @@ else{
                 try{
                     $comentarios = new Usuario();
                     $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-                    
+                  
                     foreach($commentsArray as $comment){
-                       $numeroComentarios= $comentarios->contarComentarios($comment["idUsuario"]);
-                        if($numeroComentarios>=3){
+                       $numeroComentarios= $comentarios->numeroComentarios($comment["idUsuario"]);
+                        if($numeroComentarios>=5){
                         echo '<div class=comment>'. $comment["texto"].'</div>';
                         }
                         else{
