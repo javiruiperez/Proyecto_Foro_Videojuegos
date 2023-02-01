@@ -41,17 +41,8 @@ if(!isset($_SESSION["user"])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
+    <link rel="stylesheet" href="../../CSS/perfil.css">
     <title>ForoGamers</title>
-    <style>
-        form{
-            width:400px;
-            border:1px solid white;
-            text-align:center;
-            background-color:black;
-            color:white;
-            margin :0 auto;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -72,24 +63,34 @@ if(!isset($_SESSION["user"])){
             <?php
                 echo "../../img/".$usuarioBuscado."/image.png"; 
             ?>></div>
-            <label>Nombre</label><br>
+            <label>Nombre :</label><br>
+            <div class="user-box">
             <input type="text" value="<?php echo $nombreBuscado?>" name="Nombre" id="Nombre" class="pendiente"></label><br>
-            <label>User</label><br>
+            </div>
+            <br>
+            <label>User :</label><br>
             <label><?php echo $usuarioBuscado?></label><br>
-            <label>Email</label><br>
+            <label>Email :</label><br>
+            <div class="user-box">
             <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
-            <?php
+            </div>
+            <br>
+           <?php
                 try{
                     $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
                     if($usuarioNivel==2){
             ?>
-            <label class="bloquear">Bloquear usuario<label>
+            <label class="bloquear">Bloquear usuario :</label>
                 <br>
+                <div class="user-box">
             <input type="text" class="bloquearusuario" name="bloquearUsuario"> </input>
+                    </div>
             <br>
-            <label class="bloquear">Nueva Contraseña<label>
+            <label class="bloquear">Nueva Contraseña :</label>
                 <br>
+                <div class="user-box">
             <input type="text" class="bloquearTexto" name="bloquearTexto"> </input>
+                    </div>
             <br>
             <input type="submit" class="buttonForm" name="submitBloquear" value="Bloquear"/>
             <br>
@@ -106,13 +107,16 @@ if(!isset($_SESSION["user"])){
                     $erroresGuide['NoGuide'] = "Ha habido un error <br>";
                 }
             ?>
+             <label>Cambiar imagen de perfil :</label><br>
             <input type="file" name="imagen" id="imagen"/>
             <br>
+            <div id="Botones">
             <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
-            <input type="button" id="Cancelar" name="Cancelar" value="Cancelar" onClick="perfil.php">
+            <input type="button" id="Cancelar" class="buttonForm" name="Cancelar" value="Cancelar" onClick="perfil.php"/>
+            </div>
             <br>
            
-            <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" >
+            <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" />
             <br>
             <?php
                 if(isset($_REQUEST["CerrarSession"])){

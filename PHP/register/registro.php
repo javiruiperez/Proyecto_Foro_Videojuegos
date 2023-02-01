@@ -18,7 +18,7 @@ $erroresMsg = array(
     EMAIL => ""
 );
 
-
+$contraseñaSinEncriptar="";
   // session_start();
     // if (isset($_SESSION["user"])) {
     //     echo "holaxd";
@@ -96,9 +96,11 @@ if (!isset($_REQUEST['bAcept'])) {
     }
     if (preg_match("#\w#i", $_REQUEST["Password"]) == 1) {
         $datesform[PASSWD] = $_REQUEST["Password"];
+      $contraseñaSinEncriptar=$_REQUEST["Password"];
         $passwordBD = crypt_blowfish($datesform[PASSWD]);
         $datesform[PASSWD] = $passwordBD;
     } else {
+        $contraseñaSinEncriptar=$_REQUEST["Password"];
         $erroresMsg[PASSWD] = "<div class='errorMessage'>The password is not strong.</div";
     }
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
@@ -147,7 +149,7 @@ if (!isset($_REQUEST['bAcept'])) {
                     ?>
                         <div class="user-box">
                         <label><?php echo  $campo ?></label>
-                        <input type="password" name="<?php echo $campo ?>" value="<?php echo $valor ?>"></input>
+                        <input type="password" name="<?php echo $campo ?>" value="<?php echo  $contraseñaSinEncriptar; ?>"></input>
                         <?php
                             echo $erroresMsg[$campo];
                         ?>
