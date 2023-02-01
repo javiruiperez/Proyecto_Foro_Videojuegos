@@ -7,7 +7,7 @@
 label,input{
     margin: 2px;
 }
-form{
+#perfilForm{
     display: flex;
     flex-direction: column;
     justify-content: center;

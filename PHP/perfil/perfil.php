@@ -58,7 +58,7 @@ if(!isset($_SESSION["user"])){
           
         </nav>
     </header>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="perfilForm" action="" method="post" enctype="multipart/form-data">
             <div class="box"><img src=
             <?php
                 echo "../../img/".$usuarioBuscado."/image.png"; 
