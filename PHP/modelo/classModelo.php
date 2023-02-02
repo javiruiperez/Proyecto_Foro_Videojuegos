@@ -1,5 +1,5 @@
 <?php
-    class Modelo extends PDO //Esta clase sirve como conexión a la base de datos del model MVC
+    class Modelo extends PDO // this class conect with BD 
     {
         private $conexion;
 

@@ -127,7 +127,6 @@
         </div>
     </footer>                                                                                   
     <script src="../JS/generos2.js"></script>
-    <script src="../JS/perfil.js"></script>
     <script>
 function myFunction() {
   var x = document.getElementById("categorias");
@@ -259,7 +258,7 @@ function myFunction() {
         </div>
     </footer>                                                                                          
     <script src="../JS/generos2.js"></script>
-    <script src="../JS/perfil.js"></script>
+   
 </body>
 </html>
 <?php

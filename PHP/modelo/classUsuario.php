@@ -12,7 +12,7 @@
             foreach ($resultadoUsuario as $row) {
                 $nameUser= $row['id'];
             }
-            //Error: si no tiene la sesión iniciada da error -> que te lleve a index.php
+            
             return $nameUser;
         }
 
@@ -278,13 +278,13 @@ public function getLevel($nameUser){
                         $image = time() . $image;
                     }
                     if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
-                        echo "imagen subida";
+                        echo "update image";
                     } else{
-                        echo "error al subir la imagen";
+                        echo "error update the image";
                     }
                 }
             } else{
-                echo "imagen vacía";
+                echo "image empty";
             }
         }
     }
