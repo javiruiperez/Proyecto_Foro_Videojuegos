@@ -1,0 +1,62 @@
+/*SEGUIR CON CSS Y INTENTAR CAMBIAR (CUANDO TE LOGEAS BUSCA SI ESTABAS EN UNA SUBPÁGINA DE JUEGO)*/
+
+body{
+    background-color: #232323;
+}
+
+/*GUIDE*/
+.guide{
+    width: 60%;
+    background-color: #232323;
+    box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
+    border-radius: 10px;
+}
+
+
+/*COMMENTS*/
+#inputGuide, #newComment{
+    color:white;
+    width: 100%;
+    line-height: 2em; 
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+}
+
+#inputGuide{
+    font-size: 16px;
+}
+
+.profilePicture{
+    padding-left: 2%;
+}
+
+.profilePicture img{
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.divComment{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background-color: rgba(35, 35, 35, 0.7);
+    box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
+    margin: 10px;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+
+.comment{
+    color: white;
+}
+
+.guideContent{
+    padding: 5%;
+}
+

@@ -12,7 +12,7 @@
     <title>Log In</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
-<body>
+<body class="body">
     <div class="form">
         <div class="login-box">
         <form action="" method="post">

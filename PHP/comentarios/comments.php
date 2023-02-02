@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
+    <link rel="stylesheet" href="../../CSS/comments.css">
     <title>ForoGamers</title>
 </head>
 <body>
@@ -21,7 +22,6 @@
               </form></div>
                 <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
-          
         </nav>
     </header>
 
@@ -39,8 +39,8 @@
                         ?>
                         <div class="newGuide">
                             <form action="" method="post">
-                                <input type="text" placeholder="Add a new guide..." name="textNewGuide">
-                                <input type="submit" value="Post" name="sendNewGuide">
+                                <input type="text" id='inputGuide' placeholder="Add a new guide..." name="textNewGuide"/>
+                                <input type="submit" value="Post" name="sendNewGuide"/>
                             </form>
                         </div>
                         <?php
@@ -57,16 +57,13 @@
                     //Image of the game is put into the guide div
                     if(isset($_GET["w2"])){
                         $phpVar2 = $_GET["w2"];
-                        echo "<img src=".$phpVar2." width=300px></img>";
+                        echo "<img src=".$phpVar2." width=300px/>";
                     } else{
                         header("Location:../../HTML/Index.php");
                     }
                 ?>
                 </div>
-                <div id="nameUserGuide"></div>
             </div>
-            <div class="titleGuide"></div>
-            <div class="textGuide"></div>
         </div>
         <?php
             if (isset($_GET["w2"])) {
@@ -83,22 +80,17 @@
             </div>
             <?php
                 if($issetGuide){
-                    if(isset($_SESSION["user"])){
             ?>
                 <form action="" method="post">
                     <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
                     <?php
                         echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div><br>": "";
                     ?>
-                    <input type="submit" value="Send" name="submitComment"/>
+                    <input type="submit" value="Send" name="submitComment" id="buttonComment"/>
                 </form>
             <?php
-                } else{
-                    echo "<div class=noLogIn>Log In to comment</div>";
-                }
             }
             ?>
-            
         </div>
 
         <div id="readComments">
@@ -119,14 +111,26 @@
                        $userId = $comment["idUsuario"];
                        $userComment = $comentarios->getUsername($userId);
                         if($numeroComentarios>=5){
-                        echo '<div class=userComment>'.$userComment.'</div>';
-                        echo '<img src=../../img/'.$userComment.'/image.png>';
-                        echo '<div class=comment>'. $comment["texto"].'</div>';
+                            echo '<div class=divComment>';
+                                echo '<div class=profilePicture>';
+                                    echo '<img src=../../img/'.$userComment.'/image.png>';
+                                echo '</div>';
+                                echo '<div class=guideContent>';
+                                    echo '<div class=userComment>'.$userComment.'</div>';
+                                    echo '<div class=comment>'. $comment["texto"].'</div>';
+                                echo '</div>';
+                            echo '</div>';
                         }
                         else{
-                            echo '<div class=userComment>'.$userComment.'</div>';
-                             echo '<img src=../../img/'.$userComment.'/image.png>';
-                            echo '<div class=commentSin>'. $comment["texto"].'</div>';  
+                            echo '<div class=divComment>';
+                                echo '<div class=profilePicture>';
+                                    echo '<img src=../../img/'.$userComment.'/image.png>';
+                                echo '</div>';
+                                echo '<div class=guideContent>';
+                                    echo '<div class=userComment>'.$userComment.'</div>';
+                                    echo '<div class=commentSin>'. $comment["texto"].'</div>';
+                                echo '</div>';
+                            echo '</div>';
                         }
                     }
                     
@@ -136,6 +140,7 @@
                     $erroresComment['NoComment'] = "Ha habido un error <br>";
                 }
             ?>
+        </div>
     </div>
     <div id="Images"></div>
 

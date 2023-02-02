@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Pagina de Inicio</title>
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
       
@@ -152,7 +152,7 @@ function myFunction() {
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Pagina de Inicio</title>
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <div class="grid-container">
