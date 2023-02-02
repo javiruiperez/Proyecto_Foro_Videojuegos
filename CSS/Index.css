@@ -45,6 +45,10 @@
       .col-3 {
         width: 100%;
       }
+      .col-4{
+        width:100%;
+      }
+      
 }
 
 .titulo{
@@ -226,17 +230,64 @@ div.desc {
     width: 24.99999%;
   }
   
+  #icon{
+       
+    display: none;
+   
+  
+  }
+  #selectPlatform{
+    display: block;
+ 
+}
+
+.categorias{
+    display: block;
+}
+
+
   @media only screen and (max-width: 700px) {
     .responsive {
       width: 49.99999%;
       margin: 6px 0;
     }
+
+   
+
+
+    .genres{
+        display: block;
+        text-align: center;
+    }
+    #selectPlatform{
+        display: inline-block;
+     margin-left: 40%;
+    }
+
+      #categorias{
+       
+        display: none;
+      }
+
+      #icon{
+       
+        display: block;
+        position: relative;
+        margin-left: 50%;
+        color: white;
+      
+     
+      
+      }
   }
   
   @media only screen and (max-width: 500px) {
     .responsive {
       width: 100%;
     }
+
+   
+
   }
 
 .Siguiente, .Atras{

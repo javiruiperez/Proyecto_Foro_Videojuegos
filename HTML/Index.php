@@ -12,11 +12,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Pagina de Inicio</title>
 </head>
 <body class="body">
     <header>
         <nav>
+      
             <div class="grid-container">
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
@@ -27,6 +29,9 @@
                     echo '<div class="col-3"><a href="../PHP/perfil/perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
                 ?>
             </div>
+            <a href="javascript:void(0);" id="icon" class="col-4" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="RPG">RPG</a>
@@ -35,6 +40,8 @@
                 <a href="#" class="genres" id="Simulation">Simulation</a>
                 <a href="#" class="genres" id="Indie">Indie</a>
                 <br>
+    
+  
             <select id="selectPlatform">
                 <option value="">Platform</option>
                 <option value="PlayStation 5">PS5</option>
@@ -44,7 +51,10 @@
                 <option value="PC">PC</option>
                 <option value="Nintendo Switch">Nintendo Switch</option>
             </select>
+     
             </div>
+      
+   
           </nav>
     </header>
     <br>
@@ -113,6 +123,18 @@
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
     <script src="../JS/Busqueda.js"></script>
+    <script>
+function myFunction() {
+  var x = document.getElementById("categorias");
+  if (x.style.display === "none" || x.style.display==="") {
+    x.style.display = "block";
+    
+  } else {
+    x.style.display = "none";
+  }
+}
+
+</script>
 </body>
 </html>
 
