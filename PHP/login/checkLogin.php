@@ -33,8 +33,13 @@
                     if($userBD=$usuario->checkPassword($user, $password)){
                         session_start();
                         $_SESSION["user"] = $user;
-
-                        header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+                        if(isset($_GET["w1"])){
+                            $phpVar1 = $_GET["w1"];
+                            $phpVar2 = $_GET["w2"];
+                            header('Location:../comentarios/addComments.php?w1='.$phpVar1.'&w2='.$phpVar2);
+                        } else{
+                            header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
+                        }
                     } else{
                         $errores["NoUserLogin"] = "The email or password is incorrect";
                         require("formLogin.php");

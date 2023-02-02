@@ -17,33 +17,42 @@
         require("comments.php");
     } else{
         if(isset($_REQUEST["sendNewGuide"])){
-            $guideText = recoge("textNewGuide");
+            if(!isset($_SESSION["user"])){
+                header("Location:../login/checkLogin.php");
+            }else{
+                $guideText = recoge("textNewGuide");
 
-            if (isset($_GET["w1"])) {
-                $phpVar1 = $_GET['w1'];
-            }
+                if (isset($_GET["w1"])) {
+                    $phpVar1 = $_GET['w1'];
+                }
 
-            if($guideText === ""){
-                $errores["NoGuide"] = "Your guide cannot be blank";
-            }
+                if($guideText === ""){
+                    $errores["NoGuide"] = "Your guide cannot be blank";
+                }
 
-            if(count($erroresGuide) === 0){
-                try{
-                    $guiaBD = new Usuario();
-                    if($userId = $guiaBD->getIdUser($userSession))
-                    if($guiaGurdar = $guiaBD->guardarGuia($phpVar1, $guideText, $userId)){
-                        header("Refresh:0");
+                if(count($erroresGuide) === 0){
+                    try{
+                        $guiaBD = new Usuario();
+                        if($userId = $guiaBD->getIdUser($userSession))
+                        if($guiaGurdar = $guiaBD->guardarGuia($phpVar1, $guideText, $userId)){
+                            header("Refresh:0");
+                        }
+
+                    } catch(PDOException $e){
+                        error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        $erroresGuide['NoGuide'] = "Ha habido un error <br>";
                     }
-
-                } catch(PDOException $e){
-                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                    // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $erroresGuide['NoGuide'] = "Ha habido un error <br>";
                 }
             }
         }
 
         if(isset($_REQUEST["submitComment"])){
+            if(!isset($_SESSION["user"])){
+                $phpVar1 = $_GET['w1'];
+                $phpVar2 = $_GET['w2'];
+                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
+            }
             $content = recoge("newComment");
             
             if (isset($_GET["w1"])) {

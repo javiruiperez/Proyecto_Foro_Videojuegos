@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../CSS/Index.css">
     <title>Account Recovery</title>
 </head>
-<body>
+<body class="body">
     <?php
         cabecera();
     ?>

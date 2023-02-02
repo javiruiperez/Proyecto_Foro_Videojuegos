@@ -41,7 +41,7 @@ if (!isset($_REQUEST['bAcept'])) {
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
     </head>
-    <body>
+    <body class="body">
         <?php
             cabecera();
         ?>
@@ -121,7 +121,7 @@ if (!isset($_REQUEST['bAcept'])) {
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
     </head>
-    <body>
+    <body class="body">
     <?php
         cabecera();
     ?>

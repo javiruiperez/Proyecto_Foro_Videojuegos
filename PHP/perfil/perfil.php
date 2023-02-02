@@ -53,7 +53,7 @@ if(!isset($_SESSION["user"])){
         }
     </style>
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <div class="grid-container">
@@ -146,16 +146,13 @@ if(!isset($_SESSION["user"])){
             console.log( document.getElementById(nombre.id).value);
             document.getElementById(nombre.id).value="";
         })
-    })
+    });
 </script>
 </html>
 
 <?php
 
-    if (!isset($_REQUEST['submitImage'])) {
-
-
-    } else {
+    if (isset($_REQUEST['submitImage'])) {
         if (($_FILES['imagen']['error'] != 0)) {
             switch ($_FILES['imagen']['error']) {
                 case 1:
@@ -201,17 +198,13 @@ if(!isset($_SESSION["user"])){
                 move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
             }
         }
-try{
-
-  $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
- }catch(PDOException $e){
+        try{
+            $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
+        }catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                 // guardamos en ·errores el error que queremos mostrar a los usuarios
                 $erroresGuide['NoGuide'] = "Ha habido un error <br>";
             }
-       
-
-    }
-
+        }
     }
 ?>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Pagina de Inicio</title>
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <div class="grid-container">
@@ -130,7 +130,7 @@
     <link rel="stylesheet" href="../CSS/Index.css">
     <title>Pagina de Inicio</title>
 </head>
-<body>
+<body class="body">
     <header>
         <nav>
             <div class="grid-container">

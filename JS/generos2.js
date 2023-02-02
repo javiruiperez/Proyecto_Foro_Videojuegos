@@ -204,11 +204,22 @@ const cargarJuegos = async(platformSelected) => {
 
 let eventPlatform = document.getElementById("selectPlatform");
 
-eventPlatform.addEventListener("change", function(){
-    let juego = eventPlatform.value;
-    console.log(juego);
-    totalJuegos = 0;
-    numeroPagina = Math.floor(Math.random()*5+1);
-    hacerInvisible();
-    cargarJuegos(juego);
-})
+if(eventPlatform != null){
+    eventPlatform.addEventListener("change", function(){
+        let juego = eventPlatform.value;
+        console.log(juego);
+        totalJuegos = 0;
+        numeroPagina = Math.floor(Math.random()*5+1);
+        hacerInvisible();
+        cargarJuegos(juego);
+    })
+}
+// var buttonComment = getElementById("buttonComment");
+
+// newComment.addEventListener("change", () =>{
+//     if(newComment.value.length > 0){
+//         buttonComment.disabled = true;
+//     } else{
+//         buttonComment.disabled = false;
+//     }
+// })
