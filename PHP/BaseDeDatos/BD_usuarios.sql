@@ -47,7 +47,8 @@ CREATE TABLE `comentarios` (
   `idComentario` int NOT NULL,
   `idJuego` int NOT NULL,
   `texto` text NOT NULL,
-  `idUsuario` int NOT NULL
+  `idUsuario` int NOT NULL,
+  `fecha` DATE
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -58,8 +59,6 @@ CREATE TABLE `guias` (
   `idUsuario` int NOT NULL
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 
 

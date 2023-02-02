@@ -18,7 +18,9 @@
     } else{
         if(isset($_REQUEST["sendNewGuide"])){
             if(!isset($_SESSION["user"])){
-                header("Location:../login/checkLogin.php");
+                $phpVar1 = $_GET['w1'];
+                $phpVar2 = $_GET['w2'];
+                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
             }else{
                 $guideText = recoge("textNewGuide");
 

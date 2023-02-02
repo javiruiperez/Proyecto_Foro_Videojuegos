@@ -20,7 +20,13 @@
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-                <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
+                <div class="col-3"><?php 
+                    if(isset($_SESSION["user"])){
+                        echo '<div class="col-3"><a href="../perfil/perfil.php" class="profilePicture usuario"><img src="../../img/'.$_SESSION["user"].'/image.png"></a></div>';
+                    } else{
+                        echo '<div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>';
+                    }
+                ?></div>
             </div>
         </nav>
     </header>
@@ -73,20 +79,23 @@
                 header("Location:../../HTML/Index.php");
             }
         ?>
-        <div class=`<?php echo (isset($erroresComment["NoSession"])) ? "noSession": "createComments" ?>`>
-            <div class="userInfo">
-                <div id="imageUser"></div>
-                <div id="nameUser"></div>
-            </div>
+        <div class="userInfo">
             <?php
                 if($issetGuide){
             ?>
                 <form action="" method="post">
+                    <?php
+                        if(!isset($_SESSION["user"])){
+                            echo '<div class="pfp"><img src="../../img/image.png"></div>';
+                        } else{
+                            echo '<div class="pfp"><img src=../../img/'.$_SESSION["user"].'/image.png></div>';
+                        }
+                    ?>
                     <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
                     <?php
-                        echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div><br>": "";
+                        echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div>": "";
                     ?>
-                    <input type="submit" value="Send" name="submitComment" id="buttonComment"/>
+                    <input type="submit" value="Comment" name="submitComment" id="buttonComment"/>
                 </form>
             <?php
             }
@@ -111,25 +120,21 @@
                        $userId = $comment["idUsuario"];
                        $userComment = $comentarios->getUsername($userId);
                         if($numeroComentarios>=5){
-                            echo '<div class=divComment>';
-                                echo '<div class=profilePicture>';
-                                    echo '<img src=../../img/'.$userComment.'/image.png>';
-                                echo '</div>';
-                                echo '<div class=guideContent>';
+                            echo '<div class="commentContainer">';
+                                echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
+                                echo '<div class="textComment">';
                                     echo '<div class=userComment>'.$userComment.'</div>';
                                     echo '<div class=comment>'. $comment["texto"].'</div>';
+                                    echo '<div class="dateComment">'.$comment["fecha"].'</div>';
                                 echo '</div>';
                             echo '</div>';
                         }
                         else{
-                            echo '<div class=divComment>';
-                                echo '<div class=profilePicture>';
-                                    echo '<img src=../../img/'.$userComment.'/image.png>';
-                                echo '</div>';
-                                echo '<div class=guideContent>';
-                                    echo '<div class=userComment>'.$userComment.'</div>';
-                                    echo '<div class=commentSin>'. $comment["texto"].'</div>';
-                                echo '</div>';
+                            echo '<div class="commentContainer">';
+                                echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
+                                echo '<div class=userComment>'.$userComment.'</div>';
+                                echo '<div class=commentSin>'. $comment["texto"].'</div>';
+                                echo '<div class="dateComment">'.$comment["fecha"].'</div>';
                             echo '</div>';
                         }
                     }

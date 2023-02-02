@@ -159,13 +159,16 @@
         }
 
         public function guardarComentario($idJuego, $texto, $idUsuario){
-           $consulta=" INSERT INTO `comentarios` (`idJuego`, `texto`, `idUsuario`) VALUES (?, ?, ?)";
-           $stmt=$this->prepare($consulta);
-           $stmt->bindParam(1, $idJuego);
-           $stmt->bindParam(2, $texto);
-           $stmt->bindParam(3, $idUsuario);
+            $fecha = date("ymd");
+            // $datetime->format('d M, Y H:ia'); PARA DATETIME POR FORMATO
+            $consulta=" INSERT INTO `comentarios` (`idJuego`, `texto`, `idUsuario`, `fecha`) VALUES (?, ?, ?, ?)";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1, $idJuego);
+            $stmt->bindParam(2, $texto);
+            $stmt->bindParam(3, $idUsuario);
+            $stmt->bindParam(4, $fecha);
 
-           return  $stmt->execute();
+            return  $stmt->execute();
         }
 
         public function sacarComentariosOrdenPorJuego($idJuego){

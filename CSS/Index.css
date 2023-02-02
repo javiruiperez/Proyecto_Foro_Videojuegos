@@ -92,13 +92,23 @@ a {
 
 .usuario{
     margin-top: 10%;
-    margin-left: 5%;
+    margin-left: 100%;
     text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 700;
     text-shadow: 2px 2.5px 2.5px #000000; 
 }
+
+.profilePicture img{
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
 /* //mirar */
 header form {
     position: relative;

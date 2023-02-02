@@ -23,7 +23,9 @@
                 <form action="">                
                     <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
                 </form></div>
-                <div class="col-3"><a href="../PHP/perfil/perfil.php" class="sign-In">Usuario</a></div>
+                <?php
+                    echo '<div class="col-3"><a href="../PHP/perfil/perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
+                ?>
             </div>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
