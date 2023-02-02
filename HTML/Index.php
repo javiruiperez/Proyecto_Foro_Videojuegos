@@ -37,7 +37,7 @@
                 <a href="#" class="genres" id="Shooter">Shooter</a>
                 <a href="#" class="genres" id="Simulation">Simulation</a>
                 <a href="#" class="genres" id="Indie">Indie</a>
-                <br>
+              
     
   
             <select id="selectPlatform">
@@ -91,6 +91,14 @@
             </a>
         </div>
     </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <a target="_blank" href="../Interfaces Proyecto/ejemplo4.jpg">
+                <img src="../Interfaces Proyecto/ejemplo4.jpg" width="400" height="250">
+            </a>
+        </div>
+    </div>
   </div>
 
     <div class="clearfix"></div>
@@ -120,16 +128,16 @@
     </footer>                                                                                   
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
-    <script src="../JS/Busqueda.js"></script>
     <script>
 function myFunction() {
   var x = document.getElementById("categorias");
   if (x.style.display === "none" || x.style.display==="") {
     x.style.display = "block";
-    
+   
   } else {
     x.style.display = "none";
   }
+  
 }
 
 </script>
@@ -252,7 +260,6 @@ function myFunction() {
     </footer>                                                                                          
     <script src="../JS/generos2.js"></script>
     <script src="../JS/perfil.js"></script>
-    <script src="../JS/Busqueda.js"></script>
 </body>
 </html>
 <?php

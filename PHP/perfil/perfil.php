@@ -9,22 +9,22 @@ if(!isset($_SESSION["user"])){
     header("Location:../../HTML/Index.php");
 }else{
     try{
-        $usuario = new Usuario();
+        $user = new Usuario();
 
-        $usuarioBuscado = $usuario->getUser($_SESSION["user"]);
-        $emailBuscado= $usuario->getEmail($_SESSION["user"]);
-        $nombreBuscado=$usuario->getNombre($_SESSION["user"]);
+        $userGet = $user->getUser($_SESSION["user"]);
+        $emailGet= $user->getEmail($_SESSION["user"]);
+        $nameGet=$user->getNombre($_SESSION["user"]);
 
     } catch(PDOException $e){
         error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-        // guardamos en ·errores el error que queremos mostrar a los usuarios
-        $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+        // save errors
+        $errorsGuide['NoGuide'] = "Ha habido un error <br>";
     }
 
-    $nombreArchivo = "";
+    $nameFile = "";
     $dir = "../../img";
     $max_file_size = "51200000";
-    $extensionesValidas = array(
+    $extensions= array(
         "jpg",
         "png",
         "gif"
@@ -53,7 +53,7 @@ if(!isset($_SESSION["user"])){
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-              <div class="col-3"><a href="perfil.php" class="sign-In">Usuario</a></div>
+              <div class="col-3"><a href="perfil.php" class="sign-In">User</a></div>
             </div>
           
         </nav>
@@ -61,70 +61,70 @@ if(!isset($_SESSION["user"])){
         <form id="perfilForm" action="" method="post" enctype="multipart/form-data">
             <div class="box"><img src=
             <?php
-                echo "../../img/".$usuarioBuscado."/image.png"; 
+                echo "../../img/".$userGet."/image.png"; 
             ?>></div>
-            <label>Nombre :</label><br>
+            <label>Name :</label><br>
             <div class="user-box">
-            <input type="text" value="<?php echo $nombreBuscado?>" name="Nombre" id="Nombre" class="pendiente"></label><br>
+            <input type="text" value="<?php echo $nameGet?>" name="Name" id="Nombre" class="slope"></label><br>
             </div>
             <br>
             <label>User :</label><br>
-            <label><?php echo $usuarioBuscado?></label><br>
+            <label><?php echo $userGet?></label><br>
             <label>Email :</label><br>
             <div class="user-box">
-            <input type="text" value="<?php echo  $emailBuscado  ?>"name="Email" id="Email" class="pendiente"></input><br>
+            <input type="text" value="<?php echo  $emailGet  ?>"name="Email" id="Email" class="slope"></input><br>
             </div>
             <br>
            <?php
                 try{
-                    $usuarioNivel=$usuario->sacarNivel($_SESSION["user"]);
-                    if($usuarioNivel==2){
+                    $userLevel=$user->getLevel($_SESSION["user"]);
+                    //If you are level 2 ,you are admin
+                    if($userLevel==2){
             ?>
-            <label class="bloquear">Bloquear usuario :</label>
+            <label class="bloquear">Block user :</label>
                 <br>
                 <div class="user-box">
-            <input type="text" class="bloquearusuario" name="bloquearUsuario"> </input>
+            <input type="text" class="blockUser" name="blockUser"> </input>
                     </div>
             <br>
-            <label class="bloquear">Nueva Contraseña :</label>
+            <label class="bloquear">New password :</label>
                 <br>
                 <div class="user-box">
-            <input type="text" class="bloquearTexto" name="bloquearTexto"> </input>
+            <input type="text" class="blockText" name="blockText"> </input>
                     </div>
             <br>
-            <input type="submit" class="buttonForm" name="submitBloquear" value="Bloquear"/>
+            <input type="submit" class="buttonForm" name="submitBlock" value="Block"/>
             <br>
             <?php
                 }
-                    if(isset($_REQUEST['submitBloquear'])){
+                    if(isset($_REQUEST['submitBlock'])){
                         $admin=new Administrador();
-                        $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["bloquearTexto"],$_REQUEST   ["bloquearUsuario"]);
-                        echo "entra";
+                        $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["blockText"],$_REQUEST   ["blockUser"]);
+                      
                     }
                 }catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
-                    // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+                    // Save errors of user
+                    $errorsGuide['NoGuide'] = "Error <br>";
                 }
             ?>
-             <label>Cambiar imagen de perfil :</label><br>
+             <label>Change image of profile :</label><br>
             <input type="file" name="imagen" id="imagen"/>
             <br>
             <div id="Botones">
-            <input type="submit" class="buttonForm" name="submitImage" value="Aceptar"/>
-            <input type="button" id="Cancelar" class="buttonForm" name="Cancelar" value="Cancelar" onClick="perfil.php"/>
+            <input type="submit" class="buttonForm" name="submitImage" value="Acept"/>
+            <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
             </div>
             <br>
            
-            <input type="submit" class="buttonForm"class="buttonForm" name="CerrarSession" value="CerrarSession" />
+            <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Sign off" />
             <br>
             <?php
-                if(isset($_REQUEST["CerrarSession"])){
+                if(isset($_REQUEST["SignOff"])){
                     session_destroy();
                     header("Location:../../HTML/Index.php");
                 }
             ?>
-<div id="errores"></div>
 
         </form>
         
@@ -145,14 +145,13 @@ if(!isset($_SESSION["user"])){
     </footer>
 </body>
 <script>
-    let cancelar=document.getElementById("Cancelar");
+    //restore values of inputs to nothing =""
+    let cancel=document.getElementById("Cancel");
 
-    cancelar.addEventListener('click',()=>{
-        let cancelarV=document.querySelectorAll(".pendiente");
-        console.log(cancelarV);
-        cancelarV.forEach(nombre=>{
-            console.log( document.getElementById(nombre.id).value);
-            document.getElementById(nombre.id).value="";
+    cancel.addEventListener('click',()=>{
+        let cancelV=document.querySelectorAll(".slope");
+        cancelV.forEach(name=>{
+            document.getElementById(name.id).value="";
         })
     });
 </script>
@@ -164,67 +163,68 @@ if(!isset($_SESSION["user"])){
         if (($_FILES['imagen']['error'] != 0)) {
             switch ($_FILES['imagen']['error']) {
                 case 1:
-                    $errores["imagen"] = "UPLOAD_ERR_INI_SIZE. Fichero demasiado grande";
+                    $errors["imagen"] = "UPLOAD_ERR_INI_SIZE. File very big";
                     break;
                 case 2:
-                    $errores["imagen"] = "UPLOAD_ERR_FORM_SIZE. El fichero es demasiado grande";
+                    $errors["imagen"] = "UPLOAD_ERR_FORM_SIZE. File very big";
                     break;
                 case 3:
-                    $errores["imagen"] = "UPLOAD_ERR_PARTIAL. El fichero no se ha podido subir entero";
+                    $errors["imagen"] = "UPLOAD_ERR_PARTIAL. File update is interrumpt ";
                     break;
                 case 4:
-                    $errores["imagen"] = "UPLOAD_ERR_NO_FILE. No se ha podido subir el fichero";
+                    $errors["imagen"] = "UPLOAD_ERR_NO_FILE. File is not update";
                     break;
                 case 6:
-                    $errores["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Falta carpeta temporal<br>";
+                    $errors["imagen"] = "UPLOAD_ERR_NO_TMP_DIR. Without temporal folder <br>";
                 case 7:
-                    $errores["imagen"] = "UPLOAD_ERR_CANT_WRITE. No se ha podido escribir en el disco<br>";
+                    $errors["imagen"] = "UPLOAD_ERR_CANT_WRITE. Not to write in the disk<br>";
 
                 default:
-                    $errores["imagen"] = 'Error indeterminado.';
+                    $errors["imagen"] = 'Error undefined.';
             }
         } else {
-            $nombreArchivo = $_FILES['imagen']['name'];
+            $nameFile = $_FILES['imagen']['name'];
             $directorioTemp = $_FILES['imagen']['tmp_name'];
 
             $tamanyoFile = filesize($directorioTemp);
-            $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+            $extension = strtolower(pathinfo($nameFile, PATHINFO_EXTENSION));
 
-            if (!in_array($extension, $extensionesValidas)) {
-                $errores["imagen"] = "La extensión del archivo no es válida";
+            if (!in_array($extension, $extensions)) {
+                $errors["imagen"] = "The extension is not valid";
             }
             if ($tamanyoFile > $max_file_size) {
-                $errores["imagen"] = "La imagen debe de tener un tamaño inferior a 50 kb";
+                $errors["imagen"] = "The image is more ".$max_file_size;
             }
 
-            if (empty($errores)) {
-                $nombreArchivo = "image.png";
-                if(is_file("../../img/".$usuarioBuscado."/".$nombreArchivo)){
-                    unlink("../../img/".$usuarioBuscado."/image.png");
+            if (empty($errors)) {
+                //change img profile in this page
+                $nameFile = "image.png";
+                if(is_file("../../img/".$userGet."/".$nameFile)){
+                    unlink("../../img/".$userGet."/image.png");
                 }
 
-                move_uploaded_file($directorioTemp, '../../img/'.$usuarioBuscado.'/'.$nombreArchivo);
+                move_uploaded_file($directorioTemp, '../../img/'.$userGet.'/'.$nameFile);
             }
         }
 try{
-    $errores=[];
-    $ComprobarEmail=false;
-    $ComprobarNombre=false;
+    //if email and name are true in the base is update
+    $checkEmail=false;
+    $checkName=false;
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
-       $ComprobarEmail=true;
+       $checkEmail=true;
     }
-    if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Nombre"]) == 1) {
-       $ComprobarNombre=true;
+    if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
+       $checkName=true;
     } 
-    if($ComprobarEmail==true&&$ComprobarNombre==true){
-  $actualizar=$usuario->actualizainfo($_REQUEST["Nombre"],$_REQUEST["Email"],$usuarioBuscado);
+    if($checkEmail==true&&$checkName==true){
+  $update=$user->actualizainfo($_REQUEST["Name"],$_REQUEST["Email"],$userGet);
     }
 
     
  }catch(PDOException $e){
-                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                // guardamos en ·errores el error que queremos mostrar a los usuarios
-                $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+                error_log($e->getMessage() . "##Code: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                // save errors
+                $errorsGuide['NoGuide'] = "Error <br>";
             }
         }
     }

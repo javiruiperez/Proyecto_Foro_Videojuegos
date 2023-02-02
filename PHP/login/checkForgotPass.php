@@ -22,6 +22,7 @@
 
         if(count($errores) === 0){
             try{
+                //it create a new password that it send in the email and in the BD the password is change a new 
                 $usuarioEmail = new Usuario();
                 if($emailBD = $usuarioEmail->checkEmail($email)){
                     $newPass = randomPassword();

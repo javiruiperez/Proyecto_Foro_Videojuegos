@@ -47,7 +47,7 @@
                     }
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        // save errors
                         $erroresComment['NoComment'] = "Ha habido un error <br>";
                 }
             ?>
@@ -137,7 +137,7 @@
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                     // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $erroresComment['NoComment'] = "Ha habido un error <br>";
+                    $erroresComment['NoComment'] = "Error <br>";
                 }
             ?>
         </div>

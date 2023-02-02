@@ -194,7 +194,7 @@
 
         }
 
-public function sacarNivel($nameUser){
+public function getLevel($nameUser){
     $consulta="SELECT * FROM `usuarios`where usuario=?;";
     $stmt=$this->prepare($consulta);
     $stmt->bindParam(1,$nameUser);
@@ -207,7 +207,7 @@ public function sacarNivel($nameUser){
    return $numero;
 }
 
-        public function borrarComentario($idComentario){
+        public function deleteComment($idComentario){
             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idComentario);
