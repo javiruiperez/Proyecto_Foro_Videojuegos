@@ -28,15 +28,9 @@
                 //it create a new password that it send in the email and in the BD the password is change a new 
                 $usuarioEmail = new Usuario();
                 if($emailBD = $usuarioEmail->checkEmail($email)){
-                    $newPass = randomPassword();
-                    $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
-                   $emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
-                    $to = $emailGet;
-                    $subject = "Recuperar Contraseña";
-                    $headers = "MIME-Version: 1.0" . "\r\n";
-                    $headers .= "Contenttype:text/html;charset=UTF-8" . "\r\n";
-                    $message = "Tu nueva contraseña es".$newpass;
-                    mail($to, $subject, $message, $headers);
+                    header("location:../correos/enviar.php");
+                
+                   
                 } else{
                     $errors["emailForgot"] = "The email does not exist";
                     require("forgotPass.php");

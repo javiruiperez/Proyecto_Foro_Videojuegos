@@ -1,20 +1,28 @@
 .box img{
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin-top: 5px;
     border-radius:150px;
 }
 label,input{
-    margin: 2px;
+   
+   
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.label-user{
+    text-align: right;
 }
 #perfilForm{
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: transparent;
+    text-align: center;
 
-    width:400px;
+    /* width:400px; */
     
    
     background-color:#232323;
@@ -23,27 +31,35 @@ label,input{
     opacity: 0.95;
     border-radius:15px;
 }
+.div-perfil{
+    width: 70%;
+  
+    margin: 0 auto;
+}
+
 form label{
     font-weight: bold;
     text-transform: uppercase;
-    
+    text-align: left;
 }
 
 #Email{
-  
     width: 200px;
-
-
 }
 
 
 .buttonForm{
     color: white;
-    width: 30%;
+    width: 20%;
     background-color: rgb(0, 166, 255);
     height: 25px;
     border: 1px solid rgb(0, 166, 255);
     border-radius: 5px;
+    text-align: center;
+   
+    margin-left: 5px;
+    margin-right: 5px;
+
 
 }
 
@@ -59,8 +75,11 @@ form label{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
-
+.name-user{
+    margin: auto 0 ;
+}
 
 
 .user-box{
@@ -68,6 +87,7 @@ border: none;
 border-bottom: 1px solid #fff;
 outline: none;
 background: transparent;
+
 }
 input  {
     border: none;
@@ -75,4 +95,29 @@ input  {
 outline: none;
 background: transparent;
 color: #fff;
+text-align: center;
 }
+.div-atr{
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+progress{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 35px;
+    height: 50px;
+
+}
+
+.puntuacion{
+    margin-top: 0;
+    text-align: right;
+}
+
+
+
+
+
+
+

@@ -1,12 +1,10 @@
-/*SEGUIR CON CSS Y INTENTAR CAMBIAR (CUANDO TE LOGEAS BUSCA SI ESTABAS EN UNA SUBPÁGINA DE JUEGO)*/
-
 body{
     background-color: #232323;
 }
 
 /*GUIDE*/
 .guide{
-    width: 60%;
+    width: 100%;
     background-color: #232323;
     box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
     border-radius: 10px;
@@ -14,7 +12,7 @@ body{
 
 
 /*COMMENTS*/
-#inputGuide, #newComment{
+#inputGuide{
     color:white;
     width: 100%;
     line-height: 2em; 
@@ -33,30 +31,90 @@ body{
 }
 
 .profilePicture img{
-    top: 0;
-    left: 0;
     object-fit: cover;
     width: 75px;
     height: 75px;
     border-radius: 50%;
 }
 
-.divComment{
+.userInfo{
     display: flex;
     align-items: center;
-    width: 60%;
+}
+
+.pfp img{
+    border-radius: 50%;
+    width: 75px;
+}
+
+.commentContainer{
+    display: flex;
+    align-items: center;
+    width: auto;
     background-color: rgba(35, 35, 35, 0.7);
     box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
     margin: 10px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+#newComment{
+    width: 90%;
+    color:white;
+    line-height: 2em; 
     border: none;
+    outline: 0;
     border-bottom: 1px solid #fff;
+    background: transparent;
 }
 
-.comment{
+#buttonComment{
+    margin-top: 10px;
+    position: relative;
+    height: 25px;
+    background-color:#2FA9F3;
+    border: none;
     color: white;
+    border-radius: 10px;
 }
 
-.guideContent{
-    padding: 5%;
+#buttonComment:hover{
+    cursor: pointer;
+    background-color: rgb(0, 130, 182);
 }
 
+.textComment{
+    padding-left: 10px;
+}
+
+.userComment{
+    color:white;
+    font-weight: bold;
+}
+
+.comment, .commentSin{
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.dateComment{
+    color: grey;
+    font-size: 14px;
+}
+
+
+
+#colortexto0{
+    color: green;
+}
+#colortexto1{
+    color: blue;
+}
+#colortexto2{
+    color: red;
+}
+#colortexto3{
+    color: yellow;
+}

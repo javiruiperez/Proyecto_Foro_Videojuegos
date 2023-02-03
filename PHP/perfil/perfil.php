@@ -3,7 +3,14 @@ require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
 require("../modelo/classAdmin.php");
+include("./rangos.php");
 session_start();
+
+
+
+
+
+
 
 if(!isset($_SESSION["user"])){
     header("Location:../../HTML/Index.php");
@@ -58,23 +65,117 @@ if(!isset($_SESSION["user"])){
           
         </nav>
     </header>
+    <div class="div-perfil">
         <form id="perfilForm" action="" method="post" enctype="multipart/form-data">
-            <div class="box"><img src=
+        <div class="div-atr">
+        <div class="box"><img class="foto-perfil" src=
             <?php
                 echo "../../img/".$userGet."/image.png"; 
             ?>></div>
-            <label>Name :</label><br>
+            <progress max=
+            <?php 
+            try{
+                $numero=0;
+                $usuario=new Usuario();
+                $numeroComentarios=$usuario->numeroComentarios($_SESSION["user"]);
+                while($numeroComentarios>$ranges[$numero]){
+                    $numero++;
+                    $ranges[$numero];
+                }
+                if($numeroComentarios<$ranges[$numero]){
+                    echo $ranges[$numero];
+                }
+               
+            }catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
+                    // Save errors of user
+                    $errorsGuide['NoGuide'] = "Error <br>";
+                } 
+                
+                
+                ?>
+            
+             value=
+            
+            
+            <?php
+            
+            try{
+                $usuario=new Usuario();
+                $numeroComentarios=$usuario->numeroComentarios($_SESSION["user"]);
+                echo $numeroComentarios;
+            }catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
+                    // Save errors of user
+                    $errorsGuide['NoGuide'] = "Error <br>";
+                }
+                
+                
+                ?>>
+                
+            
+            
+            </progress>
+                <br>
+                <label class="puntuacion">
+                    
+                <?php try{
+                $usuario=new Usuario();
+                $numeroComentarios=$usuario->numeroComentarios($_SESSION["user"]);
+                echo $numeroComentarios;
+            }catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
+                    // Save errors of user
+                    $errorsGuide['NoGuide'] = "Error <br>";
+                }  ?>
+                
+                
+                /
+
+                <?php 
+            try{
+                $numero=0;
+                $usuario=new Usuario();
+                $numeroComentarios=$usuario->numeroComentarios($_SESSION["user"]);
+                while($numeroComentarios>$ranges[$numero]){
+                    $numero++;
+                    $ranges[$numero];
+                }
+                if($numeroComentarios<$ranges[$numero]){
+                    echo $ranges[$numero];
+                }
+            }catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
+                    // Save errors of user
+                    $errorsGuide['NoGuide'] = "Error <br>";
+                } 
+            
+            
+            ?>
+            
+            
+            
+            
+            
+            </label>
+                
+            <label>Name :</label>
             <div class="user-box">
-            <input type="text" value="<?php echo $nameGet?>" name="Name" id="Nombre" class="slope"></label><br>
+            <input type="text" value="<?php echo $nameGet?>" name="Name" id="Nombre" class="slope"></input><br>
+         
             </div>
-            <br>
-            <label>User :</label><br>
-            <label><?php echo $userGet?></label><br>
-            <label>Email :</label><br>
+            
+          
+            <label>User :</label>
+            <div class="name-user">
+            <label ><?php echo $userGet?></label><br>
+            </div>
+            <label>Email :</label>
             <div class="user-box">
             <input type="text" value="<?php echo  $emailGet  ?>"name="Email" id="Email" class="slope"></input><br>
             </div>
-            <br>
+            
+            
            <?php
                 try{
                     $userLevel=$user->getLevel($_SESSION["user"]);
@@ -82,17 +183,18 @@ if(!isset($_SESSION["user"])){
                     if($userLevel==2){
             ?>
             <label class="bloquear">Block user :</label>
-                <br>
+               
                 <div class="user-box">
             <input type="text" class="blockUser" name="blockUser"> </input>
                     </div>
-            <br>
+          
             <label class="bloquear">New password :</label>
-                <br>
+             
                 <div class="user-box">
             <input type="text" class="blockText" name="blockText"> </input>
                     </div>
-            <br>
+                    </div>
+                    <br>
             <input type="submit" class="buttonForm" name="submitBlock" value="Block"/>
             <br>
             <?php
@@ -108,6 +210,7 @@ if(!isset($_SESSION["user"])){
                     $errorsGuide['NoGuide'] = "Error <br>";
                 }
             ?>
+           
              <label>Change image of profile :</label><br>
             <input type="file" name="imagen" id="imagen"/>
             <br>
@@ -127,6 +230,7 @@ if(!isset($_SESSION["user"])){
             ?>
 
         </form>
+        </div>
         
     <footer>
         <div class="footer">
