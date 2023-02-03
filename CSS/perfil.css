@@ -3,6 +3,7 @@
     height: 150px;
     margin-top: 5px;
     border-radius:150px;
+    object-fit:cover;
 }
 label,input{
     margin: 2px;
