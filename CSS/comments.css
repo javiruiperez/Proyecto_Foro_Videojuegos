@@ -80,9 +80,8 @@ img{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 100px;
-    padding-right: 150px;
+    justify-content: space-around;
+    padding-right: 100px;
 }
 
 .imageGuide img{
