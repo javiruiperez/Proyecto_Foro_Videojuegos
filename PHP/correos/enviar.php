@@ -12,15 +12,21 @@ require("../BaseDeDatos/config.php");
 //Crear una instancia. Con true permitimos excepciones
 $mail = new PHPMailer(true);
 
- $newPass = randomPassword();
- $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
-$emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
- $to = $emailGet;
- $subject = "Recuperar Contraseña";
- $headers = "MIME-Version: 1.0" . "\r\n";
- $headers .= "Contenttype:text/html;charset=UTF-8" . "\r\n";
- $message = "Tu nueva contraseña es".$newpass;
- mail($to, $subject, $message, $headers);
+//  $newPass = randomPassword();
+//  $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
+// $emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
+//  $to = $emailGet;
+//  $subject = "Recuperar Contraseña";
+//  $headers = "MIME-Version: 1.0" . "\r\n";
+//  $headers .= "Contenttype:text/html;charset=UTF-8" . "\r\n";
+//  $message = "Tu nueva contraseña es".$newpass;
+//  mail($to, $subject, $message, $headers);
+
+
+ session_start();
+ if (isset($_SESSION["user"])) {
+     header("location:../../HTML/Index.php");
+ }
  try {
     //Valores dependientes del servidor que utilizamos
     
@@ -46,10 +52,15 @@ $emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
     /*
     Receptores y remitente
     */
+$usuarioEmail=new Usuario();
+
+    $newPass = randomPassword();
+ $passwordBD = $usuarioEmail->modifyPassword($newPass, $email);
+$emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
 //Remitente
-    $mail->setFrom('tu cuenta@gmail.com', 'Tu nombre');
+    $mail->setFrom('forogamershelp@gmail.com', 'forogamershelp');
 //Receptores. Podemos añadir más de uno. El segundo argumento es opcional, es el nombre
-    $mail->addAddress('tu destinatario', 'Nombre destinatario, es opcional');     //Add a recipient
+    $mail->addAddress($emailGet, 'prueba');     //Add a recipient
     //$mail->addAddress('ejemplo@example.com'); 
 
     //Copia
@@ -66,11 +77,11 @@ $emailGet=$usuarioEmail->getEmail($_SESSION["user"]);
     $mail->isHTML(true);    
     $mail->CharSet = "UTF8";    
     //Asunto
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Recuperar Contraseña';
     //Conteido HTML
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->Body    = "Tu nueva contraseña es".$newpass;
     //Contenido alternativo en texto simple
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->AltBody = "Tu nueva contraseña es".$newpass;
     //Enviar correo
     $mail->send();
     echo 'El mensaje se ha enviado con exito';
