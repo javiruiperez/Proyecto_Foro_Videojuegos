@@ -12,7 +12,7 @@
             foreach ($resultadoUsuario as $row) {
                 $nameUser= $row['id'];
             }
-            //Error: si no tiene la sesión iniciada da error -> que te lleve a index.php
+            
             return $nameUser;
         }
 
@@ -182,10 +182,10 @@
         }
 
 
-        public function numeroComentarios($idUsuario){
-         $consulta="SELECT * FROM `usuarios`where id=?;";
+        public function numeroComentarios($nameUsuario){
+         $consulta="SELECT * FROM `usuarios`where usuario=?;";
          $stmt=$this->prepare($consulta);
-         $stmt->bindParam(1,$idUsuario);
+         $stmt->bindParam(1,$nameUsuario);
          $stmt->execute();
          $resultado=$stmt;
          foreach($resultado as $result){
@@ -197,7 +197,7 @@
 
         }
 
-public function sacarNivel($nameUser){
+public function getLevel($nameUser){
     $consulta="SELECT * FROM `usuarios`where usuario=?;";
     $stmt=$this->prepare($consulta);
     $stmt->bindParam(1,$nameUser);
@@ -210,7 +210,7 @@ public function sacarNivel($nameUser){
    return $numero;
 }
 
-        public function borrarComentario($idComentario){
+        public function deleteComment($idComentario){
             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1,$idComentario);
@@ -281,13 +281,13 @@ public function sacarNivel($nameUser){
                         $image = time() . $image;
                     }
                     if(move_uploaded_file($temp, '../../img/'.$username.'/'.$image)){
-                        echo "imagen subida";
+                        echo "update image";
                     } else{
-                        echo "error al subir la imagen";
+                        echo "error update the image";
                     }
                 }
             } else{
-                echo "imagen vacía";
+                echo "image empty";
             }
         }
     }

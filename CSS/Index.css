@@ -1,10 +1,11 @@
 /*PASAR A SASS (IMPORTANTE)*/
+
 *{
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
 
-.body{
+body{
     margin: 0px;
     padding: 0px;
     background-image: url('../Interfaces\ Proyecto/fondo_web.png');
@@ -114,6 +115,10 @@ a {
 }
 
 /* //mirar */
+/* header{
+    background-color: #000000;
+    position: fixed;
+} */
 header form {
     position: relative;
     top: 25%;
@@ -207,7 +212,15 @@ div.gallery img {
     font-family: 'VT323', monospace;
     font-size: 25px;
 }
+.comment{
+    border:blue;
+    color: red;
+}
 
+
+.commentSin{
+    color:green;
+}
 option{
     color: #000000;
     font-size: 18px;
@@ -236,14 +249,11 @@ div.desc {
    
   
   }
-  #selectPlatform{
-    display: block;
- 
-}
+  /* #selectPlatform{
+    display:inline-block;
+margin: 0%;
+} */
 
-.categorias{
-    display: block;
-}
 
 
   @media only screen and (max-width: 700px) {
@@ -255,18 +265,19 @@ div.desc {
    
 
 
-    .genres{
+     .genres{
         display: block;
         text-align: center;
-    }
-    #selectPlatform{
+    } 
+     #selectPlatform{
         display: inline-block;
      margin-left: 40%;
-    }
+    } 
 
       #categorias{
        
         display: none;
+        
       }
 
       #icon{
@@ -277,7 +288,6 @@ div.desc {
         color: white;
       
      
-      
       }
   }
   

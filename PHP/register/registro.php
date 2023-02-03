@@ -18,12 +18,8 @@ $erroresMsg = array(
     EMAIL => ""
 );
 
-$contraseñaSinEncriptar="";
-  // session_start();
-    // if (isset($_SESSION["user"])) {
-    //     echo "holaxd";
-    //     header("location:../../HTML/Index.php");
-    // }
+$passwordWithout="";
+ 
 
 if (!isset($_REQUEST['bAcept'])) {
 ?>
@@ -84,6 +80,7 @@ if (!isset($_REQUEST['bAcept'])) {
 
 <?php
 } else {
+    //check variables 
     if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
         $datesform[NAME] = $_REQUEST["Name"];
     } else {
@@ -96,11 +93,12 @@ if (!isset($_REQUEST['bAcept'])) {
     }
     if (preg_match("#\w#i", $_REQUEST["Password"]) == 1) {
         $datesform[PASSWD] = $_REQUEST["Password"];
-      $contraseñaSinEncriptar=$_REQUEST["Password"];
+      $passwordWithout=$_REQUEST["Password"];
+      //crypt the password
         $passwordBD = crypt_blowfish($datesform[PASSWD]);
         $datesform[PASSWD] = $passwordBD;
     } else {
-        $contraseñaSinEncriptar=$_REQUEST["Password"];
+        $passwordWithout=$_REQUEST["Password"];
         $erroresMsg[PASSWD] = "<div class='errorMessage'>The password is not strong.</div";
     }
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
@@ -149,7 +147,7 @@ if (!isset($_REQUEST['bAcept'])) {
                     ?>
                         <div class="user-box">
                         <label><?php echo  $campo ?></label>
-                        <input type="password" name="<?php echo $campo ?>" value="<?php echo  $contraseñaSinEncriptar; ?>"></input>
+                        <input type="password" name="<?php echo $campo ?>" value="<?php echo  $passwordWithout; ?>"></input>
                         <?php
                             echo $erroresMsg[$campo];
                         ?>
@@ -168,31 +166,32 @@ if (!isset($_REQUEST['bAcept'])) {
     </html>
 
 <?php
-    $verificacionDef = true;
+    $check = true;
 
     foreach ($datesform as $campo => $valor) {
-        if ($valor != "" && $verificacionDef != false) {
-            $verificacionDef = true;
+        if ($valor != "" && $check != false) {
+            $check = true;
         } else {
-            $verificacionDef = false;
+            $check = false;
         }
     }
 
 
-    if ($verificacionDef == true) {
+    if ($check == true) {
         $_SESSION['Name'] = $datesform[USER];
 
         try {
-            $usuario = new Usuario();
-            $usuarioBuscado = $usuario->getUser($datesform[USER]);
+            //create a folder with name of user and it has a image predifined
+            $user = new Usuario();
+            $userGet = $user->getUser($datesform[USER]);
 
-            if ($usuarioBuscado != $datesform[USER]) {
-                $userInto = $usuario->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
+            if ($userget != $datesform[USER]) {
+                $userInto = $user->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
                 mkdir("../../img/".$datesform[USER]);
                 copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");
                 pie();
                 header("location:../../HTML/Index.php");
-                // header("location:enviar.php");
+               
             } else {
                 $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";
                 echo $erroresMsg[EMAIL];

@@ -6,14 +6,6 @@ $headers .= "Contenttype:text/html;charset=UTF-8" . "\r\n";
 $message = "Hola";
 mail($to, $subject, $message, $headers);
 ?>
-<!-- $nombre=$datesform[NAME];
-$correo=$datesform[EMAIL];
- echo $datesform[NAME];
-$asunto="Confirmar cuenta ForoGamers";
-$carta="De: $nombre \n  ";
-$carta .="Correo: $correo \n";
-mail($correo,$asunto,$carta);
-header('Location :mensajeEnviado.html'); -->
 
 
 

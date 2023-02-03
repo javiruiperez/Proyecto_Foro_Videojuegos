@@ -1,3 +1,11 @@
+
+
+<?php
+
+include("../perfil/rangos.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,43 +127,117 @@
                         try{
                             $comentarios = new Usuario();
                             $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-                        
+                            $numero=0;
                             foreach($commentsArray as $comment){
-                               $numeroComentarios= $comentarios->numeroComentarios($comment["idUsuario"]);
+                               $numeroComentarios= $comentarios->numeroComentarios($_SESSION["user"]);
                                $userId = $comment["idUsuario"];
                                $userComment = $comentarios->getUsername($userId);
-                                if($numeroComentarios>=5){
+                               while($numeroComentarios>$ranges[$numero]){
+                                $numero++;
+                                $ranges[$numero];
+                            }
+                            if($numeroComentarios<$ranges[$numero]){
+                              
+                        
                                     echo '<div class="commentContainer">';
                                         echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
                                         echo '<div class="textComment">';
-                                            echo '<div class=userComment>'.$userComment.'</div>';
+                                            echo '<div class=userComment id="colortexto'.$numero.'">'.$userComment.'</div>';
                                             echo '<div class=comment>'. $comment["texto"].'</div>';
                                             echo '<div class="dateComment">'.$comment["fecha"].'</div>';
                                         echo '</div>';
                                     echo '</div>';
                                 }
-                                else{
-                                    echo '<div class="commentContainer">';
-                                        echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
-                                        echo '<div class="textComment">';
-                                            echo '<div class=userComment>'.$userComment.'</div>';
-                                            echo '<div class=commentSin>'. $comment["texto"].'</div>';
-                                            echo '<div class="dateComment">'.$comment["fecha"].'</div>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                }
+                              
                             }
-
+                            
                         } catch(PDOException $e){
-                            error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3,    "../   logBD.txt");
+                            error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                             // guardamos en ·errores el error que queremos mostrar a los usuarios
-                            $erroresComment['NoComment'] = "Ha habido un error <br>";
+                            $erroresComment['NoComment'] = "Error <br>";
                         }
                     ?>
                 </div>
             </div>
-            <div id="Images"></div>
-            </div>
+        </div>
+        <?php
+            if (isset($_GET["w2"])) {
+                $phpVar1 = $_GET['w2'];
+            } 
+            else{
+                header("Location:../../HTML/Index.php");
+            }
+        ?>
+        <div class="userInfo">
+            <?php
+                if($issetGuide){
+            ?>
+                <form action="" method="post">
+                    <?php
+                        if(!isset($_SESSION["user"])){
+                            echo '<div class="pfp"><img src="../../img/image.png"></div>';
+                        } else{
+                            echo '<div class="pfp"><img src=../../img/'.$_SESSION["user"].'/image.png></div>';
+                        }
+                    ?>
+                    <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
+                    <?php
+                        echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment [NoComment]</div>": "";
+                    ?>
+                    <input type="submit" value="Comment" name="submitComment" id="buttonComment"/>
+                </form>
+            <?php
+            }
+            ?>
+        </div>
+
+        <div id="readComments">
+            <?php
+                if (isset($_GET["w1"])) {
+                    $phpVar1 = $_GET['w1'];
+                    $phpVar2 = $_GET['w2'];
+                } 
+                else{
+                    header("Location:../../HTML/Index.php");
+                }
+                try{
+                    $comentarios = new Usuario();
+                    $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
+                    $numero=0;
+                    foreach($commentsArray as $comment){
+                       $numeroComentarios= $comentarios->numeroComentarios($_SESSION["user"]);
+                       $userId = $comment["idUsuario"];
+                       $userComment = $comentarios->getUsername($userId);
+                       while($numeroComentarios>$ranges[$numero]){
+                        $numero++;
+                        $ranges[$numero];
+                    }
+                    if($numeroComentarios<$ranges[$numero]){
+                      
+                
+                            echo '<div class="commentContainer">';
+                                echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
+                                echo '<div class="textComment">';
+                                    echo '<div class=userComment id="colortexto'.$numero.'">'.$userComment.'</div>';
+                                    echo '<div class=comment>'. $comment["texto"].'</div>';
+                                    echo '<div class="dateComment">'.$comment["fecha"].'</div>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                      
+                    }
+                    
+                } catch(PDOException $e){
+                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                    // guardamos en ·errores el error que queremos mostrar a los usuarios
+                    $erroresComment['NoComment'] = "Error <br>";
+                }
+            ?>
+        </div>
+    </div>
+    <div id="Images"></div>
+
+  
             <footer>
                 <div class="footer">
                     <div class="row">

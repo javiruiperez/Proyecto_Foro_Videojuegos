@@ -6,11 +6,11 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sqlBD = file_get_contents("BD_usuarios.sql");
     $pdo->exec($sqlBD);
-    echo ("La BD ha sido creada");
+    echo ("BD is created");
     $pdo = null;
 }
  catch (PDOException $e) {
     error_log($e->getMessage() . "## Fichero: " . $e->getFile() . "## Línea: " . $e->getLine() . "##Código: " . $e->getCode() . "##Instante: " . microtime() . PHP_EOL, 3, "logBD.txt");
-    $errores['datos'] = "Ha habido un error <br>";
+    $errores['datos'] = "Error <br>";
 }
 ?>

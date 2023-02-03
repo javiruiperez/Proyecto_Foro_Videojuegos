@@ -2,7 +2,7 @@ numeroPagina=1;
 images="";
 element =document.getElementById("borrar");
 cont=0;
-const APIKEY = "a37fd87e92444a799df4bfbde06f8552";
+const APIKEY = "6567b9ace2eb4f3897216e07cc72a4df";
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
@@ -18,13 +18,10 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
                 element.remove();
                 cont++;
             }
-
+//search for genres and to see eight images of this
             options2.results.forEach(juegos=>{
                 juegos.genres.forEach(nombregeneros=>{
-                    if(nombregeneros.name.includes(genero)){
-                        console.log(juegos.background_image);
-                        console.log(juegos.id);
-                        //<a target="_blank" href="${juegos.background_image}">        
+                    if(nombregeneros.name.includes(genero)){       
                         images=images+`<div class="responsive">
                             <div class="gallery">
                             <img class="imagen" id=${juegos.id} src="${juegos.background_image}" width="400"    height="250">
@@ -41,7 +38,7 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
                     cargarImagenesJuegosPorGenero(genero);
                 }
                 else{
-                    console.log(totalJuegos);
+                   
                     if(totalJuegos<9){
                         document.getElementById('Images').innerHTML=images; 
                         numeroPagina=1;
@@ -52,7 +49,7 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
     }catch(error){
         console.log(error);
     }
-
+//include id of game and link of image in the url to use when user click of image
     const imagenImagen=document.querySelectorAll('.imagen');
     imagenImagen.forEach(e=>{
         e.addEventListener('click',()=>{
@@ -68,13 +65,14 @@ const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
 
 BtnGeneros.forEach(nombre=>{
-    console.log(nombre.id); 
+   
     tiposgeneros=document.getElementById(nombre.id);
-    console.log(tiposgeneros);
+    
     tiposgeneros.addEventListener('click',()=>{
-        hacerloVisible();
+        Visible();
         BTNSiguiente=document.getElementById("Siguiente");
         BTNSiguiente.addEventListener('click',()=>{
+            //We initialize these four variables in order to be able to load other page
             images="";
             totalJuegos = 0;
         newGames = "";
@@ -83,22 +81,20 @@ BtnGeneros.forEach(nombre=>{
         })
         BTNAtras=document.getElementById("Atras");
         BTNAtras.addEventListener('click',()=>{
+                    //We initialize these four variables in order to be able to load other page
             images="";
             totalJuegos = 0;
         newGames = "";
             atras();
             cargarImagenesJuegosPorGenero(nombre.id);
         })
+        //We initialize these four variables in order to be able to load other platform later
         images="";
         numeroPagina=1;
         totalJuegos = 0;
         newGames = "";
         element = document.getElementById("borrar");
-        // if(element!=null){
-        //     element = document.getElementById("borrar");
-        //  element.remove();
-        //  element=null;
-        //    }
+      
 
         cargarImagenesJuegosPorGenero(nombre.id);
      
@@ -118,12 +114,12 @@ BtnGeneros.forEach(nombre=>{
     })
 })
 
-function hacerloVisible(){
+function Visible(){
     document.getElementById("Siguiente").style.display='inline-block';
     document.getElementById("Atras").style.display='inline-block';
     document.getElementById("Botones").style.display="block";
 }
-function hacerInvisible(){
+function Invisible(){
     document.getElementById("Siguiente").style.display='none';
     document.getElementById("Atras").style.display='none';
     document.getElementById("Botones").style.display="none";
@@ -160,7 +156,6 @@ const cargarJuegos = async(platformSelected) => {
                         }
                         let name_game = games.results[i].name;
                         let image_game = games.results[i].background_image;
-                        // <a target="_blank" href="${image_game}">
                         newGames += `<div class="responsive">
                         <div class="gallery">
                             <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
@@ -185,7 +180,7 @@ const cargarJuegos = async(platformSelected) => {
                 cont++;
 
                 const imagenImagen2=document.querySelectorAll('.imagen');
-                console.log(imagenImagen2);
+              
                 imagenImagen2.forEach(i=>{
                     i.addEventListener('click',()=>{
                       
@@ -207,19 +202,10 @@ let eventPlatform = document.getElementById("selectPlatform");
 if(eventPlatform != null){
     eventPlatform.addEventListener("change", function(){
         let juego = eventPlatform.value;
-        console.log(juego);
+     
         totalJuegos = 0;
         numeroPagina = Math.floor(Math.random()*5+1);
-        hacerInvisible();
+        Invisible();
         cargarJuegos(juego);
     })
 }
-// var buttonComment = getElementById("buttonComment");
-
-// newComment.addEventListener("change", () =>{
-//     if(newComment.value.length > 0){
-//         buttonComment.disabled = true;
-//     } else{
-//         buttonComment.disabled = false;
-//     }
-// })

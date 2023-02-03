@@ -42,13 +42,13 @@
 
                     } catch(PDOException $e){
                         error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                        // guardamos en ·errores el error que queremos mostrar a los usuarios
-                        $erroresGuide['NoGuide'] = "Ha habido un error <br>";
+                        // save errors
+                        $erroresGuide['NoGuide'] = "Error <br>";
                     }
                 }
             }
         }
-
+// we send name of game and link of image if you arent login 
         if(isset($_REQUEST["submitComment"])){
             if(!isset($_SESSION["user"])){
                 $phpVar1 = $_GET['w1'];
@@ -71,6 +71,7 @@
                     if($IDuser = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
                         if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //añadir comentario
                             $addComment = $usuario->sumarComentario($IDuser);
+                            //the new comment to see when the user finish write the comment
                             header("Refresh:0");
                         }
                     }
@@ -78,7 +79,7 @@
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                     // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $erroresComment['NoComment'] = "Ha habido un error <br>";
+                    $erroresComment['NoComment'] = "Error <br>";
                 }
             }
         }
