@@ -220,7 +220,7 @@ if(!isset($_SESSION["user"])){
             </div>
             <br>
            
-            <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Sign off" />
+            <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Log out" />
             <br>
             <?php
                 if(isset($_REQUEST["SignOff"])){
