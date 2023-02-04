@@ -14,6 +14,7 @@
     ?>
     <div class="form">
         <form action="" method="post">
+          
             <label>Email</label><br>
             <input type="text" name="emailForgot"/>
             <br>

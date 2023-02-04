@@ -5,10 +5,7 @@
     require("../BaseDeDatos/config.php");
     // require("../register/enviar.php");
     $errors = [];
-    session_start();
-    if (isset($_SESSION["user"])) {
-        header("location:../../HTML/Index.php");
-    }
+ 
     if(!isset($_REQUEST["submitForgot"])){
         require("forgotPass.php");
     } else{
@@ -28,7 +25,8 @@
                 //it create a new password that it send in the email and in the BD the password is change a new 
                 $usuarioEmail = new Usuario();
                 if($emailBD = $usuarioEmail->checkEmail($email)){
-                    header("location:../correos/enviar.php");
+                   
+                    header("location:../correos/enviar.php?variable1=$email");
                 
                    
                 } else{

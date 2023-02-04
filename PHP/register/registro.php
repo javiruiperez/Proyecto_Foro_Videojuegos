@@ -102,7 +102,22 @@ if (!isset($_REQUEST['bAcept'])) {
         $erroresMsg[PASSWD] = "<div class='errorMessage'>The password is not strong.</div";
     }
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
-        $datesform[EMAIL] = $_REQUEST["Email"];
+try{
+    $usuario=new Usuario();
+
+   if($emailCom=$usuario->checkEmail($_REQUEST["Email"])){
+    $erroresMsg[EMAIL] = "<div class='errorMessage'>Not a valid email address.</div";
+
+        }
+        else{
+            $datesform[EMAIL] = $_REQUEST["Email"];
+        }
+} catch(PDOException $e){
+    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+    $errors['datos'] = "Error <br>";
+}
+
+      
     } else {
         $erroresMsg[EMAIL] = "<div class='errorMessage'>Not a valid email address.</div";
     }

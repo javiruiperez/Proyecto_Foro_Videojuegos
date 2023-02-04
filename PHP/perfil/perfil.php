@@ -315,7 +315,17 @@ try{
     $checkEmail=false;
     $checkName=false;
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
-       $checkEmail=true;
+        $usuario=new Usuario();
+
+        if($emailCom=$usuario->checkEmail($_REQUEST["Email"])){
+         
+     
+             }
+             else{
+                $checkEmail=true;
+             }
+
+      
     }
     if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
        $checkName=true;
