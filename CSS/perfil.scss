@@ -1,0 +1,189 @@
+$darkColorBG: #232323;
+$buttonColor: #2FA9F3;
+$noColor: transparent;
+$hoverColor: rgb(0, 130, 182);
+$whiteColor: white;
+
+.box img{
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+    border-radius:150px;
+    object-fit:cover;
+}
+
+label, input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.div-perfil{
+    width: 70%;
+    margin: 0 auto;
+
+    #perfilForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: $noColor;
+        text-align: center;
+        background-color: $darkColorBG;
+        color: $whiteColor;
+        margin: 0 auto;
+        opacity: 0.95;
+        border-radius:15px;
+
+        progress{
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 35px;
+            height: 50px;
+        }
+    }
+}
+
+form {
+    label{
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    .div-atr{
+        width: 50%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.user-box{
+    border: none;
+    border-bottom: 1px solid $whiteColor;
+    outline: none;
+    background: $noColor;
+
+    #Email{
+        width: 200px;
+    }
+}
+
+.buttonForm{
+    color: $whiteColor;
+    width: 80%;
+    background-color: $buttonColor;
+    height: 25px;
+    border: 1px solid $buttonColor;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    &:hover{
+        cursor: pointer;
+        background-color: $hoverColor;
+        border: 1px solid $hoverColor;
+    }
+}
+
+#Botones{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.name-user{
+    margin: auto 0;
+}
+
+input{
+    border: none;
+    outline: none;
+    background: $noColor;
+    color: $whiteColor;
+    text-align: center;
+}
+
+.puntuacion{
+    margin-top: 0;
+    text-align: right;
+}
+
+.barra_busqueda{
+    color: black;
+}
+
+@media only screen and (max-width: 500px) {
+    progress{
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 35px;
+        height: 50px;
+        margin-left: 10%;
+    
+    }
+
+    .grid-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns:  repeat(2,1fr);
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    progress{
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 35px;
+        height: 50px;
+    
+    }
+
+    .barra_busqueda{
+        display: none;
+        color: black;
+    }
+
+    .div-atr{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns:  repeat(2,1fr);
+    }
+}
+
+
+@media only screen and (max-width: 300px) {
+    progress{
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 35px;
+        height: 50px;
+        margin-left: 10%;
+    }
+
+    .barra_busqueda{
+        display: none;
+        color: black;
+    }
+
+    .div-atr{
+        width: 90%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns:  repeat(2,1fr);
+    }
+}

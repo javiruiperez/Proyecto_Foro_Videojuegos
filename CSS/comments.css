@@ -90,19 +90,20 @@ img {
 .newGuide {
   width: 500px;
   background-color: transparent;
-  -webkit-backdrop-filter: blur(60px) saturate(50%);
-          backdrop-filter: blur(60px) saturate(50%);
+  -webkit-backdrop-filter: blur(160px) saturate(50%);
+          backdrop-filter: blur(160px) saturate(50%);
   border-radius: 10px;
   padding: 25px;
   color: white;
 }
 .newGuide #inputGuide {
-  color: white;
+  font-weight: bold;
+  color: #2FA9F3;
   width: 100%;
   line-height: 2em;
   outline: 0;
   border: none;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #2FA9F3;
   background: transparent;
   font-size: 16px;
 }

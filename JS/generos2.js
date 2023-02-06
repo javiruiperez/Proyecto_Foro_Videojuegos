@@ -62,11 +62,6 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
 
 
 
-
-
-
-
-
 const btnAnterior=document.getElementById('btnAnterior');
 const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
@@ -82,7 +77,7 @@ BtnGeneros.forEach(nombre=>{
             //We initialize these four variables in order to be able to load other page
             images="";
             totalJuegos = 0;
-        newGames = "";
+            newGames = "";
             siguiente();
             cargarImagenesJuegosPorGenero(nombre.id);
         })
@@ -91,7 +86,7 @@ BtnGeneros.forEach(nombre=>{
                     //We initialize these four variables in order to be able to load other page
             images="";
             totalJuegos = 0;
-        newGames = "";
+            newGames = "";
             atras();
             cargarImagenesJuegosPorGenero(nombre.id);
         })
@@ -218,15 +213,6 @@ if(eventPlatform != null){
 }
 
 
-
-
-
-
-
-
-
-
-
 const cargarJuegosInicio = async() => {
   
     try{
@@ -239,11 +225,9 @@ const cargarJuegosInicio = async() => {
         if(options.status === 200){
             const games = await options.json();
             element = document.querySelectorAll('.prede');
-          
            
 
 element.forEach(r=>{
-
     for(var i = 0; i < games.results.length; i++){
         for(var j = 0; j < games.results[i].platforms.length; j++){
    
@@ -252,11 +236,7 @@ element.forEach(r=>{
                 }
                 let name_game = games.results[i].name;
                 let image_game = games.results[i].background_image;
-        
-
-
-
-   
+           
     if(numero==totalJuegos&&i==numero){
     r.id=games.results[i].id;
     r.src=image_game;
@@ -267,10 +247,7 @@ element.forEach(r=>{
     }
     numero++;
 })
-
-                 
-                              
-                
+        
             
             if(totalJuegos < 4 && numero < 4){
                 numeroPagina++;

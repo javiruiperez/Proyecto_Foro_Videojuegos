@@ -1,196 +1,165 @@
-.box img{
-    width: 100px;
-    height: 100px;
-    margin-top: 5px;
-    border-radius:150px;
-    object-fit:cover;
-}
-label,input{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.label-user{
-    text-align: right;
+.box img {
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  border-radius: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-#perfilForm{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    text-align: center;
-
-    
-    
-   
-    background-color:#232323;
-    color:white;
-    margin :0 auto;
-    opacity: 0.95;
-    border-radius:15px;
-}
-.div-perfil{
-    width: 70%;
-  
-    margin: 0 auto;
+label, input {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-form label{
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: left;
+.div-perfil {
+  width: 70%;
+  margin: 0 auto;
+}
+.div-perfil #perfilForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  text-align: center;
+  background-color: #232323;
+  color: white;
+  margin: 0 auto;
+  opacity: 0.95;
+  border-radius: 15px;
+}
+.div-perfil #perfilForm progress {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 35px;
+  height: 50px;
 }
 
-#Email{
-    width: 200px;
+form label {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: left;
+}
+form .div-atr {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-
-.buttonForm{
-    color: white;
-    width: 80%;
-    background-color: rgb(0, 166, 255);
-    height: 25px;
-    border: 1px solid rgb(0, 166, 255);
-    border-radius: 5px;
-    text-align: center;
-   
-    margin-left: 5px;
-    margin-right: 5px;
-
-
+.user-box {
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
+}
+.user-box #Email {
+  width: 200px;
 }
 
-.buttonForm:hover{
-    cursor: pointer;
-    background-color: rgb(0, 130, 182);
-    border: 1px solid rgb(0, 118, 182);
+.buttonForm {
+  color: white;
+  width: 80%;
+  background-color: #2FA9F3;
+  height: 25px;
+  border: 1px solid #2FA9F3;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.buttonForm:hover {
+  cursor: pointer;
+  background-color: rgb(0, 130, 182);
+  border: 1px solid rgb(0, 130, 182);
 }
 
-#Botones{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-.name-user{
-    margin: auto 0 ;
+#Botones {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-
-.user-box{
-border: none;
-border-bottom: 1px solid #fff;
-outline: none;
-background: transparent;
-
+.name-user {
+  margin: auto 0;
 }
-input  {
-    border: none;
 
-outline: none;
-background: transparent;
-color: #fff;
-text-align: center;
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  text-align: center;
 }
-.div-atr{
+
+.puntuacion {
+  margin-top: 0;
+  text-align: right;
+}
+
+.barra_busqueda {
+  color: black;
+}
+
+@media only screen and (max-width: 500px) {
+  progress {
     width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-progress{
-    width: 100%;
     margin: 0 auto;
     margin-top: 35px;
     height: 50px;
-
+    margin-left: 10%;
+  }
+  .grid-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-
-.puntuacion{
-    margin-top: 0;
-    text-align: right;
-}
-
-
-
-@media only screen and (max-width: 500px) {
-    progress{
-        width: 50%;
-        margin: 0 auto;
-        margin-top: 35px;
-        height: 50px;
-        margin-left: 10%;
-    
-    }
-    
-   
-
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
-    }
-  
-}
-
-
 @media only screen and (max-width: 700px) {
-    progress{
-        width: 90%;
-        margin: 0 auto;
-        margin-top: 35px;
-        height: 50px;
-    
-    }
-.barra_busqueda{
+  progress {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 35px;
+    height: 50px;
+  }
+  .barra_busqueda {
     display: none;
+    color: black;
+  }
+  .div-atr {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-    .div-atr{
-        width: 90%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
-    }
-}
-
-
 @media only screen and (max-width: 300px) {
-    progress{
-        width: 50%;
-        margin: 0 auto;
-        margin-top: 35px;
-        height: 50px;
-        margin-left: 10%;
-    
-    }
-    .barra_busqueda{
-        display: none;
-    }
-    .div-atr{
-        width: 90%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
-    }
-  
-
-
-
-}
-
-
-
-
+  progress {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 35px;
+    height: 50px;
+    margin-left: 10%;
+  }
+  .barra_busqueda {
+    display: none;
+    color: black;
+  }
+  .div-atr {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid-container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=perfil.css.map */

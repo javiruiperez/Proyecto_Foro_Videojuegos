@@ -157,20 +157,17 @@ if (!isset($_SESSION["user"])) {
                 
             <label>Name :</label>
             <div class="user-box">
-            <input type="text" value="<?php echo $nameGet?>" name="Name" id="Nombre" class="slope"></input><br>
-         
+                <input type="text" value="<?php echo $nameGet?>" name="Name" id="Nombre" class="slope"></input><br>
             </div>
-            
           
             <label>User :</label>
             <div class="name-user">
-            <label ><?php echo $userGet?></label><br>
+                <label><?php echo $userGet?></label><br>
             </div>
             <label>Email :</label>
             <div class="user-box">
             <input type="text" value="<?php echo  $emailGet  ?>"name="Email" id="Email" class="slope"></input><br>
             </div>
-            
             
            <?php
                 try{
@@ -214,8 +211,8 @@ if (!isset($_SESSION["user"])) {
             
             <br>
             <div id="Botones">
-            <input type="submit" class="buttonForm" name="submitImage" value="Acept"/>
-            <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
+                <input type="submit" class="buttonForm" name="submitImage" value="Acept"/>
+                <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
             </div>
             <br>
             </div>
@@ -227,18 +224,6 @@ if (!isset($_SESSION["user"])) {
                     header("Location:../../HTML/Index.php");
                 }
             ?>
-
-                <label>Change image of profile :</label><br>
-                <input type="file" name="imagen" id="imagen" />
-                <br>
-                <div id="Botones">
-                    <input type="submit" class="buttonForm" name="submitImage" value="Acept" />
-                    <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php" />
-                </div>
-                <br>
-                    
-                <input type="submit" class="buttonForm" class="buttonForm" name="SignOff" value="Log out" />
-                <br>
                 <?php
                     if (isset($_REQUEST["SignOff"])) {
                         session_destroy();

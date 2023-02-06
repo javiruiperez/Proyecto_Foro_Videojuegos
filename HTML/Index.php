@@ -69,33 +69,25 @@
       
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
-                <img class="prede" class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
-            </a>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
-                <img class="prede" src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
-            </a>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
-                <img class="prede" src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
-            </a>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo4.jpg">
-                <img class="prede" src="../Interfaces Proyecto/ejemplo4.jpg" width="400" height="250">
-            </a>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
   </div>
@@ -202,33 +194,25 @@ function myFunction() {
     <br>
     <div class="responsive">
       	<div class="gallery">
-        	<a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
-          		<img class="prede" src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
-        	</a>
+          	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
         
     <div class="responsive">
       	<div class="gallery">
-        	<a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
-          		<img class="prede" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
-        	</a>
+          	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
       	</div>
     </div>
 
     <div class="responsive">
       	<div class="gallery">
-      	  	<a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
-      	  		<img class="prede" src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
-      	  	</a>
+      	  	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
       	</div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
-                <img class="prede" src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
-            </a>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
         </div>
     </div>
 

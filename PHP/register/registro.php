@@ -193,7 +193,8 @@ try{
 
 
     if ($check == true) {
-        $_SESSION['Name'] = $datesform[USER];
+        session_start();
+        $_SESSION['user'] = $datesform[USER];
 
         try {
             //create a folder with name of user and it has a image predifined

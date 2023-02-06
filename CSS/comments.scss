@@ -103,18 +103,19 @@ img{
 .newGuide{
     width: 500px;
     background-color: transparent;
-    backdrop-filter: blur(60px) saturate(50%);
+    backdrop-filter: blur(160px) saturate(50%);
     border-radius: 10px;
     padding: 25px;
     color: $whiteColor;
 
     #inputGuide{
-        color: $whiteColor;
+        font-weight: bold;
+        color: $buttonColor;
         width: 100%;
         line-height: 2em; 
         outline: 0;
         border: none;
-        border-bottom: 1px solid $whiteColor;
+        border-bottom: 1px solid $buttonColor;
         background: transparent;
         font-size: $bigFont;
     }
