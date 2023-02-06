@@ -15,23 +15,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Pagina de Inicio</title>
 </head>
+
 <body class="body">
     <header>
         <nav>
-      
             <div class="grid-container">
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
-                <form action="">                
-                    <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-                </form></div>
+                    <form action="">                
+                        <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
+                    </form>
+                </div>
                 <?php
                     echo '<div class="col-3"><a href="../PHP/perfil/perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
                 ?>
             </div>
             <a href="javascript:void(0);" id="icon" class="col-4" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+                <i class="fa fa-bars"></i>
+            </a>
             <div class="categorias" id="categorias"> 
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="RPG">RPG</a>
@@ -39,8 +40,6 @@
                 <a href="#" class="genres" id="Shooter">Shooter</a>
                 <a href="#" class="genres" id="Simulation">Simulation</a>
                 <a href="#" class="genres" id="Indie">Indie</a>
-              
-    
   
             <select id="selectPlatform">
                 <option value="">Platform</option>
@@ -51,14 +50,12 @@
                 <option value="PC">PC</option>
                 <option value="Nintendo Switch">Nintendo Switch</option>
             </select>
-     
             </div>
-      
-   
-          </nav>
+        </nav>
     </header>
     <br>
     <br>
+
     <div id="borrar">
     <div class="div_principal">
         <h1>Who are we?</h1>
@@ -111,7 +108,6 @@
         <button type="button" class="Siguiente" id="Siguiente">Siguiente</button>
     </div>
     <div id="Images"></div>
-    
 
     <footer>
         <div class="footer">

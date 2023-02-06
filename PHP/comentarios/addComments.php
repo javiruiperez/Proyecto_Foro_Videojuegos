@@ -23,10 +23,7 @@
                 header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
             }else{
                 $guideText = recoge("textNewGuide");
-
-                if (isset($_GET["w1"])) {
-                    $phpVar1 = $_GET['w1'];
-                }
+                $phpVar1 = $_GET['w1'];
 
                 if($guideText === ""){
                     $errores["NoGuide"] = "Your guide cannot be blank";
@@ -56,13 +53,11 @@
                 header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
             }
             $content = recoge("newComment");
-            
-            if (isset($_GET["w1"])) {
-                $phpVar1 = $_GET['w1'];
-            }
+            $phpVar1 = $_GET['w1'];
+            $phpVar2 = $_GET['w2'];
 
             if($content === ""){
-                $erroresComment["NoComment"] = "<div class='errorMessage'>Comment cannot be blank</div>";
+                $erroresComment["NoComment"] = "Comment cannot be blank";
             }
 
             if(count($erroresComment) === 0){
@@ -81,6 +76,8 @@
                     // guardamos en ·errores el error que queremos mostrar a los usuarios
                     $erroresComment['NoComment'] = "Error <br>";
                 }
+            } else{
+                header('Location:addComments.php?w1='.$phpVar1.'&w2='.$phpVar2);
             }
         }
     }
