@@ -228,48 +228,55 @@ if(eventPlatform != null){
 
 
 const cargarJuegosInicio = async() => {
+  
     try{
         const options =await fetch( `https://api.rawg.io/api/games?key=${APIKEY}&page=${numeroPagina}`,{
         method:'GET'
         }
         );
-
+        numero=0;
+        totalJuegos=0;
         if(options.status === 200){
             const games = await options.json();
-            element = document.querySelectorAll(".prede");
+            element = document.querySelectorAll('.prede');
           
-            for(var i = 0; i < games.results.length; i++){
-                for(var j = 0; j < games.results[i].platforms.length; j++){
            
-                        if(totalJuegos >= 4){
-                            break;
-                        }
 
+element.forEach(r=>{
 
-                        let name_game = games.results[i].name;
-                        let image_game = games.results[i].background_image;
-                        newGames += `<div class="responsive">
-                        <div class="gallery">
-                            <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
-                            <p class="tituloJuego">${name_game}</p>
-                          </a>
-                        </div>
-                        </div>`
-                        totalJuegos++;
-                    
+    for(var i = 0; i < games.results.length; i++){
+        for(var j = 0; j < games.results[i].platforms.length; j++){
+   
+                if(totalJuegos >= 4){
+                    break;
                 }
-            }
-            if(totalJuegos < 8){
+                let name_game = games.results[i].name;
+                let image_game = games.results[i].background_image;
+        
+
+
+
+   
+    if(numero==totalJuegos&&i==numero){
+    r.id=games.results[i].id;
+    r.src=image_game;
+    totalJuegos++;
+    }
+
+}
+    }
+    numero++;
+})
+
+                 
+                              
+                
+            
+            if(totalJuegos < 4 && numero < 4){
                 numeroPagina++;
                 cargarJuegosInicio();
-            } else{
-                document.getElementById("Images").innerHTML = newGames;
+            } 
               
-                numeroPagina = 1;
-                images="";
-                cont++;
-
-                const imagenImagen2=document.querySelectorAll('.imagen');
                 element.forEach(m=>{
                     m.addEventListener('click',()=>{
                         var idJuego = m.id;
@@ -282,7 +289,9 @@ const cargarJuegosInicio = async() => {
             }
         }
 
-    } catch(error){
+    catch(error){
         console.log(error);
     }
 }
+
+cargarJuegosInicio();
