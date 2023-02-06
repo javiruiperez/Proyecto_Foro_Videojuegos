@@ -157,25 +157,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-        
-    <div id="Images"></div>
-
-  
-            <footer>
-                <div class="footer">
-                    <div class="row">
-                        <ul>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Our services</a></li>
-                            <li><a href="#" download>Privacy politics</a></li>
-                            <li><a href="#" download>Terms and conditions</a></li>
-                        </ul>
-                    </div>
-                    <div class="row">
-                        ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran  Botella,     Oscar Delicado
-                    </div>
-=======
         <div id="Images"></div>
         <footer>
             <div class="footer">
@@ -186,7 +167,6 @@
                         <li><a href="#" download>Privacy politics</a></li>
                         <li><a href="#" download>Terms and conditions</a></li>
                     </ul>
->>>>>>> 085a1b37ab7e21990f4e9986c4d3429c464b39df
                 </div>
                 <div class="row">
                     ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran Botella, Oscar Delicado

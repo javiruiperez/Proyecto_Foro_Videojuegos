@@ -60,7 +60,10 @@ if(!isset($_SESSION["user"])){
                 <form action="">                
                   <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
               </form></div>
-              <div class="col-3"><a href="perfil.php" class="sign-In">User</a></div>
+              <!-- <div class="col-3"><a href="perfil.php" class="sign-In">User</a></div> -->
+              <?php
+                    echo '<div class="col-3"><a href="perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
+                ?>
             </div>
           
         </nav>
@@ -185,20 +188,22 @@ if(!isset($_SESSION["user"])){
             <label class="bloquear">Block user :</label>
                
                 <div class="user-box">
-            <input type="text" class="blockUser" name="blockUser"> </input>
+            <input type="text" class="blockUser" name="blockUser"> </input><br>
                     </div>
           
             <label class="bloquear">New password :</label>
              
                 <div class="user-box">
-            <input type="text" class="blockText" name="blockText"> </input>
+            <input type="text" class="blockText" name="blockText"> </input><br>
                     </div>
-                    </div>
-                    <br>
+                    
+                   
             <input type="submit" class="buttonForm" name="submitBlock" value="Block"/>
             <br>
+           
             <?php
                 }
+               
                     if(isset($_REQUEST['submitBlock'])){
                         $admin=new Administrador();
                         $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["blockText"],$_REQUEST   ["blockUser"]);
@@ -213,13 +218,15 @@ if(!isset($_SESSION["user"])){
            
              <label>Change image of profile :</label><br>
             <input type="file" name="imagen" id="imagen"/>
+            
             <br>
             <div id="Botones">
             <input type="submit" class="buttonForm" name="submitImage" value="Acept"/>
             <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
             </div>
             <br>
-           
+            <!-- pepe -->
+            </div>
             <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Log out" />
             <br>
             <?php
@@ -231,7 +238,7 @@ if(!isset($_SESSION["user"])){
 
         </form>
         </div>
-        
+            
     <footer>
         <div class="footer">
             <div class="row">

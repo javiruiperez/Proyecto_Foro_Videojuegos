@@ -60,6 +60,13 @@ const cargarImagenesJuegosPorGenero = async(genero) =>{
     })
 }
 
+
+
+
+
+
+
+
 const btnAnterior=document.getElementById('btnAnterior');
 const btnSiguiente=document.getElementById('btnSiguiente');
 const BtnGeneros= document.querySelectorAll('.genres');
@@ -208,4 +215,74 @@ if(eventPlatform != null){
         Invisible();
         cargarJuegos(juego);
     })
+}
+
+
+
+
+
+
+
+
+
+
+
+const cargarJuegosInicio = async() => {
+    try{
+        const options =await fetch( `https://api.rawg.io/api/games?key=${APIKEY}&page=${numeroPagina}`,{
+        method:'GET'
+        }
+        );
+
+        if(options.status === 200){
+            const games = await options.json();
+            element = document.querySelectorAll(".prede");
+          
+            for(var i = 0; i < games.results.length; i++){
+                for(var j = 0; j < games.results[i].platforms.length; j++){
+           
+                        if(totalJuegos >= 4){
+                            break;
+                        }
+
+
+                        let name_game = games.results[i].name;
+                        let image_game = games.results[i].background_image;
+                        newGames += `<div class="responsive">
+                        <div class="gallery">
+                            <img class="imagen" id=${games.results[i].id}  src="${image_game}" width="400" height="250">
+                            <p class="tituloJuego">${name_game}</p>
+                          </a>
+                        </div>
+                        </div>`
+                        totalJuegos++;
+                    
+                }
+            }
+            if(totalJuegos < 8){
+                numeroPagina++;
+                cargarJuegosInicio();
+            } else{
+                document.getElementById("Images").innerHTML = newGames;
+              
+                numeroPagina = 1;
+                images="";
+                cont++;
+
+                const imagenImagen2=document.querySelectorAll('.imagen');
+                element.forEach(m=>{
+                    m.addEventListener('click',()=>{
+                        var idJuego = m.id;
+                        var enlace = m.src;
+                        window.location.href = "../PHP/comentarios/addComments.php"+ "?w1=" + idJuego +"&w2="+enlace;
+                
+                    })
+                })
+              
+            }
+        }
+
+    } catch(error){
+        console.log(error);
+    }
 }

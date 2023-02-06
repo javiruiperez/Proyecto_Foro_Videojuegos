@@ -207,7 +207,7 @@ function myFunction() {
     <div class="responsive">
       	<div class="gallery">
         	<a target="_blank" href="../Interfaces Proyecto/fondo_web.png">
-          		<img src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
+          		<img class="prede" src="../Interfaces Proyecto/fondo_web.png" width="400" height="250">
         	</a>
         </div>
     </div>
@@ -215,7 +215,7 @@ function myFunction() {
     <div class="responsive">
       	<div class="gallery">
         	<a target="_blank" href="../Interfaces Proyecto/foto_ejemplo_juego.png">
-          		<img class="" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
+          		<img class="prede" src="../Interfaces Proyecto/foto_ejemplo_juego.png" width="400" height="250">
         	</a>
       	</div>
     </div>
@@ -223,7 +223,7 @@ function myFunction() {
     <div class="responsive">
       	<div class="gallery">
       	  	<a target="_blank" href="../Interfaces Proyecto/ejemplo_2.png">
-      	  		<img src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
+      	  		<img class="prede" src="../Interfaces Proyecto/ejemplo_2.png" width="400" height="250">
       	  	</a>
       	</div>
     </div>
@@ -231,7 +231,7 @@ function myFunction() {
     <div class="responsive">
         <div class="gallery">
             <a target="_blank" href="../Interfaces Proyecto/ejemplo_3.png">
-                <img src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
+                <img class="prede" src="../Interfaces Proyecto/ejemplo_3.png" width="400" height="250">
             </a>
         </div>
     </div>

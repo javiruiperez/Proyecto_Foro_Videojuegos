@@ -36,6 +36,7 @@ body{
         display: grid;
         grid-template-columns: none;
         grid-template-rows: 1fr 1fr 1fr;
+        margin-right: 11%;
     }
     .col-1 {
         width: 100%;
@@ -45,11 +46,11 @@ body{
       }
       .col-3 {
         width: 100%;
-      }
-      .col-4{
-        width:100%;
-      }
       
+      }
+ 
+
+ 
 }
 
 .titulo{
@@ -114,11 +115,7 @@ a {
     border-radius: 50%;
 }
 
-/* //mirar */
-/* header{
-    background-color: #000000;
-    position: fixed;
-} */
+
 header form {
     position: relative;
     top: 25%;
@@ -249,10 +246,7 @@ div.desc {
    
   
   }
-  /* #selectPlatform{
-    display:inline-block;
-margin: 0%;
-} */
+
 
 
 
@@ -264,7 +258,8 @@ margin: 0%;
 
    
 
-
+    
+   
      .genres{
         display: block;
         text-align: center;
@@ -289,6 +284,7 @@ margin: 0%;
       
      
       }
+ 
   }
   
   @media only screen and (max-width: 500px) {
@@ -296,7 +292,7 @@ margin: 0%;
       width: 100%;
     }
 
-   
+
 
   }
 

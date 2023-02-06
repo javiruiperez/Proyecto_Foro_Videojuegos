@@ -24,7 +24,7 @@ label,input{
     background: transparent;
     text-align: center;
 
-    /* width:400px; */
+    
     
    
     background-color:#232323;
@@ -188,6 +188,9 @@ progress{
         grid-template-columns:  repeat(2,1fr);
     }
   
+
+
+
 }
 
 
