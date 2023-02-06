@@ -136,8 +136,6 @@
                                 $ranges[$numero];
                             }
                             if ($numeroComentarios < $ranges[$numero]) {
-
-
                                 echo '<div class="commentContainer">';
                                 echo '<div class="profilePicture"><img src=../../img/' . $userComment . '/image.png></div>';
                                 echo '<div class="textComment">';

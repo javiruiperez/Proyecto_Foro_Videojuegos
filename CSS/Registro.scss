@@ -1,0 +1,127 @@
+$darkColorBG: #232323;
+$buttonColor: #2FA9F3;
+$hoverColor: rgb(0, 130, 182);
+$whiteColor: white;
+$errorColor: red;
+$smallFont: small;
+$mediumFont: 16px;
+$bigFont: 30px;
+
+@mixin styleShowHide{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size:$bigFont;
+}
+
+@mixin styleInput{
+    padding: 10px 0;
+    font-size: $mediumFont;
+    color: $whiteColor;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid $whiteColor;
+    outline: none;
+    background: transparent;
+}
+
+@mixin centerColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.show{
+    @include styleShowHide();
+}
+
+.hide{
+    @include styleShowHide();
+    display: none;
+}
+
+.passLabel{
+    position: relative;
+    display: block;
+}
+
+ .form {
+    @include centerColumn();
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: $darkColorBG;
+    opacity: 0.95;
+    border-radius: 10px;
+    color: $whiteColor;
+
+    label{
+        font-weight: bold;
+    }
+
+    .register-box{
+        width: 100%;
+
+        .user-box input {
+            @include styleInput();
+        }
+    }
+
+    .login-box{
+        width: 100%;
+
+        .user-box input {
+            @include styleInput();
+        }
+    }
+}
+
+.errorMessage{
+    font-size:$smallFont;
+    color: $errorColor;
+}
+
+.buttonForm{
+    width: 100%;
+    color: $whiteColor;
+    background-color: $buttonColor;
+    height: 25px;
+    border: 1px solid $buttonColor;
+    border-radius: 5px;
+}
+
+.buttonForm:hover{
+    cursor: pointer;
+    background-color: $hoverColor;
+    border: 1px solid $hoverColor;
+}
+
+a{
+    color: $hoverColor;
+    text-decoration: none;
+
+    &:hover{
+        color: $buttonColor;
+    }
+}
+
+.forgotPassword, .messageLogin{
+    font-size: $smallFont;
+    width: 100%;
+    max-width: 250px;
+}
+
+.errorRegister{
+    color: $errorColor;
+    font-size: $smallFont;
+}
+
+input{
+    width: 100%;
+}
+
+.errorInput {
+    border: 1px solid $errorColor;
+} 

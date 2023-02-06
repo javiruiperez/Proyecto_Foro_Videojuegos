@@ -228,7 +228,17 @@ if (!isset($_SESSION["user"])) {
                 }
             ?>
 
-                
+                <label>Change image of profile :</label><br>
+                <input type="file" name="imagen" id="imagen" />
+                <br>
+                <div id="Botones">
+                    <input type="submit" class="buttonForm" name="submitImage" value="Acept" />
+                    <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php" />
+                </div>
+                <br>
+                    
+                <input type="submit" class="buttonForm" class="buttonForm" name="SignOff" value="Log out" />
+                <br>
                 <?php
                     if (isset($_REQUEST["SignOff"])) {
                         session_destroy();
