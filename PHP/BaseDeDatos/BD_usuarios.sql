@@ -95,3 +95,7 @@ ALTER TABLE `usuarios`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT;
 --
 
+
+
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contraseñaEncriptada`, `correo`, `puntuacion`, `comentario`, `nivel`) VALUES (NULL, 'root', 'root', '$2a$07$usesomesillystringforehg0dedj7L/iujhXGa/PYA4EZKm/yiEW', 'root@gmail.com', '0', '0', '2');
+

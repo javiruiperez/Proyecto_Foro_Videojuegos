@@ -218,7 +218,6 @@ if (!isset($_SESSION["user"])) {
             <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
             </div>
             <br>
-            <!-- pepe -->
             </div>
             <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Log out" />
             <br>
