@@ -1,9 +1,5 @@
-
-
 <?php
-
-include("../perfil/rangos.php");
-
+    include("../perfil/rangos.php");
 ?>
 
 <!DOCTYPE html>
@@ -20,146 +16,148 @@ include("../perfil/rangos.php");
     <title>ForoGamers</title>
 </head>
 <body>
-<div class="allContent">
+    <div class="allContent">
         <div class="headerImage">
             <picture class="parallax">
                 <div class="header-top-gradient"></div>
                 <img src='<?php echo $_GET["w2"]; ?>' alt="Game Banner">
             </picture>
         </div>
-    <header>
-        <nav>
-            <div class="grid-container">
-                <div class="col-1"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
-                <div class="col-2">
-                <form action="">                
-                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-              </form></div>
-                <div class="col-3"><?php 
-                    if(isset($_SESSION["user"])){
-                        echo '<div class="col-3"><a href="../perfil/perfil.php" class="profilePicture usuario"><img src="../../img/'.$_SESSION["user"].'/image.png"></a></div>';
-                    } else{
-                        echo '<div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>';
-                    }
-                ?></div>
-            </div>
-        </nav>
-    </header>
+        <header>
+            <nav>
+                <div class="grid-container">
+                    <div class="col-1"><a href="../../HTML/Index.php">
+                            <h1 class="titulo">ForoGamers</h1>
+                        </a></div>
+                    <div class="col-2">
+                        <form action="">
+                            <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
+                        </form>
+                    </div>
+                    <div class="col-3">
+                        <?php
+                            if (isset($_SESSION["user"])) {
+                                echo '<div class="col-3"><a href="../perfil/perfil.php" class="profilePicture usuario"><img src="../../img/' . $_SESSION["user"] . '/image.png"></a></div>';
+                            } else {
+                                echo '<div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>';
+                            }
+                        ?>
+                    </div>
+                </div>
+            </nav>
+        </header>
         <div class="guideInformation">
             <div id="borrar">
                 <div class="guide">
                     <div class="imageGuide">
                         <?php
-                            //Image of the game is put into the guide div
-                            if(isset($_GET["w2"])){
-                                $phpVar2 = $_GET["w2"];
-                                echo "<img src=".$phpVar2." width=300px/>";
-                            } else{
-                                header("Location:../../HTML/Index.php");
-                            }
+                        //Image of the game is put into the guide div
+                        if (isset($_GET["w2"])) {
+                            $phpVar2 = $_GET["w2"];
+                            echo "<img src=" . $phpVar2 . " width=300px/>";
+                        } else {
+                            header("Location:../../HTML/Index.php");
+                        }
                         ?>
                     </div>
                     <div class="newGuide">
                         <?php
-                            try{
-                                $guia = new Usuario();
-                                $issetGuide = false;
-                                $phpVar1 = $_GET['w1'];
-                                if($guideGame = $guia->sacarGuiaPorJuego($phpVar1)){
-                                    $issetGuide = true;
-                                    echo "<div class=guiaJuego>".$guideGame."</div>";
-                                } else{
-                                    ?>
-                                        <form action="" method="post">
-                                            <input type="text" id='inputGuide' placeholder="Add a new guide..." name="textNewGuide"/>
-                                            <input type="submit" value="Post" name="sendNewGuide"/>
-                                        </form>
-                                    <?php
-                                }
-                            } catch(PDOException $e){
-                                error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() .    PHP_EOL, 3,    "../   logBD.txt");
-                                    // guardamos en ·errores el error que queremos mostrar a los usuarios
-                                    $erroresComment['NoComment'] = "Ha habido un error <br>";
-                            }
+                        try {
+                            $guia = new Usuario();
+                            $issetGuide = false;
+                            $phpVar1 = $_GET['w1'];
+                            if ($guideGame = $guia->sacarGuiaPorJuego($phpVar1)) {
+                                $issetGuide = true;
+                                echo "<div class=guiaJuego>" . $guideGame . "</div>";
+                            } else {
                         ?>
-                    </div>               
+                                <form action="" method="post">
+                                    <input type="text" id='inputGuide' placeholder="Add a new guide..." name="textNewGuide" />
+                                    <input type="submit" value="Post" name="sendNewGuide" />
+                                </form>
+                        <?php
+                            }
+                        } catch (PDOException $e) {
+                            error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() .    PHP_EOL, 3,    "../   logBD.txt");
+                            // guardamos en ·errores el error que queremos mostrar a los usuarios
+                            $erroresComment['NoComment'] = "Ha habido un error <br>";
+                        }
+                        ?>
+                    </div>
                 </div>
                 <?php
-                    if (isset($_GET["w2"])) {
-                        $phpVar1 = $_GET['w2'];
-                    } 
-                    else{
-                        header("Location:../../HTML/Index.php");
-                    }
+                if (isset($_GET["w2"])) {
+                    $phpVar2 = $_GET['w2'];
+                } else {
+                    header("Location:../../HTML/Index.php");
+                }
                 ?>
                 <div class="userInfo">
                     <?php
-                        if($issetGuide){
+                    if ($issetGuide) {
                     ?>
                         <form action="" method="post">
                             <?php
-                                if(!isset($_SESSION["user"])){
-                                    echo '<div class="pfp"><img src="../../img/image.png"></div>';
-                                } else{
-                                    echo '<div class="pfp"><img src=../../img/'.$_SESSION["user"].'/image.png></div>';
-                                }
+                            if (!isset($_SESSION["user"])) {
+                                echo '<div class="pfp"><img src="../../img/image.png"></div>';
+                            } else {
+                                echo '<div class="pfp"><img src=../../img/' . $_SESSION["user"] . '/image.png></div>';
+                            }
                             ?>
-                            <input type="text" id="newComment" placeholder="Add a comment..." name="newComment"         maxlength="300"/>
+                            <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300" />
                             <?php
-                                echo (isset($erroresComment["NoComment"])) ? "<div  class='errorMessage'>$erroresComment     [NoComment]</div>": "";
+                            echo (isset($erroresComment["NoComment"])) ? "<div  class='errorMessage'>$erroresComment     [NoComment]</div>" : "";
                             ?>
-                            <input type="submit" value="Comment" name="submitComment" id="buttonComment"/>
+                            <input type="submit" value="Comment" name="submitComment" id="buttonComment" />
                         </form>
                     <?php
                     }
                     ?>
                 </div>
-                
+
                 <div id="readComments">
                     <?php
-                        if (isset($_GET["w1"])) {
-                            $phpVar1 = $_GET['w1'];
-                            $phpVar2 = $_GET['w2'];
-                        } 
-                        else{
-                            header("Location:../../HTML/Index.php");
-                        }
-                        try{
-                            $comentarios = new Usuario();
-                            $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
-                            $numero=0;
-                            foreach($commentsArray as $comment){
-                               $numeroComentarios= $comentarios->numeroComentarios($_SESSION["user"]);
-                               $userId = $comment["idUsuario"];
-                               $userComment = $comentarios->getUsername($userId);
-                               while($numeroComentarios>$ranges[$numero]){
+                    if (isset($_GET["w1"])) {
+                        $phpVar1 = $_GET['w1'];
+                        $phpVar2 = $_GET['w2'];
+                    } else {
+                        header("Location:../../HTML/Index.php");
+                    }
+                    try {
+                        $comentarios = new Usuario();
+                        $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
+                        $numero = 0;
+                        foreach ($commentsArray as $comment) {
+                            $numeroComentarios = $comentarios->numeroComentarios($_SESSION["user"]);
+                            $userId = $comment["idUsuario"];
+                            $userComment = $comentarios->getUsername($userId);
+                            while ($numeroComentarios > $ranges[$numero]) {
                                 $numero++;
                                 $ranges[$numero];
                             }
-                            if($numeroComentarios<$ranges[$numero]){
-                              
-                        
-                                    echo '<div class="commentContainer">';
-                                        echo '<div class="profilePicture"><img src=../../img/'.$userComment.'/image.png></div>';
-                                        echo '<div class="textComment">';
-                                            echo '<div class=userComment id="colortexto'.$numero.'">'.$userComment.'</div>';
-                                            echo '<div class=comment>'. $comment["texto"].'</div>';
-                                            echo '<div class="dateComment">'.$comment["fecha"].'</div>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                }
-                              
+                            if ($numeroComentarios < $ranges[$numero]) {
+
+
+                                echo '<div class="commentContainer">';
+                                echo '<div class="profilePicture"><img src=../../img/' . $userComment . '/image.png></div>';
+                                echo '<div class="textComment">';
+                                echo '<div class=userComment id="colortexto' . $numero . '">' . $userComment . '</div>';
+                                echo '<div class=comment>' . $comment["texto"] . '</div>';
+                                echo '<div class="dateComment">' . $comment["fecha"] . '</div>';
+                                echo '</div>';
+                                echo '</div>';
                             }
-                            
-                        } catch(PDOException $e){
-                            error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                            // guardamos en ·errores el error que queremos mostrar a los usuarios
-                            $erroresComment['NoComment'] = "Error <br>";
                         }
+                    } catch (PDOException $e) {
+                        error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        $erroresComment['NoComment'] = "Error <br>";
+                    }
                     ?>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         
     <div id="Images"></div>
 
@@ -177,9 +175,25 @@ include("../perfil/rangos.php");
                     <div class="row">
                         ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran  Botella,     Oscar Delicado
                     </div>
+=======
+        <div id="Images"></div>
+        <footer>
+            <div class="footer">
+                <div class="row">
+                    <ul>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Our services</a></li>
+                        <li><a href="#" download>Privacy politics</a></li>
+                        <li><a href="#" download>Terms and conditions</a></li>
+                    </ul>
+>>>>>>> 085a1b37ab7e21990f4e9986c4d3429c464b39df
                 </div>
-            </footer>
-        </div>
+                <div class="row">
+                    ForoGamers Copyright © 2023 FG - All rights reserved || Designed By: Javier Ruiperez, Fran Botella, Oscar Delicado
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 <script src="../../JS/generos2.js"></script>
 </html>

@@ -77,6 +77,26 @@
             }
         }
 
+        public function getPassword($email)
+        {
+            $consulta = "SELECT * FROM usuarios WHERE correo=?";
+            $resultado = $this->prepare($consulta);
+            $resultado->bindParam(1, $email);
+            $resultado->execute();
+            foreach($resultado as $result){
+                $contraseñaGet=$result['contraseñaEncriptada'];
+                    
+               
+                }
+                return $contraseñaGet;
+            
+        }
+
+
+
+
+
+
         public function checkEmail($email)
         {
             $consulta = "SELECT * FROM usuarios WHERE correo=?";
