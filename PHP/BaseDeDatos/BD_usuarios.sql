@@ -36,7 +36,6 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(20) NOT NULL,
   `contraseñaEncriptada` varchar(72) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `puntuacion` int ,
   `comentario` int,
   `nivel` int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
