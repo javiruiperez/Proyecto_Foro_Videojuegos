@@ -1,11 +1,42 @@
 /*PASAR A SASS (IMPORTANTE)*/
+#preload{
+    background-color: #000000;
+    height: 125%; /*CALCULAR ALTURA HEADER*/
+    width: 100%;
+    position: absolute;
+    top: 23%;
+    z-index: 2;
+}
+
+#preload .loader {
+    position: absolute;
+    top:30%;
+    left:47%;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: rgb(0, 166, 255);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
 
 *{
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
 
-body{
+.body{
     margin: 0px;
     padding: 0px;
     background-image: url('../Interfaces\ Proyecto/fondo_web.png');
@@ -119,6 +150,10 @@ a {
     background-color: #000000;
     position: fixed;
 } */
+header{
+    z-index: 5;
+}
+
 header form {
     position: relative;
     top: 25%;
@@ -261,9 +296,6 @@ margin: 0%;
       width: 49.99999%;
       margin: 6px 0;
     }
-
-   
-
 
      .genres{
         display: block;

@@ -73,7 +73,7 @@
                         ?>
                                 <form action="" method="post">
                                     <input type="text" id='inputGuide' placeholder="Add a new guide..." name="textNewGuide" />
-                                    <input type="submit" value="Post" name="sendNewGuide" />
+                                    <input type="submit" value="Post" name="sendNewGuide" class="buttonGuide"/>
                                 </form>
                         <?php
                             }
@@ -106,9 +106,9 @@
                             ?>
                             <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300" />
                             <?php
-                            echo (isset($erroresComment["NoComment"])) ? "<div  class='errorMessage'>$erroresComment     [NoComment]</div>" : "";
+                                echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment[NoComment]</div>" : "";
                             ?>
-                            <input type="submit" value="Comment" name="submitComment" id="buttonComment" />
+                            <input type="submit" value="Comment" name="submitComment" class="buttonComment"/>
                         </form>
                     <?php
                     }
