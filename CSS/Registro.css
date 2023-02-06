@@ -1,125 +1,110 @@
-.passLabel{
-    position: relative;
-    display: block;
+.show {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 30px;
 }
 
-.show, .hide{
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    font-size:30px;
+.hide {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 30px;
+  display: none;
 }
 
-.hide{
-    display: none;
+.passLabel {
+  position: relative;
+  display: block;
 }
 
- .form { /*CAMBIADOS NOMBRES DE FORMULARIO Y DIV*/
-    width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    background-color: #232323;
-    opacity: 0.95;
-    border-radius: 10px;
-    color: #fff;
-
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #232323;
+  opacity: 0.95;
+  border-radius: 10px;
+  color: white;
+}
+.form label {
+  font-weight: bold;
+}
+.form .register-box {
+  width: 100%;
+}
+.form .register-box .user-box input {
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
+}
+.form .login-box {
+  width: 100%;
+}
+.form .login-box .user-box input {
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
 }
 
-.form label{
-    font-weight: bold;
-}
-.register-box{
-    width: 100%;
+.errorMessage {
+  font-size: small;
+  color: red;
 }
 
-.register-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
+.buttonForm {
+  width: 100%;
+  color: white;
+  background-color: #2FA9F3;
+  height: 25px;
+  border: 1px solid #2FA9F3;
+  border-radius: 5px;
 }
 
-.login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
+.buttonForm:hover {
+  cursor: pointer;
+  background-color: rgb(0, 130, 182);
+  border: 1px solid rgb(0, 130, 182);
 }
 
-.errorMessage{
-    font-size:small;
-    color: red;
+a {
+  color: rgb(0, 130, 182);
+  text-decoration: none;
+}
+a:hover {
+  color: #2FA9F3;
 }
 
-.buttonForm{
-    color: white;
-    width: 100%;
-    background-color: rgb(0, 166, 255);
-    height: 25px;
-    border: 1px solid rgb(0, 166, 255);
-    border-radius: 5px;
+.forgotPassword, .messageLogin {
+  font-size: small;
+  width: 100%;
+  max-width: 250px;
 }
 
-.buttonForm:hover{
-    cursor: pointer;
-    background-color: rgb(0, 130, 182);
-    border: 1px solid rgb(0, 118, 182);
+.errorRegister {
+  color: red;
+  font-size: small;
 }
 
-a{
-    color: rgb(0, 118, 182);
-    text-decoration: none;
-}
-
-a:hover{
-    color: rgb(0, 166, 255);
-}
-
-/*.messageLogin{ ARREGLAR
-    width: 100%;
-    max-width: 250px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-}*/
-
-.forgotPassword, .messageLogin{
-    font-size: small;
-    width: 100%;
-    max-width: 250px;
-}
-
-.errorRegister{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: red;
-    font-size: small;
-}
-
-input{
-    width: 100%;
+input {
+  width: 100%;
 }
 
 .errorInput {
-    border: 1px solid red;
-} 
+  border: 1px solid red;
+}/*# sourceMappingURL=Registro.css.map */

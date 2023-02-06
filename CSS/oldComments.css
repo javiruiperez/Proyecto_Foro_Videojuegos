@@ -1,0 +1,219 @@
+body{
+    background-color: #232323;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    position: relative;
+    top:-1000px;
+    z-index: 2;
+}
+
+img{
+    object-fit: cover;
+}
+
+.allContent{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.allContent .guideInformation{
+    display: flex;
+    flex-direction: column;
+    top: -930px;
+    position: relative;
+}
+
+
+/*HEADER AND IMAGE*/
+.allContent .headerImage{
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding: 500px;
+}
+
+.header-top-gradient {
+    background: linear-gradient(#000,transparent);
+    opacity: .6;
+    top: 0;
+    width: 100%;
+    height: 110px;
+    z-index: 1;
+    content: "";
+    position: absolute;
+}
+
+.headerImage picture{
+    position:absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.headerImage picture img{
+    clip-path: polygon(0 0, 100% 0, 100% 55%, 0 49%);
+    object-fit:cover;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+}
+
+
+/*GUIDE*/
+.guide{
+    width: 100%;
+    box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-right: 100px;
+}
+
+.imageGuide img{
+    border-radius: 15px;
+    width: 100%;
+    max-width: 616px;
+    border: 5px solid #232323;
+    background-color: #232323;
+    border-radius: 10px;
+}
+
+.newGuide{
+    width: 500px;
+    background-color: transparent;
+    backdrop-filter: blur(60px) saturate(50%);
+    border-radius: 10px;
+    padding: 25px;
+    color: white;
+}
+
+.newGuide #inputGuide{
+    color:white;
+    width: 100%;
+    line-height: 2em; 
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    font-size: 16px;
+}
+
+
+/*COMMENTS*/
+.profilePicture{
+    padding-left: 2%;
+}
+
+.profilePicture img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+.userInfo{
+    margin-bottom: 7%;
+} 
+
+.pfp img{
+    margin: 10px;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    float: left;
+}
+
+.commentContainer{
+    display: flex;
+    align-items: center;
+    width: auto;
+    background-color: #232323;
+    box-shadow: 0 0 7px 1px solid rgba(60, 60, 60, 0.4);
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+#newComment{
+    width: 85%;
+    color:white;
+    line-height: 2em; 
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    padding-top: 30px;
+}
+
+.buttonComment, .buttonGuide{
+    margin-top: 10px;
+    position: relative;
+    height: 25px;
+    background-color:#2FA9F3;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.buttonGuide{
+    width: 100%;
+}
+
+.buttonComment:hover, .buttonGuide:hover{
+    cursor: pointer;
+    background-color: rgb(0, 130, 182);
+}
+
+.textComment{
+    padding-left: 10px;
+}
+
+.userComment{
+    color:white;
+    font-weight: bold;
+}
+
+.comment, .commentSin{
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.dateComment{
+    color: grey;
+    font-size: 14px;
+}
+
+
+
+
+#colortexto1{
+    color: blue;
+}
+#colortexto2{
+    color: red;
+}
+#colortexto3{
+    color: green;
+}
+#colortexto4{
+    color: orange;
+}
+#colortexto5{
+    color: yellow;
+}

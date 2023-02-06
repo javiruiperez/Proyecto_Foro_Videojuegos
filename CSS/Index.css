@@ -146,18 +146,6 @@ a {
     border-radius: 50%;
 }
 
-<<<<<<< HEAD
-=======
-/* //mirar */
-/* header{
-    background-color: #000000;
-    position: fixed;
-} */
-header{
-    z-index: 5;
-}
->>>>>>> 6366b6394701698c1fbef437a7c9a6962d8dabfc
-
 header form {
     position: relative;
     top: 25%;
