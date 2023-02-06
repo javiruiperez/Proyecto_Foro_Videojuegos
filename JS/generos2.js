@@ -238,8 +238,14 @@ element.forEach(r=>{
                 let image_game = games.results[i].background_image;
            
     if(numero==totalJuegos&&i==numero){
+      
+   
+       
     r.id=games.results[i].id;
     r.src=image_game;
+    console.log(document.getElementById(r.id).nextElementSibling);
+    element2=document.getElementById(r.id).nextElementSibling;
+    element2.innerHTML=name_game;
     totalJuegos++;
     }
 

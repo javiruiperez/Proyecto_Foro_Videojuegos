@@ -69,25 +69,29 @@
       
     <div class="responsive">
         <div class="gallery">
-            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
   </div>
@@ -193,26 +197,30 @@ function myFunction() {
     <br>
     <br>
     <div class="responsive">
-      	<div class="gallery">
-          	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+        <div class="gallery">
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
         
     <div class="responsive">
-      	<div class="gallery">
-          	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
-      	</div>
-    </div>
-
-    <div class="responsive">
-      	<div class="gallery">
-      	  	<img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
-      	</div>
+        <div class="gallery">
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
+        </div>
     </div>
 
     <div class="responsive">
         <div class="gallery">
-            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250"/>
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <img class="prede" src="../Interfaces Proyecto/loadingImage.png" width="400" height="250">
+                <p class="tituloJuego"></p>
         </div>
     </div>
 
