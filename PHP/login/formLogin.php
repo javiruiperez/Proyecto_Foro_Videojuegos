@@ -17,22 +17,22 @@
         <div class="login-box">
         <form action="" method="post">
             <div class="user-box">
-            <label>Username</label>
-            <input type="text" name="usernameLogin" value="<?php if (isset($_REQUEST['usernameLogin'])) echo $_POST['usernameLogin']; ?>"/><br>
-            <?php
-                echo (isset($errores["NoUserLogin"])) ? "<div class='errorMessage'>$errores[NoUserLogin]</div>": "";
-            ?>
-            <label>Password</label><br>
-            <label class="passLabel">
-                <input type="password" name="passwordLogin" id="password"/>
-                <i class="hide fa fa-eye"></i>
-                <i class="show fa fa-eye-slash"></i>
-            </label>
-            <?php
-                echo (isset($errores["NoPassLogin"])) ? "<div class='errorMessage'>$errores[NoPassLogin]</div><br>": "";
-            ?>
-            <a href="checkForgotPass.php" class="forgotPassword">Forgot your password?</a>
-            
+                <label>Username</label>
+                <input type="text" name="usernameLogin" value="<?php if (isset($_REQUEST['usernameLogin'])) echo $_POST['usernameLogin']; ?>"/><br>
+                <?php
+                    echo (isset($errores["NoUserLogin"])) ? "<div class='errorMessage'>$errores[NoUserLogin]</div>": "";
+                ?>
+                <label>Password</label><br>
+                <label class="passLabel">
+                    <input type="password" name="passwordLogin" id="password"/>
+                    <i class="hide fa fa-eye"></i>
+                    <i class="show fa fa-eye-slash"></i>
+                </label>
+                <?php
+                    echo (isset($errores["NoPassLogin"])) ? "<div class='errorMessage'>$errores[NoPassLogin]</div><br>": "";
+                ?>
+                <a href="checkForgotPass.php" class="forgotPassword">Forgot your password?</a>
+                
             </div>
             <input type="submit" class="buttonForm" name="submitLogin" value="Log In"/>
             <div class="messageLogin">Don't have an account? <a href="../register/registro.php">Sign up</a></div>

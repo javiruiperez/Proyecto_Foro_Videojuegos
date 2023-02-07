@@ -70,7 +70,7 @@ form {
 
 .buttonForm{
     color: $whiteColor;
-    width: 80%;
+    width: 50%;
     background-color: $buttonColor;
     height: 25px;
     border: 1px solid $buttonColor;
@@ -86,13 +86,8 @@ form {
     }
 }
 
-#Botones{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.optionButton{
+    width: auto;
 }
 
 .name-user{

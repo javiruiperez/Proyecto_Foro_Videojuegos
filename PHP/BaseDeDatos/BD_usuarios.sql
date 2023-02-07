@@ -67,16 +67,14 @@ ALTER TABLE `comentarios`
   MODIFY `idComentario` int(1) NOT NULL AUTO_INCREMENT;
 
 
-
-
-  ALTER TABLE `guias`
+ALTER TABLE `guias`
   ADD PRIMARY KEY (`idguia`);
   ALTER TABLE `guias`
   MODIFY `idGuia` int(1) NOT NULL AUTO_INCREMENT;
 --
 -- Índices para tablas volcadas
 --
-
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contraseñaEncriptada`, `correo`, `comentario`, `nivel`) VALUES ('1', 'root', 'root', '$2a$07$usesomesillystringforehg0dedj7L/iujhXGa/PYA4EZKm/yiEW', 'root@gmail.com', '0', '2');
 --
 -- Indices de la tabla `empleados`
 --
@@ -93,8 +91,3 @@ ALTER TABLE `usuarios`
 ALTER TABLE `usuarios`
   MODIFY `id` int(1) NOT NULL AUTO_INCREMENT;
 --
-
-
-
-INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contraseñaEncriptada`, `correo`, `puntuacion`, `comentario`, `nivel`) VALUES (NULL, 'root', 'root', '$2a$07$usesomesillystringforehg0dedj7L/iujhXGa/PYA4EZKm/yiEW', 'root@gmail.com', '0', '0', '2');
-

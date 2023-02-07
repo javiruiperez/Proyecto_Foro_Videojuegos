@@ -13,16 +13,19 @@
         cabecera();
     ?>
     <div class="form">
+    <div class="forgot-box">
         <form action="" method="post">
-          
-            <label>Email</label><br>
-            <input type="text" name="emailForgot"/>
-            <br>
-            <?php
-                echo (isset($errores["emailForgot"])) ? "<div class='errorMessage'>$errores[emailForgot]</div>" : "";
-            ?>
-            <div class="messageLogin">Enter your email address.</div><br>
+            <div class="user-box">
+                <label>Email</label><br>
+                <input type="text" name="emailForgot"/>
+                <br>
+                <?php
+                    echo (isset($errores["emailForgot"])) ? "<div class='errorMessage'>$errores[emailForgot]</div>" : "";
+                ?>
+                <div class="messageLogin">Enter your email address.</div><br>
+            </div>
             <input type="submit" class="buttonForm" name="submitForgot" value="Send recovery mail"/>
+          </div>
         </form>
     </div>
     <?php

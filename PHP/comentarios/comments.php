@@ -128,14 +128,14 @@
                         $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
                         $numero = 0;
                         foreach ($commentsArray as $comment) {
-                            $numeroComentarios = $comentarios->numeroComentarios($_SESSION["user"]);
                             $userId = $comment["idUsuario"];
                             $userComment = $comentarios->getUsername($userId);
+                            $numeroComentarios = $comentarios->numeroComentarios($userComment);
                             while ($numeroComentarios > $ranges[$numero]) {
                                 $numero++;
                                 $ranges[$numero];
                             }
-                            if ($numeroComentarios < $ranges[$numero]) {
+                            if ($numeroComentarios <= $ranges[$numero]) {
                                 echo '<div class="commentContainer">';
                                 echo '<div class="profilePicture"><img src=../../img/' . $userComment . '/image.png></div>';
                                 echo '<div class="textComment">';
