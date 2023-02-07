@@ -208,7 +208,7 @@ try{
 
             if ($userGet != $datesform[USER]) {
                 $userInto = $user->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
-                mkdir("../../img/".$datesform[USER]);
+                mkdir("../../img/".$datesform[USER], 0777);
                 copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");
                 header("location:../../HTML/Index.php");
                
