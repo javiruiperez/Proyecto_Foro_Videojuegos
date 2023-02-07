@@ -36,7 +36,8 @@
                         if(isset($_GET["w1"])){
                             $phpVar1 = $_GET["w1"];
                             $phpVar2 = $_GET["w2"];
-                            header('Location:../comentarios/addComments.php?w1='.$phpVar1.'&w2='.$phpVar2);
+                            $phpVar3 = $_GET["w3"];
+                            header('Location:../comentarios/addComments.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
                         } else{
                             header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                         }

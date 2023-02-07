@@ -102,15 +102,15 @@ img{
 
 .newGuide{
     width: 500px;
-    background-color: transparent;
-    backdrop-filter: blur(160px) saturate(50%);
+    background-color: $darkColorBG;
+    backdrop-filter: blur(60px) saturate(200%);
     border-radius: 10px;
     padding: 25px;
     color: $whiteColor;
 
     #inputGuide{
         font-weight: bold;
-        color: $buttonColor;
+        color: $whiteColor;
         width: 100%;
         line-height: 2em; 
         outline: 0;
@@ -121,6 +121,9 @@ img{
     }
 }
 
+.guiaJuego{
+    opacity: 1;
+}
 
 /*COMMENTS*/
 .profilePicture{

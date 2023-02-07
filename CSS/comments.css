@@ -89,16 +89,16 @@ img {
 
 .newGuide {
   width: 500px;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(160px) saturate(50%);
-          backdrop-filter: blur(160px) saturate(50%);
+  background-color: #232323;
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+          backdrop-filter: blur(60px) saturate(200%);
   border-radius: 10px;
   padding: 25px;
   color: white;
 }
 .newGuide #inputGuide {
   font-weight: bold;
-  color: #2FA9F3;
+  color: white;
   width: 100%;
   line-height: 2em;
   outline: 0;
@@ -106,6 +106,10 @@ img {
   border-bottom: 1px solid #2FA9F3;
   background: transparent;
   font-size: 16px;
+}
+
+.guiaJuego {
+  opacity: 1;
 }
 
 /*COMMENTS*/

@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
     <link rel="stylesheet" href="../../CSS/comments.css">
-    <title>ForoGamers</title>
+    <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+    <title><?php echo $_GET["w3"]; ?></title>
 </head>
 <body>
     <div class="allContent">

@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Pagina de Inicio</title>
+    <link rel="icon" type="image/x-icon" href="../Interfaces Proyecto/Logo.png">
+    <title>Homepage - ForoGamers</title>
 </head>
 
 <body class="body">
@@ -60,9 +61,9 @@
     <div class="div_principal">
         <h1>Who are we?</h1>
         <br>
-        <p>En ForoGamers pensamos que no hay mejor profesor para un gamer como otro gamer. Somos un foro de amantes de videojuegos con ganas de ayudar a otros jugadores resolviendo su problema con la parte más difícil de tu videojuego favorito.</p>
-        <p>Aquí podrás encontrar la guía perfecta para pasarte tu videojuego o crear tu propia guía para que otros usuarios puedan verla y resolver sus dudas.</p>
-        <p>En este proyecto esperamos crear una comunidad de jugadores que se ayuden mutuamente, por eso desde la administración de ForoGamers esperamos que usen este foro de manera responsable y sean respetuosos con el resto de jugadores.</p>
+        <p>ForoGamers think that there is no better teacher for a gamer than another one. We are a forum made for videogame lovers who want to help other players beating the game.</p>
+        <p>Here you will find the perfect guide to beat your favourite game or create your own guide to help others.</p>
+        <p>We hope to create a community of players who help each other.</p>
     </div>
     <br>
     <br>
@@ -151,7 +152,8 @@ function myFunction() {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
-    <title>Pagina de Inicio</title>
+    <link rel="icon" type="image/x-icon" href="../Interfaces Proyecto/Logo.png">
+    <title>Homepage - ForoGamers</title>
 </head>
 <body class="body">
     <header>
@@ -190,9 +192,9 @@ function myFunction() {
     <div class="div_principal">
         <h1>Who are we?</h1>
         <br>
-        <p>En ForoGamers pensamos que no hay mejor profesor para un gamer como otro gamer. Somos un foro de amantes de videojuegos con ganas de ayudar a otros jugadores resolviendo su problema con la parte más difícil de tu videojuego favorito.</p>
-        <p>Aquí podrás encontrar la guía perfecta para pasarte tu videojuego o crear tu propia guía para que otros usuarios puedan verla y resolver sus dudas.</p>
-        <p>En este proyecto esperamos crear una comunidad de jugadores que se ayuden mutuamente, por eso desde la administración de ForoGamers esperamos que usen este foro de manera responsable y sean respetuosos con el resto de jugadores.</p>
+        <p>ForoGamers think that there is no better teacher for a gamer than another one. We are a forum made for videogame lovers who want to help other players beating the game.</p>
+        <p>Here you will find the perfect guide to beat your favourite game or create your own guide to help others.</p>
+        <p>We hope to create a community of players who help each other.</p>
     </div>
     <br>
     <br>

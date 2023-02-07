@@ -33,7 +33,8 @@ if (!isset($_REQUEST['bAcept'])) {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
-        <title>Register</title>
+        <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+        <title>Register - ForoGamers</title>
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
     </head>
@@ -132,7 +133,8 @@ try{
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
-        <title>Register</title>
+        <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+        <title>Register - ForoGamers</title>
         <link rel="stylesheet" href="../../CSS/Registro.css">
         <link rel="stylesheet" href="../../CSS/Index.css">
     </head>
@@ -177,6 +179,9 @@ try{
             </form>
         </div>
         </div>
+        <?php
+            pie();
+        ?>
     </body>
     </html>
 

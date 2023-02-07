@@ -19,30 +19,13 @@
   justify-content: space-between;
 }
 
-/*Header*/
+/*HEADER*/
 .grid-container {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media only screen and (max-width: 768px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: none;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin-right: 11%;
-  }
-  .col-1 {
-    width: 100%;
-  }
-  .col-2 {
-    width: 100%;
-  }
-  .col-3 {
-    width: 100%;
-  }
-}
 .titulo {
   text-align: center;
   width: 100%;
@@ -148,7 +131,7 @@ option {
   border-style: none;
 }
 
-/*Body*/
+/*BODY*/
 .div_principal {
   opacity: 0.95;
   color: white;
@@ -172,6 +155,8 @@ div.gallery:hover {
 }
 div.gallery img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -206,34 +191,6 @@ div.desc {
   display: none;
 }
 
-@media only screen and (max-width: 700px) {
-  .responsive {
-    width: 49.99999%;
-    margin: 6px 0;
-  }
-  .genres {
-    display: block;
-    text-align: center;
-  }
-  #selectPlatform {
-    display: inline-block;
-    margin-left: 40%;
-  }
-  #categorias {
-    display: none;
-  }
-  #icon {
-    display: block;
-    position: relative;
-    margin-left: 50%;
-    color: white;
-  }
-}
-@media only screen and (max-width: 500px) {
-  .responsive {
-    width: 100%;
-  }
-}
 .Botones {
   display: none;
   margin: auto;
@@ -294,5 +251,59 @@ div.desc {
   }
   .footer .row a i {
     margin: 0% 3%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin-right: 11%;
+  }
+  .col-1 {
+    width: 100%;
+  }
+  .col-2 {
+    width: 100%;
+  }
+  .col-3 {
+    width: 100%;
+  }
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+  .genres {
+    display: block;
+    text-align: center;
+  }
+  #selectPlatform {
+    display: inline-block;
+    margin-left: 40%;
+  }
+  #categorias {
+    display: none;
+  }
+  #icon {
+    display: block;
+    position: relative;
+    margin-left: 50%;
+    color: white;
+  }
+  .profilePicture {
+    margin-left: 100%;
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+  .col-3 {
+    margin-left: 80px;
+  }
+  .profilePicture {
+    margin-left: 35%;
+    padding-bottom: 80px;
   }
 }/*# sourceMappingURL=Index.css.map */

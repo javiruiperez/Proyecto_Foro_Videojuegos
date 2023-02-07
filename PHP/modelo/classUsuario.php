@@ -92,11 +92,6 @@
             
         }
 
-
-
-
-
-
         public function checkEmail($email)
         {
             $consulta = "SELECT * FROM usuarios WHERE correo=?";

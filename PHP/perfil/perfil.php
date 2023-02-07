@@ -42,7 +42,8 @@ if (!isset($_SESSION["user"])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Index.css">
     <link rel="stylesheet" href="../../CSS/perfil.css">
-    <title>ForoGamers</title>
+    <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+    <title><?php echo $_SESSION["user"]; ?> - ForoGamers</title>
 </head>
 <body class="body">
     <header>
@@ -104,13 +105,9 @@ if (!isset($_SESSION["user"])) {
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../   logBD.txt");
                     // Save errors of user
                     $errorsGuide['NoGuide'] = "Error <br>";
-                }
-                
-                
+                }                
                 ?>>
-                
-            
-            
+
             </progress>
                 <br>
                 <label class="puntuacion">
@@ -124,9 +121,6 @@ if (!isset($_SESSION["user"])) {
                     // Save errors of user
                     $errorsGuide['NoGuide'] = "Error <br>";
                 }  ?>
-                
-                
-                /
 
                 <?php 
             try{
@@ -148,10 +142,6 @@ if (!isset($_SESSION["user"])) {
             
             
             ?>
-            
-            
-            
-            
             
             </label>
                 
@@ -196,7 +186,7 @@ if (!isset($_SESSION["user"])) {
                
                     if(isset($_REQUEST['submitBlock'])){
                         $admin=new Administrador();
-                        $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["blockText"],$_REQUEST   ["blockUser"]);
+                        $bloquearUsuaurio=$admin->modifyPassword($_REQUEST["blockText"],$_REQUEST["blockUser"]);
                       
                     }
                 }catch(PDOException $e){
@@ -322,8 +312,12 @@ if (!isset($_SESSION["user"])) {
             if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
                 $checkName = true;
             }
-            if ($checkEmail == true && $checkName == true) {
-                $update = $user->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $userGet);
+            if ($checkEmail == true) {
+                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $userGet);
+            }
+
+            if ($checkName == true) {
+                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $userGet);
             }
         } catch (PDOException $e) {
             error_log($e->getMessage() . "##Code: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");

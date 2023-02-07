@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../CSS/Registro.css">
     <link rel="stylesheet" href="../../CSS/Index.css">
-    <title>Log In</title>
+    <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+    <title>Log In - ForoGamers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body class="body">

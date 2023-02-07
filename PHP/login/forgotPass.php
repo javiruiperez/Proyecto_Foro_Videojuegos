@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../CSS/Registro.css">
     <link rel="stylesheet" href="../../CSS/Index.css">
-    <title>Account Recovery</title>
+    <link rel="icon" type="image/x-icon" href="../../Interfaces Proyecto/Logo.png">
+    <title>Account Recovery - ForoGamers</title>
 </head>
 <body class="body">
     <?php

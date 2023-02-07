@@ -20,7 +20,8 @@
             if(!isset($_SESSION["user"])){
                 $phpVar1 = $_GET['w1'];
                 $phpVar2 = $_GET['w2'];
-                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
+                $phpVar3 = $_GET['w3'];
+                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
             }else{
                 $guideText = recoge("textNewGuide");
                 $phpVar1 = $_GET['w1'];
@@ -50,34 +51,37 @@
             if(!isset($_SESSION["user"])){
                 $phpVar1 = $_GET['w1'];
                 $phpVar2 = $_GET['w2'];
-                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2);
-            }
-            $content = recoge("newComment");
-            $phpVar1 = $_GET['w1'];
-            $phpVar2 = $_GET['w2'];
+                $phpVar3 = $_GET['w3'];
+                header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
+            }else{
+                $content = recoge("newComment");
+                $phpVar1 = $_GET['w1'];
+                $phpVar2 = $_GET['w2'];
+                $phpVar3 = $_GET['w3'];
 
-            if($content === ""){
-                $erroresComment["NoComment"] = "Comment cannot be blank";
-            }
-
-            if(count($erroresComment) === 0){
-                try{
-                    $usuario = new Usuario();
-                    if($IDuser = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
-                        if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //añadir comentario
-                            $addComment = $usuario->sumarComentario($IDuser);
-                            //the new comment to see when the user finish write the comment
-                            header("Refresh:0");
-                        }
-                    } echo "fallo 2";
-                
-                } catch(PDOException $e){
-                    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                    // guardamos en ·errores el error que queremos mostrar a los usuarios
-                    $erroresComment['NoComment'] = "Error <br>";
+                if($content === ""){
+                    $erroresComment["NoComment"] = "Comment cannot be blank";
                 }
-            } else{
-                header('Location:addComments.php?w1='.$phpVar1.'&w2='.$phpVar2);
+
+                if(count($erroresComment) === 0){
+                    try{
+                        $usuario = new Usuario();
+                        if($IDuser = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
+                            if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //añadir comentario
+                                $addComment = $usuario->sumarComentario($IDuser);
+                                //the new comment to see when the user finish write the comment
+                                header("Refresh:0");
+                            }
+                        } echo "fallo 2";
+                    
+                    } catch(PDOException $e){
+                        error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+                        // guardamos en ·errores el error que queremos mostrar a los usuarios
+                        $erroresComment['NoComment'] = "Error <br>";
+                    }
+                } else{
+                    header('Location:addComments.php?w1='.$phpVar1.'&w2='.$phpVar2. '&w3='.$phpVar3);
+                }
             }
         }
     }
