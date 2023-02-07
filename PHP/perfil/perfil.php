@@ -55,7 +55,7 @@ if (!isset($_SESSION["user"])) {
               </form></div>
               <!-- <div class="col-3"><a href="perfil.php" class="sign-In">User</a></div> -->
               <?php
-                    echo '<div class="col-3"><a href="perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
+                    echo '<div class="col-3"><a href="perfil.php" class="profilePicture usuario"><img src="../../img/'.$_SESSION["user"].'/image.png"></a></div>';
                 ?>
             </div>
           
@@ -133,7 +133,7 @@ if (!isset($_SESSION["user"])) {
                 $numero=0;
                 $usuario=new Usuario();
                 $numeroComentarios=$usuario->numeroComentarios($_SESSION["user"]);
-                while($numeroComentarios>$ranges[$numero]){
+                while($numeroComentarios>=$ranges[$numero]){
                     $numero++;
                     $ranges[$numero];
                 }
@@ -210,13 +210,11 @@ if (!isset($_SESSION["user"])) {
             <input type="file" name="imagen" id="imagen"/>
             
             <br>
-            <div id="Botones">
-                <input type="submit" class="buttonForm" name="submitImage" value="Acept"/>
-                <input type="button" id="Cancel" class="buttonForm" name="Cancel" value="Cancel" onClick="perfil.php"/>
-            </div>
+                <input type="submit" class="buttonForm optionButton" name="submitImage" value="Acept"/>
+                <input type="button" id="Cancel" class="buttonForm optionButton" name="Cancel" value="Cancel" onClick="perfil.php"/>
             <br>
             </div>
-            <input type="submit" class="buttonForm"class="buttonForm" name="SignOff" value="Log out" />
+            <input type="submit" class="buttonForm" name="SignOff" value="Log out"/>
             <br>
             <?php
                 if(isset($_REQUEST["SignOff"])){

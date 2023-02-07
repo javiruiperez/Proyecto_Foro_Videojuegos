@@ -69,7 +69,7 @@
                             //the new comment to see when the user finish write the comment
                             header("Refresh:0");
                         }
-                    }
+                    } echo "fallo 2";
                 
                 } catch(PDOException $e){
                     error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");

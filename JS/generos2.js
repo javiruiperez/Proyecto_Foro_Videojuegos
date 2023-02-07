@@ -253,8 +253,7 @@ element.forEach(r=>{
     }
     numero++;
 })
-        
-            
+
             if(totalJuegos < 4 && numero < 4){
                 numeroPagina++;
                 cargarJuegosInicio();

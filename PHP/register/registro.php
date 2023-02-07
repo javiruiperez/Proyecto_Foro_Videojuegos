@@ -201,7 +201,7 @@ try{
             $user = new Usuario();
             $userGet = $user->getUser($datesform[USER]);
 
-            if ($userget != $datesform[USER]) {
+            if ($userGet != $datesform[USER]) {
                 $userInto = $user->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
                 mkdir("../../img/".$datesform[USER]);
                 copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");

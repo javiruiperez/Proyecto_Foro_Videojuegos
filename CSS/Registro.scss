@@ -46,7 +46,7 @@ $bigFont: 30px;
     display: block;
 }
 
- .form {
+.form {
     @include centerColumn();
     width: 100%;
     max-width: 350px;
@@ -70,6 +70,14 @@ $bigFont: 30px;
     }
 
     .login-box{
+        width: 100%;
+
+        .user-box input {
+            @include styleInput();
+        }
+    }
+
+    .forgot-box {
         width: 100%;
 
         .user-box input {

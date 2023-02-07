@@ -140,21 +140,17 @@
             $resultado->execute();
         }
 
- 
-
-
         public function insertUser($nombre,$usuario,$contraseña,$email){
             $defaultValue = 0;
             $nivel=1;
-            $consulta = "INSERT INTO usuarios (nombre, usuario, contraseñaEncriptada, correo, puntuacion, comentario,nivel) values (?, ?, ?, ?, ?, ?,?)";
+            $consulta = "INSERT INTO usuarios (nombre, usuario, contraseñaEncriptada, correo, comentario, nivel) values (?, ?, ?, ?, ?, ?)";
             $stmt=$this->prepare($consulta);
             $stmt->bindParam(1, $nombre);
             $stmt->bindParam(2, $usuario);
             $stmt->bindParam(3, $contraseña);
             $stmt->bindParam(4, $email);
             $stmt->bindParam(5, $defaultValue);
-            $stmt->bindParam(6, $defaultValue);
-            $stmt->bindParam(7,$nivel);
+            $stmt->bindParam(6, $nivel);
            
             return  $stmt->execute();
         }

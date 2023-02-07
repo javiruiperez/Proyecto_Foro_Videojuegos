@@ -61,6 +61,19 @@
   outline: none;
   background: transparent;
 }
+.form .forgot-box {
+  width: 100%;
+}
+.form .forgot-box .user-box input {
+  padding: 10px 0;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background: transparent;
+}
 
 .errorMessage {
   font-size: small;
