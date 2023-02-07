@@ -55,6 +55,4 @@
             require("formLogin.php");
            
         }
-
-      
     }

@@ -210,13 +210,11 @@ try{
                 $userInto = $user->insertUser($datesform[NAME], $datesform[USER], $datesform[PASSWD], $datesform[EMAIL]);
                 mkdir("../../img/".$datesform[USER]);
                 copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");
-                pie();
                 header("location:../../HTML/Index.php");
                
             } else {
                 $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";
                 echo $erroresMsg[EMAIL];
-                pie();
             }
         } catch (PDOException $e) {
             // En este caso guardamos los errores en un archivo de errores log
