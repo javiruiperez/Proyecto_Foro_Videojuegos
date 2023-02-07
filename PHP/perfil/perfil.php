@@ -121,7 +121,7 @@ if (!isset($_SESSION["user"])) {
                     // Save errors of user
                     $errorsGuide['NoGuide'] = "Error <br>";
                 }  ?>
-
+                /
                 <?php 
             try{
                 $numero=0;
