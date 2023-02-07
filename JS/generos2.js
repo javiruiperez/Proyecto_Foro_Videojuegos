@@ -2,7 +2,7 @@ numeroPagina=1;
 images="";
 element =document.getElementById("borrar");
 cont=0;
-const APIKEY = "6567b9ace2eb4f3897216e07cc72a4df";
+const APIKEY = "a37fd87e92444a799df4bfbde06f8552";
 
 const cargarImagenesJuegosPorGenero = async(genero) =>{
     try{
