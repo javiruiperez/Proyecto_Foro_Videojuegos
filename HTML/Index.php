@@ -110,10 +110,9 @@
         <div class="footer">
             <div class="row">
                 <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Our services</a></li>
-                    <li><a href="#">Privacy politics</a></li>
-                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="https://twitter.com"><img src="../Interfaces Proyecto/twitter-logo.png" class="imageFooter"/></a></li>
+                    <li><a href="https://instagram.com"><img src="../Interfaces Proyecto/insta-logo.png" class="imageFooter"/></a></li>
+                    <li><a href="https://facebook.com"><img src="../Interfaces Proyecto/facebook-logo.png" class="imageFooter"/></a></li>
                 </ul>
             </div>
             <div class="row">
@@ -235,10 +234,9 @@
         <div class="footer">
             <div class="row">
                 <ul>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Our services</a></li>
-                    <li><a href="#">Privacy politics</a></li>
-                    <li><a href="#">Terms and conditions</a></li>
+                    <li><a href="https://twitter.com"><img src="../Interfaces Proyecto/twitter-logo.png" class="imageFooter"/></a></li>
+                    <li><a href="https://instagram.com"><img src="../Interfaces Proyecto/insta-logo.png" class="imageFooter"/></a></li>
+                    <li><a href="https://facebook.com"><img src="../Interfaces Proyecto/facebook-logo.png" class="imageFooter"/></a></li>
                 </ul>
             </div>
             <div class="row">
