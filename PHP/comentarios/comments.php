@@ -1,5 +1,5 @@
 <?php
-    include("../perfil/rangos.php");
+    include("../libs/rangos.php");
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +64,7 @@
                     <div class="newGuide">
                         <?php
                         try {
+                            //If there's already a guide created, show the guide. Otherwise show an input for the user to create a new guide
                             $guia = new Usuario();
                             $issetGuide = false;
                             $phpVar1 = $_GET['w1'];
@@ -102,10 +103,10 @@
                             if (!isset($_SESSION["user"])) {
                                 echo '<div class="pfp"><img src="../../img/image.png"></div>';
                             } else {
-                                echo '<div class="pfp"><img src=../../img/' . $_SESSION["user"] . '/image.png></div>';
+                                echo '<div class="pfp"><img src=../../img/'. $_SESSION["user"]. '/image.png></div>';
                             }
                             ?>
-                            <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300" />
+                            <input type="text" id="newComment" placeholder="Add a comment..." name="newComment" maxlength="300"/>
                             <?php
                                 echo (isset($erroresComment["NoComment"])) ? "<div class='errorMessage'>$erroresComment[NoComment]</div>" : "";
                             ?>
@@ -125,6 +126,7 @@
                         header("Location:../../HTML/Index.php");
                     }
                     try {
+                        //Show all the comments by game ID
                         $comentarios = new Usuario();
                         $commentsArray = $comentarios->sacarComentariosOrdenPorJuego($phpVar1);
                         $numero = 0;
@@ -137,6 +139,7 @@
                                 $ranges[$numero];
                             }
                             if ($numeroComentarios <= $ranges[$numero]) {
+                                //Adding all the comments in HTML
                                 echo '<div class="commentContainer">';
                                 echo '<div class="profilePicture"><img src=../../img/' . $userComment . '/image.png></div>';
                                 echo '<div class="textComment">';
@@ -174,5 +177,5 @@
         </footer>
     </div>
 </body>
-<script src="../../JS/generos2.js"></script>
+<script src="../../JS/index.js"></script>
 </html>

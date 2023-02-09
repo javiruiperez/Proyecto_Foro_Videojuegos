@@ -7,11 +7,13 @@ function cabecera()
             <div class="grid-container">
                 <div class="col-1"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
-                <form action="">                
-                  <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-              </form></div>
+                    <form action="">                
+                        <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
+                    </form>
+                </div>
                 <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
-            </div></nav>
+            </div>
+        </nav>
     </header>
     <?php
 }
@@ -51,19 +53,6 @@ function randomPassword()
     return $strPassword;
 }
 
-
-function sinTildes($frase)
-{
-    $no_permitidas = array(
-        "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "à", "è", "ì", "ò", "ù", "À", "È", "Ì", "Ò", "Ù"
-    );
-    $permitidas = array(
-        "a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U"
-    );
-    $texto = str_replace($no_permitidas, $permitidas, $frase);
-    return $texto;
-}
-
 function sinEspacios($frase)
 {
     $texto = trim(preg_replace('/ +/', ' ', $frase));
@@ -80,42 +69,6 @@ function recoge($var)
     return $tmp;
 }
 
-function cTexto($text, &$errores, $max = 200, $min = 1)
-{
-    $valido = true;
-    if ((mb_strlen($text) > $max) || (mb_strlen($text) < $min)) {
-        $errores["name_1"] = "El nombre debe tener entre $min y $max letras";
-        $valido = false;
-    }
-    if (!preg_match("/^[A-Za-zÑñ]+$/", sinTildes($text))) {
-        $errores["name_2"] = "El nombre sólo debe tener letras";
-        $valido = false;
-    }
-
-    return $valido;
-}
-//Funcion para los campos no requeridos
-function CamposVacios($campo)
-{
-    if (empty($campo))
-        return true;
-}
-//Funcion para comprobar el Nombre
-function cNombre($text)
-{
-    if (preg_match("/^[A-Za-zÑñ]+$/", sinTildes($text)) && strlen($text) <= 30)
-        return true;
-    else
-        return false;
-}
-//Funcion para comprobar los apellidos
-function cApellidos($text)
-{
-    if (preg_match("/^[A-Za-zÑñ]+[\s]+[A-Za-zÑñ]+/", sinTildes($text)) && strlen($text) <= 50)
-        return true;
-    else
-        return false;
-}
 //Funcion para comprobar si el nombre de usuario es válido
 function UsuarioValido($usuario)
 {
@@ -145,14 +98,4 @@ function FechaValida($fecha)
         return false;
     }
 }
-//Funcion para comprobar una direccion valida
-function ComprobarDireccion($direccion)
-{
-    if (preg_match("/^[A-Za-zÑñ]+$/", $direccion) && strlen($direccion) <= 50) {;
-        return true;
-    } else {
-        return false;
-    }
-}
-
     ?>

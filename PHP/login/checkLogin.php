@@ -3,7 +3,7 @@
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");
     require("../BaseDeDatos/config.php");
-    cabecera("Log In");
+    cabecera("");
     $errores = [];
     
     // CODIGO PARA REDIRIGIR A LA PÁGINA PRINCIPAL SI YA ESTÁ INICIADA LA SESIÓN
@@ -29,23 +29,23 @@
 
         if(count($errores) === 0){//This should check if the username and password exists and if it doesn't, it will show an error
             try{
-                    $usuario = new Usuario();
-                    if($userBD=$usuario->checkPassword($user, $password)){
-                        session_start();
-                        $_SESSION["user"] = $user;
-                        if(isset($_GET["w1"])){
-                            $phpVar1 = $_GET["w1"];
-                            $phpVar2 = $_GET["w2"];
-                            $phpVar3 = $_GET["w3"];
-                            header('Location:../comentarios/addComments.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
-                        } else{
-                            header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
-                        }
+                $usuario = new Usuario();
+                if($userBD=$usuario->checkPassword($user, $password)){
+                    session_start();
+                    $_SESSION["user"] = $user;
+                    if(isset($_GET["w1"])){
+                        $phpVar1 = $_GET["w1"];
+                        $phpVar2 = $_GET["w2"];
+                        $phpVar3 = $_GET["w3"];
+                        header('Location:../comentarios/addComments.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
                     } else{
-                        $errores["NoUserLogin"] = "The email or password is incorrect";
-                        require("formLogin.php");
-                       
+                        header("location:../../HTML/Index.php"); //Change url config so the user profile picture appears  at the top-right corner of the screen
                     }
+                } else{
+                    $errores["NoUserLogin"] = "The email or password is incorrect";
+                    require("formLogin.php");
+                   
+                }
             } catch(PDOException $e){
                 error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
                 // guardamos en ·errores el error que queremos mostrar a los usuarios

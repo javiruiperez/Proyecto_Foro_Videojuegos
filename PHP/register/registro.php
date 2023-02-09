@@ -1,5 +1,5 @@
 <?php
-include("./arrays.php");
+include("../libs/arrays.php");
 include("./encriptarContraseñas.php");
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
@@ -19,13 +19,11 @@ $erroresMsg = array(
 );
 
 $passwordWithout="";
- 
 
 if (!isset($_REQUEST['bAcept'])) {
 ?>
     <!DOCTYPE html>
     <html lang="es">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +53,6 @@ if (!isset($_REQUEST['bAcept'])) {
                         <br>
                         </div>
 
-
                     <?php
                     } else {
                     ?>
@@ -76,6 +73,7 @@ if (!isset($_REQUEST['bAcept'])) {
         <?php
             pie();
         ?>
+        <script src="../../JS/index.js"></script>
     </body>
     </html>
 
@@ -103,27 +101,24 @@ if (!isset($_REQUEST['bAcept'])) {
         $erroresMsg[PASSWD] = "<div class='errorMessage'>The password is not strong.</div";
     }
     if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
-try{
-    $usuario=new Usuario();
+        try{
+            $usuario=new Usuario();
 
-   if($emailCom=$usuario->checkEmail($_REQUEST["Email"])){
-    $erroresMsg[EMAIL] = "<div class='errorMessage'>Not a valid email address.</div";
-
+            if($emailCom=$usuario->checkEmail($_REQUEST["Email"])){
+                $erroresMsg[EMAIL] = "<div class='errorMessage'>Not a valid email address.</div";
+            }
+            else{
+                $datesform[EMAIL] = $_REQUEST["Email"];
+            }
+        } catch(PDOException $e){
+            error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
+            $errors['datos'] = "Error <br>";
         }
-        else{
-            $datesform[EMAIL] = $_REQUEST["Email"];
-        }
-} catch(PDOException $e){
-    error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-    $errors['datos'] = "Error <br>";
-}
 
-      
     } else {
         $erroresMsg[EMAIL] = "<div class='errorMessage'>Not a valid email address.</div";
     }
 ?>
-
     <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -157,8 +152,6 @@ try{
                         ?>
                         <br>
                         </div>
-
-
                     <?php
                     } else {
                     ?>
@@ -182,6 +175,7 @@ try{
         <?php
             pie();
         ?>
+    <script src="../../JS/index.js"></script>
     </body>
     </html>
 
@@ -195,7 +189,6 @@ try{
             $check = false;
         }
     }
-
 
     if ($check == true) {
         session_start();
@@ -211,7 +204,7 @@ try{
                 mkdir("../../img/".$datesform[USER], 0777);
                 copy("../../img/image.png", "../../img/".$datesform[USER]."/image.png");
                 header("location:../../HTML/Index.php");
-               
+
             } else {
                 $erroresMsg[EMAIL] = "<div class='errorRegister'>User already registered.</div>";
                 echo $erroresMsg[EMAIL];

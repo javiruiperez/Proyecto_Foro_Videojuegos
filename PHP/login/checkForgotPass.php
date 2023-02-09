@@ -3,7 +3,6 @@
     require("../modelo/classModelo.php");
     require("../modelo/classUsuario.php");
     require("../BaseDeDatos/config.php");
-    // require("../register/enviar.php");
     $errors = [];
  
     if(!isset($_REQUEST["submitForgot"])){

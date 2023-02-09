@@ -43,6 +43,7 @@
     <?php
         pie();
     ?>
+    <script src="../../JS/index.js"></script>
     <script>
         var passwordField = document.getElementById("password");
         var show = document.querySelector(".show");

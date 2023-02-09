@@ -8,11 +8,9 @@
             $result->bindParam(':user', $user);
             $result->execute();
             $resultadoUsuario = $result;
-            // ->fetch(PDO::FETCH_ASSOC)
             foreach ($resultadoUsuario as $row) {
                 $nameUser= $row['id'];
             }
-            
             return $nameUser;
         }
 
@@ -44,7 +42,6 @@
             return $nameUser;
         }
 
-
         public function getNombre($user)
         {
             $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
@@ -58,8 +55,6 @@
             }
             return $name;
         }
-
-
 
         public function checkPassword($user, $password)
         {
@@ -83,13 +78,11 @@
             $resultado = $this->prepare($consulta);
             $resultado->bindParam(1, $email);
             $resultado->execute();
+
             foreach($resultado as $result){
                 $contraseñaGet=$result['contraseñaEncriptada'];
-                    
-               
-                }
-                return $contraseñaGet;
-            
+            }
+            return $contraseñaGet;
         }
 
         public function checkEmail($email)
@@ -108,7 +101,6 @@
             }
         }
 
-
         public function getEmail($usuario)
         {
             $consulta = "SELECT * FROM usuarios WHERE usuario=?";
@@ -122,7 +114,6 @@
             }
             return $emailBuscado;
         }
-
 
         public function actualizainfo($nombre,$email,$usuario)
         {
@@ -273,7 +264,6 @@ public function getLevel($nameUser){
             foreach($stmt as $row){
                 $idUser = $row['idUsuario'];
             }
-
             return $idUser;
         }
 
@@ -297,8 +287,6 @@ public function getLevel($nameUser){
                         echo "error update the image";
                     }
                 }
-            } else{
-                echo "image empty";
             }
         }
     }

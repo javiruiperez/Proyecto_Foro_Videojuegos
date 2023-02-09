@@ -121,20 +121,17 @@
             </div>
         </div>
     </footer>                                                                                   
-    <script src="../JS/generos2.js"></script>
+    <script src="../JS/index.js"></script>
     <script>
-function myFunction() {
-  var x = document.getElementById("categorias");
-  if (x.style.display === "none" || x.style.display==="") {
-    x.style.display = "block";
-   
-  } else {
-    x.style.display = "none";
-  }
-  
-}
-
-</script>
+        function myFunction() {
+            var x = document.getElementById("categorias");
+            if (x.style.display === "none" || x.style.display==="") {
+                x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
 
@@ -249,8 +246,7 @@ function myFunction() {
             </div>
         </div>
     </footer>                                                                                          
-    <script src="../JS/generos2.js"></script>
-   
+    <script src="../JS/index.js"></script>
 </body>
 </html>
 <?php

@@ -22,6 +22,7 @@
                 $phpVar2 = $_GET['w2'];
                 $phpVar3 = $_GET['w3'];
                 header('Location:../login/checkLogin.php?w1='.$phpVar1.'&w2='.$phpVar2.'&w3='.$phpVar3);
+                //If user is not logged in, redirect to the login page
             }else{
                 $guideText = recoge("textNewGuide");
                 $phpVar1 = $_GET['w1'];
@@ -40,13 +41,12 @@
 
                     } catch(PDOException $e){
                         error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
-                        // save errors
+                        //Save errors
                         $erroresGuide['NoGuide'] = "Error <br>";
                     }
                 }
             }
         }
-// we send name of game and link of image if you arent login 
         if(isset($_REQUEST["submitComment"])){
             if(!isset($_SESSION["user"])){
                 $phpVar1 = $_GET['w1'];
@@ -66,13 +66,13 @@
                 if(count($erroresComment) === 0){
                     try{
                         $usuario = new Usuario();
-                        if($IDuser = $usuario->getIdUser($userSession)){ //Usuario base de datos forousuarios
-                            if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //añadir comentario
+                        if($IDuser = $usuario->getIdUser($userSession)){ //User database
+                            if($commentBD = $usuario->guardarComentario($phpVar1, $content, $IDuser)){ //Adds comment
                                 $addComment = $usuario->sumarComentario($IDuser);
-                                //the new comment to see when the user finish write the comment
+                                //The comment is saved to the database and the website is refreshed
                                 header("Refresh:0");
                             }
-                        } echo "fallo 2";
+                        }
                     
                     } catch(PDOException $e){
                         error_log($e->getMessage() . "##Código: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");
