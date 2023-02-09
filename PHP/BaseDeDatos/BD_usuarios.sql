@@ -34,7 +34,7 @@ CREATE TABLE `guias` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contraseñaEncriptada`, `correo`, `comentario`, `nivel`) VALUES ('1', 'root', 'root', '$2a$07$usesomesillystringforehg0dedj7L/iujhXGa/PYA4EZKm/yiEW', 'root@gmail.com', '0', '2');
 
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComentario`);
@@ -45,9 +45,6 @@ ALTER TABLE `guias`
   ADD PRIMARY KEY (`idguia`);
   ALTER TABLE `guias`
   MODIFY `idGuia` int(1) NOT NULL AUTO_INCREMENT;
-
---Insert admin user (root) to be able to block other users
-INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `contraseñaEncriptada`, `correo`, `comentario`, `nivel`) VALUES ('1', 'root', 'root', '$2a$07$usesomesillystringforehg0dedj7L/iujhXGa/PYA4EZKm/yiEW', 'root@gmail.com', '0', '2');
 
 
 ALTER TABLE `usuarios`
