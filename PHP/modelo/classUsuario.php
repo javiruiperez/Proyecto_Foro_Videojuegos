@@ -14,6 +14,18 @@
             return $nameUser;
         }
 
+        public function getUserByMail($mail){
+            $consulta = "SELECT * FROM usuarios WHERE correo=:mail";
+            $result =$this->prepare($consulta);
+            $result->bindParam(':mail', $mail);
+            $result->execute();
+            $resultadoUsuario = $result;
+            foreach ($resultadoUsuario as $row) {
+                $nameUser= $row['usuario'];
+            }
+            return $nameUser;
+        }
+
         public function getUser($user)
         {
             $consulta = "SELECT * FROM usuarios WHERE usuario=:user";
@@ -115,14 +127,15 @@
             return $emailBuscado;
         }
 
-        public function actualizainfo($nombre,$email,$usuario)
+        public function actualizainfo($nombre,$email, $password, $usuario)
         {
            
-          $consulta="UPDATE `usuarios` SET `nombre` = ?, `correo` = ? WHERE usuario = ?";
+          $consulta="UPDATE `usuarios` SET `nombre` = ?, `correo` = ?, `contraseñaEncriptada` = ? WHERE usuario = ?";
           $resultado = $this->prepare($consulta);
             $resultado->bindParam(1, $nombre);
             $resultado->bindParam(2, $email);
-            $resultado->bindParam(3, $usuario);
+            $resultado->bindParam(3, $password);
+            $resultado->bindParam(4, $usuario);
             $resultado->execute();
         }
 
@@ -199,18 +212,18 @@
 
         }
 
-public function getLevel($nameUser){
-    $consulta="SELECT * FROM `usuarios`where usuario=?;";
-    $stmt=$this->prepare($consulta);
-    $stmt->bindParam(1,$nameUser);
-    $stmt->execute();
-    $resultado=$stmt;
-    foreach($resultado as $result){
-       $numero=$result['nivel'];
-       
-   }
-   return $numero;
-}
+        public function getLevel($nameUser){
+            $consulta="SELECT * FROM `usuarios`where usuario=?;";
+            $stmt=$this->prepare($consulta);
+            $stmt->bindParam(1,$nameUser);
+            $stmt->execute();
+            $resultado=$stmt;
+            foreach($resultado as $result){
+               $numero=$result['nivel'];
+            
+           }
+           return $numero;
+        }
 
         public function deleteComment($idComentario){
             $consulta="DELETE FROM `comentarios` WHERE `comentarios`.`idComentario` = ?;";

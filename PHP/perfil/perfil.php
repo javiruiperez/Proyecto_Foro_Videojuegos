@@ -4,6 +4,7 @@
     require("../BaseDeDatos/config.php");
     require("../modelo/classAdmin.php");
     include("../libs/rangos.php");
+    include("../libs/cryptPasswords.php");
 
     session_start();
 
@@ -152,7 +153,11 @@
                 </div>
                 <label>Email :</label>
                 <div class="user-box">
-                    <input type="text" value="<?php echo  $emailGet  ?>" name="Email" id="Email" class="slope"></input><br>
+                    <input type="text" value="<?php echo $emailGet?>" name="Email" id="Email" class="slope"></input><br>
+                </div>
+                <label>Password :</label>
+                <div class="user-box">
+                    <input type="password" placeholder="Change your password..." name="Password" id="Password" class="slope"></input><br>
                 </div>
                 <?php
                     try {
@@ -285,6 +290,7 @@
             //if email and name are true in the base is update
             $checkEmail = false;
             $checkName = false;
+            $checkPassword = false;
             if (preg_match("#[\w\._]{3,}@\w{5,}\.+[\w]{2,}#i", $_REQUEST["Email"]) == 1) {
                 $usuario = new Usuario();
 
@@ -296,12 +302,25 @@
             if (preg_match("#^[a-zZ-a]#i", $_REQUEST["Name"]) == 1) {
                 $checkName = true;
             }
-            if ($checkEmail == true) {
-                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $userGet);
+
+            if (preg_match("#\w{5,}#i", $_REQUEST["Password"]) == 1 || $_REQUEST["Password"] === "") {
+                $checkPassword = true;
+                $newPassword = crypt_blowfish($_REQUEST["Password"]);
+            } else{
+                $emailNuevo = $usuario->getEmail($_SESSION["user"]);
+                $newPassword = $usuario->getPassword($emailNuevo);
             }
 
-            if ($checkName == true) {
-                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $userGet);
+            if ($checkEmail) {
+                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $newPassword, $userGet);
+            }
+
+            if ($checkName) {
+                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $newPassword, $userGet);
+            }
+
+            if($checkPassword){
+                $update = $usuario->actualizainfo($_REQUEST["Name"], $_REQUEST["Email"], $newPassword, $userGet);
             }
         } catch (PDOException $e) {
             error_log($e->getMessage() . "##Code: " . $e->getCode() . "  " . microtime() . PHP_EOL, 3, "../logBD.txt");

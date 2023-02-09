@@ -1,6 +1,6 @@
 <?php
 include("../libs/arrays.php");
-include("./encriptarContraseñas.php");
+include("../libs/cryptPasswords.php");
 require("../modelo/classModelo.php");
 require("../modelo/classUsuario.php");
 require("../BaseDeDatos/config.php");
@@ -90,7 +90,7 @@ if (!isset($_REQUEST['bAcept'])) {
     } else {
         $erroresMsg[USER] = "<div class='errorMessage'>Not a valid username.</div";
     }
-    if (preg_match("#\w#i", $_REQUEST["Password"]) == 1) {
+    if (preg_match("#\w{5,}#i", $_REQUEST["Password"]) == 1) {
         $datesform[PASSWD] = $_REQUEST["Password"];
       $passwordWithout=$_REQUEST["Password"];
       //crypt the password

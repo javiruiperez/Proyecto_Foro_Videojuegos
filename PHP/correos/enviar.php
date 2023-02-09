@@ -18,8 +18,8 @@ $mail = new PHPMailer(true);
         /* 
         * SMTP username y password Poned los vuestros. La contraseña es la que nos generó GMAIL
         */
-        $mail->Username   = 'forogamershelp@gmail.com';             
-        $mail->Password   = 'mglk frwc fgws ydng';    
+        $mail->Username = 'forogamershelp@gmail.com';             
+        $mail->Password = 'mglk frwc fgws ydng';    
         /*
         * Encriptación a usar ssl o tls, dependiendo cual usemos hay que utilizar uno u otro puerto
         */            
@@ -37,9 +37,10 @@ $mail = new PHPMailer(true);
  
         $passwordBD = $usuarioEmail->modifyPassword($newPass, $emailGet);
         $getpassword=$usuarioEmail-> getPassword($emailGet);
+        $username = $usuarioEmail->getUserByMail($emailGet);
    
         //Remitente
-            $mail->setFrom('franbotella97@gmail.com', 'forogamershelp');
+        $mail->setFrom('forogamershelp@gmail.com', 'forogamershelp');
         //Receptores. Podemos añadir más de uno. El segundo argumento es opcional, es el nombre
         $mail->addAddress($emailGet);     //Add a recipient
         //$mail->addAddress('ejemplo@example.com'); 
@@ -58,19 +59,20 @@ $mail = new PHPMailer(true);
         $mail->isHTML(true);    
         $mail->CharSet = "UTF8";    
         //Asunto
-        $mail->Subject = 'Recuperar Contraseña';
+        $mail->Subject = 'Account Recovery - ForoGamers';
         //Conteido HTML
-        $mail->Body    = "Tu nueva contraseña es". $getpassword;
+        $mail->Body    = "Hello ".$username.", we received an account recovery request on ForoGamers for: <br>" .$emailGet. "<br><br>This is your new password: ".$newPass;
         //Contenido alternativo en texto simple
-        $mail->AltBody = "Tu nueva contraseña es". $getpassword;
+        $mail->AltBody = "Hello ".$username.", we received an account recovery request on ForoGamers for: <br>" .$emailGet. "<br><br>This is your new password: ".$newPass;
         //Enviar correo
         $mail->send();
-        echo 'El mensaje se ha enviado con exito';
-        echo "Mira tu correo que se envio tu nueva contraseña";
-        header( "Refresh:5;url=../../HTML/Index.php" );
+        echo 'The email has been succesfully sent!';
+        echo "Please check your email.";
+        header("Refresh:3;url=../../HTML/Index.php");
    
     } catch (Exception $e) {
-        echo "El mensaje no se ha enviado: {$mail->ErrorInfo}";
+        echo "Error -> Email not sent!";
+        header("Refresh:3;url=../../HTML/Index.php");
     }
 
 ?>
