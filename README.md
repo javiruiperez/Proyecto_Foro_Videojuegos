@@ -6,3 +6,7 @@ Nuestra aplicación consiste en la realización de una pregunta sobre la duda qu
 
 Si una vez realizada la busqueda de la duda el usuario registrado no encuentra su duda resuelta en la web podra abrir un hilo con su pregunta para que otros usuarios registrados la resuelvan, pudiendo añadir contenido multimedia para que el usuario tenga mas facil resolver su duda. 
 Javier, Fran y Oscar.
+
+Enlace a Trello: https://trello.com/w/proyecto2daw6/home
+
+Planificación Sprints y Valoraciones --> en carpeta Drive compartido con Manuela
