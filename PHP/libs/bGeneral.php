@@ -7,9 +7,6 @@ function cabecera()
             <div class="grid-container">
                 <div class="col-1"><a href="../../HTML/Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
-                    <form action="">                
-                        <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-                    </form>
                 </div>
                 <div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>
             </div>

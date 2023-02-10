@@ -23,9 +23,6 @@
             <div class="grid-container">
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
-                    <form action="">                
-                        <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-                    </form>
                 </div>
                 <?php
                     echo '<div><a href="../PHP/perfil/perfil.php" class="profilePicture"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
@@ -159,10 +156,8 @@
             <div class="grid-container">
                 <div class="col-1"><a href="Index.php"><h1 class="titulo">ForoGamers</h1></a></div>
                 <div class="col-2">
-                <form action="">                
-					<input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-              </form></div>
-                	<div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
+                </div>
+                <div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
             <a href="javascript:void(0);" id="icon" class="col-4" onclick="myFunction()">
                 <i class="fa fa-bars"></i>

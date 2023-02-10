@@ -31,9 +31,6 @@
                             <h1 class="titulo">ForoGamers</h1>
                         </a></div>
                     <div class="col-2">
-                        <form action="">
-                            <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-                        </form>
                     </div>
                     <div class="col-3">
                         <?php
