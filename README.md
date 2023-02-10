@@ -3,4 +3,5 @@ La aplicación está hecha de tal manera que, al entrar al archivo de creación 
 
 
 Enlace a Trello: https://trello.com/w/proyecto2daw6/home
+
 Planificación Sprints y Valoraciones --> en carpeta Drive compartido con Manuela
