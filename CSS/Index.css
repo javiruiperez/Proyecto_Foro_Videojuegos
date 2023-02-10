@@ -21,15 +21,13 @@
 
 /*HEADER*/
 .grid-container {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-around;
 }
 
 .titulo {
   text-align: center;
   width: 100%;
-  float: center;
   margin-top: 2.5%;
   font-family: "VT323", monospace;
   font-size: 62px;
@@ -41,23 +39,7 @@ a {
   text-decoration: none;
 }
 
-.col-3 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 .log-In, .sign-In {
-  margin-top: 20%;
-  margin-left: 5%;
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
-  text-shadow: 2px 2.5px 2.5px #000000;
-}
-
-.usuario {
-  margin-top: 18%;
   margin-left: 5%;
   text-align: center;
   color: white;
@@ -67,6 +49,7 @@ a {
 }
 
 .profilePicture img {
+  margin-top: 25px;
   top: 0;
   left: 0;
   -o-object-fit: cover;
@@ -76,6 +59,15 @@ a {
   border-radius: 50%;
 }
 
+.col-3 {
+  width: auto;
+  margin-top: 25px;
+}
+
+.col-3 a {
+  margin: 10px;
+}
+
 header form {
   position: relative;
   top: 25%;
@@ -83,17 +75,6 @@ header form {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-}
-header .barra_busqueda {
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background: white;
-  padding: 20px;
-  border-radius: 100px;
-  border: none;
-  text-align: center;
-  font-size: 18px;
 }
 header .categorias {
   display: flex;
@@ -258,21 +239,6 @@ div.desc {
   }
 }
 @media only screen and (max-width: 700px) {
-  .grid-container {
-    display: grid;
-    grid-template-columns: none;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin-right: 11%;
-  }
-  .col-1 {
-    width: 100%;
-  }
-  .col-2 {
-    width: 100%;
-  }
-  .col-3 {
-    width: 100%;
-  }
   .responsive {
     width: 49.99999%;
     margin: 6px 0;
@@ -294,20 +260,9 @@ div.desc {
     margin-left: 50%;
     color: white;
   }
-  .profilePicture {
-    margin-left: 100%;
-    padding-bottom: 80px;
-  }
 }
 @media only screen and (max-width: 500px) {
   .responsive {
     width: 100%;
-  }
-  .col-3 {
-    margin-left: 80px;
-  }
-  .profilePicture {
-    margin-left: 35%;
-    padding-bottom: 80px;
   }
 }/*# sourceMappingURL=Index.css.map */

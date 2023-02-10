@@ -54,12 +54,6 @@
                 <div class="col-1"><a href="../../HTML/Index.php">
                         <h1 class="titulo">ForoGamers</h1>
                     </a></div>
-                <div class="col-2">
-                    <form action="">
-                        <input type="text" class="barra_busqueda" id="barra_busqueda" placeholder="Search a game">
-                    </form>
-                </div>
-                <!-- <div class="col-3"><a href="perfil.php" class="sign-In">User</a></div> -->
                 <?php
                     echo '<div class="col-3"><a href="perfil.php" class="profilePicture usuario"><img src="../../img/' . $_SESSION["user"] . '/image.png"></a></div>';
                 ?>

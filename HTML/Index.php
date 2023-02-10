@@ -28,7 +28,7 @@
                     </form>
                 </div>
                 <?php
-                    echo '<div class="col-3"><a href="../PHP/perfil/perfil.php" class="profilePicture usuario"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
+                    echo '<div><a href="../PHP/perfil/perfil.php" class="profilePicture"><img src="../img/'.$_SESSION["user"].'/image.png"></a></div>';
                 ?>
             </div>
             <a href="javascript:void(0);" id="icon" class="col-4" onclick="myFunction()">
@@ -126,6 +126,7 @@
             var x = document.getElementById("categorias");
             if (x.style.display === "none" || x.style.display==="") {
                 x.style.display = "block";
+                x.style.textAlign = "center";
             } else {
               x.style.display = "none";
             }
@@ -148,6 +149,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="../Interfaces Proyecto/Logo.png">
     <title>Homepage - ForoGamers</title>
 </head>
@@ -162,6 +164,9 @@
               </form></div>
                 	<div class="col-3"><a href="../PHP/register/registro.php" class="sign-In">Sign up</a><a href="../PHP/login/checkLogin.php" class="log-In">Log in</a></div>
             </div>
+            <a href="javascript:void(0);" id="icon" class="col-4" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
             <div class="categorias" id="categorias">  
                 <a href="#" class="genres" id="Action">Action</a>
                 <a href="#"class="genres" id="RPG">RPG</a>
@@ -245,6 +250,17 @@
         </div>
     </footer>                                                                                          
     <script src="../JS/index.js"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("categorias");
+            if (x.style.display === "none" || x.style.display==="") {
+                x.style.display = "block";
+                x.style.textAlign = "center";
+            } else {
+              x.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
 <?php

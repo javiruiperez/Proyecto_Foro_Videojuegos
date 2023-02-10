@@ -272,45 +272,46 @@ const cargarJuegosInicio = async () => {
     }
 }
 
-const searchBar = document.getElementById("barra_busqueda");
-searchBar.addEventListener("keypress", function(e){
-    if(e.key === "Enter"){
-        var gameName = searchBar.value;
-        Busqueda(gameName);
-    }
-});
+/*NOT FINISHED FUNCTION THAT SEARCHES GAMES IN SEARCH BAR*/
+// const searchBar = document.getElementById("barra_busqueda");
+// searchBar.addEventListener("keypress", function(e){
+//     if(e.key === "Enter"){
+//         var gameName = searchBar.value;
+//         Busqueda(gameName);
+//     }
+// });
 
-numeroPagina = 1;
-const Busqueda = async (nombreJuego) => {
-    try {
-        const options = await fetch(`https://api.rawg.io/api/games?key=${APIKEY}&page=${numeroPagina}`, {
-            method: 'GET',
-        }
-        );
+// numeroPagina = 1;
+// const Busqueda = async (nombreJuego) => {
+//     try {
+//         const options = await fetch(`https://api.rawg.io/api/games?key=${APIKEY}&page=${numeroPagina}`, {
+//             method: 'GET',
+//         }
+//         );
 
-        if (options.status === 200) {
-            const options2 = await options.json();
-            options2.results.forEach(element => {
-                //Function to search for a game in the search bar (theoretically it should work)
-                if (nombreJuego == element.name) {
-                    //Depending on the location of the user, it will redirect somewhere
-                    if(window.location.pathname === "/proyecto/HTML/Index.php"){
-                        window.location.href = '../PHP/comentarios/addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
-                    } else 
-                        if(window.location.pathname === "/proyecto/PHP/register/registro.php" || window.location.pathname === "/proyecto/PHP/login/checkLogin.php"){
-                            window.location.href = '../comentarios/addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
-                    } else if(window.location.pathname === "/proyecto/PHP/addComments.php"){
-                        window.location.href = 'addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
-                    }
-                } else{
-                    numeroPagina++;
-                    Busqueda(nombreJuego);
-                }
-            })
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
+//         if (options.status === 200) {
+//             const options2 = await options.json();
+//             options2.results.forEach(element => {
+//                 //Function to search for a game in the search bar (theoretically it should work)
+//                 if (nombreJuego == element.name) {
+//                     //Depending on the location of the user, it will redirect somewhere
+//                     if(window.location.pathname === "/proyecto/HTML/Index.php"){
+//                         window.location.href = '../PHP/comentarios/addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
+//                     } else 
+//                         if(window.location.pathname === "/proyecto/PHP/register/registro.php" || window.location.pathname === "/proyecto/PHP/login/checkLogin.php"){
+//                             window.location.href = '../comentarios/addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
+//                     } else if(window.location.pathname === "/proyecto/PHP/addComments.php"){
+//                         window.location.href = 'addComments.php?w1='+element.id+'&w2='+element.background_image+'&w3='+element.name;
+//                     }
+//                 } else{
+//                     numeroPagina++;
+//                     Busqueda(nombreJuego);
+//                 }
+//             })
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 cargarJuegosInicio();

@@ -12,6 +12,10 @@ $whiteColor: white;
     object-fit:cover;
 }
 
+.col-3{
+    margin-top: 0;
+}
+
 label, input{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -122,9 +126,9 @@ input{
     }
 
     .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
+        display: flex;
+        justify-content: space-evenly;
+        // grid-template-columns:  repeat(2,1fr);
     }
 }
 
@@ -149,9 +153,8 @@ input{
     }
 
     .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 
@@ -177,8 +180,7 @@ input{
     }
 
     .grid-container {
-        display: grid;
-        justify-content: center;
-        grid-template-columns:  repeat(2,1fr);
+        display: flex;
+        justify-content: space-evenly;
     }
 }

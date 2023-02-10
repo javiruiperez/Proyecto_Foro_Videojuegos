@@ -38,9 +38,9 @@
                     <div class="col-3">
                         <?php
                             if (isset($_SESSION["user"])) {
-                                echo '<div class="col-3"><a href="../perfil/perfil.php" class="profilePicture usuario"><img src="../../img/' . $_SESSION["user"] . '/image.png"></a></div>';
+                                echo '<a href="../perfil/perfil.php" class="profilePicture usuario"><img src="../../img/' . $_SESSION["user"] . '/image.png"></a>';
                             } else {
-                                echo '<div class="col-3"><a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a></div>';
+                                echo '<a href="../register/registro.php" class="sign-In">Sign up</a><a href="../login/checkLogin.php" class="log-In">Log in</a>';
                             }
                         ?>
                     </div>
