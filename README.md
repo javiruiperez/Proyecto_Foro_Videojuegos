@@ -1,12 +1,6 @@
-# Proyecto_Foro_Videojuegos
-# Descripción
-Esta aplicación web es un foro de ayuda para amantes de los videojuegos, que permite a la comunidad gamer la colaboración para completar la parte mas tediosa de su videojuego favorito o conseguir desbloquear cosas ocultas que solo los mejores jugadores saben.
+Para desplegar la aplicación en local, se debe descargar y ejecutar el archivo crearBD.php situado en --> /PHP/BaseDeDatos/crearBD.php
+La aplicación está hecha de tal manera que, al entrar al archivo de creación de la base de datos (crearBD.php), se comprueba si está creada o no y te redirecciona siempre a /HTML/Index.php
 
-Nuestra aplicación consiste en la realización de una pregunta sobre la duda que el usuario tenga para pasarse determinada fase de su videojuego favorito, o la busqueda del videojuego en cuestión y encontrar nuestra duda entre las ya resueltas por la comunidad, en el submenú se podrá buscar por genero del videojuego, año y consola.
-
-Si una vez realizada la busqueda de la duda el usuario registrado no encuentra su duda resuelta en la web podra abrir un hilo con su pregunta para que otros usuarios registrados la resuelvan, pudiendo añadir contenido multimedia para que el usuario tenga mas facil resolver su duda. 
-Javier, Fran y Oscar.
 
 Enlace a Trello: https://trello.com/w/proyecto2daw6/home
-
 Planificación Sprints y Valoraciones --> en carpeta Drive compartido con Manuela
